@@ -1,0 +1,30 @@
+{
+  "slug": "touch",
+  "name": "touch",
+  "purpose": "Create a new, completely empty file directly from the terminal.",
+  "syntax": "touch <fileName>",
+  "explanation": "Creates an empty file if it does not exist. Running cat on a newly touched file produces no output until text is written into it.",
+  "parameters": [],
+  "example": "touch readme.txt\nls",
+  "expectedOutput": "readme.txt",
+  "outputVerified": false,
+  "whenToUse": "To quickly create an empty file before writing or editing it.",
+  "commonMistakes": [
+    "Expecting touch to open an editor or add content automatically."
+  ],
+  "relatedCommands": [
+    "echo",
+    "cat",
+    "rm"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "touch",
+    "create file",
+    "empty file"
+  ]
+}

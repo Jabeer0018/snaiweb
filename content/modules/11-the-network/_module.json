@@ -1,0 +1,8 @@
+{
+  "slug": "11-the-network",
+  "title": "C11 — The Network",
+  "description": "How code reaches GitHub, client/server & URLs, networking devices, LAN/MAN/WAN, the Internet, and IPv4 addressing.",
+  "order": 11,
+  "source": "Revision Notes (Lecture 11)",
+  "addedAt": "2026-11-26"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "log-5",
+    "date": "2026-11-26",
+    "action": "added",
+    "itemType": "command",
+    "title": "Added grep & gzip commands under Text Search & Compression",
+    "href": "/commands",
+    "source": "User-requested CLI Reference"
+  },
+  {
+    "id": "log-1",
+    "date": "2026-11-26",
+    "action": "added",
+    "itemType": "module",
+    "title": "C00\u2013C08: System & AI Essentials Core Modules",
+    "href": "/notes",
+    "source": "System & AI Essentials + Number Systems PDFs"
+  },
+  {
+    "id": "log-2",
+    "date": "2026-11-26",
+    "action": "added",
+    "itemType": "module",
+    "title": "Git & GitHub Collaboration + Lectures 11, 14, 15, 16",
+    "href": "/notes/09-git-github",
+    "source": "Ultimate Notes + Revision Notes PDFs"
+  },
+  {
+    "id": "log-3",
+    "date": "2026-11-26",
+    "action": "added",
+    "itemType": "command",
+    "title": "28 Categorised CLI, Process, Permission & Git/GitHub Commands",
+    "href": "/commands",
+    "source": "C03, C04, C05, C06 & Git/GitHub Notes"
+  },
+  {
+    "id": "log-4",
+    "date": "2026-11-26",
+    "action": "added",
+    "itemType": "revision",
+    "title": "4 Quick Revision Guides & Cheat Sheets",
+    "href": "/revision",
+    "source": "All Supplied Course PDFs"
+  }
+]

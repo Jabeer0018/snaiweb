@@ -1,0 +1,46 @@
+{
+  "slug": "ls",
+  "name": "ls",
+  "purpose": "List files and folders present in the current directory.",
+  "syntax": "ls [options]",
+  "explanation": "Displays the files and folders in your current location only; it does not automatically look inside subfolders. If a folder is empty, ls prints nothing (blank).",
+  "parameters": [
+    {
+      "flag": "-l",
+      "description": "Long/detailed listing showing permissions (e.g. -rw-r--r--), owner, size, and date."
+    },
+    {
+      "flag": "-a",
+      "description": "Shows all files, including hidden files starting with a dot (e.g. .git)."
+    },
+    {
+      "flag": "-la",
+      "description": "Combines -l and -a for a detailed listing including hidden files."
+    }
+  ],
+  "example": "ls -la secret.txt",
+  "expectedOutput": "-rw-------  1 user  staff  13 Nov 26 00:00 secret.txt",
+  "outputVerified": false,
+  "whenToUse": "To inspect what files or directories exist in your current folder or check file permissions.",
+  "commonMistakes": [
+    "Thinking ls failed when it prints nothing in an empty directory.",
+    "Forgetting -a when looking for hidden folders like .git."
+  ],
+  "relatedCommands": [
+    "pwd",
+    "cd",
+    "chmod"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Terminal & Navigation",
+  "source": "System & AI Essentials (C03, C06)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "ls",
+    "list",
+    "permissions",
+    "hidden files",
+    "-la"
+  ]
+}

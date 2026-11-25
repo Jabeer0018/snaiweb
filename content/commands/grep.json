@@ -1,0 +1,58 @@
+{
+  "slug": "grep",
+  "name": "grep",
+  "purpose": "Global Regular Expression Print — search for text patterns or keywords inside files or command output.",
+  "syntax": "grep [options] \"<pattern>\" <fileName>\n<command> | grep \"<pattern>\"",
+  "explanation": "Scans one or more files (or piped output from another command) line by line and prints every line that matches the given text pattern. It is one of the most useful commands for finding specific lines in logs, code, or large text files without opening them manually.",
+  "parameters": [
+    {
+      "flag": "-i",
+      "description": "Case-insensitive search (matches both uppercase and lowercase)."
+    },
+    {
+      "flag": "-n",
+      "description": "Displays the line number alongside each matching line."
+    },
+    {
+      "flag": "-r",
+      "description": "Recursive search — searches through all files inside a directory and its subfolders."
+    },
+    {
+      "flag": "-v",
+      "description": "Invert match — prints only the lines that do NOT contain the pattern."
+    },
+    {
+      "flag": "-c",
+      "description": "Counts how many lines matched instead of printing the lines themselves."
+    }
+  ],
+  "example": "grep -in \"error\" server.log\nps aux | grep python",
+  "expectedOutput": "42:2026-11-26 ERROR Database connection timed out",
+  "outputVerified": false,
+  "whenToUse": "When searching for a specific word, error message, variable name, or running process in files or piped terminal output.",
+  "commonMistakes": [
+    "Forgetting -i when searching for text whose capitalisation may vary (e.g. 'Error' vs 'error').",
+    "Trying to search a folder without adding -r (recursive).",
+    "Forgetting quotes around a search pattern that contains spaces."
+  ],
+  "relatedCommands": [
+    "cat",
+    "ps",
+    "ls",
+    "gzip"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "User-requested CLI Reference",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "grep",
+    "greap",
+    "search",
+    "pattern",
+    "regex",
+    "filter",
+    "pipe"
+  ]
+}

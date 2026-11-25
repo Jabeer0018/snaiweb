@@ -1,0 +1,38 @@
+{
+  "slug": "kill",
+  "name": "kill",
+  "purpose": "Terminate a running process using its Process ID (PID).",
+  "syntax": "kill <PID>\nkill -9 <PID>",
+  "explanation": "Sends a signal to a running process. By default, 'kill <PID>' sends SIGTERM (15), politely requesting the process to clean up and exit. 'kill -9 <PID>' sends SIGKILL (9), forcing immediate termination without cleanup.",
+  "parameters": [
+    {
+      "flag": "-9",
+      "description": "Sends SIGKILL (signal 9) to force immediate termination without cleanup."
+    }
+  ],
+  "example": "kill -9 2341",
+  "expectedOutput": "(Terminates process 2341 immediately; CPU usage drops)",
+  "outputVerified": false,
+  "whenToUse": "To stop a frozen or runaway process after finding its PID via ps, top, or htop.",
+  "commonMistakes": [
+    "Passing the program name instead of its numeric PID.",
+    "Using kill -9 before trying a polite SIGTERM when cleanup matters."
+  ],
+  "relatedCommands": [
+    "ps",
+    "htop",
+    "top"
+  ],
+  "moduleSlug": "05-os-process-management",
+  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "category": "Process Management",
+  "source": "System & AI Essentials (C05)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "kill",
+    "SIGTERM",
+    "SIGKILL",
+    "PID",
+    "terminate"
+  ]
+}

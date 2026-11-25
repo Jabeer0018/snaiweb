@@ -1,0 +1,46 @@
+{
+  "slug": "rm",
+  "name": "rm",
+  "purpose": "Permanently remove (delete) files or directories from the filesystem.",
+  "syntax": "rm <fileName>\nrm -r <folderName>",
+  "explanation": "Deletes files permanently \u2014 there is no Recycle Bin or Trash in the terminal. Plain 'rm' only deletes files and fails on directories with 'Is a directory'; use '-r' (recursive) to delete a folder and its contents.",
+  "parameters": [
+    {
+      "flag": "-r",
+      "description": "Recursive \u2014 deletes a directory and everything inside it."
+    },
+    {
+      "flag": "-f",
+      "description": "Force \u2014 skips confirmation prompts."
+    },
+    {
+      "flag": "-rf",
+      "description": "Combines recursive and force. Extremely dangerous: deletes permanently with no warning or undo."
+    }
+  ],
+  "example": "rm kitkat.txt\nrm -r old_folder",
+  "expectedOutput": "(Permanently deletes the specified file or folder)",
+  "outputVerified": false,
+  "whenToUse": "When you are certain you want to permanently delete files or folders.",
+  "commonMistakes": [
+    "Running rm on a folder without -r.",
+    "Running rm -rf without double-checking the path (permanent data loss, no undo)."
+  ],
+  "relatedCommands": [
+    "cp",
+    "mv",
+    "mkdir"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "rm",
+    "remove",
+    "delete",
+    "-r",
+    "-rf"
+  ]
+}

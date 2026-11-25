@@ -1,0 +1,8 @@
+{
+  "slug": "06-os-filesystem",
+  "title": "C06 \u2014 The OS & the Filesystem",
+  "description": "Root (/), Unix 'Everything Is a File', executability, rwx and numeric permissions, chmod/chown, PATH, and which.",
+  "order": 6,
+  "source": "System & AI Essentials (C06)",
+  "addedAt": "2026-11-26"
+}

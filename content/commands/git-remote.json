@@ -1,0 +1,41 @@
+{
+  "slug": "git-remote",
+  "name": "git remote",
+  "purpose": "Link a local repository to a remote GitHub URL or inspect configured remotes.",
+  "syntax": "git remote add origin <URL>\ngit remote -v",
+  "explanation": "'git remote add origin <URL>' registers a remote repository under the nickname 'origin'. 'git remote -v' displays the fetch (download) and push (upload) URLs for configured remotes.",
+  "parameters": [
+    {
+      "flag": "add origin <URL>",
+      "description": "Registers a new remote repository nicknamed 'origin'."
+    },
+    {
+      "flag": "-v",
+      "description": "Verbose — displays fetch and push URLs for all configured remotes."
+    }
+  ],
+  "example": "git remote add origin https://github.com/NST/test.git\ngit remote -v",
+  "expectedOutput": "origin  https://github.com/NST/test.git (fetch)\norigin  https://github.com/NST/test.git (push)",
+  "outputVerified": false,
+  "whenToUse": "When connecting a local Git repo to GitHub or verifying where push/pull points.",
+  "commonMistakes": [
+    "Forgetting to add a remote before running git push."
+  ],
+  "relatedCommands": [
+    "git-init",
+    "git-push",
+    "git-clone"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "remote",
+    "origin",
+    "github",
+    "-v"
+  ]
+}

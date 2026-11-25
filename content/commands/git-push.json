@@ -1,0 +1,37 @@
+{
+  "slug": "git-push",
+  "name": "git push",
+  "purpose": "Upload local commits from your branch to a remote GitHub repository.",
+  "syntax": "git push -u origin main\ngit push",
+  "explanation": "'git push -u origin main' uploads your local 'main' branch to the 'origin' remote and remembers the upstream link so future uploads only need 'git push'.",
+  "parameters": [
+    {
+      "flag": "-u",
+      "description": "Sets upstream tracking between your local branch and the remote branch."
+    }
+  ],
+  "example": "git push -u origin main",
+  "expectedOutput": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
+  "outputVerified": false,
+  "whenToUse": "After committing locally when you want to share or back up code on GitHub.",
+  "commonMistakes": [
+    "Pushing before committing changes (git push only uploads committed snapshots)."
+  ],
+  "relatedCommands": [
+    "git-commit",
+    "git-remote",
+    "git-pull"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "push",
+    "origin",
+    "main",
+    "upload"
+  ]
+}

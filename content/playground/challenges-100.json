@@ -1,0 +1,5803 @@
+[
+  {
+    "id": "data-breach-response",
+    "number": 1,
+    "title": "Data Breach Response",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "You are handling a security incident inside breach_response/. Some folders and files are locked (read-only), so you must temporarily unlock them, do your work, and lock them back.",
+    "directoryTree": "breach_response/\n\u251c\u2500\u2500 evidence/\n\u2502   \u2514\u2500\u2500 log_dump.txt\n\u251c\u2500\u2500 secure/\n\u251c\u2500\u2500 reports/\n\u2502   \u2514\u2500\u2500 incident_summary.txt\n\u2514\u2500\u2500 classified.txt",
+    "preExistingNotes": [
+      "evidence/ is read-only (555)",
+      "log_dump.txt is read-only (444)",
+      "incident_summary.txt is read-only (444)",
+      "classified.txt has no permissions (000) \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Go into breach_response/.",
+      "Copy evidence/log_dump.txt to breach_response/log_dump.txt.",
+      "Give write permission to evidence/ (755), move evidence/ into secure/, then lock secure/evidence/ back to 555.",
+      "Give write permission to reports/incident_summary.txt (644), append 'Breach confirmed', then lock it back to 444.",
+      "Create secure/forensics_report.txt with the text 'Forensics Complete' and set its permissions to 600.",
+      "Unlock reports/incident_summary.txt (644), append 'Escalated to security team', and lock it back to 444."
+    ],
+    "hint": "Start with: cd breach_response. Use chmod 755 before mv evidence secure, and chmod 644 before echo >> on incident_summary.txt.",
+    "solution": "cd breach_response\ncp evidence/log_dump.txt log_dump.txt\nchmod 755 evidence\nmv evidence secure\nchmod 555 secure/evidence\nchmod 644 reports/incident_summary.txt\necho \"Breach confirmed\" >> reports/incident_summary.txt\nchmod 444 reports/incident_summary.txt\necho \"Forensics Complete\" > secure/forensics_report.txt\nchmod 600 secure/forensics_report.txt\nchmod 644 reports/incident_summary.txt\necho \"Escalated to security team\" >> reports/incident_summary.txt\nchmod 444 reports/incident_summary.txt",
+    "initialFs": {
+      "breach_response": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "evidence": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "log_dump.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "2026-11-25 Unauthorized access detected"
+              }
+            }
+          },
+          "secure": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "reports": {
+            "type": "dir",
+            "perm": 755,
+            "children": {
+              "incident_summary.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "Incident #402"
+              }
+            }
+          },
+          "classified.txt": {
+            "type": "file",
+            "perm": 0,
+            "content": "TOP SECRET"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "breach_response/log_dump.txt",
+        "label": "Copied log_dump.txt to breach_response/"
+      },
+      {
+        "type": "dirExists",
+        "path": "breach_response/secure/evidence",
+        "label": "Moved evidence/ into secure/"
+      },
+      {
+        "type": "notExists",
+        "path": "breach_response/evidence",
+        "label": "Original breach_response/evidence/ removed"
+      },
+      {
+        "type": "permEquals",
+        "path": "breach_response/secure/evidence",
+        "perm": 555,
+        "label": "secure/evidence/ restored to 555"
+      },
+      {
+        "type": "fileContains",
+        "path": "breach_response/reports/incident_summary.txt",
+        "expected": "Breach confirmed",
+        "label": "Appended 'Breach confirmed'"
+      },
+      {
+        "type": "fileContains",
+        "path": "breach_response/reports/incident_summary.txt",
+        "expected": "Escalated to security team",
+        "label": "Appended 'Escalated to security team'"
+      },
+      {
+        "type": "permEquals",
+        "path": "breach_response/reports/incident_summary.txt",
+        "perm": 444,
+        "label": "incident_summary.txt restored to 444"
+      },
+      {
+        "type": "fileEquals",
+        "path": "breach_response/secure/forensics_report.txt",
+        "expected": "Forensics Complete",
+        "label": "Created forensics_report.txt"
+      },
+      {
+        "type": "permEquals",
+        "path": "breach_response/secure/forensics_report.txt",
+        "perm": 600,
+        "label": "forensics_report.txt set to 600"
+      },
+      {
+        "type": "permEquals",
+        "path": "breach_response/classified.txt",
+        "perm": 0,
+        "label": "classified.txt untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "easy-audit_dir-audit",
+    "number": 2,
+    "title": "Audit Trail Setup",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named audit_dir/ and store audit.log inside it with permission 640.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder audit_dir/.",
+      "Create audit_dir/audit.log with the text 'Audit initialized'.",
+      "Set permissions of audit_dir/audit.log to 640."
+    ],
+    "hint": "Run: mkdir audit_dir, then echo \"Audit initialized\" > audit_dir/audit.log, then chmod 640 audit_dir/audit.log.",
+    "solution": "mkdir audit_dir\necho \"Audit initialized\" > audit_dir/audit.log\nchmod 640 audit_dir/audit.log",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "audit_dir",
+        "label": "Folder audit_dir/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "audit_dir/audit.log",
+        "expected": "Audit initialized",
+        "label": "audit.log has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "audit_dir/audit.log",
+        "perm": 640,
+        "label": "audit.log permission is 640"
+      }
+    ]
+  },
+  {
+    "id": "easy-vault-keys",
+    "number": 3,
+    "title": "Three Levels of Access",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named vault/ and store keys.txt inside it with permission 600.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder vault/.",
+      "Create vault/keys.txt with the text 'API_KEY=12345'.",
+      "Set permissions of vault/keys.txt to 600."
+    ],
+    "hint": "Run: mkdir vault, then echo \"API_KEY=12345\" > vault/keys.txt, then chmod 600 vault/keys.txt.",
+    "solution": "mkdir vault\necho \"API_KEY=12345\" > vault/keys.txt\nchmod 600 vault/keys.txt",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "vault",
+        "label": "Folder vault/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "vault/keys.txt",
+        "expected": "API_KEY=12345",
+        "label": "keys.txt has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "vault/keys.txt",
+        "perm": 600,
+        "label": "keys.txt permission is 600"
+      }
+    ]
+  },
+  {
+    "id": "easy-public_board-notice",
+    "number": 4,
+    "title": "Public Notice Board",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named public_board/ and store notice.txt inside it with permission 644.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder public_board/.",
+      "Create public_board/notice.txt with the text 'Exam starts at 9 AM'.",
+      "Set permissions of public_board/notice.txt to 644."
+    ],
+    "hint": "Run: mkdir public_board, then echo \"Exam starts at 9 AM\" > public_board/notice.txt, then chmod 644 public_board/notice.txt.",
+    "solution": "mkdir public_board\necho \"Exam starts at 9 AM\" > public_board/notice.txt\nchmod 644 public_board/notice.txt",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "public_board",
+        "label": "Folder public_board/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "public_board/notice.txt",
+        "expected": "Exam starts at 9 AM",
+        "label": "notice.txt has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "public_board/notice.txt",
+        "perm": 644,
+        "label": "notice.txt permission is 644"
+      }
+    ]
+  },
+  {
+    "id": "easy-scripts-health",
+    "number": 5,
+    "title": "Executable Health Script",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Create a folder named scripts/ and store health.sh inside it with permission 755.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder scripts/.",
+      "Create scripts/health.sh with the text 'echo OK'.",
+      "Set permissions of scripts/health.sh to 755."
+    ],
+    "hint": "Run: mkdir scripts, then echo \"echo OK\" > scripts/health.sh, then chmod 755 scripts/health.sh.",
+    "solution": "mkdir scripts\necho \"echo OK\" > scripts/health.sh\nchmod 755 scripts/health.sh",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "scripts",
+        "label": "Folder scripts/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "scripts/health.sh",
+        "expected": "echo OK",
+        "label": "health.sh has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "scripts/health.sh",
+        "perm": 755,
+        "label": "health.sh permission is 755"
+      }
+    ]
+  },
+  {
+    "id": "easy-config-db",
+    "number": 6,
+    "title": "Private Config Lock",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named config/ and store db.env inside it with permission 600.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder config/.",
+      "Create config/db.env with the text 'DB_HOST=localhost'.",
+      "Set permissions of config/db.env to 600."
+    ],
+    "hint": "Run: mkdir config, then echo \"DB_HOST=localhost\" > config/db.env, then chmod 600 config/db.env.",
+    "solution": "mkdir config\necho \"DB_HOST=localhost\" > config/db.env\nchmod 600 config/db.env",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "config",
+        "label": "Folder config/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "config/db.env",
+        "expected": "DB_HOST=localhost",
+        "label": "db.env has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "config/db.env",
+        "perm": 600,
+        "label": "db.env permission is 600"
+      }
+    ]
+  },
+  {
+    "id": "easy-archive-policy",
+    "number": 7,
+    "title": "Read-Only Archive Note",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named archive/ and store policy.txt inside it with permission 444.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder archive/.",
+      "Create archive/policy.txt with the text 'Do not edit'.",
+      "Set permissions of archive/policy.txt to 444."
+    ],
+    "hint": "Run: mkdir archive, then echo \"Do not edit\" > archive/policy.txt, then chmod 444 archive/policy.txt.",
+    "solution": "mkdir archive\necho \"Do not edit\" > archive/policy.txt\nchmod 444 archive/policy.txt",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "archive",
+        "label": "Folder archive/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "archive/policy.txt",
+        "expected": "Do not edit",
+        "label": "policy.txt has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "archive/policy.txt",
+        "perm": 444,
+        "label": "policy.txt permission is 444"
+      }
+    ]
+  },
+  {
+    "id": "easy-lab01-notes",
+    "number": 8,
+    "title": "Lab Notes Initialization",
+    "difficulty": "Easy",
+    "tags": [
+      "CLI",
+      "File Management"
+    ],
+    "description": "Create a folder named lab01/ and store notes.txt inside it with permission 644.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder lab01/.",
+      "Create lab01/notes.txt with the text 'Hello Terminal'.",
+      "Set permissions of lab01/notes.txt to 644."
+    ],
+    "hint": "Run: mkdir lab01, then echo \"Hello Terminal\" > lab01/notes.txt, then chmod 644 lab01/notes.txt.",
+    "solution": "mkdir lab01\necho \"Hello Terminal\" > lab01/notes.txt\nchmod 644 lab01/notes.txt",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "lab01",
+        "label": "Folder lab01/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "lab01/notes.txt",
+        "expected": "Hello Terminal",
+        "label": "notes.txt has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "lab01/notes.txt",
+        "perm": 644,
+        "label": "notes.txt permission is 644"
+      }
+    ]
+  },
+  {
+    "id": "easy-bin-run",
+    "number": 9,
+    "title": "Quick Script Setup",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Create a folder named bin/ and store run.sh inside it with permission 755.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder bin/.",
+      "Create bin/run.sh with the text 'echo Running'.",
+      "Set permissions of bin/run.sh to 755."
+    ],
+    "hint": "Run: mkdir bin, then echo \"echo Running\" > bin/run.sh, then chmod 755 bin/run.sh.",
+    "solution": "mkdir bin\necho \"echo Running\" > bin/run.sh\nchmod 755 bin/run.sh",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "bin",
+        "label": "Folder bin/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "bin/run.sh",
+        "expected": "echo Running",
+        "label": "run.sh has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "bin/run.sh",
+        "perm": 755,
+        "label": "run.sh permission is 755"
+      }
+    ]
+  },
+  {
+    "id": "easy-roster-students",
+    "number": 10,
+    "title": "Student Roster File",
+    "difficulty": "Easy",
+    "tags": [
+      "CLI",
+      "File Management"
+    ],
+    "description": "Create a folder named roster/ and store students.txt inside it with permission 644.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder roster/.",
+      "Create roster/students.txt with the text 'Akash'.",
+      "Set permissions of roster/students.txt to 644."
+    ],
+    "hint": "Run: mkdir roster, then echo \"Akash\" > roster/students.txt, then chmod 644 roster/students.txt.",
+    "solution": "mkdir roster\necho \"Akash\" > roster/students.txt\nchmod 644 roster/students.txt",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "roster",
+        "label": "Folder roster/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "roster/students.txt",
+        "expected": "Akash",
+        "label": "students.txt has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "roster/students.txt",
+        "perm": 644,
+        "label": "students.txt permission is 644"
+      }
+    ]
+  },
+  {
+    "id": "easy-backups-recovery",
+    "number": 11,
+    "title": "Restricted Backup Key",
+    "difficulty": "Easy",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Create a folder named backups/ and store recovery.key inside it with permission 400.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the folder backups/.",
+      "Create backups/recovery.key with the text 'KEY-9988'.",
+      "Set permissions of backups/recovery.key to 400."
+    ],
+    "hint": "Run: mkdir backups, then echo \"KEY-9988\" > backups/recovery.key, then chmod 400 backups/recovery.key.",
+    "solution": "mkdir backups\necho \"KEY-9988\" > backups/recovery.key\nchmod 400 backups/recovery.key",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "backups",
+        "label": "Folder backups/ created"
+      },
+      {
+        "type": "fileContains",
+        "path": "backups/recovery.key",
+        "expected": "KEY-9988",
+        "label": "recovery.key has expected text"
+      },
+      {
+        "type": "permEquals",
+        "path": "backups/recovery.key",
+        "perm": 400,
+        "label": "recovery.key permission is 400"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-12",
+    "number": 12,
+    "title": "Copy Template Config",
+    "difficulty": "Easy",
+    "tags": [
+      "Cp",
+      "File Management"
+    ],
+    "description": "Copy app.conf to app.conf.bak.",
+    "directoryTree": "app.conf",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy app.conf to app.conf.bak."
+    ],
+    "hint": "Use the cp command.",
+    "solution": "cp app.conf app.conf.bak",
+    "initialFs": {
+      "app.conf": {
+        "type": "file",
+        "perm": 644,
+        "content": "PORT=3000"
+      }
+    },
+    "checks": [
+      {
+        "type": "fileEquals",
+        "path": "app.conf.bak",
+        "expected": "PORT=3000",
+        "label": "app.conf.bak created"
+      },
+      {
+        "type": "fileExists",
+        "path": "app.conf",
+        "label": "Original app.conf kept"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-13",
+    "number": 13,
+    "title": "Rename Draft Report",
+    "difficulty": "Easy",
+    "tags": [
+      "Mv",
+      "File Management"
+    ],
+    "description": "Rename draft.txt to final_report.txt.",
+    "directoryTree": "draft.txt",
+    "preExistingNotes": [],
+    "actions": [
+      "Rename draft.txt to final_report.txt."
+    ],
+    "hint": "Use the mv command.",
+    "solution": "mv draft.txt final_report.txt",
+    "initialFs": {
+      "draft.txt": {
+        "type": "file",
+        "perm": 644,
+        "content": "Report v1"
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "final_report.txt",
+        "label": "Renamed to final_report.txt"
+      },
+      {
+        "type": "notExists",
+        "path": "draft.txt",
+        "label": "draft.txt removed"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-14",
+    "number": 14,
+    "title": "Remove Temp File",
+    "difficulty": "Easy",
+    "tags": [
+      "Rm",
+      "File Management"
+    ],
+    "description": "Delete temp.log (do not delete keep.log).",
+    "directoryTree": "temp.log\nkeep.log",
+    "preExistingNotes": [],
+    "actions": [
+      "Delete temp.log (do not delete keep.log)."
+    ],
+    "hint": "Use the rm command.",
+    "solution": "rm temp.log",
+    "initialFs": {
+      "temp.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "old"
+      },
+      "keep.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "keep"
+      }
+    },
+    "checks": [
+      {
+        "type": "notExists",
+        "path": "temp.log",
+        "label": "temp.log deleted"
+      },
+      {
+        "type": "fileExists",
+        "path": "keep.log",
+        "label": "keep.log kept"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-15",
+    "number": 15,
+    "title": "Append Log Entry",
+    "difficulty": "Easy",
+    "tags": [
+      "CLI",
+      "File Management"
+    ],
+    "description": "Append the line \"Session closed\" to the end of app.log.",
+    "directoryTree": "app.log",
+    "preExistingNotes": [],
+    "actions": [
+      "Append the line \"Session closed\" to the end of app.log."
+    ],
+    "hint": "Use the echo command.",
+    "solution": "echo \"Session closed\" >> app.log",
+    "initialFs": {
+      "app.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "Session started"
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "app.log",
+        "expected": "Session started",
+        "label": "Old text kept"
+      },
+      {
+        "type": "fileContains",
+        "path": "app.log",
+        "expected": "Session closed",
+        "label": "New line appended"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-16",
+    "number": 16,
+    "title": "Move File Into Subfolder",
+    "difficulty": "Easy",
+    "tags": [
+      "Mv",
+      "File Management"
+    ],
+    "description": "Move hello.txt inside the greetings/ folder.",
+    "directoryTree": "hello.txt\ngreetings",
+    "preExistingNotes": [],
+    "actions": [
+      "Move hello.txt inside the greetings/ folder."
+    ],
+    "hint": "Use the mv command.",
+    "solution": "mv hello.txt greetings/",
+    "initialFs": {
+      "hello.txt": {
+        "type": "file",
+        "perm": 644,
+        "content": "hi"
+      },
+      "greetings": {
+        "type": "dir",
+        "perm": 755,
+        "children": {}
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "greetings/hello.txt",
+        "label": "hello.txt moved to greetings/"
+      },
+      {
+        "type": "notExists",
+        "path": "hello.txt",
+        "label": "hello.txt removed from root"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-17",
+    "number": 17,
+    "title": "Search Error Logs with Grep",
+    "difficulty": "Easy",
+    "tags": [
+      "Grep",
+      "CLI"
+    ],
+    "description": "Search system.log for \"error\" (ignore uppercase/lowercase).",
+    "directoryTree": "system.log",
+    "preExistingNotes": [],
+    "actions": [
+      "Search system.log for \"error\" (ignore uppercase/lowercase)."
+    ],
+    "hint": "Use the grep command.",
+    "solution": "grep -i \"error\" system.log",
+    "initialFs": {
+      "system.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "INFO ok\nERROR disk full\nINFO done"
+      }
+    },
+    "checks": [
+      {
+        "type": "stdoutContains",
+        "expected": "ERROR disk full",
+        "label": "Found ERROR line"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-18",
+    "number": 18,
+    "title": "Count Warnings with Grep",
+    "difficulty": "Easy",
+    "tags": [
+      "Grep",
+      "CLI"
+    ],
+    "description": "Count how many lines in system.log contain \"WARN\".",
+    "directoryTree": "system.log",
+    "preExistingNotes": [],
+    "actions": [
+      "Count how many lines in system.log contain \"WARN\"."
+    ],
+    "hint": "Use the grep command.",
+    "solution": "grep -c \"WARN\" system.log",
+    "initialFs": {
+      "system.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "WARN 1\nINFO 2\nWARN 3"
+      }
+    },
+    "checks": [
+      {
+        "type": "stdoutContains",
+        "expected": "2",
+        "label": "Count is 2"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-19",
+    "number": 19,
+    "title": "Compress Log with Gzip",
+    "difficulty": "Easy",
+    "tags": [
+      "Gzip",
+      "CLI"
+    ],
+    "description": "Compress access.log into access.log.gz and keep the original access.log.",
+    "directoryTree": "access.log",
+    "preExistingNotes": [],
+    "actions": [
+      "Compress access.log into access.log.gz and keep the original access.log."
+    ],
+    "hint": "Use the gzip command.",
+    "solution": "gzip -k access.log",
+    "initialFs": {
+      "access.log": {
+        "type": "file",
+        "perm": 644,
+        "content": "GET /index.html 200"
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "access.log.gz",
+        "label": "access.log.gz created"
+      },
+      {
+        "type": "fileExists",
+        "path": "access.log",
+        "label": "Original access.log kept"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-20",
+    "number": 20,
+    "title": "Decompress Archive with Gzip",
+    "difficulty": "Easy",
+    "tags": [
+      "Gzip",
+      "CLI"
+    ],
+    "description": "Decompress backup.sql.gz back into backup.sql.",
+    "directoryTree": "backup.sql.gz",
+    "preExistingNotes": [],
+    "actions": [
+      "Decompress backup.sql.gz back into backup.sql."
+    ],
+    "hint": "Use the gzip command.",
+    "solution": "gzip -d backup.sql.gz",
+    "initialFs": {
+      "backup.sql.gz": {
+        "type": "file",
+        "perm": 644,
+        "content": "SELECT 1;"
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "backup.sql",
+        "label": "backup.sql restored"
+      }
+    ]
+  },
+  {
+    "id": "easy-op-21",
+    "number": 21,
+    "title": "Create Nested Project Tree",
+    "difficulty": "Easy",
+    "tags": [
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Create the nested folders project/src/components in one command.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create the nested folders project/src/components in one command."
+    ],
+    "hint": "Use the mkdir command.",
+    "solution": "mkdir -p project/src/components",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "project/src/components",
+        "label": "Nested folders created"
+      }
+    ]
+  },
+  {
+    "id": "easy-git-22",
+    "number": 22,
+    "title": "Initialize Git Repository",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Initialize a new Git repository in the current folder.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Initialize a new Git repository in the current folder."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git init",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      }
+    ]
+  },
+  {
+    "id": "easy-git-23",
+    "number": 23,
+    "title": "Stage Single File",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Stage README.md using git add.",
+    "directoryTree": "README.md",
+    "preExistingNotes": [],
+    "actions": [
+      "Stage README.md using git add."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git add README.md",
+    "initialFs": {
+      "README.md": {
+        "type": "file",
+        "perm": 644,
+        "content": "# SNAI"
+      }
+    },
+    "checks": [
+      {
+        "type": "gitInitialized",
+        "label": "Repo ready"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-24",
+    "number": 24,
+    "title": "Initial Commit",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Stage all files.",
+    "directoryTree": "index.html",
+    "preExistingNotes": [],
+    "actions": [
+      "Stage all files.",
+      "Commit with message \"Initial commit\"."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git add .\ngit commit -m \"Initial commit\"",
+    "initialFs": {
+      "index.html": {
+        "type": "file",
+        "perm": 644,
+        "content": "<h1>Hi</h1>"
+      }
+    },
+    "checks": [
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Initial commit",
+        "label": "Committed"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-25",
+    "number": 25,
+    "title": "Add Origin Remote",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Add remote 'origin' pointing to https://github.com/NST/snai.git.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Add remote 'origin' pointing to https://github.com/NST/snai.git."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git remote add origin https://github.com/NST/snai.git",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/snai.git",
+        "label": "Remote origin added"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-26",
+    "number": 26,
+    "title": "Push Main to Origin",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Push your local 'main' branch to 'origin'.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Push your local 'main' branch to 'origin'."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true,
+      "remotes": {
+        "origin": "https://github.com/NST/snai.git"
+      }
+    }
+  },
+  {
+    "id": "easy-git-27",
+    "number": 27,
+    "title": "Clone Remote Repository",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Clone the repository https://github.com/NST/lab1.git.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Clone the repository https://github.com/NST/lab1.git."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git clone https://github.com/NST/lab1.git",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "lab1",
+        "label": "Cloned lab1/"
+      }
+    ]
+  },
+  {
+    "id": "easy-git-28",
+    "number": 28,
+    "title": "Create Feature Branch",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "Branching"
+    ],
+    "description": "Create and switch to a new branch named 'feature-login'.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create and switch to a new branch named 'feature-login'."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git checkout -b feature-login",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitBranch",
+        "branch": "feature-login",
+        "label": "On feature-login"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-29",
+    "number": 29,
+    "title": "Switch Back to Main",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "Branching"
+    ],
+    "description": "Switch from your current branch back to 'main'.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Switch from your current branch back to 'main'."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git checkout main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true,
+      "branch": "feature-login",
+      "branches": [
+        "main",
+        "feature-login"
+      ]
+    }
+  },
+  {
+    "id": "easy-git-30",
+    "number": 30,
+    "title": "Commit Validation Fix",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Stage app.js.",
+    "directoryTree": "app.js",
+    "preExistingNotes": [],
+    "actions": [
+      "Stage app.js.",
+      "Commit with message \"Fix form validation\"."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git add app.js\ngit commit -m \"Fix form validation\"",
+    "initialFs": {
+      "app.js": {
+        "type": "file",
+        "perm": 644,
+        "content": "validate()"
+      }
+    },
+    "checks": [
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Fix form validation",
+        "label": "Commit saved"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-31",
+    "number": 31,
+    "title": "Check Commit History",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Show the compact commit history using git log --oneline.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Show the compact commit history using git log --oneline."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git log --oneline",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "stdoutContains",
+        "expected": "Initial",
+        "label": "History shown"
+      }
+    ],
+    "initialGit": {
+      "initialized": true,
+      "commits": [
+        {
+          "id": "a1b2c3d",
+          "message": "Initial commit",
+          "branch": "main",
+          "files": [
+            "README.md"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "easy-git-32",
+    "number": 32,
+    "title": "Update Local Repo with Pull",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Download the latest changes from the remote using git pull.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Download the latest changes from the remote using git pull."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git pull",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "stdoutContains",
+        "expected": "up to date",
+        "label": "Pulled updates"
+      }
+    ],
+    "initialGit": {
+      "initialized": true,
+      "remotes": {
+        "origin": "https://github.com/NST/snai.git"
+      }
+    }
+  },
+  {
+    "id": "easy-git-33",
+    "number": 33,
+    "title": "Stage Stylesheet and Commit",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Stage style.css.",
+    "directoryTree": "style.css",
+    "preExistingNotes": [],
+    "actions": [
+      "Stage style.css.",
+      "Commit with message \"Add dark theme\"."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git add style.css\ngit commit -m \"Add dark theme\"",
+    "initialFs": {
+      "style.css": {
+        "type": "file",
+        "perm": 644,
+        "content": "body{}"
+      }
+    },
+    "checks": [
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Add dark theme",
+        "label": "Committed"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-34",
+    "number": 34,
+    "title": "Create Docs Branch",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "Branching"
+    ],
+    "description": "Create and switch to a new branch named 'docs-update'.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create and switch to a new branch named 'docs-update'."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git switch -c docs-update",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "gitBranch",
+        "branch": "docs-update",
+        "label": "On docs-update"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "easy-git-35",
+    "number": 35,
+    "title": "Verify Remote URLs",
+    "difficulty": "Easy",
+    "tags": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Check the configured remote URLs using git remote -v.",
+    "directoryTree": "(git workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Check the configured remote URLs using git remote -v."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git remote -v",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "stdoutContains",
+        "expected": "https://github.com/NST/test.git",
+        "label": "Remote URLs shown"
+      }
+    ],
+    "initialGit": {
+      "initialized": true,
+      "remotes": {
+        "origin": "https://github.com/NST/test.git"
+      }
+    }
+  },
+  {
+    "id": "easy-git-36",
+    "number": 36,
+    "title": "Init and First Commit",
+    "difficulty": "Easy",
+    "tags": [
+      "Git"
+    ],
+    "description": "Initialize Git.",
+    "directoryTree": "notes.md",
+    "preExistingNotes": [],
+    "actions": [
+      "Initialize Git.",
+      "Stage notes.md.",
+      "Commit with message \"Add notes\"."
+    ],
+    "hint": "Use standard Git commands (init, add, commit, branch, checkout, remote, push).",
+    "solution": "git init\ngit add notes.md\ngit commit -m \"Add notes\"",
+    "initialFs": {
+      "notes.md": {
+        "type": "file",
+        "perm": 644,
+        "content": "# Notes"
+      }
+    },
+    "checks": [
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Add notes",
+        "label": "Committed"
+      }
+    ]
+  },
+  {
+    "id": "med-37",
+    "number": 37,
+    "title": "Deployment Project Permissions",
+    "difficulty": "Medium",
+    "tags": [
+      "Chmod",
+      "File Ownership and Permissions"
+    ],
+    "description": "Prepare deploy_app/ for deployment by setting permissions and adding a marker file.",
+    "directoryTree": "deploy_app/\n\u251c\u2500\u2500 run.sh (644)\n\u2514\u2500\u2500 secrets.env (644)",
+    "preExistingNotes": [
+      "run.sh is not executable yet (644).",
+      "secrets.env is readable by everyone (644)."
+    ],
+    "actions": [
+      "Make deploy_app/run.sh executable (755).",
+      "Lock deploy_app/secrets.env so only the owner can read/write (600).",
+      "Create deploy_app/DEPLOYED with the text 'READY'."
+    ],
+    "hint": "Use chmod 755, chmod 600, and echo \"READY\" > deploy_app/DEPLOYED.",
+    "solution": "chmod 755 deploy_app/run.sh\nchmod 600 deploy_app/secrets.env\necho \"READY\" > deploy_app/DEPLOYED",
+    "initialFs": {
+      "deploy_app": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "run.sh": {
+            "type": "file",
+            "perm": 644,
+            "content": "#!/bin/bash\necho deploying"
+          },
+          "secrets.env": {
+            "type": "file",
+            "perm": 644,
+            "content": "SECRET=xyz"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "deploy_app/run.sh",
+        "perm": 755,
+        "label": "run.sh set to 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "deploy_app/secrets.env",
+        "perm": 600,
+        "label": "secrets.env set to 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "deploy_app/DEPLOYED",
+        "expected": "READY",
+        "label": "Created DEPLOYED"
+      }
+    ]
+  },
+  {
+    "id": "med-38",
+    "number": 38,
+    "title": "Purge the Locked Workspace",
+    "difficulty": "Medium",
+    "tags": [
+      "Chmod",
+      "Rm",
+      "File Management"
+    ],
+    "description": "Delete stale.log inside the locked locked_ws/ folder, then lock the folder again.",
+    "directoryTree": "locked_ws/ (555)\n\u251c\u2500\u2500 stale.log (444)\n\u2514\u2500\u2500 keep.conf (444)",
+    "preExistingNotes": [
+      "locked_ws/ is read-only (555). You must unlock it before deleting files inside."
+    ],
+    "actions": [
+      "Give write permission to locked_ws/ (755).",
+      "Delete locked_ws/stale.log.",
+      "Restore locked_ws/ permissions back to 555."
+    ],
+    "hint": "chmod 755 locked_ws -> rm locked_ws/stale.log -> chmod 555 locked_ws.",
+    "solution": "chmod 755 locked_ws\nrm locked_ws/stale.log\nchmod 555 locked_ws",
+    "initialFs": {
+      "locked_ws": {
+        "type": "dir",
+        "perm": 555,
+        "children": {
+          "stale.log": {
+            "type": "file",
+            "perm": 444,
+            "content": "old"
+          },
+          "keep.conf": {
+            "type": "file",
+            "perm": 444,
+            "content": "keep"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "notExists",
+        "path": "locked_ws/stale.log",
+        "label": "stale.log deleted"
+      },
+      {
+        "type": "fileExists",
+        "path": "locked_ws/keep.conf",
+        "label": "keep.conf kept"
+      },
+      {
+        "type": "permEquals",
+        "path": "locked_ws",
+        "perm": 555,
+        "label": "locked_ws/ restored to 555"
+      }
+    ]
+  },
+  {
+    "id": "med-39",
+    "number": 39,
+    "title": "Create a Project Folder Structure",
+    "difficulty": "Medium",
+    "tags": [
+      "Mkdir",
+      "Touch",
+      "CLI"
+    ],
+    "description": "Create a clean webapp/ project folder with src/ and public/ subfolders.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [],
+    "actions": [
+      "Create webapp/src and webapp/public.",
+      "Create webapp/public/index.html with the text '<html></html>'.",
+      "Create webapp/src/app.js with the text 'console.log(1)'."
+    ],
+    "hint": "Use mkdir -p webapp/src webapp/public, then echo > for both files.",
+    "solution": "mkdir -p webapp/src webapp/public\necho \"<html></html>\" > webapp/public/index.html\necho \"console.log(1)\" > webapp/src/app.js",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "dirExists",
+        "path": "webapp/src",
+        "label": "src/ created"
+      },
+      {
+        "type": "dirExists",
+        "path": "webapp/public",
+        "label": "public/ created"
+      },
+      {
+        "type": "fileEquals",
+        "path": "webapp/public/index.html",
+        "expected": "<html></html>",
+        "label": "index.html created"
+      },
+      {
+        "type": "fileEquals",
+        "path": "webapp/src/app.js",
+        "expected": "console.log(1)",
+        "label": "app.js created"
+      }
+    ]
+  },
+  {
+    "id": "med-40",
+    "number": 40,
+    "title": "Recover the Emergency Access Token",
+    "difficulty": "Medium",
+    "tags": [
+      "Grep",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Find the secret TOKEN line in recovery/vault.log, save it to recovery/token.txt, and lock it.",
+    "directoryTree": "recovery/\n\u2514\u2500\u2500 vault.log",
+    "preExistingNotes": [
+      "vault.log has normal logs mixed with a TOKEN line."
+    ],
+    "actions": [
+      "Search recovery/vault.log for 'TOKEN' and save the matching line into recovery/token.txt.",
+      "Set recovery/token.txt permissions to 600."
+    ],
+    "hint": "grep \"TOKEN\" recovery/vault.log > recovery/token.txt then chmod 600 recovery/token.txt.",
+    "solution": "grep \"TOKEN\" recovery/vault.log > recovery/token.txt\nchmod 600 recovery/token.txt",
+    "initialFs": {
+      "recovery": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "vault.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "INFO boot\nTOKEN=SNAI-9941\nINFO exit"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "recovery/token.txt",
+        "expected": "TOKEN=SNAI-9941",
+        "label": "Saved TOKEN to token.txt"
+      },
+      {
+        "type": "permEquals",
+        "path": "recovery/token.txt",
+        "perm": 600,
+        "label": "token.txt locked to 600"
+      }
+    ]
+  },
+  {
+    "id": "med-41",
+    "number": 41,
+    "title": "Locate and Extract the Recovery Key",
+    "difficulty": "Medium",
+    "tags": [
+      "Grep",
+      "File Management"
+    ],
+    "description": "Find the secret TOKEN line in incident/events.log, save it to incident/key_out.txt, and lock it.",
+    "directoryTree": "incident/\n\u2514\u2500\u2500 events.log",
+    "preExistingNotes": [
+      "events.log has normal logs mixed with a TOKEN line."
+    ],
+    "actions": [
+      "Search incident/events.log for 'TOKEN' and save the matching line into incident/key_out.txt.",
+      "Set incident/key_out.txt permissions to 600."
+    ],
+    "hint": "grep \"TOKEN\" incident/events.log > incident/key_out.txt then chmod 600 incident/key_out.txt.",
+    "solution": "grep \"TOKEN\" incident/events.log > incident/key_out.txt\nchmod 600 incident/key_out.txt",
+    "initialFs": {
+      "incident": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "events.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "INFO boot\nTOKEN=SNAI-9941\nINFO exit"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "incident/key_out.txt",
+        "expected": "TOKEN=SNAI-9941",
+        "label": "Saved TOKEN to key_out.txt"
+      },
+      {
+        "type": "permEquals",
+        "path": "incident/key_out.txt",
+        "perm": 600,
+        "label": "key_out.txt locked to 600"
+      }
+    ]
+  },
+  {
+    "id": "med-service-42",
+    "number": 42,
+    "title": "Service 01 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_01/.",
+    "directoryTree": "svc_01/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_01/active.log to svc_01/archive/active.log.",
+      "Compress svc_01/archive/active.log with gzip.",
+      "Make svc_01/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_01/active.log svc_01/archive/active.log\ngzip svc_01/archive/active.log\nchmod 444 svc_01/active.log",
+    "initialFs": {
+      "svc_01": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_01 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_01/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_01/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-43",
+    "number": 43,
+    "title": "Service 02 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_02/.",
+    "directoryTree": "svc_02/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_02/active.log to svc_02/archive/active.log.",
+      "Compress svc_02/archive/active.log with gzip.",
+      "Make svc_02/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_02/active.log svc_02/archive/active.log\ngzip svc_02/archive/active.log\nchmod 444 svc_02/active.log",
+    "initialFs": {
+      "svc_02": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_02 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_02/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_02/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-44",
+    "number": 44,
+    "title": "Service 03 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_03/.",
+    "directoryTree": "svc_03/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_03/active.log to svc_03/archive/active.log.",
+      "Compress svc_03/archive/active.log with gzip.",
+      "Make svc_03/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_03/active.log svc_03/archive/active.log\ngzip svc_03/archive/active.log\nchmod 444 svc_03/active.log",
+    "initialFs": {
+      "svc_03": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_03 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_03/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_03/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-45",
+    "number": 45,
+    "title": "Service 04 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_04/.",
+    "directoryTree": "svc_04/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_04/active.log to svc_04/archive/active.log.",
+      "Compress svc_04/archive/active.log with gzip.",
+      "Make svc_04/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_04/active.log svc_04/archive/active.log\ngzip svc_04/archive/active.log\nchmod 444 svc_04/active.log",
+    "initialFs": {
+      "svc_04": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_04 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_04/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_04/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-46",
+    "number": 46,
+    "title": "Service 05 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_05/.",
+    "directoryTree": "svc_05/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_05/active.log to svc_05/archive/active.log.",
+      "Compress svc_05/archive/active.log with gzip.",
+      "Make svc_05/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_05/active.log svc_05/archive/active.log\ngzip svc_05/archive/active.log\nchmod 444 svc_05/active.log",
+    "initialFs": {
+      "svc_05": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_05 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_05/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_05/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-47",
+    "number": 47,
+    "title": "Service 06 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_06/.",
+    "directoryTree": "svc_06/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_06/active.log to svc_06/archive/active.log.",
+      "Compress svc_06/archive/active.log with gzip.",
+      "Make svc_06/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_06/active.log svc_06/archive/active.log\ngzip svc_06/archive/active.log\nchmod 444 svc_06/active.log",
+    "initialFs": {
+      "svc_06": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_06 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_06/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_06/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-48",
+    "number": 48,
+    "title": "Service 07 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_07/.",
+    "directoryTree": "svc_07/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_07/active.log to svc_07/archive/active.log.",
+      "Compress svc_07/archive/active.log with gzip.",
+      "Make svc_07/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_07/active.log svc_07/archive/active.log\ngzip svc_07/archive/active.log\nchmod 444 svc_07/active.log",
+    "initialFs": {
+      "svc_07": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_07 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_07/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_07/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-49",
+    "number": 49,
+    "title": "Service 08 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_08/.",
+    "directoryTree": "svc_08/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_08/active.log to svc_08/archive/active.log.",
+      "Compress svc_08/archive/active.log with gzip.",
+      "Make svc_08/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_08/active.log svc_08/archive/active.log\ngzip svc_08/archive/active.log\nchmod 444 svc_08/active.log",
+    "initialFs": {
+      "svc_08": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_08 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_08/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_08/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-50",
+    "number": 50,
+    "title": "Service 09 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_09/.",
+    "directoryTree": "svc_09/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_09/active.log to svc_09/archive/active.log.",
+      "Compress svc_09/archive/active.log with gzip.",
+      "Make svc_09/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_09/active.log svc_09/archive/active.log\ngzip svc_09/archive/active.log\nchmod 444 svc_09/active.log",
+    "initialFs": {
+      "svc_09": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_09 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_09/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_09/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-51",
+    "number": 51,
+    "title": "Service 10 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_10/.",
+    "directoryTree": "svc_10/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_10/active.log to svc_10/archive/active.log.",
+      "Compress svc_10/archive/active.log with gzip.",
+      "Make svc_10/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_10/active.log svc_10/archive/active.log\ngzip svc_10/archive/active.log\nchmod 444 svc_10/active.log",
+    "initialFs": {
+      "svc_10": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_10 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_10/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_10/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-52",
+    "number": 52,
+    "title": "Service 11 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_11/.",
+    "directoryTree": "svc_11/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_11/active.log to svc_11/archive/active.log.",
+      "Compress svc_11/archive/active.log with gzip.",
+      "Make svc_11/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_11/active.log svc_11/archive/active.log\ngzip svc_11/archive/active.log\nchmod 444 svc_11/active.log",
+    "initialFs": {
+      "svc_11": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_11 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_11/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_11/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-53",
+    "number": 53,
+    "title": "Service 12 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_12/.",
+    "directoryTree": "svc_12/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_12/active.log to svc_12/archive/active.log.",
+      "Compress svc_12/archive/active.log with gzip.",
+      "Make svc_12/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_12/active.log svc_12/archive/active.log\ngzip svc_12/archive/active.log\nchmod 444 svc_12/active.log",
+    "initialFs": {
+      "svc_12": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_12 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_12/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_12/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-54",
+    "number": 54,
+    "title": "Service 13 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_13/.",
+    "directoryTree": "svc_13/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_13/active.log to svc_13/archive/active.log.",
+      "Compress svc_13/archive/active.log with gzip.",
+      "Make svc_13/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_13/active.log svc_13/archive/active.log\ngzip svc_13/archive/active.log\nchmod 444 svc_13/active.log",
+    "initialFs": {
+      "svc_13": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_13 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_13/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_13/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-55",
+    "number": 55,
+    "title": "Service 14 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_14/.",
+    "directoryTree": "svc_14/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_14/active.log to svc_14/archive/active.log.",
+      "Compress svc_14/archive/active.log with gzip.",
+      "Make svc_14/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_14/active.log svc_14/archive/active.log\ngzip svc_14/archive/active.log\nchmod 444 svc_14/active.log",
+    "initialFs": {
+      "svc_14": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_14 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_14/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_14/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-56",
+    "number": 56,
+    "title": "Service 15 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_15/.",
+    "directoryTree": "svc_15/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_15/active.log to svc_15/archive/active.log.",
+      "Compress svc_15/archive/active.log with gzip.",
+      "Make svc_15/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_15/active.log svc_15/archive/active.log\ngzip svc_15/archive/active.log\nchmod 444 svc_15/active.log",
+    "initialFs": {
+      "svc_15": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_15 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_15/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_15/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-57",
+    "number": 57,
+    "title": "Service 16 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_16/.",
+    "directoryTree": "svc_16/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_16/active.log to svc_16/archive/active.log.",
+      "Compress svc_16/archive/active.log with gzip.",
+      "Make svc_16/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_16/active.log svc_16/archive/active.log\ngzip svc_16/archive/active.log\nchmod 444 svc_16/active.log",
+    "initialFs": {
+      "svc_16": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_16 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_16/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_16/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-58",
+    "number": 58,
+    "title": "Service 17 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_17/.",
+    "directoryTree": "svc_17/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_17/active.log to svc_17/archive/active.log.",
+      "Compress svc_17/archive/active.log with gzip.",
+      "Make svc_17/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_17/active.log svc_17/archive/active.log\ngzip svc_17/archive/active.log\nchmod 444 svc_17/active.log",
+    "initialFs": {
+      "svc_17": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_17 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_17/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_17/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-59",
+    "number": 59,
+    "title": "Service 18 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_18/.",
+    "directoryTree": "svc_18/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_18/active.log to svc_18/archive/active.log.",
+      "Compress svc_18/archive/active.log with gzip.",
+      "Make svc_18/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_18/active.log svc_18/archive/active.log\ngzip svc_18/archive/active.log\nchmod 444 svc_18/active.log",
+    "initialFs": {
+      "svc_18": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_18 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_18/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_18/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-60",
+    "number": 60,
+    "title": "Service 19 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_19/.",
+    "directoryTree": "svc_19/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_19/active.log to svc_19/archive/active.log.",
+      "Compress svc_19/archive/active.log with gzip.",
+      "Make svc_19/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_19/active.log svc_19/archive/active.log\ngzip svc_19/archive/active.log\nchmod 444 svc_19/active.log",
+    "initialFs": {
+      "svc_19": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_19 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_19/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_19/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-service-61",
+    "number": 61,
+    "title": "Service 20 Log Archive",
+    "difficulty": "Medium",
+    "tags": [
+      "Cp",
+      "Gzip",
+      "Chmod",
+      "CLI"
+    ],
+    "description": "Back up and compress the log file for svc_20/.",
+    "directoryTree": "svc_20/\n\u251c\u2500\u2500 active.log (644)\n\u2514\u2500\u2500 archive/",
+    "preExistingNotes": [],
+    "actions": [
+      "Copy svc_20/active.log to svc_20/archive/active.log.",
+      "Compress svc_20/archive/active.log with gzip.",
+      "Make svc_20/active.log read-only (444)."
+    ],
+    "hint": "Run cp, then gzip, then chmod 444.",
+    "solution": "cp svc_20/active.log svc_20/archive/active.log\ngzip svc_20/archive/active.log\nchmod 444 svc_20/active.log",
+    "initialFs": {
+      "svc_20": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "active.log": {
+            "type": "file",
+            "perm": 644,
+            "content": "LOG svc_20 OK"
+          },
+          "archive": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "svc_20/archive/active.log.gz",
+        "label": "Compressed log created"
+      },
+      {
+        "type": "permEquals",
+        "path": "svc_20/active.log",
+        "perm": 444,
+        "label": "Original log set to 444"
+      }
+    ]
+  },
+  {
+    "id": "med-git-flow-62",
+    "number": 62,
+    "title": "Feature Branch & Merge #1",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-1', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-1'.",
+      "Create feature_1.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 1'.",
+      "Switch back to 'main' and merge 'feature-task-1'.",
+      "Add remote 'origin' (https://github.com/NST/module-1.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-1 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-1 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-1\necho \"done\" > feature_1.txt\ngit add .\ngit commit -m \"Implement task 1\"\ngit checkout main\ngit merge feature-task-1\ngit remote add origin https://github.com/NST/module-1.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_1.txt",
+        "label": "feature_1.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 1",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-1.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-63",
+    "number": 63,
+    "title": "Feature Branch & Merge #2",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-2', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-2'.",
+      "Create feature_2.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 2'.",
+      "Switch back to 'main' and merge 'feature-task-2'.",
+      "Add remote 'origin' (https://github.com/NST/module-2.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-2 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-2 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-2\necho \"done\" > feature_2.txt\ngit add .\ngit commit -m \"Implement task 2\"\ngit checkout main\ngit merge feature-task-2\ngit remote add origin https://github.com/NST/module-2.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_2.txt",
+        "label": "feature_2.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 2",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-2.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-64",
+    "number": 64,
+    "title": "Feature Branch & Merge #3",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-3', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-3'.",
+      "Create feature_3.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 3'.",
+      "Switch back to 'main' and merge 'feature-task-3'.",
+      "Add remote 'origin' (https://github.com/NST/module-3.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-3 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-3 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-3\necho \"done\" > feature_3.txt\ngit add .\ngit commit -m \"Implement task 3\"\ngit checkout main\ngit merge feature-task-3\ngit remote add origin https://github.com/NST/module-3.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_3.txt",
+        "label": "feature_3.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 3",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-3.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-65",
+    "number": 65,
+    "title": "Feature Branch & Merge #4",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-4', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-4'.",
+      "Create feature_4.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 4'.",
+      "Switch back to 'main' and merge 'feature-task-4'.",
+      "Add remote 'origin' (https://github.com/NST/module-4.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-4 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-4 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-4\necho \"done\" > feature_4.txt\ngit add .\ngit commit -m \"Implement task 4\"\ngit checkout main\ngit merge feature-task-4\ngit remote add origin https://github.com/NST/module-4.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_4.txt",
+        "label": "feature_4.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 4",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-4.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-66",
+    "number": 66,
+    "title": "Feature Branch & Merge #5",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-5', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-5'.",
+      "Create feature_5.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 5'.",
+      "Switch back to 'main' and merge 'feature-task-5'.",
+      "Add remote 'origin' (https://github.com/NST/module-5.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-5 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-5 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-5\necho \"done\" > feature_5.txt\ngit add .\ngit commit -m \"Implement task 5\"\ngit checkout main\ngit merge feature-task-5\ngit remote add origin https://github.com/NST/module-5.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_5.txt",
+        "label": "feature_5.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 5",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-5.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-67",
+    "number": 67,
+    "title": "Feature Branch & Merge #6",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-6', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-6'.",
+      "Create feature_6.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 6'.",
+      "Switch back to 'main' and merge 'feature-task-6'.",
+      "Add remote 'origin' (https://github.com/NST/module-6.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-6 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-6 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-6\necho \"done\" > feature_6.txt\ngit add .\ngit commit -m \"Implement task 6\"\ngit checkout main\ngit merge feature-task-6\ngit remote add origin https://github.com/NST/module-6.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_6.txt",
+        "label": "feature_6.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 6",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-6.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-68",
+    "number": 68,
+    "title": "Feature Branch & Merge #7",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-7', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-7'.",
+      "Create feature_7.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 7'.",
+      "Switch back to 'main' and merge 'feature-task-7'.",
+      "Add remote 'origin' (https://github.com/NST/module-7.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-7 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-7 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-7\necho \"done\" > feature_7.txt\ngit add .\ngit commit -m \"Implement task 7\"\ngit checkout main\ngit merge feature-task-7\ngit remote add origin https://github.com/NST/module-7.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_7.txt",
+        "label": "feature_7.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 7",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-7.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-69",
+    "number": 69,
+    "title": "Feature Branch & Merge #8",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-8', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-8'.",
+      "Create feature_8.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 8'.",
+      "Switch back to 'main' and merge 'feature-task-8'.",
+      "Add remote 'origin' (https://github.com/NST/module-8.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-8 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-8 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-8\necho \"done\" > feature_8.txt\ngit add .\ngit commit -m \"Implement task 8\"\ngit checkout main\ngit merge feature-task-8\ngit remote add origin https://github.com/NST/module-8.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_8.txt",
+        "label": "feature_8.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 8",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-8.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-70",
+    "number": 70,
+    "title": "Feature Branch & Merge #9",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-9', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-9'.",
+      "Create feature_9.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 9'.",
+      "Switch back to 'main' and merge 'feature-task-9'.",
+      "Add remote 'origin' (https://github.com/NST/module-9.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-9 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-9 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-9\necho \"done\" > feature_9.txt\ngit add .\ngit commit -m \"Implement task 9\"\ngit checkout main\ngit merge feature-task-9\ngit remote add origin https://github.com/NST/module-9.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_9.txt",
+        "label": "feature_9.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 9",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-9.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-71",
+    "number": 71,
+    "title": "Feature Branch & Merge #10",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-10', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-10'.",
+      "Create feature_10.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 10'.",
+      "Switch back to 'main' and merge 'feature-task-10'.",
+      "Add remote 'origin' (https://github.com/NST/module-10.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-10 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-10 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-10\necho \"done\" > feature_10.txt\ngit add .\ngit commit -m \"Implement task 10\"\ngit checkout main\ngit merge feature-task-10\ngit remote add origin https://github.com/NST/module-10.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_10.txt",
+        "label": "feature_10.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 10",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-10.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-72",
+    "number": 72,
+    "title": "Feature Branch & Merge #11",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-11', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-11'.",
+      "Create feature_11.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 11'.",
+      "Switch back to 'main' and merge 'feature-task-11'.",
+      "Add remote 'origin' (https://github.com/NST/module-11.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-11 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-11 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-11\necho \"done\" > feature_11.txt\ngit add .\ngit commit -m \"Implement task 11\"\ngit checkout main\ngit merge feature-task-11\ngit remote add origin https://github.com/NST/module-11.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_11.txt",
+        "label": "feature_11.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 11",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-11.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-73",
+    "number": 73,
+    "title": "Feature Branch & Merge #12",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-12', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-12'.",
+      "Create feature_12.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 12'.",
+      "Switch back to 'main' and merge 'feature-task-12'.",
+      "Add remote 'origin' (https://github.com/NST/module-12.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-12 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-12 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-12\necho \"done\" > feature_12.txt\ngit add .\ngit commit -m \"Implement task 12\"\ngit checkout main\ngit merge feature-task-12\ngit remote add origin https://github.com/NST/module-12.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_12.txt",
+        "label": "feature_12.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 12",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-12.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-74",
+    "number": 74,
+    "title": "Feature Branch & Merge #13",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-13', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-13'.",
+      "Create feature_13.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 13'.",
+      "Switch back to 'main' and merge 'feature-task-13'.",
+      "Add remote 'origin' (https://github.com/NST/module-13.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-13 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-13 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-13\necho \"done\" > feature_13.txt\ngit add .\ngit commit -m \"Implement task 13\"\ngit checkout main\ngit merge feature-task-13\ngit remote add origin https://github.com/NST/module-13.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_13.txt",
+        "label": "feature_13.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 13",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-13.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-75",
+    "number": 75,
+    "title": "Feature Branch & Merge #14",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-14', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-14'.",
+      "Create feature_14.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 14'.",
+      "Switch back to 'main' and merge 'feature-task-14'.",
+      "Add remote 'origin' (https://github.com/NST/module-14.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-14 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-14 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-14\necho \"done\" > feature_14.txt\ngit add .\ngit commit -m \"Implement task 14\"\ngit checkout main\ngit merge feature-task-14\ngit remote add origin https://github.com/NST/module-14.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_14.txt",
+        "label": "feature_14.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 14",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-14.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "med-git-flow-76",
+    "number": 76,
+    "title": "Feature Branch & Merge #15",
+    "difficulty": "Medium",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Branching"
+    ],
+    "description": "Build a feature on branch 'feature-task-15', merge it into main, and push to GitHub.",
+    "directoryTree": "src/\n\u2514\u2500\u2500 app.py",
+    "preExistingNotes": [
+      "Git is already initialized on branch main."
+    ],
+    "actions": [
+      "Create and switch to branch 'feature-task-15'.",
+      "Create feature_15.txt with the text 'done'.",
+      "Stage all files and commit with message 'Implement task 15'.",
+      "Switch back to 'main' and merge 'feature-task-15'.",
+      "Add remote 'origin' (https://github.com/NST/module-15.git) and push 'main'."
+    ],
+    "hint": "git checkout -b feature-task-15 -> echo > -> git add . -> git commit -m -> git checkout main -> git merge feature-task-15 -> git remote add origin -> git push -u origin main.",
+    "solution": "git checkout -b feature-task-15\necho \"done\" > feature_15.txt\ngit add .\ngit commit -m \"Implement task 15\"\ngit checkout main\ngit merge feature-task-15\ngit remote add origin https://github.com/NST/module-15.git\ngit push -u origin main",
+    "initialFs": {
+      "src": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "app.py": {
+            "type": "file",
+            "perm": 644,
+            "content": "print('hello')"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileExists",
+        "path": "feature_15.txt",
+        "label": "feature_15.txt created"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitHasCommit",
+        "messageSubstr": "Implement task 15",
+        "label": "Feature committed"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/module-15.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ],
+    "initialGit": {
+      "initialized": true
+    }
+  },
+  {
+    "id": "hard-audit-77",
+    "number": 77,
+    "title": "Security Audit & Sealed Evidence #01",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_01/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_01/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_01/raw/ is read-only (555)",
+      "sec_audit_01/raw/syslog.txt is read-only (444)",
+      "sec_audit_01/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_01/raw/syslog.txt for 'ALERT' and save the output to sec_audit_01/vault/alerts.txt.",
+      "Compress sec_audit_01/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_01/vault/alerts.txt to 600.",
+      "Unlock sec_audit_01/raw/ (755) and move it into sec_audit_01/vault/.",
+      "Restore sec_audit_01/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_01/raw/syslog.txt > sec_audit_01/vault/alerts.txt\ngzip -k sec_audit_01/vault/alerts.txt\nchmod 600 sec_audit_01/vault/alerts.txt\nchmod 755 sec_audit_01/raw\nmv sec_audit_01/raw sec_audit_01/vault/\nchmod 555 sec_audit_01/vault/raw",
+    "initialFs": {
+      "sec_audit_01": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_01/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_01/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_01/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_01/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_01/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_01/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-78",
+    "number": 78,
+    "title": "Security Audit & Sealed Evidence #02",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_02/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_02/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_02/raw/ is read-only (555)",
+      "sec_audit_02/raw/syslog.txt is read-only (444)",
+      "sec_audit_02/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_02/raw/syslog.txt for 'ALERT' and save the output to sec_audit_02/vault/alerts.txt.",
+      "Compress sec_audit_02/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_02/vault/alerts.txt to 600.",
+      "Unlock sec_audit_02/raw/ (755) and move it into sec_audit_02/vault/.",
+      "Restore sec_audit_02/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_02/raw/syslog.txt > sec_audit_02/vault/alerts.txt\ngzip -k sec_audit_02/vault/alerts.txt\nchmod 600 sec_audit_02/vault/alerts.txt\nchmod 755 sec_audit_02/raw\nmv sec_audit_02/raw sec_audit_02/vault/\nchmod 555 sec_audit_02/vault/raw",
+    "initialFs": {
+      "sec_audit_02": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_02/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_02/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_02/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_02/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_02/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_02/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-79",
+    "number": 79,
+    "title": "Security Audit & Sealed Evidence #03",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_03/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_03/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_03/raw/ is read-only (555)",
+      "sec_audit_03/raw/syslog.txt is read-only (444)",
+      "sec_audit_03/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_03/raw/syslog.txt for 'ALERT' and save the output to sec_audit_03/vault/alerts.txt.",
+      "Compress sec_audit_03/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_03/vault/alerts.txt to 600.",
+      "Unlock sec_audit_03/raw/ (755) and move it into sec_audit_03/vault/.",
+      "Restore sec_audit_03/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_03/raw/syslog.txt > sec_audit_03/vault/alerts.txt\ngzip -k sec_audit_03/vault/alerts.txt\nchmod 600 sec_audit_03/vault/alerts.txt\nchmod 755 sec_audit_03/raw\nmv sec_audit_03/raw sec_audit_03/vault/\nchmod 555 sec_audit_03/vault/raw",
+    "initialFs": {
+      "sec_audit_03": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_03/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_03/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_03/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_03/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_03/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_03/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-80",
+    "number": 80,
+    "title": "Security Audit & Sealed Evidence #04",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_04/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_04/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_04/raw/ is read-only (555)",
+      "sec_audit_04/raw/syslog.txt is read-only (444)",
+      "sec_audit_04/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_04/raw/syslog.txt for 'ALERT' and save the output to sec_audit_04/vault/alerts.txt.",
+      "Compress sec_audit_04/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_04/vault/alerts.txt to 600.",
+      "Unlock sec_audit_04/raw/ (755) and move it into sec_audit_04/vault/.",
+      "Restore sec_audit_04/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_04/raw/syslog.txt > sec_audit_04/vault/alerts.txt\ngzip -k sec_audit_04/vault/alerts.txt\nchmod 600 sec_audit_04/vault/alerts.txt\nchmod 755 sec_audit_04/raw\nmv sec_audit_04/raw sec_audit_04/vault/\nchmod 555 sec_audit_04/vault/raw",
+    "initialFs": {
+      "sec_audit_04": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_04/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_04/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_04/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_04/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_04/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_04/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-81",
+    "number": 81,
+    "title": "Security Audit & Sealed Evidence #05",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_05/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_05/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_05/raw/ is read-only (555)",
+      "sec_audit_05/raw/syslog.txt is read-only (444)",
+      "sec_audit_05/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_05/raw/syslog.txt for 'ALERT' and save the output to sec_audit_05/vault/alerts.txt.",
+      "Compress sec_audit_05/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_05/vault/alerts.txt to 600.",
+      "Unlock sec_audit_05/raw/ (755) and move it into sec_audit_05/vault/.",
+      "Restore sec_audit_05/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_05/raw/syslog.txt > sec_audit_05/vault/alerts.txt\ngzip -k sec_audit_05/vault/alerts.txt\nchmod 600 sec_audit_05/vault/alerts.txt\nchmod 755 sec_audit_05/raw\nmv sec_audit_05/raw sec_audit_05/vault/\nchmod 555 sec_audit_05/vault/raw",
+    "initialFs": {
+      "sec_audit_05": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_05/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_05/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_05/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_05/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_05/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_05/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-82",
+    "number": 82,
+    "title": "Security Audit & Sealed Evidence #06",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_06/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_06/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_06/raw/ is read-only (555)",
+      "sec_audit_06/raw/syslog.txt is read-only (444)",
+      "sec_audit_06/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_06/raw/syslog.txt for 'ALERT' and save the output to sec_audit_06/vault/alerts.txt.",
+      "Compress sec_audit_06/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_06/vault/alerts.txt to 600.",
+      "Unlock sec_audit_06/raw/ (755) and move it into sec_audit_06/vault/.",
+      "Restore sec_audit_06/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_06/raw/syslog.txt > sec_audit_06/vault/alerts.txt\ngzip -k sec_audit_06/vault/alerts.txt\nchmod 600 sec_audit_06/vault/alerts.txt\nchmod 755 sec_audit_06/raw\nmv sec_audit_06/raw sec_audit_06/vault/\nchmod 555 sec_audit_06/vault/raw",
+    "initialFs": {
+      "sec_audit_06": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_06/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_06/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_06/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_06/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_06/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_06/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-83",
+    "number": 83,
+    "title": "Security Audit & Sealed Evidence #07",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_07/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_07/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_07/raw/ is read-only (555)",
+      "sec_audit_07/raw/syslog.txt is read-only (444)",
+      "sec_audit_07/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_07/raw/syslog.txt for 'ALERT' and save the output to sec_audit_07/vault/alerts.txt.",
+      "Compress sec_audit_07/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_07/vault/alerts.txt to 600.",
+      "Unlock sec_audit_07/raw/ (755) and move it into sec_audit_07/vault/.",
+      "Restore sec_audit_07/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_07/raw/syslog.txt > sec_audit_07/vault/alerts.txt\ngzip -k sec_audit_07/vault/alerts.txt\nchmod 600 sec_audit_07/vault/alerts.txt\nchmod 755 sec_audit_07/raw\nmv sec_audit_07/raw sec_audit_07/vault/\nchmod 555 sec_audit_07/vault/raw",
+    "initialFs": {
+      "sec_audit_07": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_07/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_07/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_07/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_07/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_07/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_07/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-84",
+    "number": 84,
+    "title": "Security Audit & Sealed Evidence #08",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_08/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_08/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_08/raw/ is read-only (555)",
+      "sec_audit_08/raw/syslog.txt is read-only (444)",
+      "sec_audit_08/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_08/raw/syslog.txt for 'ALERT' and save the output to sec_audit_08/vault/alerts.txt.",
+      "Compress sec_audit_08/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_08/vault/alerts.txt to 600.",
+      "Unlock sec_audit_08/raw/ (755) and move it into sec_audit_08/vault/.",
+      "Restore sec_audit_08/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_08/raw/syslog.txt > sec_audit_08/vault/alerts.txt\ngzip -k sec_audit_08/vault/alerts.txt\nchmod 600 sec_audit_08/vault/alerts.txt\nchmod 755 sec_audit_08/raw\nmv sec_audit_08/raw sec_audit_08/vault/\nchmod 555 sec_audit_08/vault/raw",
+    "initialFs": {
+      "sec_audit_08": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_08/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_08/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_08/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_08/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_08/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_08/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-85",
+    "number": 85,
+    "title": "Security Audit & Sealed Evidence #09",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_09/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_09/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_09/raw/ is read-only (555)",
+      "sec_audit_09/raw/syslog.txt is read-only (444)",
+      "sec_audit_09/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_09/raw/syslog.txt for 'ALERT' and save the output to sec_audit_09/vault/alerts.txt.",
+      "Compress sec_audit_09/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_09/vault/alerts.txt to 600.",
+      "Unlock sec_audit_09/raw/ (755) and move it into sec_audit_09/vault/.",
+      "Restore sec_audit_09/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_09/raw/syslog.txt > sec_audit_09/vault/alerts.txt\ngzip -k sec_audit_09/vault/alerts.txt\nchmod 600 sec_audit_09/vault/alerts.txt\nchmod 755 sec_audit_09/raw\nmv sec_audit_09/raw sec_audit_09/vault/\nchmod 555 sec_audit_09/vault/raw",
+    "initialFs": {
+      "sec_audit_09": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_09/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_09/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_09/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_09/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_09/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_09/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-86",
+    "number": 86,
+    "title": "Security Audit & Sealed Evidence #10",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_10/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_10/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_10/raw/ is read-only (555)",
+      "sec_audit_10/raw/syslog.txt is read-only (444)",
+      "sec_audit_10/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_10/raw/syslog.txt for 'ALERT' and save the output to sec_audit_10/vault/alerts.txt.",
+      "Compress sec_audit_10/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_10/vault/alerts.txt to 600.",
+      "Unlock sec_audit_10/raw/ (755) and move it into sec_audit_10/vault/.",
+      "Restore sec_audit_10/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_10/raw/syslog.txt > sec_audit_10/vault/alerts.txt\ngzip -k sec_audit_10/vault/alerts.txt\nchmod 600 sec_audit_10/vault/alerts.txt\nchmod 755 sec_audit_10/raw\nmv sec_audit_10/raw sec_audit_10/vault/\nchmod 555 sec_audit_10/vault/raw",
+    "initialFs": {
+      "sec_audit_10": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_10/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_10/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_10/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_10/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_10/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_10/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-87",
+    "number": 87,
+    "title": "Security Audit & Sealed Evidence #11",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_11/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_11/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_11/raw/ is read-only (555)",
+      "sec_audit_11/raw/syslog.txt is read-only (444)",
+      "sec_audit_11/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_11/raw/syslog.txt for 'ALERT' and save the output to sec_audit_11/vault/alerts.txt.",
+      "Compress sec_audit_11/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_11/vault/alerts.txt to 600.",
+      "Unlock sec_audit_11/raw/ (755) and move it into sec_audit_11/vault/.",
+      "Restore sec_audit_11/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_11/raw/syslog.txt > sec_audit_11/vault/alerts.txt\ngzip -k sec_audit_11/vault/alerts.txt\nchmod 600 sec_audit_11/vault/alerts.txt\nchmod 755 sec_audit_11/raw\nmv sec_audit_11/raw sec_audit_11/vault/\nchmod 555 sec_audit_11/vault/raw",
+    "initialFs": {
+      "sec_audit_11": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_11/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_11/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_11/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_11/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_11/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_11/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-88",
+    "number": 88,
+    "title": "Security Audit & Sealed Evidence #12",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_12/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_12/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_12/raw/ is read-only (555)",
+      "sec_audit_12/raw/syslog.txt is read-only (444)",
+      "sec_audit_12/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_12/raw/syslog.txt for 'ALERT' and save the output to sec_audit_12/vault/alerts.txt.",
+      "Compress sec_audit_12/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_12/vault/alerts.txt to 600.",
+      "Unlock sec_audit_12/raw/ (755) and move it into sec_audit_12/vault/.",
+      "Restore sec_audit_12/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_12/raw/syslog.txt > sec_audit_12/vault/alerts.txt\ngzip -k sec_audit_12/vault/alerts.txt\nchmod 600 sec_audit_12/vault/alerts.txt\nchmod 755 sec_audit_12/raw\nmv sec_audit_12/raw sec_audit_12/vault/\nchmod 555 sec_audit_12/vault/raw",
+    "initialFs": {
+      "sec_audit_12": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_12/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_12/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_12/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_12/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_12/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_12/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-89",
+    "number": 89,
+    "title": "Security Audit & Sealed Evidence #13",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_13/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_13/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_13/raw/ is read-only (555)",
+      "sec_audit_13/raw/syslog.txt is read-only (444)",
+      "sec_audit_13/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_13/raw/syslog.txt for 'ALERT' and save the output to sec_audit_13/vault/alerts.txt.",
+      "Compress sec_audit_13/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_13/vault/alerts.txt to 600.",
+      "Unlock sec_audit_13/raw/ (755) and move it into sec_audit_13/vault/.",
+      "Restore sec_audit_13/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_13/raw/syslog.txt > sec_audit_13/vault/alerts.txt\ngzip -k sec_audit_13/vault/alerts.txt\nchmod 600 sec_audit_13/vault/alerts.txt\nchmod 755 sec_audit_13/raw\nmv sec_audit_13/raw sec_audit_13/vault/\nchmod 555 sec_audit_13/vault/raw",
+    "initialFs": {
+      "sec_audit_13": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_13/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_13/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_13/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_13/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_13/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_13/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-audit-90",
+    "number": 90,
+    "title": "Security Audit & Sealed Evidence #14",
+    "difficulty": "Hard",
+    "tags": [
+      "Cp",
+      "Mv",
+      "Chmod",
+      "Grep",
+      "Gzip"
+    ],
+    "description": "Extract alerts from sec_audit_14/raw/syslog.txt, compress them, and safely move the locked raw/ folder.",
+    "directoryTree": "sec_audit_14/\n\u251c\u2500\u2500 raw/ (555)\n\u2502   \u2514\u2500\u2500 syslog.txt (444)\n\u251c\u2500\u2500 vault/\n\u2514\u2500\u2500 secret.key (000)",
+    "preExistingNotes": [
+      "sec_audit_14/raw/ is read-only (555)",
+      "sec_audit_14/raw/syslog.txt is read-only (444)",
+      "sec_audit_14/secret.key is 000 \u2014 do NOT touch it"
+    ],
+    "actions": [
+      "Search sec_audit_14/raw/syslog.txt for 'ALERT' and save the output to sec_audit_14/vault/alerts.txt.",
+      "Compress sec_audit_14/vault/alerts.txt with gzip while keeping the original alerts.txt (-k).",
+      "Lock sec_audit_14/vault/alerts.txt to 600.",
+      "Unlock sec_audit_14/raw/ (755) and move it into sec_audit_14/vault/.",
+      "Restore sec_audit_14/vault/raw/ back to 555."
+    ],
+    "hint": "Run grep > first, then gzip -k, then chmod 600, then chmod 755 -> mv -> chmod 555.",
+    "solution": "grep \"ALERT\" sec_audit_14/raw/syslog.txt > sec_audit_14/vault/alerts.txt\ngzip -k sec_audit_14/vault/alerts.txt\nchmod 600 sec_audit_14/vault/alerts.txt\nchmod 755 sec_audit_14/raw\nmv sec_audit_14/raw sec_audit_14/vault/\nchmod 555 sec_audit_14/vault/raw",
+    "initialFs": {
+      "sec_audit_14": {
+        "type": "dir",
+        "perm": 755,
+        "children": {
+          "raw": {
+            "type": "dir",
+            "perm": 555,
+            "children": {
+              "syslog.txt": {
+                "type": "file",
+                "perm": 444,
+                "content": "INFO start\nALERT Intrusion attempt\nINFO end"
+              }
+            }
+          },
+          "vault": {
+            "type": "dir",
+            "perm": 755,
+            "children": {}
+          },
+          "secret.key": {
+            "type": "file",
+            "perm": 0,
+            "content": "DO_NOT_TOUCH"
+          }
+        }
+      }
+    },
+    "checks": [
+      {
+        "type": "fileContains",
+        "path": "sec_audit_14/vault/alerts.txt",
+        "expected": "ALERT Intrusion attempt",
+        "label": "Extracted ALERT"
+      },
+      {
+        "type": "fileExists",
+        "path": "sec_audit_14/vault/alerts.txt.gz",
+        "label": "Compressed alerts.txt.gz"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_14/vault/alerts.txt",
+        "perm": 600,
+        "label": "alerts.txt set to 600"
+      },
+      {
+        "type": "dirExists",
+        "path": "sec_audit_14/vault/raw",
+        "label": "Moved raw/ to vault/"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_14/vault/raw",
+        "perm": 555,
+        "label": "vault/raw/ restored to 555"
+      },
+      {
+        "type": "permEquals",
+        "path": "sec_audit_14/secret.key",
+        "perm": 0,
+        "label": "secret.key untouched at 000"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-91",
+    "number": 91,
+    "title": "CLI + Git Release Pipeline v1",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v1/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v1/bin and release_v1/config.",
+      "Create release_v1/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v1/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v1 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v1/VERSION with 'v1.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v1.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v1/bin release_v1/config\necho \"echo running\" > release_v1/bin/start.sh\nchmod 755 release_v1/bin/start.sh\necho \"TOKEN=123\" > release_v1/config/prod.env\nchmod 600 release_v1/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v1 setup\"\ngit checkout -b release\necho \"v1.0\" > release_v1/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v1.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v1/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v1/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v1/VERSION",
+        "expected": "v1.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v1.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-92",
+    "number": 92,
+    "title": "CLI + Git Release Pipeline v2",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v2/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v2/bin and release_v2/config.",
+      "Create release_v2/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v2/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v2 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v2/VERSION with 'v2.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v2.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v2/bin release_v2/config\necho \"echo running\" > release_v2/bin/start.sh\nchmod 755 release_v2/bin/start.sh\necho \"TOKEN=123\" > release_v2/config/prod.env\nchmod 600 release_v2/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v2 setup\"\ngit checkout -b release\necho \"v2.0\" > release_v2/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v2.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v2/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v2/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v2/VERSION",
+        "expected": "v2.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v2.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-93",
+    "number": 93,
+    "title": "CLI + Git Release Pipeline v3",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v3/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v3/bin and release_v3/config.",
+      "Create release_v3/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v3/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v3 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v3/VERSION with 'v3.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v3.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v3/bin release_v3/config\necho \"echo running\" > release_v3/bin/start.sh\nchmod 755 release_v3/bin/start.sh\necho \"TOKEN=123\" > release_v3/config/prod.env\nchmod 600 release_v3/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v3 setup\"\ngit checkout -b release\necho \"v3.0\" > release_v3/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v3.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v3/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v3/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v3/VERSION",
+        "expected": "v3.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v3.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-94",
+    "number": 94,
+    "title": "CLI + Git Release Pipeline v4",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v4/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v4/bin and release_v4/config.",
+      "Create release_v4/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v4/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v4 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v4/VERSION with 'v4.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v4.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v4/bin release_v4/config\necho \"echo running\" > release_v4/bin/start.sh\nchmod 755 release_v4/bin/start.sh\necho \"TOKEN=123\" > release_v4/config/prod.env\nchmod 600 release_v4/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v4 setup\"\ngit checkout -b release\necho \"v4.0\" > release_v4/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v4.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v4/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v4/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v4/VERSION",
+        "expected": "v4.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v4.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-95",
+    "number": 95,
+    "title": "CLI + Git Release Pipeline v5",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v5/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v5/bin and release_v5/config.",
+      "Create release_v5/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v5/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v5 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v5/VERSION with 'v5.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v5.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v5/bin release_v5/config\necho \"echo running\" > release_v5/bin/start.sh\nchmod 755 release_v5/bin/start.sh\necho \"TOKEN=123\" > release_v5/config/prod.env\nchmod 600 release_v5/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v5 setup\"\ngit checkout -b release\necho \"v5.0\" > release_v5/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v5.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v5/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v5/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v5/VERSION",
+        "expected": "v5.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v5.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-96",
+    "number": 96,
+    "title": "CLI + Git Release Pipeline v6",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v6/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v6/bin and release_v6/config.",
+      "Create release_v6/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v6/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v6 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v6/VERSION with 'v6.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v6.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v6/bin release_v6/config\necho \"echo running\" > release_v6/bin/start.sh\nchmod 755 release_v6/bin/start.sh\necho \"TOKEN=123\" > release_v6/config/prod.env\nchmod 600 release_v6/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v6 setup\"\ngit checkout -b release\necho \"v6.0\" > release_v6/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v6.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v6/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v6/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v6/VERSION",
+        "expected": "v6.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v6.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-97",
+    "number": 97,
+    "title": "CLI + Git Release Pipeline v7",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v7/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v7/bin and release_v7/config.",
+      "Create release_v7/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v7/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v7 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v7/VERSION with 'v7.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v7.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v7/bin release_v7/config\necho \"echo running\" > release_v7/bin/start.sh\nchmod 755 release_v7/bin/start.sh\necho \"TOKEN=123\" > release_v7/config/prod.env\nchmod 600 release_v7/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v7 setup\"\ngit checkout -b release\necho \"v7.0\" > release_v7/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v7.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v7/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v7/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v7/VERSION",
+        "expected": "v7.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v7.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-98",
+    "number": 98,
+    "title": "CLI + Git Release Pipeline v8",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v8/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v8/bin and release_v8/config.",
+      "Create release_v8/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v8/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v8 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v8/VERSION with 'v8.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v8.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v8/bin release_v8/config\necho \"echo running\" > release_v8/bin/start.sh\nchmod 755 release_v8/bin/start.sh\necho \"TOKEN=123\" > release_v8/config/prod.env\nchmod 600 release_v8/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v8 setup\"\ngit checkout -b release\necho \"v8.0\" > release_v8/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v8.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v8/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v8/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v8/VERSION",
+        "expected": "v8.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v8.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-99",
+    "number": 99,
+    "title": "CLI + Git Release Pipeline v9",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v9/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v9/bin and release_v9/config.",
+      "Create release_v9/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v9/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v9 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v9/VERSION with 'v9.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v9.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v9/bin release_v9/config\necho \"echo running\" > release_v9/bin/start.sh\nchmod 755 release_v9/bin/start.sh\necho \"TOKEN=123\" > release_v9/config/prod.env\nchmod 600 release_v9/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v9 setup\"\ngit checkout -b release\necho \"v9.0\" > release_v9/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v9.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v9/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v9/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v9/VERSION",
+        "expected": "v9.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v9.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  },
+  {
+    "id": "hard-git-cli-100",
+    "number": 100,
+    "title": "CLI + Git Release Pipeline v10",
+    "difficulty": "Hard",
+    "tags": [
+      "Git",
+      "GitHub",
+      "Chmod",
+      "Mkdir",
+      "CLI"
+    ],
+    "description": "Set up release_v10/ with scripts and config, commit on a release branch, merge to main, and push.",
+    "directoryTree": "(empty workspace)",
+    "preExistingNotes": [
+      "No Git repository exists yet."
+    ],
+    "actions": [
+      "Create folders release_v10/bin and release_v10/config.",
+      "Create release_v10/bin/start.sh with 'echo running' and set its permissions to 755.",
+      "Create release_v10/config/prod.env with 'TOKEN=123' and set its permissions to 600.",
+      "Initialize Git, stage all files, and commit with 'Initial release_v10 setup'.",
+      "Create and switch to a new branch named 'release'.",
+      "Create release_v10/VERSION with 'v10.0', stage all files, and commit with 'Bump version'.",
+      "Switch back to 'main' and merge 'release'.",
+      "Add remote 'origin' (https://github.com/NST/release_v10.git) and push 'main'."
+    ],
+    "hint": "Follow each numbered step in order: mkdir -p, echo >, chmod, git init, git add/commit, git checkout -b release, git checkout main, git merge release, git remote add, git push.",
+    "solution": "mkdir -p release_v10/bin release_v10/config\necho \"echo running\" > release_v10/bin/start.sh\nchmod 755 release_v10/bin/start.sh\necho \"TOKEN=123\" > release_v10/config/prod.env\nchmod 600 release_v10/config/prod.env\ngit init\ngit add .\ngit commit -m \"Initial release_v10 setup\"\ngit checkout -b release\necho \"v10.0\" > release_v10/VERSION\ngit add .\ngit commit -m \"Bump version\"\ngit checkout main\ngit merge release\ngit remote add origin https://github.com/NST/release_v10.git\ngit push -u origin main",
+    "initialFs": {},
+    "checks": [
+      {
+        "type": "permEquals",
+        "path": "release_v10/bin/start.sh",
+        "perm": 755,
+        "label": "start.sh is 755"
+      },
+      {
+        "type": "permEquals",
+        "path": "release_v10/config/prod.env",
+        "perm": 600,
+        "label": "prod.env is 600"
+      },
+      {
+        "type": "fileEquals",
+        "path": "release_v10/VERSION",
+        "expected": "v10.0",
+        "label": "VERSION created"
+      },
+      {
+        "type": "gitInitialized",
+        "label": "Git initialized"
+      },
+      {
+        "type": "gitBranch",
+        "branch": "main",
+        "label": "On main branch"
+      },
+      {
+        "type": "gitMinCommits",
+        "count": 3,
+        "label": "At least 3 commits"
+      },
+      {
+        "type": "gitRemote",
+        "name": "origin",
+        "url": "https://github.com/NST/release_v10.git",
+        "label": "Remote origin added"
+      },
+      {
+        "type": "gitPushed",
+        "branch": "main",
+        "label": "Pushed main"
+      }
+    ]
+  }
+]

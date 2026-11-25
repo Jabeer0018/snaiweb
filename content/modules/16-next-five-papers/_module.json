@@ -1,0 +1,8 @@
+{
+  "slug": "16-next-five-papers",
+  "title": "C16 — From Training to Scale (1986–2020)",
+  "description": "Backpropagation (1986), PageRank (1998), AlexNet (2012), Transformer & Attention (2017), and GPT-3 Few-Shot Learning (2020).",
+  "order": 16,
+  "source": "Revision Notes (Lecture 16)",
+  "addedAt": "2026-11-26"
+}

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="820" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f0f14"/>
+      <stop offset="100%" stop-color="#14141d"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="820" height="340" rx="14" fill="url(#bg)" stroke="#27272a" stroke-width="1.5"/>
+  <text x="32" y="38" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.5">C05 · PROCESS ARCHITECTURE &amp; TIMESLICING</text>
+
+  <!-- Left: Parent & Child Processes -->
+  <rect x="32" y="64" width="330" height="244" rx="10" fill="#18181f" stroke="#27272a"/>
+  <text x="52" y="92" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Parent → Child Processes</text>
+
+  <rect x="115" y="114" width="164" height="42" rx="8" fill="#8b5cf6" fill-opacity="0.18" stroke="#8b5cf6"/>
+  <text x="197" y="140" text-anchor="middle" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="13" font-weight="600">Shell (Parent)</text>
+
+  <path d="M197 156 L197 180 M92 180 L302 180 M92 180 L92 204 M197 180 L197 204 M302 180 L302 204" stroke="#52525b" stroke-width="1.5"/>
+
+  <rect x="52" y="204" width="80" height="36" rx="6" fill="#27272a" stroke="#3f3f46"/>
+  <text x="92" y="227" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="12">pwd</text>
+
+  <rect x="157" y="204" width="80" height="36" rx="6" fill="#27272a" stroke="#3f3f46"/>
+  <text x="197" y="227" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="12">ls</text>
+
+  <rect x="262" y="204" width="80" height="36" rx="6" fill="#27272a" stroke="#3f3f46"/>
+  <text x="302" y="227" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="12">cat</text>
+
+  <text x="197" y="276" text-anchor="middle" fill="#71717a" font-family="system-ui, sans-serif" font-size="12">Each process gets its own exclusive RAM space</text>
+
+  <!-- Right: CPU Timeslicing -->
+  <rect x="386" y="64" width="402" height="244" rx="10" fill="#18181f" stroke="#27272a"/>
+  <text x="406" y="92" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">CPU Timeslicing (Rapid Switching)</text>
+
+  <rect x="406" y="122" width="60" height="44" rx="6" fill="#8b5cf6" fill-opacity="0.25" stroke="#8b5cf6"/>
+  <text x="436" y="142" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Chrome</text>
+  <text x="436" y="157" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">0 ms</text>
+
+  <rect x="476" y="122" width="66" height="44" rx="6" fill="#3b82f6" fill-opacity="0.22" stroke="#3b82f6"/>
+  <text x="509" y="142" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="11" font-weight="600">VS Code</text>
+  <text x="509" y="157" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">6 ms</text>
+
+  <rect x="552" y="122" width="64" height="44" rx="6" fill="#10b981" fill-opacity="0.22" stroke="#10b981"/>
+  <text x="584" y="142" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Spotify</text>
+  <text x="584" y="157" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">12 ms</text>
+
+  <rect x="626" y="122" width="60" height="44" rx="6" fill="#8b5cf6" fill-opacity="0.25" stroke="#8b5cf6"/>
+  <text x="656" y="142" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Chrome</text>
+  <text x="656" y="157" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">18 ms</text>
+
+  <rect x="696" y="122" width="66" height="44" rx="6" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b"/>
+  <text x="729" y="142" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Python</text>
+  <text x="729" y="157" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="10">24 ms</text>
+
+  <rect x="406" y="196" width="356" height="84" rx="8" fill="#09090b" stroke="#27272a"/>
+  <text x="424" y="222" fill="#e4e4e7" font-family="ui-monospace, monospace" font-size="12">kill &lt;PID&gt;     → SIGTERM (15) polite exit</text>
+  <text x="424" y="250" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="12">kill -9 &lt;PID&gt;  → SIGKILL (9)  forced stop</text>
+</svg>

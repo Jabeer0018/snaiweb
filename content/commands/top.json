@@ -1,0 +1,31 @@
+{
+  "slug": "top",
+  "name": "top",
+  "purpose": "Display a live, continuously updating view of running processes and CPU/memory usage.",
+  "syntax": "top",
+  "explanation": "Shows real-time CPU and memory usage for running processes. Press 'q' to quit.",
+  "parameters": [],
+  "example": "top",
+  "expectedOutput": "(Interactive live table of processes updated in real time; press q to quit)",
+  "outputVerified": false,
+  "whenToUse": "To monitor live system resource usage from the terminal.",
+  "commonMistakes": [
+    "Forgetting to press 'q' to exit the live view."
+  ],
+  "relatedCommands": [
+    "htop",
+    "ps",
+    "kill"
+  ],
+  "moduleSlug": "05-os-process-management",
+  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "category": "Process Management",
+  "source": "System & AI Essentials (C05)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "top",
+    "cpu",
+    "memory",
+    "live processes"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "ps",
+  "name": "ps",
+  "purpose": "Process Status \u2014 list currently running processes.",
+  "syntax": "ps\nps aux",
+  "explanation": "Plain 'ps' shows only processes associated with the current terminal session. 'ps aux' shows ALL processes running system-wide, including columns for USER (owner), PID (Process ID), %CPU, %MEM, and COMMAND.",
+  "parameters": [
+    {
+      "flag": "aux",
+      "description": "Shows all system-wide processes with USER, PID, %CPU, %MEM, and COMMAND columns."
+    }
+  ],
+  "example": "ps aux",
+  "expectedOutput": "USER   PID  %CPU %MEM COMMAND\nroot     1   0.0  0.1 /sbin/launchd",
+  "outputVerified": false,
+  "whenToUse": "To inspect running processes and find a Process ID (PID) for monitoring or termination.",
+  "commonMistakes": [
+    "Running plain 'ps' and wondering why background/GUI apps like Chrome are not listed."
+  ],
+  "relatedCommands": [
+    "top",
+    "htop",
+    "kill"
+  ],
+  "moduleSlug": "05-os-process-management",
+  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "category": "Process Management",
+  "source": "System & AI Essentials (C05)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "ps",
+    "ps aux",
+    "process",
+    "PID"
+  ]
+}

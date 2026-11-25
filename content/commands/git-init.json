@@ -1,0 +1,31 @@
+{
+  "slug": "git-init",
+  "name": "git init",
+  "purpose": "Initialize a new local Git repository in the current folder.",
+  "syntax": "git init",
+  "explanation": "Creates a hidden .git folder inside your project directory. This .git folder is Git's memory where all snapshots and history are stored.",
+  "parameters": [],
+  "example": "git init",
+  "expectedOutput": "Initialized empty Git repository in /path/to/project/.git/",
+  "outputVerified": false,
+  "whenToUse": "Once at the start of a new local project before tracking files with Git.",
+  "commonMistakes": [
+    "Manually editing or deleting the hidden .git folder."
+  ],
+  "relatedCommands": [
+    "git-status",
+    "git-add",
+    "git-remote"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 1)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "init",
+    "repository",
+    ".git"
+  ]
+}

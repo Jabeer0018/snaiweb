@@ -1,0 +1,50 @@
+{
+  "slug": "cd",
+  "name": "cd",
+  "purpose": "Change Directory \u2014 move from your current folder into another folder.",
+  "syntax": "cd <directory>",
+  "explanation": "Changes the shell's current working directory. Use 'cd folderName' to move deeper into a subfolder, 'cd ..' to move up to the parent folder, 'cd ../..' to move up two levels, 'cd' or 'cd ~' for your home directory, 'cd /' for root, and 'cd -' for the previous directory.",
+  "parameters": [
+    {
+      "flag": "..",
+      "description": "Parent directory (one level up)."
+    },
+    {
+      "flag": ".",
+      "description": "Current directory itself."
+    },
+    {
+      "flag": "~",
+      "description": "Home directory."
+    },
+    {
+      "flag": "-",
+      "description": "Previous working directory."
+    }
+  ],
+  "example": "cd practice\ncd ..",
+  "expectedOutput": "(Prompt changes to reflect the new working directory)",
+  "outputVerified": false,
+  "whenToUse": "To navigate between folders in the terminal.",
+  "commonMistakes": [
+    "Trying to cd into a folder that is not visible from the current location without using its full path.",
+    "Forgetting the space between cd and .. (typing cd.. instead of cd ..)."
+  ],
+  "relatedCommands": [
+    "pwd",
+    "ls",
+    "mkdir"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Terminal & Navigation",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "cd",
+    "change directory",
+    "parent",
+    "navigation",
+    ".."
+  ]
+}

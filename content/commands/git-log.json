@@ -1,0 +1,35 @@
+{
+  "slug": "git-log",
+  "name": "git log",
+  "purpose": "Read and inspect the project's commit history.",
+  "syntax": "git log\ngit log --oneline",
+  "explanation": "Step 5 (Read History) of the Git workflow. Displays past commits; '--oneline' shows a compact view with Short IDs and commit messages.",
+  "parameters": [
+    {
+      "flag": "--oneline",
+      "description": "Compact single-line view showing Short IDs and commit messages."
+    }
+  ],
+  "example": "git log --oneline",
+  "expectedOutput": "1a2b3c4 Add student registration form validation",
+  "outputVerified": false,
+  "whenToUse": "To review past checkpoints and commit IDs.",
+  "commonMistakes": [
+    "Confusing git log (commit history) with git status (working tree state)."
+  ],
+  "relatedCommands": [
+    "git-status",
+    "git-commit"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 1)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "log",
+    "history",
+    "--oneline"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "chmod",
+  "name": "chmod",
+  "purpose": "Change file or directory permissions (read, write, execute).",
+  "syntax": "chmod +x <fileName>\nchmod <numericMode> <fileName>",
+  "explanation": "Modifies who can read (r=4), write (w=2), or execute (x=1) a file across Owner, Group, and Others. New files default to 644 (rw-r--r--) and are not executable until chmod +x (or numeric mode like 755) is applied.",
+  "parameters": [
+    {
+      "flag": "+x",
+      "description": "Adds execute permission so a script/file can be run."
+    },
+    {
+      "flag": "600",
+      "description": "Owner can read and write (rw-------); no permissions for group or others."
+    },
+    {
+      "flag": "644",
+      "description": "Owner can read/write, group and others can read (rw-r--r--)."
+    },
+    {
+      "flag": "755",
+      "description": "Owner has rwx; group and others have r-x (rwxr-xr-x)."
+    }
+  ],
+  "example": "chmod +x hello.txt\n./hello.txt",
+  "expectedOutput": "Hello from a script",
+  "outputVerified": false,
+  "whenToUse": "When making a script executable or restricting access to a private file.",
+  "commonMistakes": [
+    "Trying to run ./script.sh before setting execute permission (causes 'permission denied').",
+    "Mixing up numeric values (r=4, w=2, x=1)."
+  ],
+  "relatedCommands": [
+    "chown",
+    "ls",
+    "which"
+  ],
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 \u2014 The OS & the Filesystem",
+  "category": "Permissions & Environment",
+  "source": "System & AI Essentials (C06)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "chmod",
+    "permissions",
+    "executable",
+    "600",
+    "644",
+    "755"
+  ]
+}

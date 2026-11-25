@@ -1,0 +1,30 @@
+{
+  "slug": "git-clone",
+  "name": "git clone",
+  "purpose": "Download an entire remote project and its complete Git history for the first time.",
+  "syntax": "git clone <URL>",
+  "explanation": "Creates a local copy of a remote repository on your computer, including all files and the full commit history.",
+  "parameters": [],
+  "example": "git clone https://github.com/NST/test.git",
+  "expectedOutput": "Cloning into 'test'...",
+  "outputVerified": false,
+  "whenToUse": "When downloading a project from GitHub to your computer for the first time.",
+  "commonMistakes": [
+    "Using git clone instead of git pull when you already have the repository locally and just want updates."
+  ],
+  "relatedCommands": [
+    "git-pull",
+    "git-remote"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "clone",
+    "download",
+    "github"
+  ]
+}

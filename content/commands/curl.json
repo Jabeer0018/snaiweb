@@ -1,0 +1,29 @@
+{
+  "slug": "curl",
+  "name": "curl",
+  "purpose": "Send HTTP requests from the terminal, such as calling an API endpoint.",
+  "syntax": "curl <URL>",
+  "explanation": "Transfers data from or to a server. Used in C04 to demonstrate a raw API call returning JSON without any GUI.",
+  "parameters": [],
+  "example": "curl http://api.open-notify.org/iss-now.json",
+  "expectedOutput": "{\"timestamp\": ..., \"iss_position\": {\"longitude\": ..., \"latitude\": ...}, \"message\": \"success\"}",
+  "outputVerified": false,
+  "whenToUse": "To test API endpoints or download scripts/data from URLs in the terminal.",
+  "commonMistakes": [
+    "Omitting the protocol (http:// or https://) when calling a URL."
+  ],
+  "relatedCommands": [
+    "brew"
+  ],
+  "moduleSlug": "04-interfaces",
+  "moduleTitle": "C04 \u2014 Interfaces (CLI, GUI, API)",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C04)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "curl",
+    "API",
+    "JSON",
+    "request"
+  ]
+}

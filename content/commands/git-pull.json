@@ -1,0 +1,30 @@
+{
+  "slug": "git-pull",
+  "name": "git pull",
+  "purpose": "Download only the latest changes from a remote repository into your existing local repo.",
+  "syntax": "git pull",
+  "explanation": "Fetches and integrates the newest commits from the remote repository into your current local branch.",
+  "parameters": [],
+  "example": "git pull",
+  "expectedOutput": "Already up to date. (or lists newly fetched file updates)",
+  "outputVerified": false,
+  "whenToUse": "When you already have a local repository and want to get teammates' latest changes.",
+  "commonMistakes": [
+    "Confusing git pull (update existing repo) with git clone (first-time download)."
+  ],
+  "relatedCommands": [
+    "git-clone",
+    "git-push"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "pull",
+    "update",
+    "sync"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "slug": "git-status",
+  "name": "git status",
+  "purpose": "Check the current state of your working directory and staging area.",
+  "syntax": "git status",
+  "explanation": "Shows which files are 'Untracked' (Git hasn't started following them yet), 'Modified' (tracked files with new changes), or staged for the next commit.",
+  "parameters": [],
+  "example": "git status",
+  "expectedOutput": "On branch main\nUntracked files:\n  notes.txt",
+  "outputVerified": false,
+  "whenToUse": "Step 2 of the Git workflow — before staging or committing changes.",
+  "commonMistakes": [
+    "Assuming untracked files are automatically included in the next commit."
+  ],
+  "relatedCommands": [
+    "git-add",
+    "git-commit",
+    "git-log"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 1)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "status",
+    "untracked",
+    "modified"
+  ]
+}

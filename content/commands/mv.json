@@ -1,0 +1,29 @@
+{
+  "slug": "mv",
+  "name": "mv",
+  "purpose": "Move files or directories to a new location, or rename them in place.",
+  "syntax": "mv <source> <dest>",
+  "explanation": "Moves a file/folder to a new path or renames it. Unlike cp, the original at the old name/location is gone (no duplicate is kept). If the destination is an existing folder path, mv moves the file(s) inside that folder.",
+  "parameters": [],
+  "example": "mv perk.txt munch.txt\nmv hello.txt hi.txt ./greetings/",
+  "expectedOutput": "(Renames perk.txt to munch.txt, or moves hello.txt and hi.txt into ./greetings/)",
+  "outputVerified": false,
+  "whenToUse": "To rename a file/folder or relocate files into another directory.",
+  "commonMistakes": [
+    "Confusing mv with cp and expecting the original file to remain at the old path."
+  ],
+  "relatedCommands": [
+    "cp",
+    "rm"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "mv",
+    "move",
+    "rename"
+  ]
+}

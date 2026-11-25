@@ -1,0 +1,52 @@
+{
+  "slug": "gzip",
+  "name": "gzip",
+  "purpose": "GNU Zip — compress files to reduce their size (creating .gz files) or decompress them.",
+  "syntax": "gzip [options] <fileName>\ngzip -d <fileName.gz>",
+  "explanation": "Compresses a file using the DEFLATE algorithm and replaces the original file with a smaller compressed version ending in '.gz'. To restore the original file, use 'gzip -d' (or 'gunzip'). Note that gzip compresses individual files rather than bundling folders together (for folders, combine with 'tar' first).",
+  "parameters": [
+    {
+      "flag": "-d",
+      "description": "Decompresses a .gz file back to its original uncompressed form."
+    },
+    {
+      "flag": "-k",
+      "description": "Keep — retains the original file instead of deleting it after compression or decompression."
+    },
+    {
+      "flag": "-v",
+      "description": "Verbose — prints the filename and percentage size reduction."
+    },
+    {
+      "flag": "-r",
+      "description": "Recursive — compresses every file inside a directory individually."
+    }
+  ],
+  "example": "gzip -k notes.txt\ngzip -d notes.txt.gz",
+  "expectedOutput": "(Creates notes.txt.gz while keeping notes.txt, then decompresses it back)",
+  "outputVerified": false,
+  "whenToUse": "When you want to shrink large text files, logs, or backups to save disk space or speed up transfers.",
+  "commonMistakes": [
+    "Running 'gzip file.txt' without -k and being surprised that the original file.txt was replaced by file.txt.gz.",
+    "Trying to compress an entire folder into a single archive with plain gzip (use tar -czf archive.tar.gz folder/ for multi-file archives)."
+  ],
+  "relatedCommands": [
+    "grep",
+    "cp",
+    "rm",
+    "ls"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "User-requested CLI Reference",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "gzip",
+    "gunzip",
+    "compress",
+    "decompress",
+    ".gz",
+    "archive"
+  ]
+}

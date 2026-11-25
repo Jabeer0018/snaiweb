@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 240" fill="none">
+  <rect width="820" height="240" rx="14" fill="#0f0f14" stroke="#27272a" stroke-width="1.5"/>
+  <text x="32" y="38" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.5">LECTURE 11 · NETWORK ARCHITECTURE &amp; CLIENT-SERVER FLOW</text>
+
+  <rect x="36" y="76" width="150" height="84" rx="10" fill="#18181f" stroke="#3f3f46"/>
+  <text x="111" y="112" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Client (Browser)</text>
+  <text x="111" y="134" text-anchor="middle" fill="#a1a1aa" font-family="ui-monospace, monospace" font-size="11">192.168.0.2 (LAN)</text>
+
+  <path d="M186 118 L244 118" stroke="#8b5cf6" stroke-width="2"/>
+
+  <rect x="244" y="76" width="140" height="84" rx="10" fill="#8b5cf6" fill-opacity="0.16" stroke="#8b5cf6"/>
+  <text x="314" y="112" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Switch</text>
+  <text x="314" y="134" text-anchor="middle" fill="#c4b5fd" font-family="ui-monospace, monospace" font-size="11">Uses MAC address</text>
+
+  <path d="M384 118 L442 118" stroke="#3b82f6" stroke-width="2"/>
+
+  <rect x="442" y="76" width="140" height="84" rx="10" fill="#3b82f6" fill-opacity="0.16" stroke="#3b82f6"/>
+  <text x="512" y="112" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Router</text>
+  <text x="512" y="134" text-anchor="middle" fill="#93c5fd" font-family="ui-monospace, monospace" font-size="11">Uses IP address</text>
+
+  <path d="M582 118 L640 118" stroke="#10b981" stroke-width="2"/>
+
+  <rect x="640" y="76" width="144" height="84" rx="10" fill="#10b981" fill-opacity="0.16" stroke="#10b981"/>
+  <text x="712" y="112" text-anchor="middle" fill="#f4f4f5" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Web Server</text>
+  <text x="712" y="134" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, monospace" font-size="11">HTML · CSS · JS</text>
+
+  <text x="410" y="202" text-anchor="middle" fill="#71717a" font-family="system-ui, sans-serif" font-size="12">LAN (local) &lt; MAN (city) &lt; WAN (global) → The Internet (network of networks)</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "slug": "03-terminal-cli",
+  "title": "C03 \u2014 Terminal & CLI Commands",
+  "description": "Text-based shell interaction, navigation, file manipulation, recursive flags, piping, and package managers.",
+  "order": 3,
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26"
+}

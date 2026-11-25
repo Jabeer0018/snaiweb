@@ -1,0 +1,38 @@
+{
+  "slug": "git-commit",
+  "name": "git commit",
+  "purpose": "Record staged changes permanently as a snapshot in Git history.",
+  "syntax": "git commit -m \"<message>\"",
+  "explanation": "Step 4 (Record) of the Git workflow. Saves the staged snapshot with a descriptive message explaining what changed and why.",
+  "parameters": [
+    {
+      "flag": "-m \"<message>\"",
+      "description": "Inline commit message describing what and why.",
+      "required": true
+    }
+  ],
+  "example": "git commit -m \"Add student registration form validation\"",
+  "expectedOutput": "[main 1a2b3c4] Add student registration form validation",
+  "outputVerified": false,
+  "whenToUse": "After staging changes with git add to save a checkpoint.",
+  "commonMistakes": [
+    "Writing vague commit messages like 'updated file' or 'fixed stuff'.",
+    "Forgetting -m and getting dropped into a terminal text editor."
+  ],
+  "relatedCommands": [
+    "git-add",
+    "git-log",
+    "git-push"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 1)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "commit",
+    "snapshot",
+    "message"
+  ]
+}

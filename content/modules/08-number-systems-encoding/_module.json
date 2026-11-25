@@ -1,0 +1,8 @@
+{
+  "slug": "08-number-systems-encoding",
+  "title": "C08 \u2014 Number Systems & Data Encoding",
+  "description": "Bases, Binary/Decimal/Hex conversions, Bits/Nibbles/Bytes, Overflow, ASCII/Unicode/UTF-8, RGB/RGBA, Magic Numbers, and Practice Q&A.",
+  "order": 8,
+  "source": "Number Systems & Data Encoding PDF + C08",
+  "addedAt": "2026-11-26"
+}

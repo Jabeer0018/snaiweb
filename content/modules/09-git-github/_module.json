@@ -1,0 +1,8 @@
+{
+  "slug": "09-git-github",
+  "title": "C09 — Git & GitHub Collaboration",
+  "description": "Version control history, .git & HEAD, the 5-step Git workflow, GitHub remotes, clone vs pull, and Pull Requests.",
+  "order": 9,
+  "source": "Ultimate System & AI Essentials Notes (Modules 1 & 2)",
+  "addedAt": "2026-11-26"
+}

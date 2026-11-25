@@ -1,0 +1,38 @@
+{
+  "slug": "cp",
+  "name": "cp",
+  "purpose": "Copy files or directories from a source to a destination while preserving the original.",
+  "syntax": "cp <source> <dest>\ncp -r <sourceFolder> <destFolder>",
+  "explanation": "Copies a file to a new path. If the destination file already exists, its content is OVERWRITTEN with the source's content. To copy an entire directory and everything inside it, you must add the '-r' (recursive) flag.",
+  "parameters": [
+    {
+      "flag": "-r",
+      "description": "Recursive copy \u2014 required to copy a directory and all files/subfolders inside it."
+    }
+  ],
+  "example": "cp kitkat.txt perk.txt\ncp -r sourceFolder destinationFolder",
+  "expectedOutput": "(Creates a copy at the destination while keeping the original intact)",
+  "outputVerified": false,
+  "whenToUse": "When duplicating files or backing up entire folders.",
+  "commonMistakes": [
+    "Running cp on a folder without -r (fails with an 'Is a directory' error).",
+    "Overwriting an existing destination file without realizing cp replaces its content."
+  ],
+  "relatedCommands": [
+    "mv",
+    "rm",
+    "cat"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "cp",
+    "copy",
+    "recursive",
+    "-r",
+    "overwrite"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "echo",
+  "name": "echo",
+  "purpose": "Print text to the terminal or write/append text into a file using redirection.",
+  "syntax": "echo \"text\" > file.txt\necho \"text\" >> file.txt",
+  "explanation": "Outputs the given text. Combined with '>' it redirects output into a file and OVERWRITES existing content; combined with '>>' it APPENDS text to the end of the file.",
+  "parameters": [
+    {
+      "flag": ">",
+      "description": "Redirects output to a file, overwriting any existing content."
+    },
+    {
+      "flag": ">>",
+      "description": "Redirects output to a file, appending to the end without overwriting."
+    }
+  ],
+  "example": "echo \"Hello from the terminal\" > readme.txt",
+  "expectedOutput": "(Writes 'Hello from the terminal' into readme.txt)",
+  "outputVerified": false,
+  "whenToUse": "To write quick text or script lines into a file or print messages in scripts.",
+  "commonMistakes": [
+    "Using '>' when you meant '>>' and accidentally overwriting the entire file."
+  ],
+  "relatedCommands": [
+    "cat",
+    "touch"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "echo",
+    "redirect",
+    "overwrite",
+    "append",
+    ">",
+    ">>"
+  ]
+}

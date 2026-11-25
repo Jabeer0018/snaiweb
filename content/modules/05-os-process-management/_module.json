@@ -1,0 +1,8 @@
+{
+  "slug": "05-os-process-management",
+  "title": "C05 \u2014 The OS & Process Management",
+  "description": "Four roles of an OS, programs vs processes, parent/child processes, timeslicing, memory isolation, and kill signals.",
+  "order": 5,
+  "source": "System & AI Essentials (C05)",
+  "addedAt": "2026-11-26"
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "07-how-software-works",
+  "title": "C07 \u2014 How Software Works",
+  "description": "Machine code, Grace Hopper, Compilers vs Interpreters, historical context (C vs Python), shebang (#!), and paths.",
+  "order": 7,
+  "source": "System & AI Essentials (C07) & Ultimate Notes (Module 3)",
+  "addedAt": "2026-11-26"
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "pwd",
+  "name": "pwd",
+  "purpose": "Print Working Directory \u2014 displays the current folder path you are working in inside the terminal.",
+  "syntax": "pwd",
+  "explanation": "Outputs the full absolute path from the root of the filesystem (/) to your current working directory. Use it whenever you are unsure where you are located.",
+  "parameters": [],
+  "example": "pwd",
+  "expectedOutput": "/Users/karansharma/practice",
+  "outputVerified": false,
+  "whenToUse": "Whenever you want to confirm your exact current directory inside the terminal.",
+  "commonMistakes": [
+    "Confusing relative paths with the absolute path output by pwd."
+  ],
+  "relatedCommands": [
+    "ls",
+    "cd"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Terminal & Navigation",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "pwd",
+    "working directory",
+    "absolute path",
+    "navigation"
+  ]
+}

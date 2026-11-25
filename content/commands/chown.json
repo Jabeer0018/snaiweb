@@ -1,0 +1,29 @@
+{
+  "slug": "chown",
+  "name": "chown",
+  "purpose": "Change Owner \u2014 transfer ownership of a file or directory to another user.",
+  "syntax": "chown <newOwner> <fileName>",
+  "explanation": "Changes the owner of a file so another user can own or manage it safely.",
+  "parameters": [],
+  "example": "chown shreyas notes.txt",
+  "expectedOutput": "(Transfers ownership of notes.txt to user 'shreyas')",
+  "outputVerified": false,
+  "whenToUse": "When another user needs to own or manage a file.",
+  "commonMistakes": [
+    "Confusing chown (changes owner) with chmod (changes read/write/execute permissions)."
+  ],
+  "relatedCommands": [
+    "chmod",
+    "ls"
+  ],
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 \u2014 The OS & the Filesystem",
+  "category": "Permissions & Environment",
+  "source": "System & AI Essentials (C06)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "chown",
+    "owner",
+    "permissions"
+  ]
+}

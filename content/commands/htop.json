@@ -1,0 +1,31 @@
+{
+  "slug": "htop",
+  "name": "htop",
+  "purpose": "Interactive, colour-coded live process viewer with visual CPU/memory bars.",
+  "syntax": "htop",
+  "explanation": "A more user-friendly, interactive alternative to top showing colour-coded CPU and memory usage and visual CPU bars. Press 'q' to quit.",
+  "parameters": [],
+  "example": "htop",
+  "expectedOutput": "(Interactive colour-coded process monitor; press q to quit)",
+  "outputVerified": false,
+  "whenToUse": "To visually spot CPU-hungry runaway processes and find their PIDs.",
+  "commonMistakes": [
+    "Assuming htop is pre-installed on every system without installing it via a package manager if needed."
+  ],
+  "relatedCommands": [
+    "top",
+    "ps",
+    "kill"
+  ],
+  "moduleSlug": "05-os-process-management",
+  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "category": "Process Management",
+  "source": "System & AI Essentials (C05)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "htop",
+    "process viewer",
+    "PID",
+    "cpu"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "cat",
+  "name": "cat",
+  "purpose": "Concatenate and display the contents of one or more files directly in the terminal.",
+  "syntax": "cat <fileName>\ncat <file1> <file2> > <combined>",
+  "explanation": "Reads and prints file contents to the terminal. It can also display multiple files one after another, combine them into a new file with '>', or create a file interactively with 'cat > newfile.txt' (Ctrl+D to save). cat does NOT edit files.",
+  "parameters": [],
+  "example": "cat readme.txt",
+  "expectedOutput": "Hello from the terminal",
+  "outputVerified": false,
+  "whenToUse": "To read file contents, verify changes after cp/mv, or concatenate files.",
+  "commonMistakes": [
+    "Trying to use cat to edit a file in-place.",
+    "Running cat on a non-existent file (produces 'No such file or directory')."
+  ],
+  "relatedCommands": [
+    "echo",
+    "touch",
+    "cp"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "cat",
+    "read",
+    "concatenate",
+    "display file"
+  ]
+}

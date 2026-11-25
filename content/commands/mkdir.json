@@ -1,0 +1,36 @@
+{
+  "slug": "mkdir",
+  "name": "mkdir",
+  "purpose": "Make Directory \u2014 create one or more new folders directly from the terminal.",
+  "syntax": "mkdir [options] <folderName>",
+  "explanation": "Creates a new directory. Supports brace expansion (e.g. mkdir folder_{1..1000}) to create many numbered folders in one command.",
+  "parameters": [
+    {
+      "flag": "-p",
+      "description": "Creates nested parent/child directories in one go even if parent does not exist yet."
+    }
+  ],
+  "example": "mkdir practice\nmkdir folder_{1..1000}",
+  "expectedOutput": "(Creates 'practice' and 1000 folders named folder_1 through folder_1000)",
+  "outputVerified": false,
+  "whenToUse": "When creating project folders or batch-creating multiple directories.",
+  "commonMistakes": [
+    "Trying to create nested folders like parent/child without the -p flag."
+  ],
+  "relatedCommands": [
+    "cd",
+    "ls",
+    "rm"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "mkdir",
+    "directory",
+    "folder",
+    "brace expansion"
+  ]
+}

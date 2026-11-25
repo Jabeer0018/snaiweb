@@ -1,0 +1,8 @@
+{
+  "slug": "04-interfaces",
+  "title": "C04 \u2014 Interfaces (CLI, GUI, API)",
+  "description": "The three core interfaces (CLI, GUI, API), the Desktop Metaphor, API request/response flow, and layer-by-layer error feedback.",
+  "order": 4,
+  "source": "System & AI Essentials (C04)",
+  "addedAt": "2026-11-26"
+}

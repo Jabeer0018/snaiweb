@@ -1,0 +1,35 @@
+{
+  "slug": "brew",
+  "name": "brew",
+  "purpose": "Homebrew \u2014 macOS terminal package manager to find, download, and install CLI programs.",
+  "syntax": "brew install <package1> [package2 ...]",
+  "explanation": "Automates installing, updating, and managing command-line software packages on macOS so they become available in your terminal.",
+  "parameters": [
+    {
+      "flag": "install",
+      "description": "Downloads and installs one or more named packages."
+    }
+  ],
+  "example": "brew install cowsay fortune sl lolcat",
+  "expectedOutput": "(Downloads and installs cowsay, fortune, sl, and lolcat)",
+  "outputVerified": false,
+  "whenToUse": "When a command fails with 'command not found' on macOS and needs to be installed.",
+  "commonMistakes": [
+    "Trying to run brew on Linux or Windows (use apt/yum/pacman/flatpak on Linux, chocolatey on Windows)."
+  ],
+  "relatedCommands": [
+    "cowsay",
+    "which"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "brew",
+    "homebrew",
+    "package manager",
+    "macos"
+  ]
+}

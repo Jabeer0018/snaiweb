@@ -1,0 +1,36 @@
+{
+  "slug": "git-add",
+  "name": "git add",
+  "purpose": "Move file changes into the Staging Area to prepare for the next snapshot.",
+  "syntax": "git add <file>",
+  "explanation": "Step 3 (Select) of the Git workflow. Stages specific files so they are included in the next commit.",
+  "parameters": [
+    {
+      "flag": "<file>",
+      "description": "Path to the file to stage.",
+      "required": true
+    }
+  ],
+  "example": "git add notes.txt",
+  "expectedOutput": "(Stages notes.txt for the next commit)",
+  "outputVerified": false,
+  "whenToUse": "After editing or creating files and before running git commit.",
+  "commonMistakes": [
+    "Running git commit without staging changes first with git add."
+  ],
+  "relatedCommands": [
+    "git-status",
+    "git-commit"
+  ],
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 1)",
+  "addedAt": "2026-11-26",
+  "keywords": [
+    "git",
+    "add",
+    "staging area",
+    "stage"
+  ]
+}
