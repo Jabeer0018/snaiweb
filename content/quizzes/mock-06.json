@@ -1,0 +1,1217 @@
+{
+  "id": "mock-06",
+  "number": 6,
+  "title": "Mock Test 06",
+  "subtitle": "Integrated Practice: Hardware Bottlenecks & Workflows",
+  "difficultyLabel": "Intermediate",
+  "totalQuestions": 35,
+  "maxPoints": 124,
+  "recommendedMinutes": 70,
+  "passages": [
+    {
+      "id": "mock-06-cs1",
+      "title": "Case Study 1: Memory-Constrained Edge Camera",
+      "content": "The Memory-Constrained Edge Camera (Node #06) runs GNU/Linux on an embedded ARM board with `384 KiB` of RAM and a read-only flash boot partition. It captures `440 \u00d7 240` 8-bit RGB status snapshots, logs ASCII sensor tags (`'A' = 65`), and transmits JSON payloads over HTTPS to a central campus server. Inside the lab room, `22` terminals connect to a managed Switch (using MAC addresses), which links to a Router (using IPv4 `192.168.6.1`).",
+      "tables": [
+        {
+          "caption": "Node #06 Specifications",
+          "headers": [
+            "Component",
+            "Specification",
+            "Notes"
+          ],
+          "rows": [
+            [
+              "Memory",
+              "384 KiB RAM",
+              "Volatile working memory"
+            ],
+            [
+              "Snapshot",
+              "440 \u00d7 240 RGB",
+              "3 bytes per pixel (uncompressed)"
+            ],
+            [
+              "Sensor Tag",
+              "7-bit ASCII in 1 byte",
+              "e.g. 'A'=65, 'a'=97"
+            ],
+            [
+              "LAN Topology",
+              "22 terminals -> Switch",
+              "Switch -> Router -> Campus Server"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mock-06-cs2",
+      "title": "Case Study 2: Server Incident & Git Hotfix Log (Incident #06)",
+      "content": "During a lab contest, server `node-06` becomes sluggish. An engineer inspects `ps aux` output and checks the deployment repository `/srv/app_6`.",
+      "tables": [
+        {
+          "caption": "Snapshot from `ps aux`",
+          "headers": [
+            "USER",
+            "PID",
+            "%CPU",
+            "%MEM",
+            "COMMAND"
+          ],
+          "rows": [
+            [
+              "root",
+              "1",
+              "0.1",
+              "0.2",
+              "/sbin/init"
+            ],
+            [
+              "student",
+              "4278",
+              "98.4",
+              "14.2",
+              "python3 loop_6.py"
+            ],
+            [
+              "student",
+              "4283",
+              "1.2",
+              "3.1",
+              "/usr/bin/node server.js"
+            ]
+          ]
+        }
+      ],
+      "codeBlock": "ls -ld /srv/app_6/scripts\ndr-xr-xr-x  student  staff  scripts\nls -l /srv/app_6/scripts/fix.sh\n-rw-r--r--  student  staff  fix.sh"
+    }
+  ],
+  "questions": [
+    {
+      "id": "mock-06-q01",
+      "testId": "mock-06",
+      "number": 1,
+      "type": "mcq",
+      "primaryConcept": "Linux Permissions",
+      "secondaryConcepts": [
+        "Directory Traversal",
+        "Terminal Commands"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "In project `labsvc_06/`, the folder `secure/` has octal mode `500` and contains `report.txt` with mode `600`. User `dev6` (the owner) runs `rm labsvc_06/secure/report.txt` from the parent directory. What happens and why?",
+      "codeBlock": "ls -ld labsvc_06/secure\ndr-xr-xr-x  dev6  staff  secure\nls -l labsvc_06/secure/report.txt\n-rw-r--r--  dev6  staff  report.txt",
+      "options": [
+        "It succeeds because the owner always has implicit write permission on every file they own.",
+        "It succeeds because `report.txt` has read/write bits enabled for the owner.",
+        "It fails with `Is a directory` unless `rm -r` is passed.",
+        "It fails with Permission denied because deleting a file requires write (`w`) permission on the parent directory `secure/`, not just on `report.txt`."
+      ],
+      "correctAnswer": 3,
+      "explanation": "Removing a file modifies the directory entry list inside `secure/`. Because `secure/` has mode `500` (no write bit `2` for owner), `rm` fails with Permission denied regardless of `report.txt`'s permissions.",
+      "incorrectOptionExplanations": [
+        "Owner cannot bypass missing directory write permission without changing directory permissions via `chmod`.",
+        "File permissions control reading/writing file contents, not unlinking entries from a read-only directory.",
+        "`report.txt` is a regular file, so `Is a directory` does not apply.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "C06 \u2014 OS & the Filesystem"
+    },
+    {
+      "id": "mock-06-q02",
+      "testId": "mock-06",
+      "number": 2,
+      "type": "mcq",
+      "primaryConcept": "Git & GitHub",
+      "secondaryConcepts": [
+        "Output Redirection",
+        "CLI"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "Inside an initialized Git repo for `labsvc_06`, a student runs the sequence below. How many commits exist and what is inside `notes.txt` after the final command?",
+      "codeBlock": "echo \"v1\" > notes.txt\ngit add notes.txt\ngit commit -m \"Init labsvc_06\"\necho \"v2\" > notes.txt\ngit status --short",
+      "options": [
+        "2 commits exist; `notes.txt` contains `v1` followed by `v2`.",
+        "1 commit exists; `notes.txt` contains only `v2`, and `notes.txt` is shown as Modified (unstaged) in `git status`.",
+        "1 commit exists; `notes.txt` contains `v1`, because `>` cannot overwrite committed files.",
+        "0 commits exist because `git add .` was not used."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Only one `git commit` ran. The second `echo \"v2\" > notes.txt` uses single `>` (overwrite) in the working directory without `git add` or `git commit`, leaving `notes.txt` modified and unstaged.",
+      "incorrectOptionExplanations": [
+        "Single `>` overwrites rather than appends, and no second commit was executed.",
+        "Correct explanation.",
+        "Shell redirection `>` modifies the working tree file freely regardless of Git commits.",
+        "`git add notes.txt` staged the file properly for the first commit."
+      ],
+      "noteRef": {
+        "title": "C09 \u2014 Git & GitHub Workflow",
+        "href": "/notes/09-git-github/git-workflow-and-github"
+      },
+      "sourceRef": "C09 \u2014 Git & GitHub Collaboration"
+    },
+    {
+      "id": "mock-06-q03",
+      "testId": "mock-06",
+      "number": 3,
+      "type": "mcq",
+      "primaryConcept": "Hardware & Memory",
+      "secondaryConcepts": [
+        "AI Parallelism"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "A research team trains an image classifier for `labsvc_06` on a system with a 4-core CPU and an SSD, but training takes hours. Switching to a GPU cuts training time dramatically. Which architectural property explains this speedup?",
+      "options": [
+        "GPUs have 4 ultra-fast sequential cores optimised for branching `if/else` logic.",
+        "GPUs have higher-capacity non-volatile flash storage than SSDs.",
+        "GPUs contain thousands of smaller cores designed to execute massive matrix/pixel operations in parallel.",
+        "GPUs bypass the operating system and compile Python directly to SSD sectors."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Deep neural network training relies on massive parallel numerical calculations\u2014matching GPU architecture (thousands of parallel cores) rather than CPU architecture (few fast sequential cores).",
+      "incorrectOptionExplanations": [
+        "Having few fast sequential cores describes a CPU, not a GPU.",
+        "GPUs do not serve as non-volatile secondary storage.",
+        "Correct explanation.",
+        "GPUs do not compile Python to SSD sectors or bypass OS device drivers."
+      ],
+      "noteRef": {
+        "title": "C02 \u2014 Hardware & Memory",
+        "href": "/notes/02-hardware-software/hardware-and-memory"
+      },
+      "sourceRef": "C02 \u2014 Hardware & Software / C14"
+    },
+    {
+      "id": "mock-06-q04",
+      "testId": "mock-06",
+      "number": 4,
+      "type": "mcq",
+      "primaryConcept": "Terminal & CLI",
+      "secondaryConcepts": [
+        "File Management"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "In `labsvc_06/`, `log.txt` initially holds `START`. A script runs `echo \"MID\" >> log.txt`, then `echo \"END\" > log.txt`, and finally `cat log.txt`. What is printed?",
+      "options": [
+        "`END`",
+        "`START\\nEND`",
+        "`START\\nMID\\nEND`",
+        "`MID\\nEND`"
+      ],
+      "correctAnswer": 0,
+      "explanation": "`>>` appends `MID` (`START\\nMID`), but the final `echo \"END\" > log.txt` uses single `>`, which overwrites the entire file with `END`.",
+      "incorrectOptionExplanations": [
+        "Correct explanation.",
+        "`>` replaces the entire file rather than keeping `START`.",
+        "Single `>` on the second echo erases prior content.",
+        "Single `>` overwrites `START` and `MID`."
+      ],
+      "noteRef": {
+        "title": "C03 \u2014 Terminal & CLI",
+        "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+      },
+      "sourceRef": "C03 \u2014 Terminal & CLI Commands"
+    },
+    {
+      "id": "mock-06-q05",
+      "testId": "mock-06",
+      "number": 5,
+      "type": "mcq",
+      "primaryConcept": "Number Systems & Encoding",
+      "secondaryConcepts": [
+        "ASCII",
+        "Bits & Bytes"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "In `labsvc_06`, uppercase ASCII character `'G'` has decimal code `71`. If a developer flips bit 5 (adds `32`) to store lowercase `'g'` in 1 byte, what is its decimal code and how many bits remain unused if standard ASCII only needs 7 bits?",
+      "options": [
+        "Decimal `39`; 2 padding bits",
+        "Decimal `104`; 0 padding bits",
+        "Decimal `103`; 4 padding bits",
+        "Decimal `103`; 1 padding bit in an 8-bit byte"
+      ],
+      "correctAnswer": 3,
+      "explanation": "In ASCII, `lowercase = uppercase + 32`: `71 + 32 = 103`. Standard ASCII uses 7 bits, so storing it in 1 byte (8 bits) leaves 1 padding bit.",
+      "incorrectOptionExplanations": [
+        "Subtracting 32 moves away from lowercase codes.",
+        "Adding 33 gives the wrong letter.",
+        "1 byte is 8 bits, so 8 - 7 = 1 padding bit, not 4.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C08 \u2014 Text, Images & Encryption",
+        "href": "/notes/08-number-systems-encoding/text-images-signatures-encryption"
+      },
+      "sourceRef": "C08 \u2014 Number Systems & Data Encoding"
+    },
+    {
+      "id": "mock-06-q06",
+      "testId": "mock-06",
+      "number": 6,
+      "type": "mcq",
+      "primaryConcept": "OS & Process Management",
+      "secondaryConcepts": [
+        "Signals",
+        "Resource Contention"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "Process `3202` (`python3 worker_6.py`) is consuming 99% CPU on a single-core VM. An admin runs `kill 3202` and waits, but the process catches `SIGTERM` and keeps running. What happens to other apps on the VM, and which command forces immediate termination?",
+      "options": [
+        "The VM freezes permanently; run `rm -f {pid}`.",
+        "Other apps continue running slowly via OS timeslicing; run `kill -9 {pid}` to send `SIGKILL (9)`.",
+        "Other apps crash due to shared RAM; run `ps aux` to terminate it.",
+        "The OS automatically reboots after 30 ms; run `htop`."
+      ],
+      "correctAnswer": 1,
+      "explanation": "OS timeslicing keeps other processes scheduled (slower, no crash), and isolated RAM protects them. When `SIGTERM (15)` is ignored, `kill -9 <PID>` sends `SIGKILL (9)` to force immediate exit.",
+      "incorrectOptionExplanations": [
+        "`rm` deletes files, not processes, and timeslicing prevents a total OS crash.",
+        "Correct explanation.",
+        "Processes have isolated RAM spaces; `ps aux` only lists processes.",
+        "Timeslicing does not reboot the OS."
+      ],
+      "noteRef": {
+        "title": "C05 \u2014 OS & Process Management",
+        "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+      },
+      "sourceRef": "C05 \u2014 The OS & Process Management"
+    },
+    {
+      "id": "mock-06-q07",
+      "testId": "mock-06",
+      "number": 7,
+      "type": "mcq",
+      "primaryConcept": "Compilation & Execution",
+      "secondaryConcepts": [
+        "Permissions",
+        "Paths"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "A student writes a Bash script `deploy_6.sh` starting with `#!/bin/bash`, sets `chmod 644 deploy_6.sh`, and runs `./deploy_6.sh`. What is the outcome?",
+      "options": [
+        "It fails because relative path `./` cannot be used with a shebang.",
+        "It executes successfully because the shebang line overrides file permissions.",
+        "It fails with `Permission denied` because `644` (`rw-r--r--`) lacks the execute (`x`) bit.",
+        "It compiles `deploy_{t}.sh` into `a.out` first."
+      ],
+      "correctAnswer": 2,
+      "explanation": "A script needs BOTH a valid interpreter/shebang AND execute permission (`x`). Mode `644` has no `x` bit, so `./deploy` fails with Permission denied until `chmod +x` (or `755`) is applied.",
+      "incorrectOptionExplanations": [
+        "Relative paths like `./script.sh` work normally once execute permission is set.",
+        "A shebang never bypasses OS execute permissions.",
+        "Correct explanation.",
+        "Bash is interpreted, not compiled into `a.out`."
+      ],
+      "noteRef": {
+        "title": "C07 \u2014 Compilers vs Interpreters",
+        "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+      },
+      "sourceRef": "C07 \u2014 How Software Works / C06"
+    },
+    {
+      "id": "mock-06-q08",
+      "testId": "mock-06",
+      "number": 8,
+      "type": "mcq",
+      "primaryConcept": "Interfaces",
+      "secondaryConcepts": [
+        "Networking"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "An automated script for `labsvc_06` runs `curl http://localhost:8060/status` and receives `{\"ok\": true}`. Which interface is being used between the script and the service?",
+      "options": [
+        "Desktop Metaphor",
+        "Hardware Interrupt Bus",
+        "GUI (Graphical User Interface)",
+        "API (Application Programming Interface)"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Program-to-program request/response communication returning structured JSON without screens or buttons uses an API.",
+      "incorrectOptionExplanations": [
+        "Desktop Metaphor describes GUI design (files as paper, folders, trash can).",
+        "HTTP requests over `curl` operate at the software API layer.",
+        "No visual windows, icons, or buttons are involved.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C04 \u2014 Interfaces (CLI, GUI, API)",
+        "href": "/notes/04-interfaces/cli-gui-api"
+      },
+      "sourceRef": "C04 \u2014 Interfaces (CLI, GUI, API)"
+    },
+    {
+      "id": "mock-06-q09",
+      "testId": "mock-06",
+      "number": 9,
+      "type": "mcq",
+      "primaryConcept": "Linux Permissions & PATH",
+      "secondaryConcepts": [
+        "Terminal & CLI"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "On `labsvc_06`, `PATH` is set to `/usr/local/bin:/usr/bin:/bin`. A custom tool `scan` exists in BOTH `/usr/local/bin/scan` and `/bin/scan`. When the user types `scan`, which binary runs and what does `which scan` print?",
+      "options": [
+        "`/usr/local/bin/scan`, because the shell searches `PATH` from left to right and stops at the first match.",
+        "Both run simultaneously via timeslicing.",
+        "`which scan` fails because duplicate names are forbidden in `PATH`.",
+        "`/bin/scan`, because `/bin` is the system root."
+      ],
+      "correctAnswer": 0,
+      "explanation": "The shell searches colon-separated `PATH` directories from left to right and executes the first matching executable (`/usr/local/bin/scan`).",
+      "incorrectOptionExplanations": [
+        "Correct explanation.",
+        "Only one executable is invoked.",
+        "Duplicate names in different `PATH` folders are valid; the leftmost wins.",
+        "`PATH` is searched left-to-right, not right-to-left."
+      ],
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "C06 \u2014 The OS & the Filesystem"
+    },
+    {
+      "id": "mock-06-q10",
+      "testId": "mock-06",
+      "number": 10,
+      "type": "mcq",
+      "primaryConcept": "Git & GitHub",
+      "secondaryConcepts": [
+        "Collaboration"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "Developer `dev6` already cloned `https://github.com/NST/labsvc_06.git` yesterday and has local commits. Today, a teammate pushed new commits to `main`. Which command fetches and integrates the teammate's updates into the existing local folder?",
+      "options": [
+        "`git clone https://github.com/NST/{svc}.git`",
+        "`git pull`",
+        "`git init`",
+        "`git remote -v`"
+      ],
+      "correctAnswer": 1,
+      "explanation": "`git clone` downloads a repository for the first time; `git pull` updates an already-existing local repository with the latest remote changes.",
+      "incorrectOptionExplanations": [
+        "`git clone` creates a new separate copy rather than updating the existing working repo.",
+        "Correct explanation.",
+        "`git init` initializes an empty local repo.",
+        "`git remote -v` only displays remote URLs."
+      ],
+      "noteRef": {
+        "title": "C09 \u2014 Git & GitHub Workflow",
+        "href": "/notes/09-git-github/git-workflow-and-github"
+      },
+      "sourceRef": "C09 \u2014 Git & GitHub Collaboration"
+    },
+    {
+      "id": "mock-06-q11",
+      "testId": "mock-06",
+      "number": 11,
+      "type": "mcq",
+      "primaryConcept": "Number Systems & Encoding",
+      "secondaryConcepts": [
+        "Overflow",
+        "Binary Arithmetic"
+      ],
+      "difficulty": "Advanced",
+      "points": 6,
+      "question": "An embedded counter on `labsvc_06` uses an unsigned `5`-bit integer (maximum value `31`). Currently it holds `31`. If `9` events occur, what value does the counter store after overflow wraparound, and why?",
+      "options": [
+        "`0`, because any overflow always resets to `0` regardless of the increment.",
+        "`31`, because unsigned counters saturate at their maximum.",
+        "`8`, because adding `9` exceeds `31`, drops the extra high bit, and wraps modulo `32`.",
+        "`40`, because the OS automatically upgrades it to 16 bits."
+      ],
+      "correctAnswer": 2,
+      "explanation": "An unsigned `5`-bit counter holds `0` to `31` (`2^5 = 32` values). `31 + 9 = 40`; dropping the overflow bit yields `(40) mod 32 = 8`.",
+      "incorrectOptionExplanations": [
+        "Adding 1 to max wraps to 0; adding more wraps to the remainder.",
+        "Unsigned binary counters wrap around rather than clamping/saturating.",
+        "Correct explanation.",
+        "Fixed-width hardware/register integers do not auto-resize."
+      ],
+      "noteRef": {
+        "title": "C08 \u2014 Bits, Bytes & Overflow",
+        "href": "/notes/08-number-systems-encoding/bits-bytes-and-overflow"
+      },
+      "sourceRef": "C08 \u2014 Bits, Bytes & Overflow"
+    },
+    {
+      "id": "mock-06-q12",
+      "testId": "mock-06",
+      "number": 12,
+      "type": "mcq",
+      "primaryConcept": "Linux Permissions",
+      "secondaryConcepts": [
+        "Gzip",
+        "File Management"
+      ],
+      "difficulty": "Advanced",
+      "points": 6,
+      "question": "Directory `logs_6/` has mode `755` and contains `app.log` (`644`). User `dev6` runs `gzip -k app.log`, then `chmod 444 app.log`, and finally `cp app.log.gz /tmp/`. Which statement is TRUE about the final state?",
+      "options": [
+        "`chmod 444 app.log` prevents anyone from reading `app.log`.",
+        "`gzip -k` bundles the entire `logs_{t}/` folder into one `.gz` file.",
+        "`app.log` was deleted by `gzip`, and `cp` fails because `app.log` is `444`.",
+        "Both `app.log` (`444`) and `app.log.gz` (`644`) remain in `logs_{t}/`, and `/tmp/app.log.gz` exists."
+      ],
+      "correctAnswer": 3,
+      "explanation": "`gzip -k` keeps the original `app.log` while creating `app.log.gz`. `chmod 444` makes `app.log` read-only (`r--r--r--`), and `cp` copies `app.log.gz` to `/tmp/`.",
+      "incorrectOptionExplanations": [
+        "`444` grants read permission (`4`) to owner, group, and others.",
+        "`gzip` compresses individual files; `tar` bundles directories.",
+        "`-k` preserves the original file, and `444` allows reading.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "C06 / C03 \u2014 File Management & Permissions"
+    },
+    {
+      "id": "mock-06-q13",
+      "testId": "mock-06",
+      "number": 13,
+      "type": "mcq",
+      "primaryConcept": "Networking",
+      "secondaryConcepts": [
+        "Addressing"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "In `labsvc_06`'s office, `20` computers are wired to a central Switch, which connects to a Router leading to the ISP. Which address type does the Switch inspect vs the Router?",
+      "options": [
+        "Switch uses MAC addresses inside the local network; Router uses IP addresses to direct traffic between networks.",
+        "Both use only DNS domain names.",
+        "Switch uses TCP ports; Router uses ASCII codes.",
+        "Switch uses IP addresses; Router uses MAC addresses."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Memory rule from Lecture 11: Switch = MAC address (local network); Router = IP address (between networks).",
+      "incorrectOptionExplanations": [
+        "Correct explanation.",
+        "DNS translates domains to IPs before routing.",
+        "Neither uses ASCII codes for forwarding.",
+        "The roles are reversed."
+      ],
+      "noteRef": {
+        "title": "C11 \u2014 Networks & IPv4",
+        "href": "/notes/11-the-network/networks-devices-and-ip"
+      },
+      "sourceRef": "C11 \u2014 The Network"
+    },
+    {
+      "id": "mock-06-q14",
+      "testId": "mock-06",
+      "number": 14,
+      "type": "mcq",
+      "primaryConcept": "Git & GitHub",
+      "secondaryConcepts": [
+        "Branching",
+        "Collaboration"
+      ],
+      "difficulty": "Advanced",
+      "points": 6,
+      "question": "On `labsvc_06`, `main` has 1 commit. `dev6` runs `git checkout -b feat-auth-6`, creates `api.py`, runs `git add api.py && git commit -m \"Add API\"`, switches back with `git checkout main`, merges `feat-auth-6`, and runs `git push -u origin main`. Which statement is FALSE?",
+      "options": [
+        "`main` on `origin` now includes the `Add API` changes.",
+        "Future pushes from `main` can simply use `git push` because `-u` set upstream tracking.",
+        "Because `{user}` forgot `git init`, all commits were lost.",
+        "Working on `{branch}` kept `main` isolated until the merge."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The repo already had 1 commit on `main` (so it was already initialized). All steps succeeded and `origin/main` received the merged changes.",
+      "incorrectOptionExplanations": [
+        "This is true\u2014`main` was merged and pushed.",
+        "This is true\u2014`-u` remembers the upstream branch link.",
+        "Correctly identified as FALSE\u2014the repo was already initialized.",
+        "This is true\u2014feature branches isolate work until merge."
+      ],
+      "noteRef": {
+        "title": "C09 \u2014 Git & GitHub Workflow",
+        "href": "/notes/09-git-github/git-workflow-and-github"
+      },
+      "sourceRef": "C09 \u2014 Git & GitHub Collaboration"
+    },
+    {
+      "id": "mock-06-q15",
+      "testId": "mock-06",
+      "number": 15,
+      "type": "mcq",
+      "primaryConcept": "Number Systems & Encoding",
+      "secondaryConcepts": [
+        "Storage Units"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "An uncompressed `100 \u00d7 60` image is stored first as 8-bit RGB (`18000` bytes) and then converted to RGBA (`24000` bytes) by adding an Alpha channel. What does the Alpha channel control, and how many bytes per pixel does RGBA use?",
+      "options": [
+        "Alpha stores the PNG `IHDR` magic number; 8 bytes per pixel.",
+        "Alpha controls brightness; 3 bytes per pixel.",
+        "Alpha controls transparency (`0` transparent, `255` opaque); 4 bytes per pixel.",
+        "Alpha compresses the image; 2 bytes per pixel."
+      ],
+      "correctAnswer": 2,
+      "explanation": "RGB uses 3 bytes/pixel (R, G, B). RGBA adds a 4th Alpha byte/pixel for transparency (`0` to `255`), totaling 4 bytes/pixel.",
+      "incorrectOptionExplanations": [
+        "Magic numbers are file-header bytes, not per-pixel channels.",
+        "RGB is 3 bytes/pixel; RGBA adds a 4th channel for transparency.",
+        "Correct explanation.",
+        "RGBA is uncompressed 4 bytes/pixel."
+      ],
+      "noteRef": {
+        "title": "C08 \u2014 Text, Images & Encryption",
+        "href": "/notes/08-number-systems-encoding/text-images-signatures-encryption"
+      },
+      "sourceRef": "C08 \u2014 Images: Pixels, RGB & RGBA"
+    },
+    {
+      "id": "mock-06-q16",
+      "testId": "mock-06",
+      "number": 16,
+      "type": "mcq",
+      "primaryConcept": "Number Systems & Encoding",
+      "secondaryConcepts": [
+        "Security"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "A student converts `labsvc_06`'s config text into UTF-8 hexadecimal bytes and claims it is now encrypted. Why is this incorrect?",
+      "options": [
+        "Hexadecimal automatically deletes spaces.",
+        "Encryption only works on PNG images.",
+        "UTF-8 only works on English uppercase letters.",
+        "Encoding uses a known, public rule so anyone can decode it; encryption requires a secret key."
+      ],
+      "correctAnswer": 3,
+      "explanation": "Encoding (ASCII, UTF-8, Hex) represents data using a public rule. Encryption protects data using a secret key.",
+      "incorrectOptionExplanations": [
+        "Spaces have their own byte value (`0x20`).",
+        "Encryption protects any plaintext data.",
+        "UTF-8 covers all Unicode characters worldwide.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C08 \u2014 Text, Images & Encryption",
+        "href": "/notes/08-number-systems-encoding/text-images-signatures-encryption"
+      },
+      "sourceRef": "C08 \u2014 Encoding vs Encryption"
+    },
+    {
+      "id": "mock-06-q17",
+      "testId": "mock-06",
+      "number": 17,
+      "type": "mcq",
+      "primaryConcept": "AI Foundations",
+      "secondaryConcepts": [
+        "Coding 1.0 vs 2.0"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "Team `labsvc_06` builds a spam filter using labelled emails (Experience `E`) and measures success solely by 'emails scanned per second' (`P`). Even if `P` is 10,000/sec, why can the system still fail in production?",
+      "options": [
+        "Because Coding 2.0 does not use labelled examples.",
+        "Because spam filters must be written in C (1972).",
+        "Because `E` is irrelevant once `P` is high.",
+        "Because `P` does not measure the actual Task `T` (catching spam accurately); a fast model could misclassify every email."
+      ],
+      "correctAnswer": 3,
+      "explanation": "In `(T, P, E)`, the performance measure `P` must match the real objective `T`. Throughput alone ignores classification accuracy.",
+      "incorrectOptionExplanations": [
+        "Coding 2.0 relies directly on labelled examples.",
+        "Language choice is not the issue; the metric is.",
+        "All three (`T, P, E`) matter together.",
+        "Correct explanation."
+      ],
+      "noteRef": {
+        "title": "C15 \u2014 Five Foundational Papers",
+        "href": "/notes/15-five-foundational-papers/five-papers-1936-1978"
+      },
+      "sourceRef": "C15 \u2014 What Does It Mean for a Machine to Learn?"
+    },
+    {
+      "id": "mock-06-q18",
+      "testId": "mock-06",
+      "number": 18,
+      "type": "mcq",
+      "primaryConcept": "AI Foundations",
+      "secondaryConcepts": [
+        "Transformers",
+        "GPT-3"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "When a user gives a large language model 3 examples in a prompt (`cat -> tac, dog -> god, gat -> ?`) and it answers correctly, what happened inside the model?",
+      "options": [
+        "Backpropagation permanently updated the model's 175B parameters during that prompt.",
+        "The model used the examples purely as context (few-shot prompting) without updating its learned parameters.",
+        "A single perceptron drew a straight line in 2D.",
+        "PageRank re-ranked the prompt words."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Few-shot prompting uses instructions and examples as input context without updating the model's internal parameters.",
+      "incorrectOptionExplanations": [
+        "Training updates parameters; prompting does not.",
+        "Correct explanation.",
+        "Single perceptrons cannot perform sequence reversal.",
+        "PageRank ranks web pages, not prompt tokens."
+      ],
+      "noteRef": {
+        "title": "C16 \u2014 Next Five Papers",
+        "href": "/notes/16-next-five-papers/next-five-papers-1986-2020"
+      },
+      "sourceRef": "C16 \u2014 Brown et al. (2020) Few-Shot Learning"
+    },
+    {
+      "id": "mock-06-q19",
+      "testId": "mock-06",
+      "number": 19,
+      "type": "numerical",
+      "primaryConcept": "Number Systems & Conversions",
+      "secondaryConcepts": [
+        "Binary"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "Convert the unsigned binary number `101011\u2082` into decimal.",
+      "correctAnswer": "43",
+      "acceptedAnswers": [
+        "43"
+      ],
+      "answerFormatHint": "Enter an integer in decimal (e.g. 25).",
+      "explanation": "Multiply each bit of `101011\u2082` by its power of 2 from right to left and sum the active bits to get `43`.",
+      "noteRef": {
+        "title": "C08 \u2014 Number Systems & Conversions",
+        "href": "/notes/08-number-systems-encoding/number-systems-and-conversions"
+      },
+      "sourceRef": "C08 \u2014 Binary to Decimal"
+    },
+    {
+      "id": "mock-06-q20",
+      "testId": "mock-06",
+      "number": 20,
+      "type": "numerical",
+      "primaryConcept": "Number Systems & Conversions",
+      "secondaryConcepts": [
+        "Hexadecimal"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "Convert decimal `212` to hexadecimal (base-16). Do not include `0x`.",
+      "correctAnswer": "D4",
+      "acceptedAnswers": [
+        "D4",
+        "d4",
+        "0xd4",
+        "0xD4"
+      ],
+      "answerFormatHint": "Enter hex digits (case-insensitive, e.g. D6).",
+      "explanation": "`212 / 16 = 13` remainder `4` -> `D4` (`13\u00d716 + 4 = 212`).",
+      "noteRef": {
+        "title": "C08 \u2014 Number Systems & Conversions",
+        "href": "/notes/08-number-systems-encoding/number-systems-and-conversions"
+      },
+      "sourceRef": "C08 \u2014 Hexadecimal"
+    },
+    {
+      "id": "mock-06-q21",
+      "testId": "mock-06",
+      "number": 21,
+      "type": "numerical",
+      "primaryConcept": "Linux Permissions",
+      "secondaryConcepts": [
+        "Octal Notation"
+      ],
+      "difficulty": "Intermediate",
+      "points": 2,
+      "question": "Convert the symbolic permission string `-rwxr-x--x` into its 3-digit octal (numeric) `chmod` value.",
+      "correctAnswer": "751",
+      "acceptedAnswers": [
+        "751",
+        "0751"
+      ],
+      "answerFormatHint": "Enter a 3-digit octal number (e.g. 755).",
+      "explanation": "Use `r=4, w=2, x=1` for each 3-character group (Owner, Group, Others) in `rwxr-x--x` -> `751`.",
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "C06 \u2014 Permission Flags"
+    },
+    {
+      "id": "mock-06-q22",
+      "testId": "mock-06",
+      "number": 22,
+      "type": "numerical",
+      "primaryConcept": "Image Storage Calculations",
+      "secondaryConcepts": [
+        "Bytes & Pixels"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "Calculate the uncompressed pixel data size in **bytes** of a `110 \u00d7 70` 8-bit **RGBA** image.",
+      "correctAnswer": "30800",
+      "acceptedAnswers": [
+        "30800",
+        "30,800",
+        "30800 bytes"
+      ],
+      "answerFormatHint": "Enter the integer number of bytes.",
+      "explanation": "An 8-bit RGBA pixel uses `4` bytes. `110 \u00d7 70 \u00d7 4 = 30800` bytes.",
+      "noteRef": {
+        "title": "C08 \u2014 Text, Images & Encryption",
+        "href": "/notes/08-number-systems-encoding/text-images-signatures-encryption"
+      },
+      "sourceRef": "C08 \u2014 Images: Pixels, RGB & RGBA"
+    },
+    {
+      "id": "mock-06-q23",
+      "testId": "mock-06",
+      "number": 23,
+      "type": "numerical",
+      "primaryConcept": "Memory & Storage Units",
+      "secondaryConcepts": [
+        "Binary Units"
+      ],
+      "difficulty": "Advanced",
+      "points": 4,
+      "question": "Exactly how many **bytes** are in `5 KiB` (kibibytes)?",
+      "correctAnswer": "5120",
+      "acceptedAnswers": [
+        "5120",
+        "5,120",
+        "5120 bytes"
+      ],
+      "answerFormatHint": "Enter an integer number of bytes.",
+      "explanation": "Binary unit `1 KiB = 1,024 bytes` (unlike decimal `1 kB = 1,000 bytes`). `5 \u00d7 1024 = 5120` bytes.",
+      "noteRef": {
+        "title": "C08 \u2014 Bits, Bytes & Overflow",
+        "href": "/notes/08-number-systems-encoding/bits-bytes-and-overflow"
+      },
+      "sourceRef": "C08 \u2014 Decimal vs Binary Storage Units"
+    },
+    {
+      "id": "mock-06-q24",
+      "testId": "mock-06",
+      "number": 24,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs1",
+      "primaryConcept": "Computer Systems",
+      "secondaryConcepts": [
+        "Embedded Systems"
+      ],
+      "difficulty": "Foundational",
+      "points": 4,
+      "question": "Why is the Memory-Constrained Edge Camera classified as an embedded system rather than a general-purpose desktop PC?",
+      "options": [
+        "It cannot execute stored programs.",
+        "It uses a GPU instead of an OS.",
+        "It contains a small dedicated computer built into a device to control its specific operation.",
+        "It has no CPU or memory."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Embedded systems are small computers built inside machines/devices to control how they work.",
+      "incorrectOptionExplanations": [
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "Embedded systems are small computers built inside machines/devices to control how they work.",
+        "Does not match the system specifications in the passage."
+      ],
+      "noteRef": {
+        "title": "C02 \u2014 Hardware & Memory",
+        "href": "/notes/02-hardware-software/hardware-and-memory"
+      },
+      "sourceRef": "Integrated Case Study 1"
+    },
+    {
+      "id": "mock-06-q25",
+      "testId": "mock-06",
+      "number": 25,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs1",
+      "primaryConcept": "Image Storage",
+      "secondaryConcepts": [
+        "Bytes"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "How many bytes does one uncompressed `440 \u00d7 240` RGB status snapshot require?",
+      "options": [
+        "316800 bytes",
+        "422400 bytes",
+        "680 bytes",
+        "105600 bytes"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Uncompressed RGB size = `width \u00d7 height \u00d7 3` = `440 \u00d7 240 \u00d7 3 = 316800` bytes.",
+      "incorrectOptionExplanations": [
+        "Uncompressed RGB size = `width \u00d7 height \u00d7 3` = `440 \u00d7 240 \u00d7 3 = 316800` bytes.",
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage."
+      ],
+      "noteRef": {
+        "title": "C08 \u2014 Text, Images & Encryption",
+        "href": "/notes/08-number-systems-encoding/text-images-signatures-encryption"
+      },
+      "sourceRef": "Integrated Case Study 1"
+    },
+    {
+      "id": "mock-06-q26",
+      "testId": "mock-06",
+      "number": 26,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs1",
+      "primaryConcept": "Networking",
+      "secondaryConcepts": [
+        "LAN Devices",
+        "Addressing"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "If the `22` terminals were wired directly to every other terminal instead of using the Switch, how many cables would be required?",
+      "options": [
+        "22",
+        "44",
+        "231",
+        "484"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Direct mesh cabling requires `n(n-1)/2 = 22\u00d721/2 = 231` cables.",
+      "incorrectOptionExplanations": [
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "Direct mesh cabling requires `n(n-1)/2 = 22\u00d721/2 = 231` cables.",
+        "Does not match the system specifications in the passage."
+      ],
+      "noteRef": {
+        "title": "C11 \u2014 Networks & IPv4",
+        "href": "/notes/11-the-network/networks-devices-and-ip"
+      },
+      "sourceRef": "Integrated Case Study 1"
+    },
+    {
+      "id": "mock-06-q27",
+      "testId": "mock-06",
+      "number": 27,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs1",
+      "primaryConcept": "Interfaces",
+      "secondaryConcepts": [
+        "API",
+        "Security"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "When Node #06 sends JSON payloads over HTTPS to the central server without a screen, which interface and protocol property apply?",
+      "options": [
+        "Desktop Metaphor",
+        "GUI over unencrypted HTTP",
+        "API communication over encrypted HTTPS",
+        "CLI via `htop`"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Program-to-program JSON exchange uses an API, and HTTPS provides encrypted communication.",
+      "incorrectOptionExplanations": [
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "Program-to-program JSON exchange uses an API, and HTTPS provides encrypted communication.",
+        "Does not match the system specifications in the passage."
+      ],
+      "noteRef": {
+        "title": "C02 \u2014 Hardware & Memory",
+        "href": "/notes/02-hardware-software/hardware-and-memory"
+      },
+      "sourceRef": "Integrated Case Study 1"
+    },
+    {
+      "id": "mock-06-q28",
+      "testId": "mock-06",
+      "number": 28,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs1",
+      "primaryConcept": "Memory & Storage",
+      "secondaryConcepts": [
+        "Volatility"
+      ],
+      "difficulty": "Advanced",
+      "points": 4,
+      "question": "If the node loses power before flushing its `384 KiB` RAM buffer to flash storage, what happens to unsaved logs in RAM?",
+      "options": [
+        "They automatically upload to GitHub.",
+        "They wrap around to `255`.",
+        "They are preserved in RAM because KiB units are non-volatile.",
+        "They are lost because RAM is volatile working memory that clears on power loss."
+      ],
+      "correctAnswer": 3,
+      "explanation": "RAM is volatile primary memory; contents not written to secondary/flash storage are lost on power-off.",
+      "incorrectOptionExplanations": [
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "Does not match the system specifications in the passage.",
+        "RAM is volatile primary memory; contents not written to secondary/flash storage are lost on power-off."
+      ],
+      "noteRef": {
+        "title": "C02 \u2014 Hardware & Memory",
+        "href": "/notes/02-hardware-software/hardware-and-memory"
+      },
+      "sourceRef": "Integrated Case Study 1"
+    },
+    {
+      "id": "mock-06-q29",
+      "testId": "mock-06",
+      "number": 29,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs2",
+      "primaryConcept": "Process Monitoring",
+      "secondaryConcepts": [
+        "CLI"
+      ],
+      "difficulty": "Foundational",
+      "points": 4,
+      "question": "On `node-06`, why did the engineer run `ps aux` instead of plain `ps`?",
+      "options": [
+        "Plain `ps` deletes child processes.",
+        "`ps aux` automatically kills high-CPU scripts.",
+        "`ps` only works on Windows.",
+        "Plain `ps` only shows processes in the current terminal session; `ps aux` shows all system-wide processes."
+      ],
+      "correctAnswer": 3,
+      "explanation": "Plain `ps` is limited to the current terminal session; `ps aux` shows system-wide processes with USER, PID, %CPU, %MEM, COMMAND.",
+      "incorrectOptionExplanations": [
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Plain `ps` is limited to the current terminal session; `ps aux` shows system-wide processes with USER, PID, %CPU, %MEM, COMMAND."
+      ],
+      "noteRef": {
+        "title": "C05 \u2014 OS & Process Management",
+        "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+      },
+      "sourceRef": "Integrated Case Study 2"
+    },
+    {
+      "id": "mock-06-q30",
+      "testId": "mock-06",
+      "number": 30,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs2",
+      "primaryConcept": "Process Management",
+      "secondaryConcepts": [
+        "Signals"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "If `kill 4278` (`SIGTERM`) fails to stop `loop_6.py`, which command forces immediate termination?",
+      "options": [
+        "`kill -9 4278`",
+        "`chmod 000 4278`",
+        "`rm -rf 4278`",
+        "`ps -9`"
+      ],
+      "correctAnswer": 0,
+      "explanation": "`kill -9 <PID>` sends `SIGKILL (9)`, forcing immediate termination without cleanup.",
+      "incorrectOptionExplanations": [
+        "`kill -9 <PID>` sends `SIGKILL (9)`, forcing immediate termination without cleanup.",
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state."
+      ],
+      "noteRef": {
+        "title": "C05 \u2014 OS & Process Management",
+        "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+      },
+      "sourceRef": "Integrated Case Study 2"
+    },
+    {
+      "id": "mock-06-q31",
+      "testId": "mock-06",
+      "number": 31,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs2",
+      "primaryConcept": "Linux Permissions",
+      "secondaryConcepts": [
+        "Execution"
+      ],
+      "difficulty": "Intermediate",
+      "points": 4,
+      "question": "The engineer tries `./fix.sh` inside `/srv/app_6/scripts` and gets `Permission denied`. Which command fixes this?",
+      "options": [
+        "`which fix.sh`",
+        "`mv fix.sh fix.py`",
+        "`chmod +x fix.sh` (or `chmod 755 fix.sh`)",
+        "`cat fix.sh`"
+      ],
+      "correctAnswer": 2,
+      "explanation": "`fix.sh` has mode `644` (`-rw-r--r--`), lacking the execute bit (`x`). `chmod +x` enables execution.",
+      "incorrectOptionExplanations": [
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "`fix.sh` has mode `644` (`-rw-r--r--`), lacking the execute bit (`x`). `chmod +x` enables execution.",
+        "Incorrect based on the incident log and system state."
+      ],
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "Integrated Case Study 2"
+    },
+    {
+      "id": "mock-06-q32",
+      "testId": "mock-06",
+      "number": 32,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs2",
+      "primaryConcept": "Linux Permissions",
+      "secondaryConcepts": [
+        "Directory Traversal"
+      ],
+      "difficulty": "Advanced",
+      "points": 4,
+      "question": "Before patching, the engineer tries `touch /srv/app_6/scripts/new.sh`. Why does this fail?",
+      "options": [
+        "Because `fix.sh` is `644`.",
+        "Because `node server.js` locks all folders.",
+        "Because `scripts/` has mode `555` (`dr-xr-xr-x`), which lacks write (`w`) permission to create new entries.",
+        "Because `touch` cannot create `.sh` files."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Creating a file inside `scripts/` requires write permission on the `scripts/` directory itself.",
+      "incorrectOptionExplanations": [
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Creating a file inside `scripts/` requires write permission on the `scripts/` directory itself.",
+        "Incorrect based on the incident log and system state."
+      ],
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "Integrated Case Study 2"
+    },
+    {
+      "id": "mock-06-q33",
+      "testId": "mock-06",
+      "number": 33,
+      "type": "case-study-mcq",
+      "passageId": "mock-06-cs2",
+      "primaryConcept": "Git & GitHub",
+      "secondaryConcepts": [
+        "Collaboration"
+      ],
+      "difficulty": "Advanced",
+      "points": 4,
+      "question": "After fixing `fix.sh` on branch `hotfix-6`, the engineer runs `git add fix.sh && git commit -m \"Fix\"` and opens a Pull Request on GitHub. What is the purpose of the Pull Request?",
+      "options": [
+        "To compress the `.git` folder with `gzip`.",
+        "To bypass `chmod` permissions on Linux.",
+        "To convert Python into C.",
+        "To let teammates review, leave feedback, and approve changes before merging into `main`."
+      ],
+      "correctAnswer": 3,
+      "explanation": "Pull Requests enable peer code review and approval on feature/hotfix branches before merging to `main`.",
+      "incorrectOptionExplanations": [
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Incorrect based on the incident log and system state.",
+        "Pull Requests enable peer code review and approval on feature/hotfix branches before merging to `main`."
+      ],
+      "noteRef": {
+        "title": "C09 \u2014 Git & GitHub Workflow",
+        "href": "/notes/09-git-github/git-workflow-and-github"
+      },
+      "sourceRef": "Integrated Case Study 2"
+    },
+    {
+      "id": "mock-06-q34",
+      "testId": "mock-06",
+      "number": 34,
+      "type": "matching",
+      "primaryConcept": "CLI & Permissions",
+      "secondaryConcepts": [
+        "Git",
+        "File Management"
+      ],
+      "difficulty": "Intermediate",
+      "points": 2,
+      "question": "Match each scenario (Column A) in Lab 06 to the exact command or mode (Column B) that resolves it.",
+      "pairs": [
+        {
+          "left": "Make a script executable for owner only while keeping read/write",
+          "right": "chmod 700 script.sh"
+        },
+        {
+          "left": "Append a status line without erasing existing log content",
+          "right": "echo \"OK\" >> app.log"
+        },
+        {
+          "left": "Force-stop a frozen process ignoring SIGTERM",
+          "right": "kill -9 <PID>"
+        },
+        {
+          "left": "Update an already-cloned local repository from GitHub",
+          "right": "git pull"
+        }
+      ],
+      "correctAnswer": "0:0,1:1,2:2,3:3",
+      "explanation": "`chmod 700` sets `rwx------`; `>>` appends; `kill -9` sends `SIGKILL`; `git pull` updates an existing local repo.",
+      "noteRef": {
+        "title": "C06 \u2014 Filesystem, Permissions & PATH",
+        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+      },
+      "sourceRef": "C03, C05, C06, C09"
+    },
+    {
+      "id": "mock-06-q35",
+      "testId": "mock-06",
+      "number": 35,
+      "type": "matching",
+      "primaryConcept": "Architecture & AI",
+      "secondaryConcepts": [
+        "Networks",
+        "Encoding"
+      ],
+      "difficulty": "Foundational",
+      "points": 2,
+      "question": "Match each computing concept (Column A) in Assessment 06 to its accurate technical behaviour (Column B).",
+      "pairs": [
+        {
+          "left": "Switch (LAN)",
+          "right": "Forwards frames to intended device using MAC address"
+        },
+        {
+          "left": "Router",
+          "right": "Directs packets between networks using IP address"
+        },
+        {
+          "left": "UTF-8",
+          "right": "Encodes Unicode code points into 1\u20134 bytes"
+        },
+        {
+          "left": "Backpropagation",
+          "right": "Computes each weight's contribution to error"
+        }
+      ],
+      "correctAnswer": "0:0,1:1,2:2,3:3",
+      "explanation": "Switch uses MAC; Router uses IP; UTF-8 encodes Unicode code points into 1\u20134 bytes; Backpropagation computes error gradients per weight.",
+      "noteRef": {
+        "title": "C11 \u2014 Networks & IPv4",
+        "href": "/notes/11-the-network/networks-devices-and-ip"
+      },
+      "sourceRef": "C08, C11, C16"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import {
   ChangelogEntry,
   CommandEntry,
   CourseStats,
+  MockExam,
   ModuleMeta,
   PlaygroundChallenge,
   ResourceEntry,
@@ -29,6 +30,7 @@ const PLAYGROUND_FILE = path.join(CONTENT_DIR, "playground", "challenges.json");
 const PLAYGROUND_100_FILE = path.join(CONTENT_DIR, "playground", "challenges-100.json");
 const MCQS_FILE = path.join(CONTENT_DIR, "mcqs", "theory-mcqs.json");
 const QUIZZES_FILE = path.join(CONTENT_DIR, "mcqs", "theory-quizzes.json");
+const MOCK_EXAMS_DIR = path.join(CONTENT_DIR, "quizzes");
 
 function safeReadDir(dirPath: string): fs.Dirent[] {
   if (!fs.existsSync(dirPath)) return [];
@@ -293,6 +295,26 @@ export function getAllTheoryMcqs(): TheoryMcq[] {
 export function getAllTheoryQuizzes(): TheoryQuiz[] {
   const data = safeReadJson<TheoryQuiz[]>(QUIZZES_FILE, []);
   return Array.isArray(data) ? data : [];
+}
+
+export function getAllMockExams(): MockExam[] {
+  const files = safeReadDir(MOCK_EXAMS_DIR)
+    .filter((f) => f.isFile() && f.name.endsWith(".json"))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const exams: MockExam[] = [];
+  for (const file of files) {
+    const data = safeReadJson<MockExam | null>(
+      path.join(MOCK_EXAMS_DIR, file.name),
+      null
+    );
+    if (data && data.id) exams.push(data);
+  }
+  return exams.sort((a, b) => a.number - b.number);
+}
+
+export function getMockExamById(id: string): MockExam | null {
+  return getAllMockExams().find((e) => e.id === id) || null;
 }
 
 export function getCourseStats(): CourseStats {

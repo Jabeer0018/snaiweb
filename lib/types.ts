@@ -160,3 +160,68 @@ export interface TheoryQuiz {
   modules: string[];
   questions: TheoryMcq[];
 }
+
+export type MockQuestionType =
+  | "mcq"
+  | "numerical"
+  | "case-study-mcq"
+  | "matching";
+
+export type MockDifficulty = "Foundational" | "Intermediate" | "Advanced";
+
+export interface MockPassage {
+  id: string;
+  title: string;
+  content: string;
+  tables?: {
+    caption?: string;
+    headers: string[];
+    rows: string[][];
+  }[];
+  codeBlock?: string;
+}
+
+export interface MockMatchingPair {
+  left: string;
+  right: string;
+}
+
+export interface MockQuestion {
+  id: string;
+  testId: string;
+  number: number;
+  type: MockQuestionType;
+  primaryConcept: string;
+  secondaryConcepts: string[];
+  difficulty: MockDifficulty;
+  points: 2 | 4 | 6;
+  question: string;
+  passageId?: string;
+  codeBlock?: string;
+  options?: [string, string, string, string];
+  correctAnswer: string | number;
+  acceptedAnswers?: string[];
+  answerFormatHint?: string;
+  pairs?: MockMatchingPair[];
+  hint?: string;
+  explanation: string;
+  incorrectOptionExplanations?: string[];
+  noteRef: {
+    title: string;
+    href: string;
+  };
+  sourceRef: string;
+}
+
+export interface MockExam {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  difficultyLabel: string;
+  totalQuestions: number;
+  maxPoints: number;
+  recommendedMinutes: number;
+  passages: MockPassage[];
+  questions: MockQuestion[];
+}
