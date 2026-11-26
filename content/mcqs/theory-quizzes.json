@@ -1,0 +1,2517 @@
+[
+  {
+    "id": "quiz-01",
+    "number": 1,
+    "title": "Computer Systems & Hardware Foundations",
+    "description": "Reprogrammability, embedded systems, hardware categories, CPU vs GPU, RAM vs secondary storage, and computing innovations.",
+    "modules": [
+      "C01",
+      "C02"
+    ],
+    "questions": [
+      {
+        "id": "quiz-01-q01",
+        "number": 1,
+        "module": "C01",
+        "difficulty": "Easy",
+        "question": "A juicer takes oranges, crushes them, and outputs juice. Why is it NOT a computer?",
+        "options": [
+          "It has no Wi-Fi chip.",
+          "It cannot be reprogrammed to perform different tasks.",
+          "It has no monitor attached.",
+          "It uses AC power instead of DC."
+        ],
+        "correctIndex": 1,
+        "explanation": "Computers can run different programs; non-computer devices like a juicer perform one fixed job."
+      },
+      {
+        "id": "quiz-01-q02",
+        "number": 2,
+        "module": "C01",
+        "difficulty": "Easy",
+        "question": "Which statement about a washing machine or ATM is technically accurate?",
+        "options": [
+          "It is a general-purpose personal computer.",
+          "It is not a computer itself, but contains an embedded system.",
+          "It is a supercomputer scaled down for retail.",
+          "It operates without any stored instructions."
+        ],
+        "correctIndex": 1,
+        "explanation": "Many everyday devices contain embedded systems rather than being general-purpose computers."
+      },
+      {
+        "id": "quiz-01-q03",
+        "number": 3,
+        "module": "C01",
+        "difficulty": "Easy",
+        "question": "Which pairing correctly distinguishes AR from VR?",
+        "options": [
+          "AR = entirely virtual; VR = real world + digital overlay",
+          "AR = real world + digital overlay; VR = entirely virtual environment",
+          "AR is audio-only; VR is video-only",
+          "AR runs only on servers; VR runs only on smartwatches"
+        ],
+        "correctIndex": 1,
+        "explanation": "AR overlays digital elements onto the real world; VR creates an entirely virtual environment."
+      },
+      {
+        "id": "quiz-01-q04",
+        "number": 4,
+        "module": "C01",
+        "difficulty": "Easy",
+        "question": "A robot observes its surroundings, decides what to do, and moves. Which 3 components map to those 3 steps?",
+        "options": [
+          "Printer -> RAM -> Monitor",
+          "Sensors -> Computer -> Motors",
+          "SSD -> GPU -> Keyboard",
+          "Scanner -> Modem -> Speaker"
+        ],
+        "correctIndex": 1,
+        "explanation": "Robots use sensors (observe), computers (process/decide), and motors (move/act)."
+      },
+      {
+        "id": "quiz-01-q05",
+        "number": 5,
+        "module": "C01",
+        "difficulty": "Medium",
+        "question": "Why can a quantum computer outperform a traditional computer on certain problems?",
+        "options": [
+          "It uses 16-bit ASCII instead of 7-bit ASCII.",
+          "Traditional computers process one possibility at a time, whereas quantum computers process many simultaneously.",
+          "It replaces RAM with magnetic spinning platters.",
+          "It executes Python without any machine code."
+        ],
+        "correctIndex": 1,
+        "explanation": "Quantum computers leverage quantum physics to evaluate many possibilities simultaneously."
+      },
+      {
+        "id": "quiz-01-q06",
+        "number": 6,
+        "module": "C01",
+        "difficulty": "Medium",
+        "question": "In the Input -> Process -> Output cycle, where does STORE connect?",
+        "options": [
+          "Only after Output finishes and powers down.",
+          "Branching off / connected to the PROCESS stage.",
+          "Before Input is ever received.",
+          "Only inside non-computer devices like juicers."
+        ],
+        "correctIndex": 1,
+        "explanation": "The slide diagram shows INPUT -> PROCESS -> OUTPUT with STORE linked to PROCESS."
+      },
+      {
+        "id": "quiz-01-q07",
+        "number": 7,
+        "module": "C02",
+        "difficulty": "Easy",
+        "question": "If a student lists 'Monitor, Keyboard, CPU, Compiler, RAM' as hardware examples, which item does NOT belong?",
+        "options": [
+          "Monitor",
+          "CPU",
+          "Compiler",
+          "RAM"
+        ],
+        "correctIndex": 2,
+        "explanation": "A compiler is system software, not physical hardware."
+      },
+      {
+        "id": "quiz-01-q08",
+        "number": 8,
+        "module": "C02",
+        "difficulty": "Easy",
+        "question": "A student claims RAM is permanent storage because their photos survive a power outage. Why is that wrong?",
+        "options": [
+          "Photos survive on secondary storage (SSD/HDD); RAM is volatile and clears on power-off.",
+          "RAM only stores mouse clicks.",
+          "RAM is slower than an HDD.",
+          "Photos are stored inside the cooling fan."
+        ],
+        "correctIndex": 0,
+        "explanation": "RAM is volatile temporary memory; permanent files live on secondary storage (SSD/HDD)."
+      },
+      {
+        "id": "quiz-01-q09",
+        "number": 9,
+        "module": "C02",
+        "difficulty": "Medium",
+        "question": "Which hardware sub-category pair is MISMATCHED?",
+        "options": [
+          "Input: Scanner, Digital Pen, Webcam",
+          "Output: Monitor, Projector, Headset (without Mic)",
+          "Compute: CPU, GPU",
+          "Internal Components: Printer, Speaker, Mouse"
+        ],
+        "correctIndex": 3,
+        "explanation": "Printer, Speaker, and Mouse are peripheral Input/Output devices\u2014Internal Components are RAM, Motherboard, and Cooling Fan."
+      },
+      {
+        "id": "quiz-01-q10",
+        "number": 10,
+        "module": "C02",
+        "difficulty": "Medium",
+        "question": "Monitor appears in the general 6-item hardware list AND under Output Devices. What does this mean?",
+        "options": [
+          "There are two different physical monitors inside a PC.",
+          "It is the same hardware item categorised from two angles.",
+          "Monitor is both an Input and Storage device.",
+          "One is hardware and the other is system software."
+        ],
+        "correctIndex": 1,
+        "explanation": "Monitor is both a general hardware example and specifically an Output Device; RAM similarly appears in both general hardware and Internal Components."
+      },
+      {
+        "id": "quiz-01-q11",
+        "number": 11,
+        "module": "C02",
+        "difficulty": "Medium",
+        "question": "Why is an SSD noticeably faster at reading and writing data than an HDD?",
+        "options": [
+          "SSD uses flash memory with no moving parts, whereas HDD relies on spinning magnetic platters and read/write heads.",
+          "SSD uses volatile RAM chips that wipe on reboot.",
+          "HDD only stores 7-bit ASCII characters.",
+          "SSD bypasses the operating system completely."
+        ],
+        "correctIndex": 0,
+        "explanation": "HDDs use spinning magnetic disks with moving heads; SSDs use solid-state flash memory with no moving parts."
+      },
+      {
+        "id": "quiz-01-q12",
+        "number": 12,
+        "module": "C02",
+        "difficulty": "Hard",
+        "question": "Which task is a GPU fundamentally BETTER suited for than a CPU, and why?",
+        "options": [
+          "Running sequential OS boot scripts, because GPUs have 4 ultra-fast cores.",
+          "3D modeling, video editing, and AI training, because GPUs have thousands of smaller cores for parallel tasks.",
+          "Storing long-term backups when power is off.",
+          "Replacing the motherboard's cooling fan."
+        ],
+        "correctIndex": 1,
+        "explanation": "CPUs have few powerful cores for general sequential tasks; GPUs have thousands of smaller cores for massive parallel workloads."
+      },
+      {
+        "id": "quiz-01-q13",
+        "number": 13,
+        "module": "C01",
+        "difficulty": "Hard",
+        "question": "Which example from C01 demonstrates 3D printing at architectural scale?",
+        "options": [
+          "IBM's Blue Gene/P weather simulation.",
+          "IIT Madras building India's first 3D-printed house (500 sq. ft. in 21 days).",
+          "Xerox PARC's 1970s desktop interface.",
+          "Simon Jansen's 1997 telnet animation."
+        ],
+        "correctIndex": 1,
+        "explanation": "IIT Madras built India's first 3D-printed house (500 sq. ft., 21 days); Icon + Lennar also partnered in Austin, Texas."
+      },
+      {
+        "id": "quiz-01-q14",
+        "number": 14,
+        "module": "C02",
+        "difficulty": "Hard",
+        "question": "Without software, why is a CPU + Monitor + Printer setup useless?",
+        "options": [
+          "Hardware alone does not know which calculation to perform, what to display, or what to print.",
+          "Hardware cannot receive electricity without an application.",
+          "Monitors only turn on when Chrome is installed.",
+          "Printers require a GPU to print plain text."
+        ],
+        "correctIndex": 0,
+        "explanation": "Software provides the instructions that tell hardware what tasks to perform and how to behave."
+      },
+      {
+        "id": "quiz-01-q15",
+        "number": 15,
+        "module": "C01",
+        "difficulty": "Hard",
+        "question": "Why does a Smartwatch appear under BOTH 'Everyday devices' and 'Healthcare' in C01?",
+        "options": [
+          "It is a supercomputer worn on the wrist.",
+          "It is an everyday personal device that continuously monitors heart rate and health data.",
+          "It acts as a web server for MRI machines.",
+          "It contains no embedded electronics."
+        ],
+        "correctIndex": 1,
+        "explanation": "Smartwatches are everyday devices that also play a healthcare role by continuously tracking heart rate/health metrics."
+      },
+      {
+        "id": "quiz-01-q16",
+        "number": 16,
+        "module": "C02",
+        "difficulty": "Hard",
+        "question": "Which statement about Primary Memory is TRUE?",
+        "options": [
+          "Primary memory is another name for an external USB drive.",
+          "Primary memory (like RAM) is directly accessed by the CPU as a working space for active data and instructions.",
+          "Primary memory retains all data permanently without power.",
+          "Primary memory is slower than magnetic tape."
+        ],
+        "correctIndex": 1,
+        "explanation": "Primary memory is directly accessible by the CPU and holds active data/instructions for running programs."
+      }
+    ]
+  },
+  {
+    "id": "quiz-02",
+    "number": 2,
+    "title": "Software Stack, OS & Interfaces (CLI, GUI, API)",
+    "description": "System vs application software, OS comparisons, Ubuntu demo, CLI/GUI/API, Desktop Metaphor, and error feedback layers.",
+    "modules": [
+      "C02",
+      "C04"
+    ],
+    "questions": [
+      {
+        "id": "quiz-02-q01",
+        "number": 1,
+        "module": "C02",
+        "difficulty": "Easy",
+        "question": "In the 3-layer Software Stack (bottom to top), what is the correct order?",
+        "options": [
+          "Applications -> OS -> Hardware",
+          "Hardware -> Operating System -> Applications",
+          "OS -> Hardware -> Applications",
+          "Compiler -> Hardware -> Browser"
+        ],
+        "correctIndex": 1,
+        "explanation": "The stack is built bottom-up: Hardware -> Operating System -> Applications."
+      },
+      {
+        "id": "quiz-02-q02",
+        "number": 2,
+        "module": "C02",
+        "difficulty": "Easy",
+        "question": "Which item is System Software rather than Application Software?",
+        "options": [
+          "Spotify",
+          "MS Word",
+          "Device Driver",
+          "Chrome"
+        ],
+        "correctIndex": 2,
+        "explanation": "Device Drivers, Operating Systems, and System Utilities are System Software."
+      },
+      {
+        "id": "quiz-02-q03",
+        "number": 3,
+        "module": "C02",
+        "difficulty": "Easy",
+        "question": "Which OS is open-source and widely used on laptops, servers, cloud systems, and supercomputers?",
+        "options": [
+          "macOS",
+          "Microsoft Windows",
+          "GNU/Linux",
+          "iOS"
+        ],
+        "correctIndex": 2,
+        "explanation": "GNU/Linux is open-source and powers laptops, servers, cloud infrastructure, and supercomputers."
+      },
+      {
+        "id": "quiz-02-q04",
+        "number": 4,
+        "module": "C04",
+        "difficulty": "Easy",
+        "question": "Which full form is INCORRECT?",
+        "options": [
+          "CLI = Command Line Interface",
+          "GUI = Graphical User Interface",
+          "API = Application Programming Interface",
+          "OS = Output System"
+        ],
+        "correctIndex": 3,
+        "explanation": "OS stands for Operating System, not Output System."
+      },
+      {
+        "id": "quiz-02-q05",
+        "number": 5,
+        "module": "C04",
+        "difficulty": "Easy",
+        "question": "In the C04 Restaurant Menu analogy for an API, what represents the API?",
+        "options": [
+          "The Kitchen",
+          "The Menu",
+          "The Chef's oven",
+          "The Dining table"
+        ],
+        "correctIndex": 1,
+        "explanation": "Customer -> Menu -> Kitchen: the Menu is the interface between customer and kitchen."
+      },
+      {
+        "id": "quiz-02-q06",
+        "number": 6,
+        "module": "C04",
+        "difficulty": "Easy",
+        "question": "On macOS, what is the default shell (CLI) highlighted in the course?",
+        "options": [
+          "PowerShell",
+          "zsh (Z Shell)",
+          "cmd.exe",
+          "fish"
+        ],
+        "correctIndex": 1,
+        "explanation": "In macOS, the shell is `zsh` (Z Shell)."
+      },
+      {
+        "id": "quiz-02-q07",
+        "number": 7,
+        "module": "C02",
+        "difficulty": "Medium",
+        "question": "Why does the same laptop feel completely different when booted into Ubuntu Linux instead of Windows?",
+        "options": [
+          "Ubuntu physically alters the SSD's magnetic platters.",
+          "The OS mediates every interaction with hardware, so changing the OS changes the interface and workflow.",
+          "Windows disables the GPU whereas Ubuntu disables RAM.",
+          "Ubuntu removes all browsers and file managers."
+        ],
+        "correctIndex": 1,
+        "explanation": "Even on identical hardware, changing the OS changes how the system looks, behaves, and installs software (e.g., package managers)."
+      },
+      {
+        "id": "quiz-02-q08",
+        "number": 8,
+        "module": "C02",
+        "difficulty": "Medium",
+        "question": "In the Windows vs macOS vs Linux comparison, which OS is described as 'Minimal customisation, controlled by Apple, high security'?",
+        "options": [
+          "Windows",
+          "macOS",
+          "Linux",
+          "Android"
+        ],
+        "correctIndex": 1,
+        "explanation": "macOS has minimal customisation controlled by Apple, high security, and targets professionals/creatives."
+      },
+      {
+        "id": "quiz-02-q09",
+        "number": 9,
+        "module": "C04",
+        "difficulty": "Medium",
+        "question": "When you run `curl http://api.open-notify.org/iss-now.json`, why is no GUI involved?",
+        "options": [
+          "Because `curl` crashes the window manager.",
+          "Because APIs let one program request services/data (like JSON) from another without graphical screens or buttons.",
+          "Because HTTP cannot transmit text.",
+          "Because JSON can only be read by the Kernel."
+        ],
+        "correctIndex": 1,
+        "explanation": "APIs exchange structured requests and responses (such as JSON) directly between programs without a GUI."
+      },
+      {
+        "id": "quiz-02-q10",
+        "number": 10,
+        "module": "C04",
+        "difficulty": "Medium",
+        "question": "Which historical milestone pair for the birth of GUI is accurate?",
+        "options": [
+          "1950s Turing Lab -> 1972 C Compiler",
+          "1970s Xerox PARC -> 1984 Macintosh",
+          "1989 Python -> 1998 PageRank",
+          "1966 ELIZA -> 1978 Lamport"
+        ],
+        "correctIndex": 1,
+        "explanation": "GUI originated in the 1970s at Xerox PARC and reached mainstream consumers with the 1984 Macintosh."
+      },
+      {
+        "id": "quiz-02-q11",
+        "number": 11,
+        "module": "C04",
+        "difficulty": "Medium",
+        "question": "Which of these is NOT one of the four qualities of a good GUI listed in C04?",
+        "options": [
+          "Hides complexity",
+          "Makes the right action obvious",
+          "Forces users to memorise terminal flags",
+          "Speaks the user's language and gives feedback"
+        ],
+        "correctIndex": 2,
+        "explanation": "Forcing memorisation of commands is a limitation of CLI, not a quality of a good GUI."
+      },
+      {
+        "id": "quiz-02-q12",
+        "number": 12,
+        "module": "C04",
+        "difficulty": "Hard",
+        "question": "Match each system layer to how it reports errors: Shell, Applications, APIs, Kernel.",
+        "options": [
+          "Shell = HTTP codes, Applications = command errors, APIs = system failures, Kernel = pop-ups",
+          "Shell = command errors, Applications = crashes/pop-ups, APIs = status codes, Kernel = system-level failures",
+          "All four layers print `zsh: command not found`.",
+          "Only the GUI can report errors."
+        ],
+        "correctIndex": 1,
+        "explanation": "Each layer communicates errors differently: Shell (command errors), Apps (crashes/pop-ups), APIs (HTTP status codes), Kernel (system-level failures)."
+      },
+      {
+        "id": "quiz-02-q13",
+        "number": 13,
+        "module": "C04",
+        "difficulty": "Hard",
+        "question": "What does the quote 'The OS gave them a canvas. What they painted was their responsibility' refer to?",
+        "options": [
+          "Hardware engineers soldering RAM onto a motherboard.",
+          "App designers deciding how good or confusing a GUI is on top of the OS.",
+          "Linux kernel developers writing device drivers.",
+          "Students creating 1000 folders with `mkdir`."
+        ],
+        "correctIndex": 1,
+        "explanation": "A GUI is only as good as the designer's decisions\u2014the OS provides the canvas."
+      },
+      {
+        "id": "quiz-02-q14",
+        "number": 14,
+        "module": "C04",
+        "difficulty": "Hard",
+        "question": "In the technical API flow, what is the correct sequence?",
+        "options": [
+          "Server -> Browser -> Keyboard -> API Request",
+          "Client Application -> API Request -> Server/Database -> API Response -> Client",
+          "Database -> Shell -> Kernel -> Client",
+          "GUI -> Compiler -> API Response -> Client"
+        ],
+        "correctIndex": 1,
+        "explanation": "Client Application sends an API Request to Server/Database, which returns an API Response back to the Client."
+      },
+      {
+        "id": "quiz-02-q15",
+        "number": 15,
+        "module": "C02",
+        "difficulty": "Hard",
+        "question": "Why does Application Software depend on System Software?",
+        "options": [
+          "Application software cannot directly access hardware; it relies on system software (the OS/drivers) to mediate.",
+          "Application software is written in binary while system software is written in HTML.",
+          "System software only runs when Chrome is closed.",
+          "Application software is stored in volatile RAM permanently."
+        ],
+        "correctIndex": 0,
+        "explanation": "System software manages hardware and provides the platform for application software to run."
+      },
+      {
+        "id": "quiz-02-q16",
+        "number": 16,
+        "module": "C04",
+        "difficulty": "Hard",
+        "question": "Why did the lecture highlight `htop` when motivating the need for GUIs?",
+        "options": [
+          "To show that `htop` is a web browser.",
+          "To ask how an average user would operate a computer if every action required memorising terminal commands.",
+          "To prove that GUIs are slower than CLIs.",
+          "To demonstrate JSON responses from an API."
+        ],
+        "correctIndex": 1,
+        "explanation": "CLI requires memorising commands and small mistakes cause errors\u2014motivating visual GUIs for everyday users."
+      }
+    ]
+  },
+  {
+    "id": "quiz-03",
+    "number": 3,
+    "title": "OS Roles, Process Management & Signals",
+    "description": "Four OS roles, program vs process, parent/child hierarchies, timeslicing, memory isolation, ps/top/htop, and kill signals.",
+    "modules": [
+      "C05"
+    ],
+    "questions": [
+      {
+        "id": "quiz-03-q01",
+        "number": 1,
+        "module": "C05",
+        "difficulty": "Easy",
+        "question": "Which is NOT one of the four core roles of an Operating System?",
+        "options": [
+          "Manage Process & Memory",
+          "Manage Devices",
+          "Manage Files & Storage",
+          "Write Application Source Code"
+        ],
+        "correctIndex": 3,
+        "explanation": "The four OS roles are Manage Process & Memory, Manage Devices, Manage Files & Storage, and Provide User Interface."
+      },
+      {
+        "id": "quiz-03-q02",
+        "number": 2,
+        "module": "C05",
+        "difficulty": "Easy",
+        "question": "What is the key difference between a Program and a Process?",
+        "options": [
+          "A program is hardware; a process is software.",
+          "A program is instructions stored on disk; a process is a program currently executing in RAM.",
+          "A process is stored on disk; a program runs only in the GPU.",
+          "There is no difference; both terms mean the same thing."
+        ],
+        "correctIndex": 1,
+        "explanation": "Program on disk = file/instructions; Process = program loaded into RAM and currently executing."
+      },
+      {
+        "id": "quiz-03-q03",
+        "number": 3,
+        "module": "C05",
+        "difficulty": "Easy",
+        "question": "Why does Chrome often run each browser tab in its own child process?",
+        "options": [
+          "So that if one tab crashes, the other tabs keep running smoothly.",
+          "So each tab can directly overwrite VS Code's memory.",
+          "Because Chrome cannot run on a single CPU otherwise.",
+          "To bypass the Operating System completely."
+        ],
+        "correctIndex": 0,
+        "explanation": "Child processes execute independently\u2014isolating crashes so one tab crashing doesn't take down the rest."
+      },
+      {
+        "id": "quiz-03-q04",
+        "number": 4,
+        "module": "C05",
+        "difficulty": "Easy",
+        "question": "When you double-click a file to open an app, what happens first?",
+        "options": [
+          "The OS deletes the file from disk.",
+          "The OS finds the program on disk, loads it into RAM, and creates a process.",
+          "The CPU compiles the monitor.",
+          "The Shell runs `kill -9`."
+        ],
+        "correctIndex": 1,
+        "explanation": "Step 1: OS finds program on disk -> Step 2: loads into RAM -> Step 3: creates a process -> Step 4: app starts."
+      },
+      {
+        "id": "quiz-03-q05",
+        "number": 5,
+        "module": "C05",
+        "difficulty": "Easy",
+        "question": "Which command gives a colour-coded, interactive live view of running processes with visual CPU bars?",
+        "options": [
+          "pwd",
+          "ls -la",
+          "htop",
+          "touch"
+        ],
+        "correctIndex": 2,
+        "explanation": "`htop` provides an interactive, colour-coded live view of CPU/memory usage."
+      },
+      {
+        "id": "quiz-03-q06",
+        "number": 6,
+        "module": "C05",
+        "difficulty": "Medium",
+        "question": "In the runaway Python script activity, why did the rest of the computer (Browser, Spotify, VS Code) NOT crash?",
+        "options": [
+          "Python automatically stopped itself after 6 ms.",
+          "The OS scheduled CPU time slices across processes and kept each process in isolated RAM.",
+          "Spotify ran on the printer instead of the CPU.",
+          "The Python script was never loaded into RAM."
+        ],
+        "correctIndex": 1,
+        "explanation": "Timeslicing and memory isolation allow the machine to stay responsive (though slower) without crashing."
+      },
+      {
+        "id": "quiz-03-q07",
+        "number": 7,
+        "module": "C05",
+        "difficulty": "Medium",
+        "question": "Why did `ps` show only 2 processes when 20 apps were open, whereas `ps aux` showed all of them?",
+        "options": [
+          "Plain `ps` only lists processes in the current terminal session; `ps aux` lists all system-wide processes.",
+          "`ps` only shows processes with PID > 10000.",
+          "`ps aux` is a GUI app, not a CLI command.",
+          "`ps` hides processes owned by the user."
+        ],
+        "correctIndex": 0,
+        "explanation": "Plain `ps` is scoped to the current terminal session; `ps aux` shows all running processes system-wide."
+      },
+      {
+        "id": "quiz-03-q08",
+        "number": 8,
+        "module": "C05",
+        "difficulty": "Medium",
+        "question": "Which columns are explicitly highlighted in `ps aux` output?",
+        "options": [
+          "HOST, PORT, IP, MAC",
+          "USER, PID, %CPU, %MEM, COMMAND",
+          "READ, WRITE, EXECUTE, OWNER",
+          "HEX, OFFSET, ASCII, CHUNK"
+        ],
+        "correctIndex": 1,
+        "explanation": "`ps aux` displays USER, PID, %CPU, %MEM, and COMMAND."
+      },
+      {
+        "id": "quiz-03-q09",
+        "number": 9,
+        "module": "C05",
+        "difficulty": "Medium",
+        "question": "What happens when the OS allocates RAM to Chrome, VS Code, and Apple Music?",
+        "options": [
+          "They share one unlocked memory block so Chrome can read VS Code's variables.",
+          "Each process receives its own exclusive memory space (isolation).",
+          "Only the active window gets RAM; the others are deleted.",
+          "All three run inside the `.git` folder."
+        ],
+        "correctIndex": 1,
+        "explanation": "The OS allocates an exclusive memory space to each process so one cannot corrupt or read another's memory."
+      },
+      {
+        "id": "quiz-03-q10",
+        "number": 10,
+        "module": "C05",
+        "difficulty": "Medium",
+        "question": "What is 'timeslicing'?",
+        "options": [
+          "Dividing an SSD into 1000-byte marketing kilobytes.",
+          "Giving each process a tiny slice of CPU time and switching thousands of times per second.",
+          "Deleting old log files every 24 hours.",
+          "Compressing a file with `gzip`."
+        ],
+        "correctIndex": 1,
+        "explanation": "Timeslicing rapidly switches the CPU between processes every few milliseconds, creating the illusion of simultaneity."
+      },
+      {
+        "id": "quiz-03-q11",
+        "number": 11,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "What is the exact difference between `kill 2341` and `kill -9 2341`?",
+        "options": [
+          "`kill 2341` sends SIGKILL (9); `kill -9 2341` sends SIGTERM (15).",
+          "`kill 2341` sends SIGTERM (15, polite request allowing cleanup); `kill -9 2341` sends SIGKILL (9, forced immediate stop without cleanup).",
+          "`kill 2341` only pauses the process for 9 seconds.",
+          "Both commands do the exact same thing."
+        ],
+        "correctIndex": 1,
+        "explanation": "SIGTERM (15) politely asks a process to clean up and exit; SIGKILL (9) forces immediate termination."
+      },
+      {
+        "id": "quiz-03-q12",
+        "number": 12,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "If a parent Shell process spawns `cat notes.txt`, which statement is TRUE?",
+        "options": [
+          "`cat` runs as a child process of the Shell.",
+          "The Shell is deleted as soon as `cat` starts.",
+          "`cat` cannot have its own PID.",
+          "`cat` runs inside the kernel without a process."
+        ],
+        "correctIndex": 0,
+        "explanation": "Every command typed in the shell (`pwd`, `ls`, `cat`, etc.) runs as a child process of the parent Shell."
+      },
+      {
+        "id": "quiz-03-q13",
+        "number": 13,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "Why does a CPU-bound infinite loop make other apps feel sluggish even though the OS doesn't crash?",
+        "options": [
+          "Because the runaway process consumes large amounts of CPU time slices, leaving less CPU time per second for other processes.",
+          "Because Python deletes `PATH`.",
+          "Because timeslicing stops working completely after 30 ms.",
+          "Because the monitor lowers its resolution."
+        ],
+        "correctIndex": 0,
+        "explanation": "The OS still schedules other processes via timeslicing, but the CPU-hungry process contends heavily for CPU time."
+      },
+      {
+        "id": "quiz-03-q14",
+        "number": 14,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "In `top` and `htop`, which key exits the live process monitor back to the shell prompt?",
+        "options": [
+          "`Ctrl+Z`",
+          "`q`",
+          "`exit`",
+          "`rm`"
+        ],
+        "correctIndex": 1,
+        "explanation": "Pressing `q` quits `top` and `htop` cleanly."
+      },
+      {
+        "id": "quiz-03-q15",
+        "number": 15,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "Which OS component bridges your keyboard/mouse/printer hardware with the OS?",
+        "options": [
+          "Device Drivers",
+          "Git Remotes",
+          "Hex Editors",
+          "UTF-8 Encoders"
+        ],
+        "correctIndex": 0,
+        "explanation": "The OS manages hardware devices through device drivers."
+      },
+      {
+        "id": "quiz-03-q16",
+        "number": 16,
+        "module": "C05",
+        "difficulty": "Hard",
+        "question": "Suppose a process ignores `SIGTERM (15)` because it is stuck in an uninterruptible custom handler. Which signal/command resolves it?",
+        "options": [
+          "`kill -15 <PID>`",
+          "`kill -9 <PID>` (`SIGKILL`)",
+          "`ps`",
+          "`chmod 000 <PID>`"
+        ],
+        "correctIndex": 1,
+        "explanation": "`kill -9 <PID>` sends `SIGKILL (9)`, which cannot be ignored and forces immediate termination."
+      }
+    ]
+  },
+  {
+    "id": "quiz-04",
+    "number": 4,
+    "title": "Filesystem, Permissions & PATH",
+    "description": "Root (/), executability rules, rwx vs numeric permissions (644, 755, 600, 777), chmod/chown, PATH, and which.",
+    "modules": [
+      "C06"
+    ],
+    "questions": [
+      {
+        "id": "quiz-04-q01",
+        "number": 1,
+        "module": "C06",
+        "difficulty": "Easy",
+        "question": "In a Unix-like filesystem (Linux/macOS), where is everything stored?",
+        "options": [
+          "Under `C:\\Users`",
+          "Under the root location `/`",
+          "Inside `.git`",
+          "Inside `PATH`"
+        ],
+        "correctIndex": 1,
+        "explanation": "Everything in a Unix/Linux/macOS filesystem is organised under the root directory `/`."
+      },
+      {
+        "id": "quiz-04-q02",
+        "number": 2,
+        "module": "C06",
+        "difficulty": "Easy",
+        "question": "What are the numeric values of Read (`r`), Write (`w`), and Execute (`x`)?",
+        "options": [
+          "r=1, w=2, x=4",
+          "r=4, w=2, x=1",
+          "r=2, w=4, x=1",
+          "r=4, w=1, x=2"
+        ],
+        "correctIndex": 1,
+        "explanation": "Read = 4, Write = 2, Execute = 1 (add them per category: Owner, Group, Others)."
+      },
+      {
+        "id": "quiz-04-q03",
+        "number": 3,
+        "module": "C06",
+        "difficulty": "Easy",
+        "question": "What are the default permissions of a newly created file via `touch hello.txt`?",
+        "options": [
+          "`777` (`rwxrwxrwx`)",
+          "`644` (`rw-r--r--`) \u2014 NOT executable by default",
+          "`000` (`---------`)",
+          "`755` (`rwxr-xr-x`)"
+        ],
+        "correctIndex": 1,
+        "explanation": "New files default to `644` (`rw-r--r--`) so they are not accidentally executable."
+      },
+      {
+        "id": "quiz-04-q04",
+        "number": 4,
+        "module": "C06",
+        "difficulty": "Easy",
+        "question": "Which command transfers ownership of a file to another user?",
+        "options": [
+          "`chmod`",
+          "`chown`",
+          "`which`",
+          "`cat`"
+        ],
+        "correctIndex": 1,
+        "explanation": "`chown <newOwner> <fileName>` changes file ownership; `chmod` changes permissions."
+      },
+      {
+        "id": "quiz-04-q05",
+        "number": 5,
+        "module": "C06",
+        "difficulty": "Easy",
+        "question": "What does `which ls` tell you?",
+        "options": [
+          "The size of `ls` in bytes",
+          "The exact directory path of the `ls` executable found via `PATH`",
+          "Who owns `ls`",
+          "How many times `ls` was run"
+        ],
+        "correctIndex": 1,
+        "explanation": "`which` searches the directories in `PATH` and prints the exact location of the executable."
+      },
+      {
+        "id": "quiz-04-q06",
+        "number": 6,
+        "module": "C06",
+        "difficulty": "Medium",
+        "question": "A student creates `script.txt` with `echo \"echo hi\" > script.txt`, renames it `mv script.txt run.banana`, and runs `chmod +x run.banana`. What happens when running `./run.banana`?",
+        "options": [
+          "It fails because `.banana` is not `.sh`.",
+          "It runs and prints `hi`\u2014filename extension does not matter, only content + execute permission.",
+          "It opens a fruit image.",
+          "It deletes `run.banana`."
+        ],
+        "correctIndex": 1,
+        "explanation": "The OS checks executable content and execute permission (`x`), not the filename extension."
+      },
+      {
+        "id": "quiz-04-q07",
+        "number": 7,
+        "module": "C06",
+        "difficulty": "Medium",
+        "question": "Convert `rwxr-xr-x` into its numeric permission mode.",
+        "options": [
+          "`644`",
+          "`755`",
+          "`777`",
+          "`600`"
+        ],
+        "correctIndex": 1,
+        "explanation": "Owner `rwx=7`, Group `r-x=5`, Others `r-x=5` -> `755`."
+      },
+      {
+        "id": "quiz-04-q08",
+        "number": 8,
+        "module": "C06",
+        "difficulty": "Medium",
+        "question": "Convert `rw-------` into its numeric permission mode.",
+        "options": [
+          "`644`",
+          "`700`",
+          "`600`",
+          "`400`"
+        ],
+        "correctIndex": 2,
+        "explanation": "Owner `rw-=6`, Group `---=0`, Others `---=0` -> `600`."
+      },
+      {
+        "id": "quiz-04-q09",
+        "number": 9,
+        "module": "C06",
+        "difficulty": "Medium",
+        "question": "How are directories separated inside the `PATH` environment variable?",
+        "options": [
+          "By spaces",
+          "By colons (`:`)",
+          "By commas (`,`)",
+          "By pipes (`|`)"
+        ],
+        "correctIndex": 1,
+        "explanation": "Directories in `PATH` are separated by colons, e.g. `/usr/local/bin:/usr/bin:/bin`."
+      },
+      {
+        "id": "quiz-04-q10",
+        "number": 10,
+        "module": "C06",
+        "difficulty": "Medium",
+        "question": "In what order does the shell search the directories listed in `PATH`?",
+        "options": [
+          "Alphabetically",
+          "From left to right until it finds the command",
+          "From right to left",
+          "Randomly"
+        ],
+        "correctIndex": 1,
+        "explanation": "The shell searches `PATH` directories from left to right."
+      },
+      {
+        "id": "quiz-04-q11",
+        "number": 11,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "If `PATH` is empty (`PATH=\"\"`), why does `ls` fail while `/bin/ls` still works?",
+        "options": [
+          "`ls` is deleted when `PATH` is empty.",
+          "The shell has no directories to search for `ls`, whereas `/bin/ls` provides the exact absolute path directly.",
+          "`/bin/ls` runs inside the GPU.",
+          "`ls` requires `chmod 777` when `PATH` is empty."
+        ],
+        "correctIndex": 1,
+        "explanation": "Providing an absolute path like `/bin/ls` bypasses `PATH` lookup completely."
+      },
+      {
+        "id": "quiz-04-q12",
+        "number": 12,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "A directory `evidence/` has permission `555` (`r-xr-xr-x`), and `file.txt` inside it has `644`. Why does `mv evidence secure/` or `rm evidence/file.txt` fail?",
+        "options": [
+          "`555` removes write permission on `evidence/`, blocking metadata changes (moving/deleting entries inside it).",
+          "`555` disables read permission on `file.txt`.",
+          "`mv` only works on `.txt` files.",
+          "`644` forbids moving files."
+        ],
+        "correctIndex": 0,
+        "explanation": "Modifying directory entries (adding, deleting, or renaming) requires write (`w`) permission on the directory itself."
+      },
+      {
+        "id": "quiz-04-q13",
+        "number": 13,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "What does the first character `d` in `drwxrwxrwx` indicate when running `ls -l`?",
+        "options": [
+          "Deleted file",
+          "Directory (file type)",
+          "Default permission",
+          "Device driver"
+        ],
+        "correctIndex": 1,
+        "explanation": "The order in `ls -l` is always: file type (`d` for directory, `-` for regular file), then owner, group, others."
+      },
+      {
+        "id": "quiz-04-q14",
+        "number": 14,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "Convert `-rwx--x--x` into its numeric permission mode.",
+        "options": [
+          "`711`",
+          "`744`",
+          "`751`",
+          "`611`"
+        ],
+        "correctIndex": 0,
+        "explanation": "Owner `rwx=7`, Group `--x=1`, Others `--x=1` -> `711`."
+      },
+      {
+        "id": "quiz-04-q15",
+        "number": 15,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "Why does `touch new.txt` NOT grant execute (`x`) permission by default?",
+        "options": [
+          "Because `touch` cannot set bits.",
+          "To ensure system security and prevent accidental or unsafe execution of arbitrary files.",
+          "Because text files can never be executed.",
+          "Because only `root` can use `x`."
+        ],
+        "correctIndex": 1,
+        "explanation": "Execute permission is withheld by default for security\u2014users must explicitly enable it via `chmod`."
+      },
+      {
+        "id": "quiz-04-q16",
+        "number": 16,
+        "module": "C06",
+        "difficulty": "Hard",
+        "question": "Which sequence correctly summarises the C06 execution flow?",
+        "options": [
+          "PATH -> Filesystem -> which -> Permissions",
+          "Filesystem stores programs as files -> Permissions decide who may execute -> PATH helps shell locate commands -> `which` shows the location",
+          "`which` compiles files -> Permissions store them -> PATH deletes them",
+          "Permissions -> `chown` -> `gzip` -> Root"
+        ],
+        "correctIndex": 1,
+        "explanation": "C06 summary: Filesystem stores files -> Permissions control execution -> PATH locates commands -> `which` reveals the path."
+      }
+    ]
+  },
+  {
+    "id": "quiz-05",
+    "number": 5,
+    "title": "Compilers, Interpreters, Shebangs & CLI Traps",
+    "description": "Grace Hopper, compilation vs interpretation, C vs Python history, shebangs, paths, redirection (> vs >>), and recursive flags.",
+    "modules": [
+      "C03",
+      "C07"
+    ],
+    "questions": [
+      {
+        "id": "quiz-05-q01",
+        "number": 1,
+        "module": "C07",
+        "difficulty": "Easy",
+        "question": "What is the ONLY language a CPU natively understands?",
+        "options": [
+          "Python",
+          "C",
+          "Machine Code (binary patterns)",
+          "Bash"
+        ],
+        "correctIndex": 2,
+        "explanation": "The CPU only understands machine code (binary instructions). Every program ends up as binary."
+      },
+      {
+        "id": "quiz-05-q02",
+        "number": 2,
+        "module": "C07",
+        "difficulty": "Easy",
+        "question": "Who pioneered the idea of translating human-readable code into machine code?",
+        "options": [
+          "Linus Torvalds",
+          "Grace Hopper",
+          "Claude Shannon",
+          "Leslie Lamport"
+        ],
+        "correctIndex": 1,
+        "explanation": "Grace Hopper invented the concept of translating English-like code into machine code."
+      },
+      {
+        "id": "quiz-05-q03",
+        "number": 3,
+        "module": "C07",
+        "difficulty": "Easy",
+        "question": "What does `#!/bin/bash` at the top of a script do?",
+        "options": [
+          "Encrypts the file.",
+          "Tells the OS which interpreter should run the script (the shebang).",
+          "Compiles the script into `.exe`.",
+          "Deletes comments from the file."
+        ],
+        "correctIndex": 1,
+        "explanation": "The shebang (`#!`) tells the OS which interpreter to invoke when executing the script."
+      },
+      {
+        "id": "quiz-05-q04",
+        "number": 4,
+        "module": "C03",
+        "difficulty": "Easy",
+        "question": "What is the difference between `echo \"a\" > f.txt` and `echo \"a\" >> f.txt`?",
+        "options": [
+          "`>` appends; `>>` overwrites",
+          "`>` overwrites existing content; `>>` appends to the end",
+          "Both delete `f.txt` first",
+          "`>>` only works on directories"
+        ],
+        "correctIndex": 1,
+        "explanation": "Single `>` overwrites the file; double `>>` appends to the end."
+      },
+      {
+        "id": "quiz-05-q05",
+        "number": 5,
+        "module": "C03",
+        "difficulty": "Easy",
+        "question": "In `cowsay -f dragon \"Hello\"`, what is `-f`?",
+        "options": [
+          "The command",
+          "An option/flag modifying behaviour",
+          "The output file",
+          "A pipe"
+        ],
+        "correctIndex": 1,
+        "explanation": "CLI structure is Command (`cowsay`) + Option/Flag (`-f`) + Argument(s) (`dragon \"Hello\"`)."
+      },
+      {
+        "id": "quiz-05-q06",
+        "number": 6,
+        "module": "C03",
+        "difficulty": "Medium",
+        "question": "What happens when you run `rm folder_1` without `-r`?",
+        "options": [
+          "It deletes `folder_1` and everything inside.",
+          "It fails with `rm: cannot remove 'folder_1': Is a directory`.",
+          "It renames `folder_1` to `.trash`.",
+          "It compresses `folder_1`."
+        ],
+        "correctIndex": 1,
+        "explanation": "Plain `rm` and `cp` fail on directories with `Is a directory`; add `-r` (recursive)."
+      },
+      {
+        "id": "quiz-05-q07",
+        "number": 7,
+        "module": "C03",
+        "difficulty": "Medium",
+        "question": "What does `fortune | cowsay | lolcat` demonstrate?",
+        "options": [
+          "Redirection to three files",
+          "Piping: passing the output of one command as the input to the next",
+          "Git branching",
+          "Recursive directory deletion"
+        ],
+        "correctIndex": 1,
+        "explanation": "The pipe `|` sends stdout of one command into stdin of the next command."
+      },
+      {
+        "id": "quiz-05-q08",
+        "number": 8,
+        "module": "C03",
+        "difficulty": "Medium",
+        "question": "What does `cat file1.txt file2.txt > combined.txt` do?",
+        "options": [
+          "Deletes `file1.txt` and `file2.txt`.",
+          "Concatenates both files' contents and writes them into `combined.txt`.",
+          "Edits `file1.txt` interactively.",
+          "Moves `file1.txt` inside `file2.txt`."
+        ],
+        "correctIndex": 1,
+        "explanation": "`cat` reads multiple files in order (concatenates them), and `>` writes the combined output to `combined.txt`."
+      },
+      {
+        "id": "quiz-05-q09",
+        "number": 9,
+        "module": "C07",
+        "difficulty": "Medium",
+        "question": "Compare Compilers vs Interpreters on WHEN translation happens:",
+        "options": [
+          "Compiler: while running; Interpreter: before running",
+          "Compiler: whole program BEFORE running; Interpreter: line by line WHILE running",
+          "Both translate only after the program exits",
+          "Neither translates to binary"
+        ],
+        "correctIndex": 1,
+        "explanation": "Compilers translate the entire file before execution; interpreters translate and execute line by line at runtime."
+      },
+      {
+        "id": "quiz-05-q10",
+        "number": 10,
+        "module": "C07",
+        "difficulty": "Medium",
+        "question": "Why did C (1972) prioritise fast execution while Python (1989) prioritised programmer productivity?",
+        "options": [
+          "In 1972 machine time was expensive; by 1989 hardware was cheap and programmer time was expensive.",
+          "In 1989 CPUs could not run C.",
+          "Python was built for gaming GPUs only.",
+          "Dennis Ritchie disliked Python."
+        ],
+        "correctIndex": 0,
+        "explanation": "Different answers to 'what is expensive?': machine time (1972) vs. programmer time (1989)."
+      },
+      {
+        "id": "quiz-05-q11",
+        "number": 11,
+        "module": "C07",
+        "difficulty": "Hard",
+        "question": "If a compiled C binary runs in `0.001 s` and Python runs in `0.1 s`, why does Python pay that extra time on every single run?",
+        "options": [
+          "Python must re-translate every line at runtime on every execution, whereas C translated once at compile time.",
+          "Python copies the file to GitHub on each run.",
+          "C runs without RAM.",
+          "Python uses octal permissions."
+        ],
+        "correctIndex": 0,
+        "explanation": "Compilation is a one-time translation cost; interpretation repeats translation on every run."
+      },
+      {
+        "id": "quiz-05-q12",
+        "number": 12,
+        "module": "C07",
+        "difficulty": "Hard",
+        "question": "Which path is RELATIVE vs ABSOLUTE?",
+        "options": [
+          "`/Users/karansharma/hello.py` is relative; `./hello.py` is absolute",
+          "`/Users/karansharma/hello.py` is absolute (starts from `/`); `./hello.py` is relative (starts from current directory)",
+          "Both are absolute paths",
+          "Neither works in Linux"
+        ],
+        "correctIndex": 1,
+        "explanation": "Absolute paths start from root `/`; relative paths start from the current working directory."
+      },
+      {
+        "id": "quiz-05-q13",
+        "number": 13,
+        "module": "C03",
+        "difficulty": "Hard",
+        "question": "What is the difference between `mv a.txt b.txt` and `mv a.txt dir/`?",
+        "options": [
+          "Both rename `a.txt` to `dir`.",
+          "When the destination is a filename (`b.txt`), `mv` renames; when the destination is an existing folder (`dir/`), `mv` moves `a.txt` inside it.",
+          "`mv a.txt dir/` copies `a.txt` and keeps the original.",
+          "`mv` cannot move files into folders."
+        ],
+        "correctIndex": 1,
+        "explanation": "`mv` renames if destination is a file path, or moves into the folder if destination is a directory."
+      },
+      {
+        "id": "quiz-05-q14",
+        "number": 14,
+        "module": "C03",
+        "difficulty": "Hard",
+        "question": "Why is `rm -rf /some/path` considered dangerous?",
+        "options": [
+          "`-r` deletes recursively and `-f` forces deletion without confirmation prompts\u2014with no Recycle Bin or undo.",
+          "`-rf` compresses files into `.gz` permanently.",
+          "`-rf` only works on `.txt` files.",
+          "`-rf` moves files to `/tmp`."
+        ],
+        "correctIndex": 0,
+        "explanation": "`rm -rf` permanently deletes directories and all contents without warning or undo."
+      },
+      {
+        "id": "quiz-05-q15",
+        "number": 15,
+        "module": "C03",
+        "difficulty": "Hard",
+        "question": "Which package manager belongs to macOS vs Debian-based Linux?",
+        "options": [
+          "macOS = `apt`, Linux = `chocolatey`",
+          "macOS = `homebrew` (`brew`), Debian Linux = `apt`",
+          "macOS = `pacman`, Debian Linux = `brew`",
+          "macOS = `yum`, Debian Linux = `flatpak` only"
+        ],
+        "correctIndex": 1,
+        "explanation": "macOS uses Homebrew (`brew`), Windows uses Chocolatey, Debian/Ubuntu Linux uses `apt`."
+      },
+      {
+        "id": "quiz-05-q16",
+        "number": 16,
+        "module": "C07",
+        "difficulty": "Hard",
+        "question": "When inspecting a compiled binary file in a terminal, why do you need tools like `strings` or `head` instead of plain `cat`?",
+        "options": [
+          "Plain `cat` deletes binary files.",
+          "Raw compiled binaries contain non-human-readable machine bytes; `strings` extracts readable text without garbled symbols.",
+          "`cat` only reads `.py` files.",
+          "Compiled binaries are encrypted with a secret key."
+        ],
+        "correctIndex": 1,
+        "explanation": "Compiled binaries contain raw machine instructions; `strings` filters out unrecognised binary bytes."
+      }
+    ]
+  },
+  {
+    "id": "quiz-06",
+    "number": 6,
+    "title": "Number Systems, Conversions & Storage Units",
+    "description": "Bases (2, 3, 5, 10, 16), binary <-> decimal, division method, bits/nibbles/bytes, and kB vs KiB.",
+    "modules": [
+      "C08"
+    ],
+    "questions": [
+      {
+        "id": "quiz-06-q01",
+        "number": 1,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "What does the 'base' of a number system represent?",
+        "options": [
+          "The largest possible number it can write",
+          "The number of unique symbols used in that system",
+          "The number of bytes in a word",
+          "The clock speed of the CPU"
+        ],
+        "correctIndex": 1,
+        "explanation": "Base = number of unique symbols (Binary=2, Decimal=10, Hex=16)."
+      },
+      {
+        "id": "quiz-06-q02",
+        "number": 2,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "How many bits are in a nibble and in a byte?",
+        "options": [
+          "Nibble = 2 bits, Byte = 4 bits",
+          "Nibble = 4 bits, Byte = 8 bits (2 nibbles)",
+          "Nibble = 8 bits, Byte = 16 bits",
+          "Nibble = 1 bit, Byte = 4 bits"
+        ],
+        "correctIndex": 1,
+        "explanation": "1 bit = crumb, 1 nibble = 4 bits, 1 byte = 8 bits = 2 nibbles."
+      },
+      {
+        "id": "quiz-06-q03",
+        "number": 3,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "Why do computers use binary (0 and 1)?",
+        "options": [
+          "Transistors have two physical states: ON and OFF.",
+          "Decimal digits cannot be stored on SSDs.",
+          "Binary was invented for Roman numerals.",
+          "Hexadecimal only works in Python."
+        ],
+        "correctIndex": 0,
+        "explanation": "Electronic transistors are either ON or OFF, mapping naturally to 1 and 0."
+      },
+      {
+        "id": "quiz-06-q04",
+        "number": 4,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "Convert `1011\u2082` to decimal.",
+        "options": [
+          "9",
+          "10",
+          "11",
+          "13"
+        ],
+        "correctIndex": 2,
+        "explanation": "`1\u00d78 + 0\u00d74 + 1\u00d72 + 1\u00d71 = 11`."
+      },
+      {
+        "id": "quiz-06-q05",
+        "number": 5,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "Convert `10110\u2082` to decimal.",
+        "options": [
+          "18",
+          "20",
+          "22",
+          "26"
+        ],
+        "correctIndex": 2,
+        "explanation": "`16 + 0 + 4 + 2 + 0 = 22`."
+      },
+      {
+        "id": "quiz-06-q06",
+        "number": 6,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "In the decimal-to-binary division method, why do we read the remainders from BOTTOM to TOP?",
+        "options": [
+          "Because the first remainder is the ones place (rightmost bit) and the last remainder is the largest place (leftmost bit).",
+          "Because computers read numbers upside down.",
+          "Because even remainders must always come first.",
+          "To convert binary into hexadecimal."
+        ],
+        "correctIndex": 0,
+        "explanation": "The first division by 2 tests the 1s place (LSB), so reading bottom-to-top puts the MSB on the left."
+      },
+      {
+        "id": "quiz-06-q07",
+        "number": 7,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "Convert decimal `25` to binary.",
+        "options": [
+          "`10011`",
+          "`11001`",
+          "`11010`",
+          "`10101`"
+        ],
+        "correctIndex": 1,
+        "explanation": "`25/2=12 r1, 12/2=6 r0, 6/2=3 r0, 3/2=1 r1, 1/2=0 r1` -> bottom-to-top: `11001` (`16+8+1`)."
+      },
+      {
+        "id": "quiz-06-q08",
+        "number": 8,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "Convert decimal `42` to binary.",
+        "options": [
+          "`101010`",
+          "`101100`",
+          "`110010`",
+          "`100101`"
+        ],
+        "correctIndex": 0,
+        "explanation": "`32 + 8 + 2 = 42` -> `101010`."
+      },
+      {
+        "id": "quiz-06-q09",
+        "number": 9,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "What is the unsigned range of `n = 6` bits?",
+        "options": [
+          "0 to 64",
+          "1 to 64",
+          "0 to 63",
+          "0 to 31"
+        ],
+        "correctIndex": 2,
+        "explanation": "`2^6 = 64` values, unsigned range `0` to `2^6 - 1 = 63`."
+      },
+      {
+        "id": "quiz-06-q10",
+        "number": 10,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "What is the unsigned range of `n = 5` bits?",
+        "options": [
+          "0 to 32",
+          "0 to 31",
+          "1 to 32",
+          "0 to 15"
+        ],
+        "correctIndex": 1,
+        "explanation": "`2^5 = 32` values, range `0 to 31`."
+      },
+      {
+        "id": "quiz-06-q11",
+        "number": 11,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "How does `1 kB` differ from `1 KiB`?",
+        "options": [
+          "`1 kB = 1,000 bytes` (decimal); `1 KiB = 1,024 bytes` (binary power of 2).",
+          "`1 kB = 1,024 bytes`; `1 KiB = 1,000 bytes`.",
+          "Both equal 1,024 bytes.",
+          "`KiB` is only used for network speeds."
+        ],
+        "correctIndex": 0,
+        "explanation": "Decimal units (`kB`, `MB`, `GB`) use powers of 1000; binary units (`KiB`, `MiB`, `GiB`) use powers of 1024."
+      },
+      {
+        "id": "quiz-06-q12",
+        "number": 12,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "What is the Base-3 counting sequence for the first 5 numbers (0 to 4 in decimal)?",
+        "options": [
+          "`0, 1, 2, 3, 4`",
+          "`0, 1, 2, 10, 11`",
+          "`0, 1, 10, 11, 100`",
+          "`0, 1, 2, 20, 21`"
+        ],
+        "correctIndex": 1,
+        "explanation": "Base-3 uses only symbols `0, 1, 2`: after `2` comes `10` (three), then `11` (four)."
+      },
+      {
+        "id": "quiz-06-q13",
+        "number": 13,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "Why does networking use the word 'octet' instead of 'byte'?",
+        "options": [
+          "Some older machines used 6-, 7-, or 9-bit bytes, so 'octet' unambiguously means exactly 8 bits.",
+          "An octet means 10 bits in IPv4.",
+          "A byte is always 4 bits in networking.",
+          "Octet refers to hexadecimal digits."
+        ],
+        "correctIndex": 0,
+        "explanation": "Historical machines varied in byte size, so networking specifies 'octet' for exactly 8 bits."
+      },
+      {
+        "id": "quiz-06-q14",
+        "number": 14,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "Convert `1010 1111\u2082` to hexadecimal.",
+        "options": [
+          "`9F\u2081\u2086`",
+          "`AF\u2081\u2086`",
+          "`BF\u2081\u2086`",
+          "`AE\u2081\u2086`"
+        ],
+        "correctIndex": 1,
+        "explanation": "`1010 = 10 = A`, `1111 = 15 = F` -> `AF\u2081\u2086`."
+      },
+      {
+        "id": "quiz-06-q15",
+        "number": 15,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "Why does 1 byte equal exactly 2 hex digits?",
+        "options": [
+          "Because `1 byte = 8 bits` and `1 hex digit = 4 bits` (1 nibble).",
+          "Because `1 byte = 16 bits`.",
+          "Because hex only uses digits 0 and 1.",
+          "Because ASCII has 2 characters per byte."
+        ],
+        "correctIndex": 0,
+        "explanation": "Each hex digit encodes 4 bits (`2^4 = 16`), so 8 bits = 2 hex digits."
+      },
+      {
+        "id": "quiz-06-q16",
+        "number": 16,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "What is the primary flaw of the Unary counting system (tally marks)?",
+        "options": [
+          "It cannot represent numbers above 10.",
+          "It requires one symbol per item, making large numbers extremely tedious.",
+          "It uses negative bases.",
+          "It requires a secret key."
+        ],
+        "correctIndex": 1,
+        "explanation": "Unary uses 1 symbol per item (`||| = 3`), so representing 1,000 requires 1,000 symbols."
+      }
+    ]
+  },
+  {
+    "id": "quiz-07",
+    "number": 7,
+    "title": "Overflow, ASCII, Unicode, RGB & Encryption",
+    "description": "8-bit overflow, ASCII bit-5 trick, Unicode vs UTF-8, RGB/RGBA image size, file signatures, hex dumps, and encoding vs encryption.",
+    "modules": [
+      "C08"
+    ],
+    "questions": [
+      {
+        "id": "quiz-07-q01",
+        "number": 1,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "What is the maximum value of an unsigned 8-bit integer (`11111111\u2082`)?",
+        "options": [
+          "128",
+          "255",
+          "256",
+          "512"
+        ],
+        "correctIndex": 1,
+        "explanation": "`128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255`."
+      },
+      {
+        "id": "quiz-07-q02",
+        "number": 2,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "What happens when you add `1` to `255` in an unsigned 8-bit integer?",
+        "options": [
+          "It stays at 255.",
+          "The 9th bit is dropped and it overflows/wraps around to `0`.",
+          "It becomes `-1`.",
+          "It converts into hexadecimal."
+        ],
+        "correctIndex": 1,
+        "explanation": "`255 + 1 = 256` needs 9 bits; with only 8 bits available, the high bit is lost and it wraps to `0`."
+      },
+      {
+        "id": "quiz-07-q03",
+        "number": 3,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "In ASCII, `'A' = 65` and `'a' = 97`. What is `'C'` (67) in lowercase (`'c'`)?",
+        "options": [
+          "97",
+          "98",
+          "99",
+          "35"
+        ],
+        "correctIndex": 2,
+        "explanation": "Lowercase = Uppercase + 32 -> `67 + 32 = 99`."
+      },
+      {
+        "id": "quiz-07-q04",
+        "number": 4,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "How many characters does standard 7-bit ASCII define?",
+        "options": [
+          "64",
+          "128",
+          "256",
+          "1,024"
+        ],
+        "correctIndex": 1,
+        "explanation": "7 bits represent `2^7 = 128` characters (usually padded into 1 byte)."
+      },
+      {
+        "id": "quiz-07-q05",
+        "number": 5,
+        "module": "C08",
+        "difficulty": "Easy",
+        "question": "In RGBA colour, what does the 4th channel 'Alpha' control?",
+        "options": [
+          "Brightness",
+          "Transparency (`0` = transparent, `255` = opaque)",
+          "Image width",
+          "Audio volume"
+        ],
+        "correctIndex": 1,
+        "explanation": "RGBA adds Alpha for transparency (`0` = fully transparent, `255` = fully opaque)."
+      },
+      {
+        "id": "quiz-07-q06",
+        "number": 6,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "What is `250 + 10` in an unsigned 8-bit value?",
+        "options": [
+          "260",
+          "255",
+          "4",
+          "0"
+        ],
+        "correctIndex": 2,
+        "explanation": "`250 + 10 = 260`; `260 - 256 = 4` due to 8-bit overflow wrap-around."
+      },
+      {
+        "id": "quiz-07-q07",
+        "number": 7,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "Which statement accurately separates Unicode from UTF-8?",
+        "options": [
+          "Unicode is for English; UTF-8 is for images.",
+          "Unicode identifies the character (unique code point); UTF-8 encodes it into 1\u20134 bytes.",
+          "UTF-8 is encryption; Unicode is compression.",
+          "Both are 7-bit encodings."
+        ],
+        "correctIndex": 1,
+        "explanation": "Unicode assigns code points (like `U+1F600`); UTF-8 stores them as 1 to 4 bytes."
+      },
+      {
+        "id": "quiz-07-q08",
+        "number": 8,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "Calculate the uncompressed size of a `100 \u00d7 50` RGB image.",
+        "options": [
+          "`5,000` bytes",
+          "`10,000` bytes",
+          "`15,000` bytes",
+          "`20,000` bytes"
+        ],
+        "correctIndex": 2,
+        "explanation": "`width \u00d7 height \u00d7 3 bytes` = `100 \u00d7 50 \u00d7 3 = 15,000` bytes."
+      },
+      {
+        "id": "quiz-07-q09",
+        "number": 9,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "What are the 3 parts shown in a typical hex dump?",
+        "options": [
+          "CPU, RAM, SSD",
+          "Offset, Hex bytes, ASCII preview",
+          "Protocol, Domain, Path",
+          "Owner, Group, Others"
+        ],
+        "correctIndex": 1,
+        "explanation": "A hex dump displays: Offset, Hex bytes (2 hex digits per byte), and ASCII preview."
+      },
+      {
+        "id": "quiz-07-q10",
+        "number": 10,
+        "module": "C08",
+        "difficulty": "Medium",
+        "question": "Which magic number (file signature) identifies a PDF file?",
+        "options": [
+          "`89 50 4E 47`",
+          "`25 50 44 46` (`%PDF`)",
+          "`FF D8 FF`",
+          "`00 00 00`"
+        ],
+        "correctIndex": 1,
+        "explanation": "`25 50 44 46` spells `%PDF` in ASCII; `89 50 4E 47` is PNG; `FF D8 FF` is JPEG."
+      },
+      {
+        "id": "quiz-07-q11",
+        "number": 11,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "Why is Base64 or ASCII encoding NOT encryption?",
+        "options": [
+          "Encoding uses a known, public rule so anyone can read it; encryption protects data using a secret key.",
+          "Encoding only works on numbers, not text.",
+          "Encryption is slower than `gzip`.",
+          "Encoding requires a GPU."
+        ],
+        "correctIndex": 0,
+        "explanation": "Encoding represents data with a public rule; encryption hides/protects data with a secret key."
+      },
+      {
+        "id": "quiz-07-q12",
+        "number": 12,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "What is the uncompressed size of a `100 \u00d7 50` RGBA image (including Alpha)?",
+        "options": [
+          "`15,000` bytes",
+          "`20,000` bytes",
+          "`5,000` bytes",
+          "`30,000` bytes"
+        ],
+        "correctIndex": 1,
+        "explanation": "RGBA uses 4 bytes per pixel: `100 \u00d7 50 \u00d7 4 = 20,000` bytes."
+      },
+      {
+        "id": "quiz-07-q13",
+        "number": 13,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "In a PNG file, what are `IHDR`, `IDAT`, and `IEND`?",
+        "options": [
+          "Three CPU instructions",
+          "Four-letter ASCII chunk names (header, compressed pixel data, end of file)",
+          "Three Git commands",
+          "Three IPv4 octets"
+        ],
+        "correctIndex": 1,
+        "explanation": "PNG files store data in chunks with 4-letter ASCII names: `IHDR`, `IDAT`, `IEND`."
+      },
+      {
+        "id": "quiz-07-q14",
+        "number": 14,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "Why does `67 65 84` in ASCII decode to `CAT`?",
+        "options": [
+          "67='C', 65='A', 84='T'",
+          "67='A', 65='C', 84='T'",
+          "67='c', 65='a', 84='t'",
+          "It is hexadecimal"
+        ],
+        "correctIndex": 0,
+        "explanation": "`A=65`, `C=67`, `T=84` -> `CAT`."
+      },
+      {
+        "id": "quiz-07-q15",
+        "number": 15,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "In UTF-8, how many bytes does `'A'` (`U+0041`) take vs Devanagari NA (`U+0928`) vs an emoji (`U+1F600`)?",
+        "options": [
+          "All take 1 byte",
+          "1 byte, 3 bytes, and 4 bytes respectively",
+          "4 bytes, 2 bytes, and 1 byte",
+          "All take 8 bytes"
+        ],
+        "correctIndex": 1,
+        "explanation": "UTF-8 uses variable-length 1\u20134 bytes: ASCII `'A'` = 1 byte, Devanagari NA = 3 bytes, emoji = 4 bytes."
+      },
+      {
+        "id": "quiz-07-q16",
+        "number": 16,
+        "module": "C08",
+        "difficulty": "Hard",
+        "question": "What does the phrase 'Same building blocks, different meanings' mean in C08?",
+        "options": [
+          "Text, images, audio, and programs are all stored as sequences of bytes\u2014meaning comes from the interpretation rule.",
+          "All files are stored as `.txt` files.",
+          "Every CPU has the same clock speed.",
+          "RGB and ASCII use the exact same 3-byte rule."
+        ],
+        "correctIndex": 0,
+        "explanation": "Computers store everything as bytes; whether bytes mean text, pixels, or instructions depends on the encoding/interpretation rule."
+      }
+    ]
+  },
+  {
+    "id": "quiz-08",
+    "number": 8,
+    "title": "Git, GitHub & Networking Essentials",
+    "description": "Git history, .git/HEAD, 5-step workflow, Pull Requests, client/server, URLs, cable problem, devices, LAN/MAN/WAN, and IPv4.",
+    "modules": [
+      "C09",
+      "C11"
+    ],
+    "questions": [
+      {
+        "id": "quiz-08-q01",
+        "number": 1,
+        "module": "C09",
+        "difficulty": "Easy",
+        "question": "Who created Git in 2005, and why?",
+        "options": [
+          "Bill Gates, for Windows",
+          "Linus Torvalds, to support Linux kernel development",
+          "Guido van Rossum, for Python",
+          "Dennis Ritchie, for C"
+        ],
+        "correctIndex": 1,
+        "explanation": "Linus Torvalds created Git in 2005 in two weeks for Linux kernel development."
+      },
+      {
+        "id": "quiz-08-q02",
+        "number": 2,
+        "module": "C09",
+        "difficulty": "Easy",
+        "question": "What does `HEAD` point to in Git?",
+        "options": [
+          "Your GitHub password",
+          "The version (checkpoint) you are currently looking at",
+          "The first line of a bash script",
+          "The router's MAC address"
+        ],
+        "correctIndex": 1,
+        "explanation": "`HEAD` is Git's marker for your current checkpoint/version."
+      },
+      {
+        "id": "quiz-08-q03",
+        "number": 3,
+        "module": "C09",
+        "difficulty": "Easy",
+        "question": "What is the correct 5-step Git workflow order?",
+        "options": [
+          "Commit -> Add -> Status -> Edit -> Log",
+          "Change -> Check (`git status`) -> Select (`git add`) -> Record (`git commit`) -> Read (`git log`)",
+          "Push -> Clone -> Init -> Commit -> Add",
+          "Pull -> Remove -> Add -> Init"
+        ],
+        "correctIndex": 1,
+        "explanation": "Change -> Check (`status`) -> Select (`add`) -> Record (`commit`) -> Read (`log`)."
+      },
+      {
+        "id": "quiz-08-q04",
+        "number": 4,
+        "module": "C11",
+        "difficulty": "Easy",
+        "question": "In a browser visiting `amazon.in`, which role is the browser vs Amazon's machine?",
+        "options": [
+          "Browser = Server; Amazon = Client",
+          "Browser = Client; Amazon = Server",
+          "Both are Switches",
+          "Both are Modems"
+        ],
+        "correctIndex": 1,
+        "explanation": "The device requesting the page is the Client; the machine answering with HTML/CSS/JS is the Server."
+      },
+      {
+        "id": "quiz-08-q05",
+        "number": 5,
+        "module": "C11",
+        "difficulty": "Easy",
+        "question": "In `https://github.com/areen2026/github-lab-A1`, what is `/areen2026/github-lab-A1`?",
+        "options": [
+          "Protocol",
+          "Domain",
+          "Path",
+          "IPv4 address"
+        ],
+        "correctIndex": 2,
+        "explanation": "Protocol = `https://`, Domain = `github.com`, Path = `/areen2026/github-lab-A1`."
+      },
+      {
+        "id": "quiz-08-q06",
+        "number": 6,
+        "module": "C09",
+        "difficulty": "Medium",
+        "question": "How do teams collaborate safely on GitHub without breaking `main`?",
+        "options": [
+          "They email `.zip` files to each other.",
+          "They create a feature branch, push, and open a Pull Request (PR) for review before merging into `main`.",
+          "They delete `.git` before pushing.",
+          "They run `kill -9` on `main`."
+        ],
+        "correctIndex": 1,
+        "explanation": "Feature branches + Pull Requests allow code review, feedback, and approval before merging to `main`."
+      },
+      {
+        "id": "quiz-08-q07",
+        "number": 7,
+        "module": "C09",
+        "difficulty": "Medium",
+        "question": "What is the difference between `git clone <URL>` and `git pull`?",
+        "options": [
+          "`git clone` downloads a repo for the first time; `git pull` updates an existing local repo with the latest changes.",
+          "`git pull` is for first-time downloads; `git clone` is for updates.",
+          "Both delete local commits.",
+          "`git clone` only works offline."
+        ],
+        "correctIndex": 0,
+        "explanation": "`git clone` fetches a brand-new repo + full history; `git pull` updates an existing local repo."
+      },
+      {
+        "id": "quiz-08-q08",
+        "number": 8,
+        "module": "C11",
+        "difficulty": "Medium",
+        "question": "Why does a Switch waste less bandwidth and have fewer collisions than a Hub?",
+        "options": [
+          "A Switch sends data only to the intended device using its MAC address, while a Hub broadcasts to all devices.",
+          "A Switch uses Wi-Fi.",
+          "A Hub uses IPv4 while a Switch uses Base-3.",
+          "A Switch connects directly to satellites."
+        ],
+        "correctIndex": 0,
+        "explanation": "Hub = broadcasts to all; Switch = targeted delivery via MAC address."
+      },
+      {
+        "id": "quiz-08-q09",
+        "number": 9,
+        "module": "C11",
+        "difficulty": "Medium",
+        "question": "How do a Modem and a Router split responsibilities at home?",
+        "options": [
+          "Modem connects your home to the ISP; Router connects your home network to the ISP and directs traffic using IP addresses.",
+          "Router connects to the ISP; Modem only broadcasts Wi-Fi.",
+          "Both do the exact same job.",
+          "Modem is software; Router is an API."
+        ],
+        "correctIndex": 0,
+        "explanation": "Modem = link to ISP; Router = directs data between networks using IP addresses."
+      },
+      {
+        "id": "quiz-08-q10",
+        "number": 10,
+        "module": "C11",
+        "difficulty": "Medium",
+        "question": "Order the network types by geographic scale from smallest to largest:",
+        "options": [
+          "WAN < MAN < LAN",
+          "LAN < MAN < WAN",
+          "MAN < LAN < WAN",
+          "LAN < WAN < MAN"
+        ],
+        "correctIndex": 1,
+        "explanation": "LAN (home/office) < MAN (city/campus) < WAN (across cities/countries)."
+      },
+      {
+        "id": "quiz-08-q11",
+        "number": 11,
+        "module": "C11",
+        "difficulty": "Hard",
+        "question": "Using `n(n-1)/2`, how many cables are needed to directly connect 10 devices vs 100 devices?",
+        "options": [
+          "10 devices = 45; 100 devices = 4,950",
+          "10 devices = 10; 100 devices = 100",
+          "10 devices = 90; 100 devices = 9,900",
+          "10 devices = 50; 100 devices = 5,000"
+        ],
+        "correctIndex": 0,
+        "explanation": "`10\u00d79/2 = 45`; `100\u00d799/2 = 4,950`."
+      },
+      {
+        "id": "quiz-08-q12",
+        "number": 12,
+        "module": "C11",
+        "difficulty": "Hard",
+        "question": "What is the 'easy memory trick' for Switch vs Router addressing?",
+        "options": [
+          "Switch = IP, Router = MAC",
+          "Switch = MAC (hardware address in LAN), Router = IP (logical address between networks)",
+          "Both use DNS only",
+          "Switch = UTF-8, Router = ASCII"
+        ],
+        "correctIndex": 1,
+        "explanation": "Switch = MAC address (local network); Router = IP address (between networks)."
+      },
+      {
+        "id": "quiz-08-q13",
+        "number": 13,
+        "module": "C11",
+        "difficulty": "Hard",
+        "question": "Why can two separate homes both have a laptop with IP `192.168.0.2`?",
+        "options": [
+          "Because `192.168.x.x` is a private IP reused inside local networks, while each home presents a separate public IP to the internet.",
+          "Because IPv4 has infinite octets.",
+          "Because laptops change MAC addresses every second.",
+          "Because `192.168.0.2` is a domain name."
+        ],
+        "correctIndex": 0,
+        "explanation": "Private IPs are local and reusable across separate networks; routers/ISPs use public IPs on the internet."
+      },
+      {
+        "id": "quiz-08-q14",
+        "number": 14,
+        "module": "C11",
+        "difficulty": "Hard",
+        "question": "How many total addresses can 32-bit IPv4 represent?",
+        "options": [
+          "About 65,536 (`2^16`)",
+          "About 4.3 billion (`2^32`)",
+          "255",
+          "1,024"
+        ],
+        "correctIndex": 1,
+        "explanation": "4 octets \u00d7 8 bits = 32 bits -> `2^32 \u2248 4.3 billion` addresses (each octet `0\u2013255`)."
+      },
+      {
+        "id": "quiz-08-q15",
+        "number": 15,
+        "module": "C11",
+        "difficulty": "Hard",
+        "question": "What does DNS (Domain Name System) do?",
+        "options": [
+          "Encrypts HTTP into HTTPS",
+          "Converts a human-readable domain name (like `github.com`) into the server's IP address",
+          "Compresses HTML files",
+          "Assigns MAC addresses"
+        ],
+        "correctIndex": 1,
+        "explanation": "DNS acts like the internet's phone book, mapping domain names to IP addresses."
+      },
+      {
+        "id": "quiz-08-q16",
+        "number": 16,
+        "module": "C09",
+        "difficulty": "Hard",
+        "question": "What does `git push -u origin main` do that plain `git push` does not on the first push?",
+        "options": [
+          "It creates a new GitHub repo automatically.",
+          "It links your local `main` branch to `origin/main` (`-u` upstream) so future pushes only need `git push`.",
+          "It deletes all other branches.",
+          "It converts Git history into a PDF."
+        ],
+        "correctIndex": 1,
+        "explanation": "`-u` sets the upstream tracking link between `main` and `origin`."
+      }
+    ]
+  },
+  {
+    "id": "quiz-09",
+    "number": 9,
+    "title": "What Is AI? Four Faces, GPUs & Coding 2.0",
+    "description": "Calculate vs predict, Turing 1950 / McCarthy 1956 / Goostman 2014, Russell & Norvig 2x2 matrix, 8 disciplines, GPUs, and Coding 1.0 vs 2.0.",
+    "modules": [
+      "C14"
+    ],
+    "questions": [
+      {
+        "id": "quiz-09-q01",
+        "number": 1,
+        "module": "C14",
+        "difficulty": "Easy",
+        "question": "Which problem is 'Calculate' (known steps) vs 'Predict' (uncertain, learned from patterns)?",
+        "options": [
+          "Calculate = tomorrow's weather; Predict = shopping bill",
+          "Calculate = shopping bill; Predict = tomorrow's weather",
+          "Both are Predict problems",
+          "Both are Calculate problems"
+        ],
+        "correctIndex": 1,
+        "explanation": "Shopping bills have exact step-by-step formulas (Calculate); weather and exam performance are uncertain (Predict)."
+      },
+      {
+        "id": "quiz-09-q02",
+        "number": 2,
+        "module": "C14",
+        "difficulty": "Easy",
+        "question": "Who coined the term 'Artificial Intelligence' in 1956 for the Dartmouth summer workshop?",
+        "options": [
+          "Alan Turing",
+          "John McCarthy",
+          "Frank Rosenblatt",
+          "Geoffrey Hinton"
+        ],
+        "correctIndex": 1,
+        "explanation": "John McCarthy coined 'Artificial Intelligence' in 1956 (two years after Turing's death)."
+      },
+      {
+        "id": "quiz-09-q03",
+        "number": 3,
+        "module": "C14",
+        "difficulty": "Easy",
+        "question": "In the Four Faces of AI, what are the two axes of Russell & Norvig's 2\u00d72 matrix?",
+        "options": [
+          "Hardware vs Software \u00d7 Fast vs Slow",
+          "Thinking vs Acting \u00d7 Human-centric vs Rationality-centric",
+          "Binary vs Hex \u00d7 Compiled vs Interpreted",
+          "LAN vs WAN \u00d7 Client vs Server"
+        ],
+        "correctIndex": 1,
+        "explanation": "The 2\u00d72 matrix crosses Thinking vs Acting with Human-centric vs Rationality-centric."
+      },
+      {
+        "id": "quiz-09-q04",
+        "number": 4,
+        "module": "C14",
+        "difficulty": "Easy",
+        "question": "What is the slogan for Coding 2.0?",
+        "options": [
+          "You solve the problem and write every rule.",
+          "You specify the problem with data; the data becomes the program.",
+          "Only C programs can run on GPUs.",
+          "No data is needed."
+        ],
+        "correctIndex": 1,
+        "explanation": "In Coding 1.0 you write the procedure ('how'); in Coding 2.0 you supply examples and the data becomes the program."
+      },
+      {
+        "id": "quiz-09-q05",
+        "number": 5,
+        "module": "C14",
+        "difficulty": "Easy",
+        "question": "In the CPU vs GPU analogy, what is a CPU vs a GPU?",
+        "options": [
+          "CPU = fleet of buses; GPU = sports car",
+          "CPU = sports car (4\u20138 fast sequential cores); GPU = massive fleet of buses (thousands of parallel cores)",
+          "Both are identical",
+          "GPU = hard disk"
+        ],
+        "correctIndex": 1,
+        "explanation": "CPUs execute sequentially with a few fast cores; GPUs execute thousands of operations in parallel."
+      },
+      {
+        "id": "quiz-09-q06",
+        "number": 6,
+        "module": "C14",
+        "difficulty": "Medium",
+        "question": "Why does modern AI focus primarily on 'Acting Rationally' (the Rational Agent)?",
+        "options": [
+          "Humans are often irrational and make mistakes, while pure logical perfection is too slow in complex real-world settings.",
+          "Rational Agents never need hardware.",
+          "Cognitive science proved brains don't use neurons.",
+          "Turing forbade Thinking Humanly."
+        ],
+        "correctIndex": 0,
+        "explanation": "The Rational Agent absorbs useful parts of the other faces to take the best possible action toward a goal."
+      },
+      {
+        "id": "quiz-09-q07",
+        "number": 7,
+        "module": "C14",
+        "difficulty": "Medium",
+        "question": "Why did 'Is there a cat in this photo?' hit a 70-year wall in Coding 1.0?",
+        "options": [
+          "Computers couldn't store RGB pixels.",
+          "We don't know how we recognise a cat ourselves\u2014every hand-written pixel rule has a thousand exceptions.",
+          "Python did not have `if` statements.",
+          "Cats move too fast for CPUs."
+        ],
+        "correctIndex": 1,
+        "explanation": "Key quote: we cannot write the procedure for 'cat' not because we aren't clever, but because we don't know how we do it ourselves."
+      },
+      {
+        "id": "quiz-09-q08",
+        "number": 8,
+        "module": "C14",
+        "difficulty": "Medium",
+        "question": "In the 2014 'Eugene Goostman' milestone, what sparked furious debate?",
+        "options": [
+          "Whether a 5-minute text chat posing as a 13-year-old boy should count as passing the Turing Test.",
+          "Whether Goostman used too many GPUs.",
+          "Whether Goostman was compiled in C.",
+          "Whether Goostman deleted `.git`."
+        ],
+        "correctIndex": 0,
+        "explanation": "64 years after Turing (1950), Goostman's 5-minute chat proved the definition of AI still sparks debate."
+      },
+      {
+        "id": "quiz-09-q09",
+        "number": 9,
+        "module": "C14",
+        "difficulty": "Medium",
+        "question": "Which of the 8 disciplines gave AI 'Maximizing expected utility' (how an agent chooses)?",
+        "options": [
+          "Linguistics",
+          "Economics",
+          "Neuroscience",
+          "Control Theory"
+        ],
+        "correctIndex": 1,
+        "explanation": "Economics contributed Decision Theory / maximizing expected utility."
+      },
+      {
+        "id": "quiz-09-q10",
+        "number": 10,
+        "module": "C14",
+        "difficulty": "Medium",
+        "question": "Which of the 8 disciplines gave AI 'Feedback and objective functions'?",
+        "options": [
+          "Control Theory",
+          "Philosophy",
+          "Psychology",
+          "Computer Engineering"
+        ],
+        "correctIndex": 0,
+        "explanation": "Control Theory asks 'How does it pursue a goal?' and contributed feedback and objective functions."
+      },
+      {
+        "id": "quiz-09-q11",
+        "number": 11,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "How do the 8 disciplines map onto the Four Faces of AI?",
+        "options": [
+          "Thinking Rationally = Logic (Math & Philosophy); Acting Rationally = Decision Theory (Economics) & Control Theory",
+          "Thinking Rationally = Economics; Acting Rationally = Philosophy only",
+          "Thinking Humanly = Computer Engineering only",
+          "Acting Humanly = Control Theory only"
+        ],
+        "correctIndex": 0,
+        "explanation": "Thinking Rationally = Math & Philosophy; Acting Rationally = Economics & Control Theory; Thinking Humanly = Psychology & Neuroscience; Acting Humanly = Linguistics & Turing Test."
+      },
+      {
+        "id": "quiz-09-q12",
+        "number": 12,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "Why did the lecture note that 'machine learning' is NOT literally on the Lecture 14 slides even though Coding 2.0 describes it?",
+        "options": [
+          "Because Coding 2.0 (fitting a model from labelled examples) is the same 'pattern-predictor' concept commonly called machine learning.",
+          "Because machine learning only exists in Lecture 11.",
+          "Because Coding 2.0 is hardware, not software.",
+          "Because machine learning is Coding 1.0."
+        ],
+        "correctIndex": 0,
+        "explanation": "Coding 2.0 is what is usually called machine learning\u2014it aligns with Lecture 15's pattern-predictor idea."
+      },
+      {
+        "id": "quiz-09-q13",
+        "number": 13,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "Why were video-game GPUs the exact hardware deep neural networks needed?",
+        "options": [
+          "Video games require calculating colours of millions of pixels simultaneously\u2014the same massive parallelism neural networks need.",
+          "Video games use 7-bit ASCII.",
+          "GPUs have 1 core running at 100 GHz.",
+          "GPUs store web pages for PageRank."
+        ],
+        "correctIndex": 0,
+        "explanation": "GPUs act like 'millions of slow processors' operating in parallel, mirroring biological neural networks."
+      },
+      {
+        "id": "quiz-09-q14",
+        "number": 14,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "In Coding 2.0, where does the 'intelligence' live?",
+        "options": [
+          "Solely in the programmer's hand-written `if/else` steps.",
+          "In a learning algorithm that searches for a procedure that fits the data.",
+          "Inside the monitor's pixels.",
+          "Inside `chmod 755`."
+        ],
+        "correctIndex": 1,
+        "explanation": "In Coding 1.0 intelligence lives in the programmer; in Coding 2.0 it lives in the learning algorithm fitting data."
+      },
+      {
+        "id": "quiz-09-q15",
+        "number": 15,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "Which pair of questions defines the Four Faces of AI?",
+        "options": [
+          "1) Compiled vs Interpreted; 2) Local vs Remote",
+          "1) Thinking (internal process) vs Acting (external behaviour); 2) Humans vs Ideal Rationality",
+          "1) Bit vs Byte; 2) LAN vs WAN",
+          "1) Input vs Output; 2) RAM vs SSD"
+        ],
+        "correctIndex": 1,
+        "explanation": "Russell & Norvig's two questions: internal thinking vs external acting, and human-centric vs ideal rationality."
+      },
+      {
+        "id": "quiz-09-q16",
+        "number": 16,
+        "module": "C14",
+        "difficulty": "Hard",
+        "question": "Which discipline contributed 'Mind-as-computation theory' vs 'Neural networks inspiration'?",
+        "options": [
+          "Psychology -> Mind-as-computation; Neuroscience -> Neural networks inspiration",
+          "Neuroscience -> Mind-as-computation; Psychology -> Hardware substrate",
+          "Philosophy -> Hardware substrate; Linguistics -> Utility",
+          "Economics -> Neural networks"
+        ],
+        "correctIndex": 0,
+        "explanation": "Psychology gave mind-as-computation theory; Neuroscience gave neural networks inspiration."
+      }
+    ]
+  },
+  {
+    "id": "quiz-10",
+    "number": 10,
+    "title": "The 10 Foundational AI Papers (1936\u20132020)",
+    "description": "Turing, Shannon, Rosenblatt, Minsky & Papert, Lamport, Backprop, PageRank, AlexNet, Transformer, GPT-3, and key exam traps.",
+    "modules": [
+      "C15",
+      "C16"
+    ],
+    "questions": [
+      {
+        "id": "quiz-10-q01",
+        "number": 1,
+        "module": "C15",
+        "difficulty": "Easy",
+        "question": "What are the three parts of Alan Turing's 1936 theoretical Turing machine?",
+        "options": [
+          "CPU, GPU, and SSD",
+          "An unbounded tape divided into cells, a read/write head, and a finite set of rules",
+          "Input, Output, and Monitor",
+          "Client, Server, and Router"
+        ],
+        "correctIndex": 1,
+        "explanation": "Turing's 1936 machine has an unbounded tape, a moving read/write head, and a finite set of rules."
+      },
+      {
+        "id": "quiz-10-q02",
+        "number": 2,
+        "module": "C15",
+        "difficulty": "Easy",
+        "question": "What did Claude Shannon (1948) contribute to the foundations of computing and AI?",
+        "options": [
+          "The first physical GPU",
+          "Representing messages digitally as sequences of bits (0s and 1s)",
+          "The Transformer architecture",
+          "The 175B-parameter GPT-3 model"
+        ],
+        "correctIndex": 1,
+        "explanation": "Shannon (1948) showed how information can be represented digitally using bits."
+      },
+      {
+        "id": "quiz-10-q03",
+        "number": 3,
+        "module": "C15",
+        "difficulty": "Easy",
+        "question": "What is the learning loop of Frank Rosenblatt's Perceptron (1958)?",
+        "options": [
+          "EDIT -> ADD -> COMMIT -> PUSH",
+          "GUESS -> CHECK -> ADJUST -> REPEAT",
+          "COMPILE -> LINK -> RUN -> DELETE",
+          "CLONE -> PULL -> MERGE -> RESET"
+        ],
+        "correctIndex": 1,
+        "explanation": "The perceptron guesses, checks against the label, adjusts weights on mistakes, and repeats."
+      },
+      {
+        "id": "quiz-10-q04",
+        "number": 4,
+        "module": "C15",
+        "difficulty": "Easy",
+        "question": "What does `(T, P, E)` stand for in machine learning?",
+        "options": [
+          "Time, Power, Electricity",
+          "Task, Performance measure, Experience",
+          "Terminal, Process, Executable",
+          "Training, Prompting, Encryption"
+        ],
+        "correctIndex": 1,
+        "explanation": "A machine learns from Experience (E) with respect to Task (T) and Performance measure (P)."
+      },
+      {
+        "id": "quiz-10-q05",
+        "number": 5,
+        "module": "C16",
+        "difficulty": "Easy",
+        "question": "Which 2017 paper introduced the Transformer and self-attention mechanism?",
+        "options": [
+          "Brown et al. (GPT-3)",
+          "Vaswani et al. ('Attention Is All You Need')",
+          "Page & Brin (PageRank)",
+          "Krizhevsky et al. (AlexNet)"
+        ],
+        "correctIndex": 1,
+        "explanation": "Vaswani et al. (2017) introduced the Transformer and attention."
+      },
+      {
+        "id": "quiz-10-q06",
+        "number": 6,
+        "module": "C15",
+        "difficulty": "Medium",
+        "question": "Why did ELIZA (1966) NOT qualify as a learning system?",
+        "options": [
+          "It ran too slowly on GPUs.",
+          "It used manually written pattern-matching rules without learning from conversations or using neural networks.",
+          "It only spoke binary hex.",
+          "It failed to connect to GitHub."
+        ],
+        "correctIndex": 1,
+        "explanation": "ELIZA's DOCTOR script relied on hand-written rules\u2014giving rise to the 'ELIZA effect'."
+      },
+      {
+        "id": "quiz-10-q07",
+        "number": 7,
+        "module": "C15",
+        "difficulty": "Medium",
+        "question": "Why does a single perceptron fail on XOR (`(0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0`)?",
+        "options": [
+          "XOR has 4 outputs instead of 2.",
+          "A single perceptron creates a single straight-line boundary, which cannot separate XOR's diagonally opposite ON/OFF points.",
+          "XOR uses floating-point numbers.",
+          "Perceptrons cannot read 0s."
+        ],
+        "correctIndex": 1,
+        "explanation": "Minsky & Papert (1969) proved a single linear boundary cannot solve XOR; multilayer networks are needed."
+      },
+      {
+        "id": "quiz-10-q08",
+        "number": 8,
+        "module": "C15",
+        "difficulty": "Medium",
+        "question": "Computer A (counter 3) sends a message stamped 3 to Computer B (counter 7). What is B's new Lamport logical clock?",
+        "options": [
+          "`4`",
+          "`7`",
+          "`8`",
+          "`10`"
+        ],
+        "correctIndex": 2,
+        "explanation": "`New counter = max(local, received) + 1` = `max(7, 3) + 1 = 8`."
+      },
+      {
+        "id": "quiz-10-q09",
+        "number": 9,
+        "module": "C16",
+        "difficulty": "Medium",
+        "question": "What three ingredients came together in AlexNet (2012)?",
+        "options": [
+          "Turing machines, ELIZA, and Lamport clocks",
+          "Deep multilayer networks, large labelled data (ImageNet), and parallel GPUs",
+          "HTML, CSS, and JavaScript",
+          "Hubs, Switches, and Routers"
+        ],
+        "correctIndex": 1,
+        "explanation": "AlexNet succeeded by combining better deep networks + ImageNet labelled data + GPU parallelism."
+      },
+      {
+        "id": "quiz-10-q10",
+        "number": 10,
+        "module": "C16",
+        "difficulty": "Medium",
+        "question": "How does Backpropagation (1986) relate to Gradient Descent?",
+        "options": [
+          "Backprop calculates how each weight contributed to the error; gradient descent uses that to update weights.",
+          "Gradient descent sends errors backward; backprop ranks web pages.",
+          "Both are used only during prompting, not training.",
+          "Neither uses weights."
+        ],
+        "correctIndex": 0,
+        "explanation": "Backprop = calculate the blame; gradient descent = apply the fix."
+      },
+      {
+        "id": "quiz-10-q11",
+        "number": 11,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "Which statement about Alan Turing's 1936 paper is FALSE?",
+        "options": [
+          "It was a theoretical model of computation.",
+          "It proved some questions cannot be decided by any step-by-step procedure.",
+          "Turing built a physical electronic computer and modern LLM in that 1936 paper.",
+          "One general-purpose machine can imitate others given instructions."
+        ],
+        "correctIndex": 2,
+        "explanation": "Exam trap: Turing did NOT build a physical computer or create modern AI in his 1936 paper."
+      },
+      {
+        "id": "quiz-10-q12",
+        "number": 12,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "What is the key difference between Training and Few-Shot Prompting (GPT-3, 2020)?",
+        "options": [
+          "Training updates internal parameters across many examples; prompting uses examples as context WITHOUT updating learned parameters.",
+          "Prompting permanently rewrites all 175B parameters.",
+          "Training only happens in `chmod 755`.",
+          "Prompting requires re-compiling GPT-3 in C."
+        ],
+        "correctIndex": 0,
+        "explanation": "Few-shot prompting guides behaviour via context without updating internal parameters."
+      },
+      {
+        "id": "quiz-10-q13",
+        "number": 13,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "In the sentence 'The trophy didn't fit in the suitcase because it was too big', why does Attention matter?",
+        "options": [
+          "Changing 'big' to 'small' flips what 'it' refers to, requiring the model to weigh relationships across all words in parallel.",
+          "Attention translates English into ASCII.",
+          "Attention proves the model has human consciousness.",
+          "Attention replaces all training data."
+        ],
+        "correctIndex": 0,
+        "explanation": "Attention lets the model use context across the whole sentence in parallel\u2014without hand-written pronoun rules."
+      },
+      {
+        "id": "quiz-10-q14",
+        "number": 14,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "Which of these statements is a FALSE exam trap?",
+        "options": [
+          "Turing Test measures conversational behaviour, not consciousness.",
+          "Lamport's logical clocks give causal ordering, not exact physical time.",
+          "PageRank directly trains LLMs on Google's search index.",
+          "Fluent LLM text is not guaranteed to be factually correct."
+        ],
+        "correctIndex": 2,
+        "explanation": "PageRank ranks web pages; it did not produce training datasets or train LLMs (its link is historical web text growth)."
+      },
+      {
+        "id": "quiz-10-q15",
+        "number": 15,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "Which chronological order of the first 5 papers (1936\u20131978) is exact?",
+        "options": [
+          "Turing -> Shannon -> Rosenblatt -> Minsky & Papert -> Lamport",
+          "Shannon -> Turing -> Rosenblatt -> Lamport -> Minsky & Papert",
+          "Turing -> Rosenblatt -> Shannon -> Minsky & Papert -> Lamport",
+          "Turing -> Shannon -> Minsky & Papert -> Rosenblatt -> Lamport"
+        ],
+        "correctIndex": 0,
+        "explanation": "1936 Turing -> 1948 Shannon -> 1958 Rosenblatt -> 1969 Minsky & Papert -> 1978 Lamport."
+      },
+      {
+        "id": "quiz-10-q16",
+        "number": 16,
+        "module": "C16",
+        "difficulty": "Hard",
+        "question": "Which chronological order of the next 5 papers (1986\u20132020) is exact?",
+        "options": [
+          "Backprop -> PageRank -> AlexNet -> Transformer -> GPT-3",
+          "PageRank -> Backprop -> AlexNet -> GPT-3 -> Transformer",
+          "Backprop -> AlexNet -> PageRank -> Transformer -> GPT-3",
+          "AlexNet -> Backprop -> PageRank -> Transformer -> GPT-3"
+        ],
+        "correctIndex": 0,
+        "explanation": "1986 Backprop -> 1998 PageRank -> 2012 AlexNet -> 2017 Transformer -> 2020 GPT-3."
+      }
+    ]
+  }
+]

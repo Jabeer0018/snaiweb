@@ -140,3 +140,23 @@ export interface PlaygroundChallenge {
   explanation: string;
   source?: string;
 }
+
+export interface TheoryMcq {
+  id: string;
+  number: number;
+  module: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  question: string;
+  options: [string, string, string, string];
+  correctIndex: 0 | 1 | 2 | 3;
+  explanation: string;
+}
+
+export interface TheoryQuiz {
+  id: string;
+  number: number;
+  title: string;
+  description: string;
+  modules: string[];
+  questions: TheoryMcq[];
+}

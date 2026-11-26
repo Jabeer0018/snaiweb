@@ -10,6 +10,8 @@ import {
   ResourceEntry,
   RevisionEntry,
   SearchDocument,
+  TheoryMcq,
+  TheoryQuiz,
   TocHeading,
   Topic,
   TopicMeta,
@@ -25,6 +27,8 @@ const RESOURCES_FILE = path.join(CONTENT_DIR, "resources", "index.json");
 const CHANGELOG_FILE = path.join(CONTENT_DIR, "changelog.json");
 const PLAYGROUND_FILE = path.join(CONTENT_DIR, "playground", "challenges.json");
 const PLAYGROUND_100_FILE = path.join(CONTENT_DIR, "playground", "challenges-100.json");
+const MCQS_FILE = path.join(CONTENT_DIR, "mcqs", "theory-mcqs.json");
+const QUIZZES_FILE = path.join(CONTENT_DIR, "mcqs", "theory-quizzes.json");
 
 function safeReadDir(dirPath: string): fs.Dirent[] {
   if (!fs.existsSync(dirPath)) return [];
@@ -278,6 +282,16 @@ export function getAllChallenges(): PlaygroundChallenge[] {
 
 export function getAllPlaygroundProblems(): PlaygroundProblem[] {
   const data = safeReadJson<PlaygroundProblem[]>(PLAYGROUND_100_FILE, []);
+  return Array.isArray(data) ? data : [];
+}
+
+export function getAllTheoryMcqs(): TheoryMcq[] {
+  const data = safeReadJson<TheoryMcq[]>(MCQS_FILE, []);
+  return Array.isArray(data) ? data : [];
+}
+
+export function getAllTheoryQuizzes(): TheoryQuiz[] {
+  const data = safeReadJson<TheoryQuiz[]>(QUIZZES_FILE, []);
   return Array.isArray(data) ? data : [];
 }
 

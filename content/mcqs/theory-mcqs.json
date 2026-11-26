@@ -1,0 +1,902 @@
+[
+  {
+    "id": "mcq-001",
+    "number": 1,
+    "module": "C01 \u2014 Computer Systems",
+    "difficulty": "Easy",
+    "question": "A juicer accepts oranges (input), crushes them (process), and produces juice (output). Why does it still NOT qualify as a computer?",
+    "options": [
+      "It lacks an electronic display screen for output.",
+      "It cannot be reprogrammed to perform a different task.",
+      "It does not connect to the internet or a local network.",
+      "It processes physical fruit rather than decimal numbers."
+    ],
+    "correctIndex": 1,
+    "explanation": "Both a juicer and a computer follow Input -> Process -> Output, but a juicer performs one fixed job and cannot be reprogrammed."
+  },
+  {
+    "id": "mcq-002",
+    "number": 2,
+    "module": "C01 \u2014 Computer Systems",
+    "difficulty": "Easy",
+    "question": "Which statement accurately describes a washing machine or traffic light controller?",
+    "options": [
+      "It is a general-purpose PC running a stripped-down desktop OS.",
+      "It is a server because it responds to user button presses.",
+      "It is not a computer itself, but contains an embedded system inside it.",
+      "It is a supercomputer scaled down for household power limits."
+    ],
+    "correctIndex": 2,
+    "explanation": "Everyday appliances like washing machines, ATMs, and traffic lights are not computers themselves\u2014they contain embedded systems."
+  },
+  {
+    "id": "mcq-003",
+    "number": 3,
+    "module": "C01 \u2014 Computer Systems",
+    "difficulty": "Easy",
+    "question": "Which pairing correctly distinguishes Augmented Reality (AR) from Virtual Reality (VR)?",
+    "options": [
+      "AR = entirely virtual environment; VR = real world + digital overlay.",
+      "AR = real world + virtual overlay; VR = entirely virtual environment.",
+      "AR requires a quantum processor; VR runs only on servers.",
+      "AR is strictly text-based; VR is strictly image-based."
+    ],
+    "correctIndex": 1,
+    "explanation": "AR overlays digital content onto the real world, whereas VR replaces your surroundings with an entirely virtual environment."
+  },
+  {
+    "id": "mcq-004",
+    "number": 4,
+    "module": "C02 \u2014 Hardware & Software",
+    "difficulty": "Easy",
+    "question": "A student insists that because their photos remain intact after a power cut, RAM must be permanent storage. Why is this claim flawed?",
+    "options": [
+      "Photos are saved in secondary storage (SSD/HDD); RAM is volatile working memory that clears on power-off.",
+      "RAM only stores operating system kernels, never user photos.",
+      "RAM is slower than an HDD, so photos bypass RAM completely.",
+      "Photos are permanently stored inside the CPU cache instead."
+    ],
+    "correctIndex": 0,
+    "explanation": "RAM is volatile primary memory\u2014its contents are cleared when power turns off. Photos survive on secondary storage (SSD/HDD)."
+  },
+  {
+    "id": "mcq-005",
+    "number": 5,
+    "module": "C02 \u2014 Hardware & Software",
+    "difficulty": "Easy",
+    "question": "Which item is mistakenly placed if someone lists 'Monitor, Keyboard, CPU, Compiler, Printer' as hardware examples?",
+    "options": [
+      "Monitor",
+      "CPU",
+      "Compiler",
+      "Printer"
+    ],
+    "correctIndex": 2,
+    "explanation": "A compiler is system software (a program), not a physical hardware component."
+  },
+  {
+    "id": "mcq-006",
+    "number": 6,
+    "module": "C02 \u2014 Hardware & Software",
+    "difficulty": "Easy",
+    "question": "In the bottom-to-top Software Stack, which layer sits directly between Hardware and Applications?",
+    "options": [
+      "Device Drivers only",
+      "The Operating System",
+      "The Compiler",
+      "The Browser"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Software Stack from bottom to top is: Hardware -> Operating System -> Applications."
+  },
+  {
+    "id": "mcq-007",
+    "number": 7,
+    "module": "C04 \u2014 Interfaces",
+    "difficulty": "Easy",
+    "question": "Which expansion of the three core computing interfaces is completely accurate?",
+    "options": [
+      "CLI = Central Logic Interface, GUI = General User Input, API = Automated Program Integration",
+      "CLI = Command Line Interface, GUI = Graphical User Interface, API = Application Programming Interface",
+      "CLI = Command Language Interpreter, GUI = Graphical Unit Interface, API = Application Process Index",
+      "CLI = Computer Link Interface, GUI = Global User Interaction, API = Advanced Programming Interface"
+    ],
+    "correctIndex": 1,
+    "explanation": "CLI = Command Line Interface, GUI = Graphical User Interface, API = Application Programming Interface."
+  },
+  {
+    "id": "mcq-008",
+    "number": 8,
+    "module": "C04 \u2014 Interfaces",
+    "difficulty": "Easy",
+    "question": "In the GUI Desktop Metaphor, which pairing is INCORRECT?",
+    "options": [
+      "Files -> Paper documents",
+      "Folders -> Physical office folders",
+      "Delete -> Trash can",
+      "RAM -> Desk drawer"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Desktop Metaphor maps Files to paper, Folders to real folders, and Delete to a trash can\u2014not RAM to a desk drawer."
+  },
+  {
+    "id": "mcq-009",
+    "number": 9,
+    "module": "C05 \u2014 OS & Process Management",
+    "difficulty": "Easy",
+    "question": "If you install Google Chrome once on your disk and open two separate Chrome windows, what does the OS do?",
+    "options": [
+      "It duplicates the Chrome installer file on your SSD.",
+      "It creates separate processes in RAM from that single program on disk.",
+      "It merges both windows into a single non-terminable kernel thread.",
+      "It refuses to open the second window without a second CPU."
+    ],
+    "correctIndex": 1,
+    "explanation": "One program on disk can spawn multiple independent processes in memory."
+  },
+  {
+    "id": "mcq-010",
+    "number": 10,
+    "module": "C05 \u2014 OS & Process Management",
+    "difficulty": "Easy",
+    "question": "When you type `ls` in your terminal, what is the relationship between the Shell and `ls`?",
+    "options": [
+      "`ls` is the parent process and the Shell is its child process.",
+      "Both `ls` and the Shell are hardware interrupts.",
+      "The Shell is the parent process and `ls` runs as its child process.",
+      "Neither is a process because `ls` only reads filenames."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Shell acts as the parent process and creates a child process for each command you run (`pwd`, `ls`, `mkdir`, etc.)."
+  },
+  {
+    "id": "mcq-011",
+    "number": 11,
+    "module": "C06 \u2014 OS & Filesystem",
+    "difficulty": "Easy",
+    "question": "What does the Unix philosophy 'Everything is a file' imply about device interfaces like `/dev/pts`?",
+    "options": [
+      "They are plain text notes created by the user.",
+      "The OS interacts with them through the same file-based abstraction as normal files.",
+      "They can only be opened in a web browser.",
+      "They are stored outside the root `/` directory."
+    ],
+    "correctIndex": 1,
+    "explanation": "Unix treats normal files as well as device interfaces like `/dev/pts` and `/dev/input` as files under `/` so one common interface works."
+  },
+  {
+    "id": "mcq-012",
+    "number": 12,
+    "module": "C07 \u2014 How Software Works",
+    "difficulty": "Easy",
+    "question": "Which statement about `python3 hello.py` is TRUE?",
+    "options": [
+      "Only one program (`hello.py`) is executed directly by the CPU.",
+      "Two programs are involved: the Python interpreter and your `hello.py` script.",
+      "Python compiles `hello.py` into a permanent `.exe` before running.",
+      "The CPU natively understands Python syntax without translation."
+    ],
+    "correctIndex": 1,
+    "explanation": "CPUs only understand machine code. Running `python3 hello.py` involves two programs: `/usr/bin/python3` (the interpreter) and your script."
+  },
+  {
+    "id": "mcq-013",
+    "number": 13,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Easy",
+    "question": "A student claims 6 bits can represent values from 0 to 64. Why is this wrong?",
+    "options": [
+      "6 bits can only represent 32 values.",
+      "6 bits give 64 total values, so counting from 0 gives a range of 0 to 63.",
+      "6 bits cannot represent 0, so the range is 1 to 64.",
+      "6 bits equal 1 byte, which ranges from 0 to 255."
+    ],
+    "correctIndex": 1,
+    "explanation": "With `n` bits you get `2^n` values, and the unsigned range is `0` to `2^n - 1`. For 6 bits: `64` values, range `0 to 63`."
+  },
+  {
+    "id": "mcq-014",
+    "number": 14,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Easy",
+    "question": "If uppercase `'C'` has ASCII value `67`, what is the ASCII value of lowercase `'c'`?",
+    "options": [
+      "35",
+      "98",
+      "99",
+      "100"
+    ],
+    "correctIndex": 2,
+    "explanation": "In ASCII, `lowercase = uppercase + 32` (only bit 5 changes). `67 + 32 = 99`."
+  },
+  {
+    "id": "mcq-015",
+    "number": 15,
+    "module": "C09 \u2014 Git & GitHub",
+    "difficulty": "Easy",
+    "question": "Why is `git init`'s hidden `.git` folder compared to Git's 'memory'?",
+    "options": [
+      "It stores your computer's RAM contents during sleep mode.",
+      "It stores all snapshots, commit history, and tracking metadata for the repository.",
+      "It automatically backs up your files to Microsoft's cloud even without `git push`.",
+      "It is a temporary cache that should be deleted after each commit."
+    ],
+    "correctIndex": 1,
+    "explanation": "The `.git` folder is Git's local repository memory storing project history; you should never manually edit or delete it."
+  },
+  {
+    "id": "mcq-016",
+    "number": 16,
+    "module": "C11 \u2014 The Network",
+    "difficulty": "Easy",
+    "question": "In `https://github.com/areen2026/github-lab-A1`, what role does `github.com` play?",
+    "options": [
+      "Protocol",
+      "Path",
+      "Domain (human-readable website address)",
+      "IPv4 octet"
+    ],
+    "correctIndex": 2,
+    "explanation": "`https://` is the protocol, `github.com` is the domain, and `/areen2026/github-lab-A1` is the path."
+  },
+  {
+    "id": "mcq-017",
+    "number": 17,
+    "module": "C11 \u2014 The Network",
+    "difficulty": "Easy",
+    "question": "How many bits and octets make up an IPv4 address like `192.168.1.1`?",
+    "options": [
+      "16 bits in 2 octets",
+      "32 bits in 4 octets (8 bits each)",
+      "64 bits in 8 octets",
+      "128 bits in 4 octets"
+    ],
+    "correctIndex": 1,
+    "explanation": "IPv4 uses 32 bits divided into 4 octets of 8 bits (1 byte) each."
+  },
+  {
+    "id": "mcq-018",
+    "number": 18,
+    "module": "C14 \u2014 What Is AI?",
+    "difficulty": "Easy",
+    "question": "Why did Alan Turing propose the Turing Test in 1950 instead of defining 'thinking'?",
+    "options": [
+      "He believed computers could never pass a text chat.",
+      "He admitted 'Can machines think?' is too vague, so he replaced it with an observable behaviour test.",
+      "He wanted to test GPU rendering speeds.",
+      "He was naming a summer workshop at Dartmouth."
+    ],
+    "correctIndex": 1,
+    "explanation": "Turing replaced the vague question 'Can machines think?' with a practical text-based imitation game judging behaviour."
+  },
+  {
+    "id": "mcq-019",
+    "number": 19,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Easy",
+    "question": "What did Joseph Weizenbaum's ELIZA (1966) actually use to generate therapist-like replies?",
+    "options": [
+      "A 175-billion-parameter Transformer trained on web text.",
+      "Backpropagation over multi-layer neural networks.",
+      "Manually written pattern-matching rules without any learning.",
+      "A single Rosenblatt perceptron trained on therapy transcripts."
+    ],
+    "correctIndex": 2,
+    "explanation": "ELIZA used manually written rules to rearrange words and give prepared responses\u2014it did not learn or use neural networks."
+  },
+  {
+    "id": "mcq-020",
+    "number": 20,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Easy",
+    "question": "In the 2012 ImageNet competition, AlexNet achieved ~15% top-five error compared to ~26% for the runner-up. What does 'lower top-five error' mean?",
+    "options": [
+      "The model crashed on 15% of images.",
+      "The correct label was missing from the model's top 5 guesses far less often.",
+      "AlexNet only used 15% of the ImageNet dataset.",
+      "AlexNet was 15% slower than CPU training."
+    ],
+    "correctIndex": 1,
+    "explanation": "Top-five error is the percentage of images where the true label is NOT among the model's 5 best guesses\u2014lower is better."
+  },
+  {
+    "id": "mcq-021",
+    "number": 21,
+    "module": "C02 \u2014 Hardware & Software",
+    "difficulty": "Medium",
+    "question": "A user runs the exact same laptop hardware first with macOS and then with Ubuntu Linux. Which statement is FALSE?",
+    "options": [
+      "Both OSs still provide familiar desktop concepts like windows, file managers, and browsers.",
+      "The Terminal becomes more central in Ubuntu and software is often installed via package managers.",
+      "The underlying CPU and RAM physically reconfigure themselves to match the OS.",
+      "The user experience and interface feel different purely because the OS mediates hardware interaction."
+    ],
+    "correctIndex": 2,
+    "explanation": "Same hardware + different OS = different user experience. The hardware does not physically reconfigure itself."
+  },
+  {
+    "id": "mcq-022",
+    "number": 22,
+    "module": "C03 \u2014 Terminal & CLI",
+    "difficulty": "Medium",
+    "question": "Suppose `a.txt` contains `'Inside a'` and `b.txt` contains `'Inside b'`. After running `cp a.txt b.txt`, what happens?",
+    "options": [
+      "The command fails because `b.txt` already exists.",
+      "`b.txt` now contains `'Inside a'` (overwritten), while `a.txt` remains untouched.",
+      "`b.txt` contains `'Inside b'` followed by `'Inside a'` (appended).",
+      "`a.txt` is deleted and renamed to `b.txt`."
+    ],
+    "correctIndex": 1,
+    "explanation": "`cp source dest` overwrites an existing destination file's content with the source's content while preserving the source."
+  },
+  {
+    "id": "mcq-023",
+    "number": 23,
+    "module": "C04 \u2014 Interfaces",
+    "difficulty": "Medium",
+    "question": "When a shell prints `zsh: command not found: cowsay`, which layer is reporting feedback, and what does it mean?",
+    "options": [
+      "The Kernel, reporting a RAM overflow.",
+      "The API layer, returning HTTP 404.",
+      "The Shell layer, because `cowsay` is not installed or not findable in `PATH`.",
+      "The Application layer, crashing due to a missing GUI."
+    ],
+    "correctIndex": 2,
+    "explanation": "Shell errors like `zsh: command not found` come from the Shell layer when an executable cannot be found in `PATH`."
+  },
+  {
+    "id": "mcq-024",
+    "number": 24,
+    "module": "C05 \u2014 OS & Process Management",
+    "difficulty": "Medium",
+    "question": "Why does a single-core CPU appear to run Chrome, VS Code, Spotify, and Python simultaneously without crashing when Python loops infinitely?",
+    "options": [
+      "The CPU physically splits into four separate silicon chips.",
+      "The OS uses timeslicing to switch rapidly between processes and isolates each process's RAM.",
+      "Python automatically pauses itself whenever Spotify plays audio.",
+      "The GPU executes Chrome while the SSD executes Python."
+    ],
+    "correctIndex": 1,
+    "explanation": "Timeslicing gives each process tiny CPU slices thousands of times per second, and memory isolation prevents one process from corrupting another."
+  },
+  {
+    "id": "mcq-025",
+    "number": 25,
+    "module": "C05 \u2014 OS & Process Management",
+    "difficulty": "Medium",
+    "question": "An engineer runs `ps` and sees only `zsh` and `ps`, even though Chrome and Python are running. Why?",
+    "options": [
+      "Chrome and Python are not processes; they are files.",
+      "Plain `ps` shows only processes attached to the current terminal session; `ps aux` is needed for system-wide processes.",
+      "`ps` hides any process using more than 1% CPU.",
+      "macOS blocks `ps` from seeing GUI apps unless `kill -9` is run first."
+    ],
+    "correctIndex": 1,
+    "explanation": "Plain `ps` only lists processes in the current terminal session. `ps aux` lists all system-wide processes."
+  },
+  {
+    "id": "mcq-026",
+    "number": 26,
+    "module": "C06 \u2014 OS & Filesystem",
+    "difficulty": "Medium",
+    "question": "A newly created `deploy.sh` contains valid bash commands, and the user runs `mv deploy.sh deploy.banana` without calling `chmod`. What happens when running `./deploy.banana`?",
+    "options": [
+      "It runs, because `.banana` is ignored by bash.",
+      "It fails with permission denied, because new files default to `644` (no execute bit) regardless of extension.",
+      "It runs, because `mv` automatically grants execute permission.",
+      "It fails solely because `.banana` is not `.sh`."
+    ],
+    "correctIndex": 1,
+    "explanation": "The OS checks two things: executable instructions AND execute permission (`x`). Filename extensions do not matter, and new files default to `rw-r--r--` (`644`)."
+  },
+  {
+    "id": "mcq-027",
+    "number": 27,
+    "module": "C06 \u2014 OS & Filesystem",
+    "difficulty": "Medium",
+    "question": "If a user accidentally clears their `PATH` environment variable (`PATH=\"\"`), which command will STILL succeed?",
+    "options": [
+      "`ls`",
+      "`which ls`",
+      "`/bin/ls`",
+      "`cat file.txt`"
+    ],
+    "correctIndex": 2,
+    "explanation": "When `PATH` is empty, the shell cannot search for `ls` or `cat` by name, nor can `which` find them. Providing the exact absolute path `/bin/ls` bypasses `PATH`."
+  },
+  {
+    "id": "mcq-028",
+    "number": 28,
+    "module": "C07 \u2014 How Software Works",
+    "difficulty": "Medium",
+    "question": "Why was C (1972) designed as a compiled language while Python (1989) was designed as an interpreted language?",
+    "options": [
+      "CPUs in 1972 could not run interpreted loops.",
+      "In 1972 machine time was expensive (optimised for CPU speed); by 1989 programmer time was expensive (optimised for developer productivity).",
+      "Python does not translate to machine code at all.",
+      "Dennis Ritchie did not know about Grace Hopper's work."
+    ],
+    "correctIndex": 1,
+    "explanation": "Neither approach is 'wrong'\u2014they answer 'what is expensive?' differently: machine time (1972, C) vs. programmer time (1989, Python)."
+  },
+  {
+    "id": "mcq-029",
+    "number": 29,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Medium",
+    "question": "A drive manufacturer advertises '1 GB' (`1,000,000,000` bytes), whereas an OS reports size in GiB. Why do the numbers differ?",
+    "options": [
+      "Decimal units (kB, MB, GB) use powers of `1000`, whereas binary units (KiB, MiB, GiB) use powers of `1024`.",
+      "The OS reserves 24% of every drive for ASCII padding.",
+      "GB measures bits while GiB measures nibbles.",
+      "Binary units round down to the nearest hex digit."
+    ],
+    "correctIndex": 0,
+    "explanation": "Decimal units (`kB`, `MB`, `GB`) use powers of `1000`, while binary units (`KiB`, `MiB`, `GiB`) use powers of `1024`."
+  },
+  {
+    "id": "mcq-030",
+    "number": 30,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Medium",
+    "question": "In an unsigned 8-bit integer, what is the result of `250 + 10`, and why?",
+    "options": [
+      "`260`, because 8 bits can hold up to 512.",
+      "`0`, because any overflow always resets to 0.",
+      "`4`, because `260` exceeds 255 and wraps around (`260 - 256 = 4`).",
+      "`255`, because unsigned integers clamp at the maximum."
+    ],
+    "correctIndex": 2,
+    "explanation": "An 8-bit unsigned value wraps modulo 256 when it overflows: `250 + 10 = 260`, and dropping the 9th bit leaves `260 - 256 = 4`."
+  },
+  {
+    "id": "mcq-031",
+    "number": 31,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Medium",
+    "question": "Which statement accurately separates Unicode from UTF-8?",
+    "options": [
+      "Unicode encrypts text with a secret key; UTF-8 decrypts it.",
+      "Unicode assigns a unique code point to every character; UTF-8 converts those code points into 1\u20134 bytes for storage.",
+      "Unicode only covers English; UTF-8 adds emojis.",
+      "UTF-8 assigns code points; Unicode is a 7-bit ASCII subset."
+    ],
+    "correctIndex": 1,
+    "explanation": "Unicode identifies WHICH character (code point like `U+0928`); UTF-8 defines HOW it is stored as bytes (1 to 4 bytes)."
+  },
+  {
+    "id": "mcq-032",
+    "number": 32,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Medium",
+    "question": "A file is named `photo.png`, but inspecting its first bytes in a hex dump shows `FF D8 FF` instead of `89 50 4E 47`. What is the file actually?",
+    "options": [
+      "A corrupted PDF",
+      "A JPEG image disguised with a `.png` extension",
+      "A plain ASCII text file",
+      "An encrypted PNG"
+    ],
+    "correctIndex": 1,
+    "explanation": "File signatures (magic numbers) reveal true format regardless of filename: `FF D8 FF` is JPEG, while `89 50 4E 47` is PNG."
+  },
+  {
+    "id": "mcq-033",
+    "number": 33,
+    "module": "C09 \u2014 Git & GitHub",
+    "difficulty": "Medium",
+    "question": "A teammate already cloned the repo yesterday and wants today's new commits from GitHub. Why should they run `git pull` instead of `git clone`?",
+    "options": [
+      "`git clone` only downloads commit messages without files.",
+      "`git clone` downloads a whole project for the first time; `git pull` updates an already-existing local repository with the latest changes.",
+      "`git pull` creates a new GitHub account automatically.",
+      "`git clone` deletes the `.git` folder."
+    ],
+    "correctIndex": 1,
+    "explanation": "`git clone <URL>` is for first-time downloads; `git pull` fetches only the latest updates into an existing local repository."
+  },
+  {
+    "id": "mcq-034",
+    "number": 34,
+    "module": "C11 \u2014 The Network",
+    "difficulty": "Medium",
+    "question": "Why does a Switch outperform a Hub in a local area network (LAN)?",
+    "options": [
+      "A Switch uses IP addresses to route packets across continents.",
+      "A Switch sends data only to the intended device using its MAC address, whereas a Hub broadcasts to every connected device.",
+      "A Switch replaces the need for an ISP modem.",
+      "A Switch uses wireless Wi-Fi signals instead of Ethernet cables."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Hub forwards data to all ports (wasting bandwidth and causing collisions). A Switch targets only the intended device via its MAC address."
+  },
+  {
+    "id": "mcq-035",
+    "number": 35,
+    "module": "C11 \u2014 The Network",
+    "difficulty": "Medium",
+    "question": "If 100 computers were connected directly to every other computer without a central switch or hub, how many cables would be required?",
+    "options": [
+      "100",
+      "990",
+      "4,950",
+      "10,000"
+    ],
+    "correctIndex": 2,
+    "explanation": "Connecting every device to every other device needs `n(n-1)/2` cables: `100 \u00d7 99 / 2 = 4,950`."
+  },
+  {
+    "id": "mcq-036",
+    "number": 36,
+    "module": "C14 \u2014 What Is AI?",
+    "difficulty": "Medium",
+    "question": "Why does modern AI focus primarily on 'Acting Rationally' (the Rational Agent) rather than 'Thinking Humanly' or 'Thinking Rationally'?",
+    "options": [
+      "Human thinking is impossible to simulate on GPUs.",
+      "Humans are often irrational and make mistakes, while pure logical perfection is too slow for complex real-world problems.",
+      "Rational Agents do not require any data or feedback.",
+      "The Turing Test forbids Rational Agents."
+    ],
+    "correctIndex": 1,
+    "explanation": "Mimicking flawed humans is unreliable, and pure formal logic is too slow\u2014Rational Agents aim for the best possible action to achieve a goal."
+  },
+  {
+    "id": "mcq-037",
+    "number": 37,
+    "module": "C14 \u2014 What Is AI?",
+    "difficulty": "Medium",
+    "question": "Why were GPUs\u2014originally built for video games\u2014the hardware catalyst for deep learning?",
+    "options": [
+      "GPUs have 4\u20138 ultra-fast sequential cores ideal for `if/else` branches.",
+      "GPUs have thousands of smaller cores that perform massive parallel calculations, mirroring neural networks.",
+      "GPUs store permanent files like an SSD.",
+      "GPUs automatically convert Coding 1.0 Python scripts into C."
+    ],
+    "correctIndex": 1,
+    "explanation": "Deep neural networks need massive parallelism ('millions of slow processors'), which matches how GPUs shade millions of pixels simultaneously."
+  },
+  {
+    "id": "mcq-038",
+    "number": 38,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Medium",
+    "question": "An engineer evaluates a spam detector solely by 'emails processed per second' (Performance `P`). Why is this flawed under the `(T, P, E)` learning framework?",
+    "options": [
+      "Experience `E` is not needed if `P` is fast enough.",
+      "The performance measure `P` does not match the real task `T` (catching spam)\u2014a fast detector could misclassify every email.",
+      "Task `T` should always be measured in bytes per second.",
+      "Spam detection is a Coding 1.0 problem with no `P`."
+    ],
+    "correctIndex": 1,
+    "explanation": "In `(T, P, E)`, `P` must measure how well the system performs the actual task `T`. Processing speed says nothing about spam accuracy."
+  },
+  {
+    "id": "mcq-039",
+    "number": 39,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Medium",
+    "question": "Why can a single Rosenblatt perceptron NOT solve the XOR problem?",
+    "options": [
+      "XOR requires 3 inputs instead of 2.",
+      "A single perceptron only draws a single straight-line (linear) decision boundary, and XOR's ON/OFF points are diagonally opposite.",
+      "XOR outputs are floating-point numbers.",
+      "Perceptrons cannot adjust weights after mistakes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Minsky & Papert (1969) showed a single perceptron forms a linear boundary; XOR cannot be separated by a single straight line."
+  },
+  {
+    "id": "mcq-040",
+    "number": 40,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Medium",
+    "question": "What is the exact division of labour between Backpropagation and Gradient Descent?",
+    "options": [
+      "Backpropagation updates the weights; Gradient Descent counts the pixels.",
+      "Backpropagation calculates how each weight contributed to the error ('blame'); Gradient Descent uses that gradient to nudge weights ('fix').",
+      "Backpropagation ranks web pages; Gradient Descent translates text.",
+      "Both terms are synonyms for few-shot prompting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Backprop calculates the error gradient for each weight; the learning method (gradient descent) nudges weights in the opposite direction to reduce error."
+  },
+  {
+    "id": "mcq-041",
+    "number": 41,
+    "module": "C05 \u2014 OS & Process Management",
+    "difficulty": "Hard",
+    "question": "A developer runs `kill 4812` on a frozen database process, and nothing happens after 10 seconds because the process ignores cleanup signals. Which statement is MOST accurate?",
+    "options": [
+      "`kill 4812` sent `SIGKILL (9)`, so the OS has crashed.",
+      "`kill 4812` sent `SIGTERM (15)` (a polite request); sending `kill -9 4812` (`SIGKILL`) forces immediate termination without cleanup.",
+      "`kill 4812` only kills child processes, never parent processes.",
+      "`kill` only works on files, whereas `rm` terminates processes."
+    ],
+    "correctIndex": 1,
+    "explanation": "`kill <PID>` defaults to `SIGTERM (15)`, which a process can catch or ignore. `kill -9 <PID>` sends `SIGKILL (9)`, forcing immediate termination."
+  },
+  {
+    "id": "mcq-042",
+    "number": 42,
+    "module": "C06 \u2014 OS & Filesystem",
+    "difficulty": "Hard",
+    "question": "An admin sets a file's permissions to `chmod 600 secret.txt` and places it inside a folder whose permissions are `555`. Which action will FAIL?",
+    "options": [
+      "The owner reading `secret.txt` with `cat`.",
+      "The owner editing `secret.txt` with `echo \"x\" >> secret.txt`.",
+      "The owner deleting `secret.txt` with `rm secret.txt` without first changing the folder's permissions.",
+      "Another user being blocked from reading `secret.txt`."
+    ],
+    "correctIndex": 2,
+    "explanation": "Deleting or moving a file modifies the **parent directory**. Because the folder is `555` (no write bit), `rm secret.txt` fails with Permission denied even though the file itself is `600`!"
+  },
+  {
+    "id": "mcq-043",
+    "number": 43,
+    "module": "C06 \u2014 OS & Filesystem",
+    "difficulty": "Hard",
+    "question": "Convert the permission string `-rwxr-x--x` into its exact 3-digit numeric mode.",
+    "options": [
+      "`751`",
+      "`754`",
+      "`651`",
+      "`761`"
+    ],
+    "correctIndex": 0,
+    "explanation": "Owner: `rwx = 4+2+1 = 7`. Group: `r-x = 4+0+1 = 5`. Others: `--x = 0+0+1 = 1`. Result: `751`."
+  },
+  {
+    "id": "mcq-044",
+    "number": 44,
+    "module": "C07 \u2014 How Software Works",
+    "difficulty": "Hard",
+    "question": "A Python script runs in `0.1 s` while an equivalent C program runs in `0.001 s`. If you run the C binary 100 times vs. the Python script 100 times, why does C keep its speed advantage?",
+    "options": [
+      "C is interpreted in hardware without ever being compiled.",
+      "C paid the translation cost ONCE at compile time; Python pays the line-by-line interpretation cost on EVERY single run.",
+      "Python uses 8-bit bytes whereas C uses 32-bit octets.",
+      "C skips the CPU and executes directly inside RAM."
+    ],
+    "correctIndex": 1,
+    "explanation": "Compilation is a one-time translation cost before execution; interpretation repeats line-by-line translation every time the program runs."
+  },
+  {
+    "id": "mcq-045",
+    "number": 45,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Hard",
+    "question": "What is the uncompressed pixel data size of a `100 \u00d7 50` RGBA image (with Alpha transparency)?",
+    "options": [
+      "`5,000` bytes",
+      "`15,000` bytes",
+      "`20,000` bytes",
+      "`40,000` bytes"
+    ],
+    "correctIndex": 2,
+    "explanation": "RGB uses 3 bytes per pixel (`100 \u00d7 50 \u00d7 3 = 15,000`). RGBA adds a 4th Alpha byte per pixel: `100 \u00d7 50 \u00d7 4 = 20,000` bytes."
+  },
+  {
+    "id": "mcq-046",
+    "number": 46,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Hard",
+    "question": "A student converts `Base-10: 32` to `Base-3: 1012` and `Base-16: 20`. Why is `20\u2081\u2086` equal to `32\u2081\u2080`?",
+    "options": [
+      "Because `2 \u00d7 16\u00b9 + 0 \u00d7 16\u2070 = 32`.",
+      "Because `2 + 0 = 2` and `2\u2075 = 32`.",
+      "Because hex skips digits 10 through 15.",
+      "Because `20` in hex means 20 bytes."
+    ],
+    "correctIndex": 0,
+    "explanation": "Hexadecimal is positional base-16: `20\u2081\u2086 = (2 \u00d7 16\u00b9) + (0 \u00d7 16\u2070) = 32`."
+  },
+  {
+    "id": "mcq-047",
+    "number": 47,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Hard",
+    "question": "A developer Base64-encodes a password and claims it is now 'encrypted and safe from anyone who intercepts it.' Why is this dangerously wrong?",
+    "options": [
+      "Base64 uses a secret key that expires after 8 bits.",
+      "Encoding uses a known, public rule so anyone can decode it; encryption requires a secret key to protect data.",
+      "Encoding deletes the original characters permanently.",
+      "Base64 only works on PNG images, not text."
+    ],
+    "correctIndex": 1,
+    "explanation": "Encoding represents data using a public, known rule (anyone can read it). Encryption protects data using a secret key."
+  },
+  {
+    "id": "mcq-048",
+    "number": 48,
+    "module": "C08 \u2014 Number Systems & Encoding",
+    "difficulty": "Hard",
+    "question": "Convert the binary byte `11010110\u2082` to hexadecimal and decimal, respectively.",
+    "options": [
+      "`D6` and `214`",
+      "`B6` and `182`",
+      "`D4` and `212`",
+      "`E6` and `230`"
+    ],
+    "correctIndex": 0,
+    "explanation": "Split from right into nibbles: `1101 = 13 = D`, `0110 = 6` -> `D6\u2081\u2086`. In decimal: `128 + 64 + 16 + 4 + 2 = 214`."
+  },
+  {
+    "id": "mcq-049",
+    "number": 49,
+    "module": "C11 \u2014 The Network",
+    "difficulty": "Hard",
+    "question": "On a home Wi-Fi network, two laptops have IP `192.168.0.2` and `192.168.0.3`, while a friend's laptop at another house ALSO has `192.168.0.2`. Yet both browse the internet without conflict. How?",
+    "options": [
+      "Both laptops use the exact same MAC address.",
+      "`192.168.x.x` are private local IPs reused across separate networks; each home's router/modem presents a distinct public IP to the outside internet.",
+      "IPv4 addresses are dynamically converted into Base-3 on the internet.",
+      "Switches assign public IPs to each browser tab."
+    ],
+    "correctIndex": 1,
+    "explanation": "Private IPs (`192.168.x.x`) are local to each network and can be reused; routers map local devices behind a public IP on the internet."
+  },
+  {
+    "id": "mcq-050",
+    "number": 50,
+    "module": "C14 \u2014 What Is AI?",
+    "difficulty": "Hard",
+    "question": "In Russell & Norvig's Four Faces of AI, which discipline pair primarily fuels 'Thinking Rationally' vs. 'Acting Rationally'?",
+    "options": [
+      "Thinking Rationally = Psychology & Neuroscience; Acting Rationally = Linguistics & Turing Test.",
+      "Thinking Rationally = Mathematics & Philosophy (Logic); Acting Rationally = Economics (Decision Theory) & Control Theory.",
+      "Both are fuelled exclusively by Computer Engineering.",
+      "Thinking Rationally = Coding 2.0; Acting Rationally = Coding 1.0."
+    ],
+    "correctIndex": 1,
+    "explanation": "Thinking Rationally (Laws of Thought) is fuelled by Logic (Math & Philosophy); Acting Rationally (Rational Agent) is fuelled by Decision Theory & Control Theory."
+  },
+  {
+    "id": "mcq-051",
+    "number": 51,
+    "module": "C14 \u2014 What Is AI?",
+    "difficulty": "Hard",
+    "question": "Why is Coding 2.0 ('data becomes the program') essential for 'Is there a cat in this photo?'?",
+    "options": [
+      "Programmers are too lazy to write `if/else` statements in Python.",
+      "We don't know the exact pixel-by-pixel rules ourselves\u2014every hand-written rule has thousands of exceptions, so a learning algorithm must fit a model from labelled examples.",
+      "Coding 1.0 languages cannot open `.jpg` files.",
+      "Coding 2.0 guarantees 100% accuracy without training data."
+    ],
+    "correctIndex": 1,
+    "explanation": "We cannot write the procedure for 'cat' not because we aren't clever, but because we don't know how we do it ourselves\u2014Coding 2.0 learns patterns from examples."
+  },
+  {
+    "id": "mcq-052",
+    "number": 52,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Hard",
+    "question": "Which statement about Alan Turing's 1936 paper ('On Computable Numbers') is TRUE?",
+    "options": [
+      "It unveiled the first physical electronic computer built in London.",
+      "It introduced a theoretical model (tape, head, finite rules) capturing mechanical computation and proving some problems are undecidable.",
+      "It invented Backpropagation for multi-layer perceptrons.",
+      "It proposed the 1950 Turing Test for conversational AI."
+    ],
+    "correctIndex": 1,
+    "explanation": "Turing (1936) was a theoretical model of computation (the Turing machine), not a physical computer or the 1950 Turing Test."
+  },
+  {
+    "id": "mcq-053",
+    "number": 53,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Hard",
+    "question": "Computer A (logical clock = `3`) sends a message stamped `3` to Computer B. If Computer B's local counter is `1`, what does B's counter become upon receiving the message (and what if B's counter was `7`)?",
+    "options": [
+      "`4` if B was `1`; `8` if B was `7`.",
+      "`3` if B was `1`; `7` if B was `7`.",
+      "`2` if B was `1`; `4` if B was `7`.",
+      "`4` in both cases because clocks synchronize to A."
+    ],
+    "correctIndex": 0,
+    "explanation": "Lamport's receive rule is `New counter = max(local, received) + 1`: `max(1, 3) + 1 = 4`; `max(7, 3) + 1 = 8`."
+  },
+  {
+    "id": "mcq-054",
+    "number": 54,
+    "module": "C15 \u2014 Five Foundational Papers",
+    "difficulty": "Hard",
+    "question": "What is the 'ELIZA effect', and why is it a trap when evaluating conversational AI?",
+    "options": [
+      "A hardware bug where GPUs overheat during matrix multiplication.",
+      "The human tendency to perceive genuine understanding or consciousness in a system merely because its text responses look convincing.",
+      "A Git merge conflict caused by two branches editing the same line.",
+      "A mathematical proof that perceptrons can solve XOR."
+    ],
+    "correctIndex": 1,
+    "explanation": "The ELIZA effect warns that convincing conversational behaviour can trick humans into assuming understanding where none exists."
+  },
+  {
+    "id": "mcq-055",
+    "number": 55,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "When you give GPT-3 a few-shot prompt (`cat -> tac, dog -> god, bird -> ?`) and it answers `drib`, what happened to GPT-3's 175 billion parameters?",
+    "options": [
+      "They were permanently updated via Backpropagation during the prompt.",
+      "They were NOT updated\u2014the examples were used purely as context in the input.",
+      "Half of the parameters were frozen while the other half trained.",
+      "GPT-3 switched from Transformer mode to PageRank mode."
+    ],
+    "correctIndex": 1,
+    "explanation": "Training adjusts parameters across large datasets; few-shot prompting uses examples only as context without updating learned parameters."
+  },
+  {
+    "id": "mcq-056",
+    "number": 56,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "Consider the sentence: 'The trophy didn't fit in the suitcase because it was too big.' Why did pre-Transformer sequential models struggle with 'it' compared to the 2017 Transformer?",
+    "options": [
+      "Pre-Transformer models could only read binary hex dumps.",
+      "Sequential models processed words one step at a time, making far-apart word relationships hard; Attention connects all positions in parallel.",
+      "Transformers have a built-in dictionary of suitcases and trophies.",
+      "Transformers use Lamport logical clocks instead of weights."
+    ],
+    "correctIndex": 1,
+    "explanation": "Self-attention lets the Transformer weigh relationships between any two words in a sentence directly and in parallel."
+  },
+  {
+    "id": "mcq-057",
+    "number": 57,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "Which statement about PageRank (1998) and modern LLMs is FALSE?",
+    "options": [
+      "PageRank treated hyperlinks as weighted votes to rank important web pages.",
+      "The growth of the web created massive digital text later used (after filtering/processing) to train LLMs.",
+      "Modern LLMs literally train on Google's search index and PageRank scores as their neural weights.",
+      "PageRank itself does not train a neural network."
+    ],
+    "correctIndex": 2,
+    "explanation": "PageRank's link to AI is historical (web growth produced digital text); PageRank ranks web pages and does not train LLMs."
+  },
+  {
+    "id": "mcq-058",
+    "number": 58,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "Which of the following 'Important Distinctions' from Lectures 15 & 16 is FALSE?",
+    "options": [
+      "Minsky & Papert's 1969 book alone caused the entire first AI winter.",
+      "Backprop is a mathematical calculation, not conscious understanding.",
+      "Attention in Transformers is weighted computation, not human-like conscious focus.",
+      "Fluent LLM output is not guaranteed to be factually correct."
+    ],
+    "correctIndex": 0,
+    "explanation": "Saying Minsky & Papert's book *alone* caused the first AI winter is too simplistic\u2014it is associated with it, not the sole cause."
+  },
+  {
+    "id": "mcq-059",
+    "number": 59,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "Order these 5 milestones chronologically from earliest to latest:",
+    "options": [
+      "Shannon -> Turing -> Rosenblatt -> Lamport -> Minsky & Papert",
+      "Turing -> Shannon -> Rosenblatt -> Minsky & Papert -> Lamport",
+      "Turing -> Rosenblatt -> Shannon -> Minsky & Papert -> Lamport",
+      "Turing -> Shannon -> Minsky & Papert -> Rosenblatt -> Lamport"
+    ],
+    "correctIndex": 1,
+    "explanation": "Turing (1936) -> Shannon (1948) -> Rosenblatt (1958) -> Minsky & Papert (1969) -> Lamport (1978)."
+  },
+  {
+    "id": "mcq-060",
+    "number": 60,
+    "module": "C16 \u2014 Next Five Papers",
+    "difficulty": "Hard",
+    "question": "Order the next 5 milestones (1986\u20132020) chronologically from earliest to latest:",
+    "options": [
+      "Backpropagation -> PageRank -> AlexNet -> Transformer -> GPT-3",
+      "PageRank -> Backpropagation -> AlexNet -> GPT-3 -> Transformer",
+      "Backpropagation -> AlexNet -> PageRank -> Transformer -> GPT-3",
+      "AlexNet -> Backpropagation -> PageRank -> Transformer -> GPT-3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rumelhart et al. Backprop (1986) -> Page & Brin PageRank (1998) -> AlexNet (2012) -> Transformer (2017) -> GPT-3 (2020)."
+  }
+]

@@ -20,10 +20,13 @@ import {
   ExecutionResult,
   PlaygroundProblem,
 } from "@/lib/sandbox-engine";
+import { TheoryQuiz } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { QuizExplorer } from "./QuizExplorer";
 
 interface PlaygroundClientProps {
   problems: PlaygroundProblem[];
+  quizzes?: TheoryQuiz[];
 }
 
 const SOLVED_KEY = "snai_playground_100_solved_v1";
@@ -34,7 +37,8 @@ const difficultyBadge: Record<PlaygroundProblem["difficulty"], string> = {
   Hard: "border-rose-500/30 bg-rose-500/10 text-rose-400",
 };
 
-export function PlaygroundClient({ problems }: PlaygroundClientProps) {
+export function PlaygroundClient({ problems, quizzes = [] }: PlaygroundClientProps) {
+  const [section, setSection] = useState<"coding" | "quizzes">("coding");
   const [solvedIds, setSolvedIds] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -149,9 +153,50 @@ export function PlaygroundClient({ problems }: PlaygroundClientProps) {
   // ============================================================
   // LIST VIEW (100 Questions — Easy / Medium / Hard)
   // ============================================================
+  if (section === "quizzes") {
+    return (
+      <div className="space-y-6">
+        <div className="inline-flex rounded-lg border border-border bg-surface p-1">
+          <button
+            type="button"
+            onClick={() => setSection("coding")}
+            className="rounded-md px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+          >
+            CLI &amp; Git Coding ({problems.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSection("quizzes")}
+            className="rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white sm:text-sm"
+          >
+            Theory Quizzes ({quizzes.length} Quizzes · 160 MCQs)
+          </button>
+        </div>
+
+        <QuizExplorer quizzes={quizzes} />
+      </div>
+    );
+  }
+
   if (!activeProblem) {
     return (
       <div className="space-y-6">
+        <div className="inline-flex rounded-lg border border-border bg-surface p-1">
+          <button
+            type="button"
+            onClick={() => setSection("coding")}
+            className="rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white sm:text-sm"
+          >
+            CLI &amp; Git Coding ({problems.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSection("quizzes")}
+            className="rounded-md px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+          >
+            Theory Quizzes ({quizzes.length} Quizzes · 160 MCQs)
+          </button>
+        </div>
         {/* Progress Summary */}
         <div className="grid gap-3 sm:grid-cols-4">
           <div className="rounded-lg border border-border bg-surface p-4">
