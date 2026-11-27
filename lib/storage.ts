@@ -18,83 +18,12 @@ export interface ReadingProgressItem {
 
 const BOOKMARKS_KEY = "snai_bookmarks_v1";
 const PROGRESS_KEY = "snai_progress_v1";
-const MOCK_EXAMS_KEY = "snai_mock_exams_v1";
 const THEME_KEY = "snai-theme";
-
-let currentUserId: string | null = null;
-
-export function setActiveUserId(userId: string | null) {
-  currentUserId = userId;
-}
-
-export function getActiveUserId(): string | null {
-  return currentUserId;
-}
-
-export function scopedStorageKey(baseKey: string): string {
-  return currentUserId ? `${baseKey}::${currentUserId}` : baseKey;
-}
-
-export function hasLegacyAnonymousProgress(): boolean {
-  if (typeof window === "undefined" || !currentUserId) return false;
-  try {
-    const b = window.localStorage.getItem(BOOKMARKS_KEY);
-    const p = window.localStorage.getItem(PROGRESS_KEY);
-    const m = window.localStorage.getItem(MOCK_EXAMS_KEY);
-    return Boolean(
-      (b && b !== "[]") ||
-        (p && p !== "[]") ||
-        (m && m !== '{"inProgress":{},"completed":{}}')
-    );
-  } catch {
-    return false;
-  }
-}
-
-export function importLegacyProgressForCurrentUser(): boolean {
-  if (typeof window === "undefined" || !currentUserId) return false;
-  try {
-    const legacyB = window.localStorage.getItem(BOOKMARKS_KEY);
-    const legacyP = window.localStorage.getItem(PROGRESS_KEY);
-    const legacyM = window.localStorage.getItem(MOCK_EXAMS_KEY);
-
-    if (legacyB) {
-      const targetKey = scopedStorageKey(BOOKMARKS_KEY);
-      if (!window.localStorage.getItem(targetKey)) {
-        window.localStorage.setItem(targetKey, legacyB);
-      }
-    }
-    if (legacyP) {
-      const targetKey = scopedStorageKey(PROGRESS_KEY);
-      if (!window.localStorage.getItem(targetKey)) {
-        window.localStorage.setItem(targetKey, legacyP);
-      }
-    }
-    if (legacyM) {
-      const targetKey = scopedStorageKey(MOCK_EXAMS_KEY);
-      if (!window.localStorage.getItem(targetKey)) {
-        window.localStorage.setItem(targetKey, legacyM);
-      }
-    }
-    window.dispatchEvent(new Event("snai-storage-change"));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-export function clearCurrentUserProgress() {
-  if (typeof window === "undefined") return;
-  window.localStorage.removeItem(scopedStorageKey(BOOKMARKS_KEY));
-  window.localStorage.removeItem(scopedStorageKey(PROGRESS_KEY));
-  window.localStorage.removeItem(scopedStorageKey(MOCK_EXAMS_KEY));
-  window.dispatchEvent(new Event("snai-storage-change"));
-}
 
 export function getBookmarks(): BookmarkItem[] {
   if (typeof window === "undefined") return [];
   try {
-    const raw = window.localStorage.getItem(scopedStorageKey(BOOKMARKS_KEY));
+    const raw = window.localStorage.getItem(BOOKMARKS_KEY);
     return raw ? (JSON.parse(raw) as BookmarkItem[]) : [];
   } catch {
     return [];
@@ -112,7 +41,7 @@ export function toggleBookmark(item: Omit<BookmarkItem, "savedAt">): boolean {
   const next = exists
     ? current.filter((b) => b.id !== item.id)
     : [{ ...item, savedAt: new Date().toISOString() }, ...current];
-  window.localStorage.setItem(scopedStorageKey(BOOKMARKS_KEY), JSON.stringify(next));
+  window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(next));
   window.dispatchEvent(new Event("snai-storage-change"));
   return !exists;
 }
@@ -120,7 +49,7 @@ export function toggleBookmark(item: Omit<BookmarkItem, "savedAt">): boolean {
 export function getReadingProgress(): ReadingProgressItem[] {
   if (typeof window === "undefined") return [];
   try {
-    const raw = window.localStorage.getItem(scopedStorageKey(PROGRESS_KEY));
+    const raw = window.localStorage.getItem(PROGRESS_KEY);
     return raw ? (JSON.parse(raw) as ReadingProgressItem[]) : [];
   } catch {
     return [];
@@ -137,7 +66,7 @@ export function recordTopicVisit(item: Omit<ReadingProgressItem, "lastVisitedAt"
     lastVisitedAt: new Date().toISOString(),
   };
   const next = [updated, ...current.filter((p) => p.id !== item.id)].slice(0, 50);
-  window.localStorage.setItem(scopedStorageKey(PROGRESS_KEY), JSON.stringify(next));
+  window.localStorage.setItem(PROGRESS_KEY, JSON.stringify(next));
   window.dispatchEvent(new Event("snai-storage-change"));
 }
 
@@ -150,7 +79,7 @@ export function toggleTopicCompleted(id: string): boolean {
   const next = current.map((p) =>
     p.id === id ? { ...p, completed: nextCompleted } : p
   );
-  window.localStorage.setItem(scopedStorageKey(PROGRESS_KEY), JSON.stringify(next));
+  window.localStorage.setItem(PROGRESS_KEY, JSON.stringify(next));
   window.dispatchEvent(new Event("snai-storage-change"));
   return nextCompleted;
 }

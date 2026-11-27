@@ -1,8 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ChevronRight, Clock, FileText } from "lucide-react";
-import { getAllModules, getModuleBySlug } from "@/lib/content";
+import {
+  getAllCommands,
+  getAllModules,
+  getModuleBySlug,
+  getModuleKnowledgeChecks,
+} from "@/lib/content";
 import { EmptyState } from "@/components/EmptyState";
+import { LessonInteractiveLab } from "@/components/LessonInteractiveLab";
+import { LessonKnowledgeChecks } from "@/components/LessonKnowledgeChecks";
 
 export function generateStaticParams() {
   return getAllModules().map((m) => ({ moduleSlug: m.slug }));
@@ -30,6 +37,11 @@ export default async function ModulePage({
   const { moduleSlug } = await params;
   const mod = getModuleBySlug(moduleSlug);
   if (!mod) notFound();
+
+  const moduleCommands = getAllCommands().filter(
+    (c) => c.moduleSlug === mod.slug
+  );
+  const moduleChecks = getModuleKnowledgeChecks(mod.slug);
 
   return (
     <div className="space-y-8">
@@ -111,6 +123,32 @@ export default async function ModulePage({
           ))}
         </div>
       )}
+
+      {moduleCommands.length > 0 && (
+        <section className="space-y-3 border-t border-border pt-6">
+          <h2 className="font-mono text-xs uppercase tracking-wider text-subtle">
+            Commands Covered in This Module ({moduleCommands.length})
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {moduleCommands.map((cmd) => (
+              <Link
+                key={cmd.slug}
+                href={`/commands/${cmd.slug}`}
+                className="border border-border bg-surface px-3 py-1.5 font-mono text-xs text-foreground hover:border-foreground"
+              >
+                {cmd.name}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <LessonInteractiveLab moduleSlug={mod.slug} />
+
+      <LessonKnowledgeChecks
+        questions={moduleChecks}
+        title="Module Assessment (Beginner → Advanced)"
+      />
     </div>
   );
 }

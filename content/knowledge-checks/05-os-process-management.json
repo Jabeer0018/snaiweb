@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-05-b",
+    "level": "Beginner",
+    "question": "What is the difference between a Program and a Process?",
+    "options": [
+      "They are identical",
+      "A Program is a passive file on disk; a Process is a running instance in RAM with a PID",
+      "A Process lives on SSD; a Program lives in CPU cache",
+      "Programs only run on Linux"
+    ],
+    "correctIndex": 1,
+    "explanation": "One program file on disk can be launched into multiple independent processes in RAM, each with its own PID."
+  },
+  {
+    "id": "kc-05-i",
+    "level": "Intermediate",
+    "question": "How does a single-core CPU run Chrome, Spotify, and Python at the same time?",
+    "options": [
+      "It clones itself into 3 hardware cores",
+      "The OS scheduler rapidly switches CPU time slices (context switching) between processes",
+      "Spotify runs directly on the SSD without CPU",
+      "Chrome pauses the OS kernel"
+    ],
+    "correctIndex": 1,
+    "explanation": "Time-slicing and context switching rapidly alternate which process uses the CPU core."
+  },
+  {
+    "id": "kc-05-a",
+    "level": "Advanced",
+    "question": "When `kill 4213` fails to stop a frozen process, why does `kill -9 4213` succeed?",
+    "options": [
+      "`kill -9` sends SIGKILL, which the OS kernel enforces immediately and the process cannot ignore",
+      "`kill -9` deletes the source file on disk",
+      "`kill -9` restarts the monitor",
+      "`kill 4213` only works on macOS"
+    ],
+    "correctIndex": 0,
+    "explanation": "Default `kill` sends `SIGTERM` (polite request that can be caught/ignored); `-9` sends `SIGKILL`, handled directly by the kernel."
+  }
+]

@@ -7,30 +7,21 @@ import { Navbar } from "./Navbar";
 import { MobileNav } from "./MobileNav";
 import { SearchModal } from "./SearchModal";
 import { ContextualModuleSidebar } from "./ContextualModuleSidebar";
-import { AuthUserSummary } from "./UserMenu";
-import { setActiveUserId } from "@/lib/storage";
 
 interface AppShellProps {
   modules: ModuleMeta[];
   searchDocuments: SearchDocument[];
-  user?: AuthUserSummary | null;
   children: React.ReactNode;
 }
 
 export function AppShell({
   modules,
   searchDocuments,
-  user,
   children,
 }: AppShellProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-
-  setActiveUserId(user?.id ?? null);
-
-  const isPublicAuthPage =
-    pathname === "/login" || pathname === "/privacy" || pathname === "/terms";
 
   const isInsideModule = modules.some((m) =>
     pathname.startsWith(`/notes/${m.slug}`)
@@ -47,16 +38,11 @@ export function AppShell({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  if (isPublicAuthPage && !user) {
-    return <>{children}</>;
-  }
-
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar
         onOpenMobileNav={() => setMobileOpen(true)}
         onOpenSearch={() => setSearchOpen(true)}
-        user={user}
       />
 
       <MobileNav

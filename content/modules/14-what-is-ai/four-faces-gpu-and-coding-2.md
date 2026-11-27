@@ -1,96 +1,79 @@
 ---
-title: "Defining AI, Four Faces, GPUs & Coding 2.0"
-description: "History timeline, Russell & Norvig 2x2 matrix, 8 contributing disciplines, CPU vs GPU, and Coding 1.0 vs 2.0."
+title: "What Is AI? Calculate vs. Predict, Four Faces, GPUs & Coding 2.0"
+description: "Zero-to-advanced introduction to Artificial Intelligence: Coding 1.0 vs Coding 2.0, Turing Test, Russell & Norvig's Four Faces, 8 disciplines, and why GPUs power AI."
 order: 1
-source: "Revision Notes (Lecture 14)"
+source: "Lecture-14-What-is-AI.pdf (C14, pp. 1–40)"
 addedAt: "2026-11-26"
-updatedAt: "2026-11-27"
-keywords: ["AI", "Turing Test", "Four Faces", "Rational Agent", "GPU", "Coding 2.0"]
-estimatedMinutes: 8
+updatedAt: "2026-11-28"
+keywords: ["AI", "Turing Test", "Four Faces", "Rational Agent", "GPU", "Coding 2.0", "calculate vs predict"]
+estimatedMinutes: 11
 ---
 
-## Intuition & Core Principle
+## 1. What You Will Learn & Prerequisites
 
-> [!IMPORTANT]
-> Traditional software **calculates** deterministic outcomes from explicit human-written rules; Artificial Intelligence **predicts** or acts under uncertainty by learning patterns from data or reasoning over goals.
+**Prerequisites:** [Hardware, CPU & Bottlenecks](/notes/02-hardware-software/hardware-and-memory) and [How Software Works](/notes/07-how-software-works/compilers-vs-interpreters).
 
-- **Calculate:** Totaling a grocery receipt (`sum(items)` — exact formula known upfront).
-- **Predict:** *"Is this photo a cat?"* or *"What is the next token?"* (no clean `if/else` rule exists).
+For your entire life, software followed exact instructions written by humans. Now computers recognize faces, translate languages, and write code. In this lesson, you will learn **what Artificial Intelligence actually means** without hype, why human-written `if/else` rules (**Coding 1.0**) hit a wall, how **Coding 2.0** learns from data, and why graphics cards (**GPUs**) became AI's engine.
 
 ---
 
-## Milestones & Contributing Disciplines
+## 2. Stage 1 & 2: Intuition — Calculate vs. Predict
 
-- **1950 — Alan Turing:** Proposed the **Turing Test** (Imitation Game): evaluate machine intelligence by observable conversational behavior via text rather than asking *"Can machines think?"*
+Suppose you want a computer to do two tasks:
+1. **Task A (Calculate):** Add up a grocery bill (`total = sum(prices)`). You know the exact rule beforehand. Traditional **Coding 1.0** (`Input + Rules -> Output`) works 100% reliably here.
+2. **Task B (Predict):** Look at a photo of `1920 × 1080` RGB pixel numbers and answer: *"Is this a cat?"* Try writing `if/else` rules for every breed, lighting angle, and fur color—it is impossible!
+
+Instead, **Artificial Intelligence / Machine Learning (Coding 2.0)** flips the equation: give the computer **thousands of labeled examples** (`Input + Desired Output`), and let it **learn the internal rules (weights)** automatically!
+
+---
+
+## 3. Stage 3 & 4: History, Eight Disciplines & The Four Faces of AI
+
+- **1950 — Alan Turing:** Proposed the **Turing Test** (Imitation Game): instead of debating *"Can machines think?"*, test whether an evaluator chatting via text can distinguish a machine from a human.
 - **1956 — Dartmouth Workshop:** **John McCarthy** coined the term **"Artificial Intelligence"**.
-- **2014 — Eugene Goostman:** Sparked debate after convincing ~33% of judges in a 5-minute chat—highlighting limitations of short conversational tests.
+- **2014 — Eugene Goostman:** A chatbot fooled ~33% of judges in a 5-minute chat—showing why brief conversational tricks do not prove true general understanding.
 
-AI draws on **8 contributing disciplines**: Philosophy, Mathematics, Economics, Neuroscience, Psychology, Computer Engineering, Control Theory & Cybernetics, and Linguistics.
+AI blends **8 contributing disciplines**: Philosophy, Mathematics, Economics, Neuroscience, Psychology, Computer Engineering, Control Theory & Cybernetics, and Linguistics.
 
----
+### Russell & Norvig's Four Faces of AI (2×2 Matrix)
 
-## The Four Faces of AI (Russell & Norvig 2×2 Matrix)
-
-| | **Human-Like** | **Rational (Ideal)** |
+| | **Human-Like** | **Rational (Ideal Goal-Maximizing)** |
 | --- | --- | --- |
-| **Thinking (Internal)** | **Thinking Humanly:** Cognitive modeling—reproducing how human brains reason. | **Thinking Rationally:** Formal logic—valid syllogisms and provably sound inference. |
-| **Acting (External)** | **Acting Humanly:** Turing Test—indistinguishable outward behavior from a human. | **Acting Rationally:** **Rational Agent**—choosing actions that maximize expected goal achievement. |
+| **Thinking (Internal)** | **Thinking Humanly:** Cognitive science modeling human brains | **Thinking Rationally:** Formal logic & valid deduction |
+| **Acting (External)** | **Acting Humanly:** Turing Test behavior | **Acting Rationally:** **Rational Agent** — chooses the best action given evidence & goals |
 
-> [!TIP]
-> Modern AI research emphasizes **Acting Rationally (Rational Agents)** because correctness and performance matter more than imitating human flaws (just as airplanes fly by aerodynamics, not by flapping feathers like birds).
+Modern AI focuses on **Acting Rationally (Rational Agents)**—just as engineers built airplanes to fly via aerodynamics rather than flapping feathers like birds.
 
 ---
 
-## Why GPUs Power Modern AI (CPU vs. GPU)
+## 4. Stage 5: Why GPUs Power AI (CPU vs. GPU)
 
-| Dimension | CPU (Central Processing Unit) | GPU (Graphics Processing Unit) |
+| Dimension | CPU | GPU |
 | --- | --- | --- |
-| **Core Design** | Few (4–64) complex, high-speed cores with large caches. | Thousands of simpler cores optimized for parallel throughput. |
-| **Strength** | Sequential branching, OS scheduling, general logic. | **Massive parallel matrix multiplication** (neural network weights & pixels). |
+| **Architecture** | Few (`4–64`) fast, complex cores with large caches | Thousands of simpler cores built for **massive parallelism** |
+| **Best At** | Sequential decisions, OS scheduling, general logic | Multiplying huge **matrices of numbers** simultaneously |
 
-Training a neural network requires billions of simultaneous multiply-add operations across weight matrices—making GPUs orders of magnitude faster than CPUs for AI workloads.
-
----
-
-## Coding 1.0 vs. Coding 2.0
-
-- **Coding 1.0 (Explicit Rules):** Programmer writes explicit `if/else` logic (`Input + Rules -> Output`).
-- **Coding 2.0 (Data-Driven Learning):** Programmer specifies architecture and objective, and the model **learns the rules/weights from data** (`Input + Desired Output -> Learned Program/Model`).
+Training a neural network requires billions of simple multiply-and-add operations at once—making **GPUs** orders of magnitude faster than CPUs for AI.
 
 ---
 
-## Worked Example: Classifying Spam Email
+## 5. Worked Examples (Beginner -> Intermediate -> Advanced)
 
-- **Coding 1.0:** Manually write `if "FREE MONEY" in email: mark_spam()`. Spammers easily bypass it by writing `"FR33 M0NEY"`.
-- **Coding 2.0 (Rational Agent):** Train a classifier on 100,000 labeled emails so it learns probabilistic weights across thousands of features and generalizes to unseen spam tactics.
+### Basic Example: Coding 1.0 vs. Coding 2.0
+- Calculating compound interest (`P * (1 + r)^t`) -> **Coding 1.0** (known exact formula).
+- Detecting fraudulent credit card transactions across millions of subtle patterns -> **Coding 2.0** (learned model).
 
----
+### Intermediate Example: Classifying a Chess Engine in the Four Faces
+A chess engine searches millions of board states per second using math—completely unlike human intuition—to pick the move with the highest win probability. Which quadrant is it? **Acting Rationally (Rational Agent)**.
 
-## Common Misconceptions
-
-- **Misconception:** *"Passing a 5-minute Turing Test proves general intelligence."*  
-  **Reality:** Short chat tricks (like ELIZA or Eugene Goostman) exploit human projection rather than true reasoning.
-- **Misconception:** *"GPUs replace CPUs completely."*  
-  **Reality:** The CPU still runs the OS, loads data from disk, and dispatches parallel math batches to the GPU.
+### Advanced Example: Why CPUs Still Matter in GPU AI Training
+You cannot build an AI server with *only* GPUs and zero CPU: the **CPU** runs Linux, reads image/text files from SSD into RAM, schedules processes, and feeds data batches to the GPU.
 
 ---
 
-## Exam Perspective
+## 6. Common Misconceptions & Quick Revision
 
-- Memorize all **4 quadrants** of Russell & Norvig's matrix (`Thinking/Acting` × `Humanly/Rationally`) and why **Rational Agent** is the dominant modern framing.
-- Know the difference between **Coding 1.0** (explicit rules) and **Coding 2.0** (weights learned from data).
-
----
-
-## Related Concepts
-
-- [The Five Papers (1936–1978)](/notes/15-five-foundational-papers/five-papers-1936-1978)
-- [Hardware, CPU, Memory & Bottlenecks](/notes/02-hardware-software/hardware-and-memory)
-
----
-
-## Quick Revision
-
-- **1950:** Turing Test; **1956:** McCarthy coins "AI" at Dartmouth.
-- **Four Faces:** Thinking/Acting × Humanly/Rationally (modern focus = **Rational Agent**).
-- **GPU:** Thousands of parallel cores ideal for matrix math; **Coding 2.0:** learns rules from data.
+- **Misconception:** *"Passing a 5-minute chat test proves human-level intelligence."*  
+  **Reality:** Short chat bots exploit human projection rather than general reasoning.
+- **Quick Revision:** Calculate = Coding 1.0 (`Input + Rules -> Output`); Predict = Coding 2.0 (`Input + Labels -> Learned Model`); Four Faces = `Thinking/Acting × Humanly/Rationally`; GPUs excel at parallel matrix math.
+- **Source Reference:** `Lecture-14-What-is-AI.pdf` (C14, pp. 1–40).

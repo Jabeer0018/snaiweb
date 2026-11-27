@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-17-b",
+    "level": "Beginner",
+    "question": "What is the single core task a Large Language Model (LLM) is trained to perform?",
+    "options": [
+      "Search Google Live",
+      "Predict the next token",
+      "Compile C++ programs",
+      "Synchronize quartz clocks"
+    ],
+    "correctIndex": 1,
+    "explanation": "LLMs are Transformer networks trained on massive text to predict the next token given prior context."
+  },
+  {
+    "id": "kc-17-i",
+    "level": "Intermediate",
+    "question": "Why is 'Large' in Large Language Model described as a 'moving label'?",
+    "options": [
+      "There is no fixed parameter threshold; what seemed huge a few years ago looks small as hardware scales",
+      "Every model shrinks over time",
+      "Large only measures disk file size in KiB",
+      "Parameters reset to zero daily"
+    ],
+    "correctIndex": 0,
+    "explanation": "Scale is relative to each era's compute and corpus size rather than a fixed scientific cutoff."
+  },
+  {
+    "id": "kc-17-a",
+    "level": "Advanced",
+    "question": "Trace the correct numerical pipeline when an LLM processes your prompt:",
+    "options": [
+      "Text -> ASCII hex dump -> JPEG -> Output",
+      "Text -> Subword Tokens -> Integer Token IDs -> Embeddings -> Transformer Self-Attention -> Next-Token Probabilities",
+      "Text -> Shell $PATH -> Kernel -> Output",
+      "Text -> Retrain all weights -> Output"
+    ],
+    "correctIndex": 1,
+    "explanation": "Computers only process numbers: text is tokenized into integer IDs, mapped to embeddings, processed through Transformer layers, and converted into next-token probabilities."
+  }
+]

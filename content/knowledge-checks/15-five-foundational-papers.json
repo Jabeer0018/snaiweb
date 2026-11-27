@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-15-b",
+    "level": "Beginner",
+    "question": "What did ELIZA (1966) use to generate therapist-like responses?",
+    "options": [
+      "Deep Transformers",
+      "Hand-written pattern-matching rules with zero learning",
+      "Backpropagation",
+      "GPUs"
+    ],
+    "correctIndex": 1,
+    "explanation": "ELIZA used fixed manual rules; the ELIZA effect is humans projecting understanding onto fluent text."
+  },
+  {
+    "id": "kc-15-i",
+    "level": "Intermediate",
+    "question": "Why couldn't Rosenblatt's single-layer Perceptron (1958) solve XOR, as Minsky & Papert proved in 1969?",
+    "options": [
+      "XOR outputs are not linearly separable by a single straight line",
+      "XOR requires internet access",
+      "Computers lacked binary numbers in 1969",
+      "Shannon's theorem forbade it"
+    ],
+    "correctIndex": 0,
+    "explanation": "Single-layer perceptrons compute one linear boundary; XOR places 1s and 0s on opposite diagonals."
+  },
+  {
+    "id": "kc-15-a",
+    "level": "Advanced",
+    "question": "Server A (logical clock 5) sends a message received by Server B (logical clock 2). What does Lamport's algorithm (1978) set B's clock to?",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "6 (max(2, 5) + 1)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Receiving a message sets the receiver's logical clock to `max(local, msg) + 1 = 6` to preserve causal order."
+  }
+]

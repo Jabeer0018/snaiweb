@@ -32,8 +32,6 @@ export interface MockStorageState {
   completed: Record<string, CompletedAttempt[]>;
 }
 
-import { scopedStorageKey } from "./storage";
-
 const STORAGE_KEY = "snai_mock_exams_v1";
 
 export function loadMockStorage(): MockStorageState {
@@ -41,7 +39,7 @@ export function loadMockStorage(): MockStorageState {
     return { inProgress: {}, completed: {} };
   }
   try {
-    const raw = window.localStorage.getItem(scopedStorageKey(STORAGE_KEY));
+    const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return { inProgress: {}, completed: {} };
     const parsed = JSON.parse(raw) as MockStorageState;
     return {
@@ -56,10 +54,7 @@ export function loadMockStorage(): MockStorageState {
 export function saveMockStorage(state: MockStorageState) {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(
-      scopedStorageKey(STORAGE_KEY),
-      JSON.stringify(state)
-    );
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
     // ignore storage quota errors
   }

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-14-b",
+    "level": "Beginner",
+    "question": "How does Coding 2.0 (Machine Learning) differ from Coding 1.0?",
+    "options": [
+      "Coding 2.0 writes manual `if/else` rules",
+      "Coding 2.0 learns patterns/weights from examples + desired outputs",
+      "Coding 2.0 requires no data",
+      "Coding 2.0 runs only on hubs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Coding 1.0 = Input + Human Rules -> Output; Coding 2.0 = Input + Desired Output -> Learned Model."
+  },
+  {
+    "id": "kc-14-i",
+    "level": "Intermediate",
+    "question": "Which quadrant of Russell & Norvig's 2\u00d72 matrix dominates modern AI engineering?",
+    "options": [
+      "Thinking Humanly",
+      "Acting Humanly",
+      "Thinking Rationally",
+      "Acting Rationally (Rational Agent)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Modern AI builds Rational Agents that maximize expected goal achievement rather than imitating human flaws."
+  },
+  {
+    "id": "kc-14-a",
+    "level": "Advanced",
+    "question": "Why are GPUs far faster than CPUs for training neural networks?",
+    "options": [
+      "GPUs have thousands of simpler cores built for massive parallel matrix multiplication",
+      "GPUs replace RAM and SSDs",
+      "GPUs have higher single-core clock speeds than all CPUs",
+      "GPUs run Linux without an OS"
+    ],
+    "correctIndex": 0,
+    "explanation": "Neural network training consists of billions of simultaneous matrix multiply-adds suited to GPU parallelism."
+  }
+]

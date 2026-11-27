@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-10-b",
+    "level": "Beginner",
+    "question": "What is the relationship between Git and GitHub?",
+    "options": [
+      "They are identical",
+      "Git is the local version control tool; GitHub is a remote platform hosting Git repositories",
+      "GitHub works without Git",
+      "Git requires an internet connection for every commit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Git runs locally inside `.git/`; GitHub hosts remote copies (`origin`) for backup and team collaboration."
+  },
+  {
+    "id": "kc-10-i",
+    "level": "Intermediate",
+    "question": "Which command downloads remote commits to `origin/main` so you can inspect them WITHOUT modifying your working files?",
+    "options": [
+      "git push",
+      "git fetch",
+      "git pull",
+      "git clone"
+    ],
+    "correctIndex": 1,
+    "explanation": "`git fetch` updates remote-tracking refs safely; `git pull` runs `fetch` + `merge` into your active branch."
+  },
+  {
+    "id": "kc-10-a",
+    "level": "Advanced",
+    "question": "Why does GitHub reject your `git push origin main` if a teammate pushed new commits after your last pull?",
+    "options": [
+      "To prevent your push from silently overwriting your teammate's remote commits",
+      "Because GitHub only allows one commit per day",
+      "Because `origin` was deleted",
+      "Because `.gitignore` blocked `main`"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-fast-forward pushes are rejected so you `git pull` first, merge/resolve any conflicts locally, and then push."
+  }
+]

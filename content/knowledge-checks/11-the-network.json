@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-11-b",
+    "level": "Beginner",
+    "question": "In `https://github.com/student/project`, what is `github.com`?",
+    "options": [
+      "The protocol",
+      "The domain",
+      "The path",
+      "The IPv4 address"
+    ],
+    "correctIndex": 1,
+    "explanation": "`https` is the protocol, `github.com` is the human-readable domain, and `/student/project` is the path."
+  },
+  {
+    "id": "kc-11-i",
+    "level": "Intermediate",
+    "question": "How many cables does a direct point-to-point mesh require for 10 computers vs. a Switch topology?",
+    "options": [
+      "10 vs 10",
+      "45 vs 10",
+      "90 vs 10",
+      "100 vs 10"
+    ],
+    "correctIndex": 1,
+    "explanation": "Direct mesh requires `n(n-1)/2 = 10\u00d79/2 = 45` cables, while a central Switch requires only `10`."
+  },
+  {
+    "id": "kc-11-a",
+    "level": "Advanced",
+    "question": "`ping -c 4 8.8.8.8` succeeds with 0% loss, while `ping -c 4 github.com` says `Unknown host`. What failed?",
+    "options": [
+      "Your Wi-Fi hardware",
+      "Your local Switch",
+      "DNS resolution",
+      "Your SSD"
+    ],
+    "correctIndex": 2,
+    "explanation": "Reaching `8.8.8.8` proves IP routing works; failing only on `github.com` points to DNS lookup failure."
+  }
+]

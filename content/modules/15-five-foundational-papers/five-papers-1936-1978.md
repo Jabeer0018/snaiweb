@@ -1,78 +1,57 @@
 ---
-title: "The Five Papers (1936–1978)"
-description: "From Turing machines and digital bits to perceptrons, XOR limits, and Lamport logical clocks."
+title: "The Five Foundational Papers (1936–1978)"
+description: "Zero-to-advanced narrative connecting Turing (1936), Shannon (1937/1948), Rosenblatt (1958), Minsky & Papert (1969), and Lamport (1978), plus ELIZA and ML (T, P, E)."
 order: 1
-source: "Revision Notes (Lecture 15)"
+source: "S&AI - Lecture 15.pptx_compressed.pdf (80p), Lecture 15 Notes (13p), Worksheet (8p) & Papers 1–5"
 addedAt: "2026-11-26"
-updatedAt: "2026-11-27"
-keywords: ["Turing", "Shannon", "Rosenblatt", "Minsky", "Lamport", "ELIZA", "XOR"]
-estimatedMinutes: 8
+updatedAt: "2026-11-28"
+keywords: ["Turing", "Shannon", "Rosenblatt", "Minsky", "Lamport", "ELIZA", "XOR", "perceptron", "T P E"]
+estimatedMinutes: 12
 ---
 
-## Intuition & Core Principle
+## 1. What You Will Learn & Prerequisites
 
-> [!IMPORTANT]
-> Every modern AI system rests on five pre-1980 breakthroughs that established **what can be computed**, **how logic maps to circuits**, **how machines learn weights**, **where single-layer networks fail**, and **how distributed machines agree on event order**.
+**Prerequisites:** [What Is AI?](/notes/14-what-is-ai/four-faces-gpu-and-coding-2) and [Number Systems](/notes/08-number-systems-encoding/number-systems-and-conversions).
 
-Before exploring those five papers, keep two framing concepts in mind:
-
-- **ELIZA (1966, Joseph Weizenbaum):** Simulated a psychotherapist using **hand-written pattern-matching rules** (no learning at all). The **ELIZA effect** describes the human tendency to attribute real understanding to fluent text output.
-- **Tom Mitchell's Machine Learning Definition (`T, P, E`):** A program learns from **Experience (`E`)** with respect to some **Task (`T`)** and **Performance measure (`P`)**, if its performance at `T`, as measured by `P`, improves with `E`.
+You do **not** need prior academic research experience to understand these five landmark papers. Together, they tell one connected story: how we defined **computation** (1936), **digital information** (1948), **trainable artificial neurons** (1958), **their geometric limits** (1969), and **how distributed machines agree on order** (1978).
 
 ---
 
-## The Five Foundational Papers (1936–1978)
+## 2. Stage 1: Two Crucial Framing Ideas (ELIZA & `T, P, E`)
 
-| Year | Author(s) | Core Contribution | Key Exam Distinction |
+1. **ELIZA (1966, Joseph Weizenbaum):** An early chatbot simulating a therapist by rephrasing user sentences using **hand-written pattern rules** (`"I feel X" -> "Why do you feel X?"`). ELIZA had **zero learning**. People still felt understood—a psychological bias called the **ELIZA effect**.
+2. **Machine Learning (`T, P, E` — Tom Mitchell):** A computer learns from **Experience (`E`)** on **Task (`T`)** measured by **Performance (`P`)** if its performance on `T` improves with `E`.
+
+---
+
+## 3. Stage 2–4: The Five Papers Explained Step by Step
+
+| Year | Author(s) | The Problem & Main Idea | Deep Study Guide |
 | --- | --- | --- | --- |
-| **1936** | **Alan Turing** | **Turing Machine:** Mathematical model proving a single universal machine can execute any computable algorithm via tape symbols + rules. | Conceptual/mathematical model of computation—not a physical machine built in 1936. |
-| **1937 / 1948** | **Claude Shannon** | **Boolean Circuits & Information Theory:** Mapped True/False logic to electrical switches (1937) and defined the **bit** as the universal unit of information (1948). | Applies to *all* digital data (text, audio, video, AI), not just text compression. |
-| **1958** | **Frank Rosenblatt** | **The Perceptron:** First trainable single-layer neural unit (`weighted sum + threshold`) that adjusts weights from mistakes. | Single-layer linear classifier—cannot solve non-linear boundaries alone. |
-| **1969** | **Minsky & Papert** | **Perceptrons (XOR Limit):** Mathematically proved a single-layer perceptron cannot solve **XOR** (non-linearly separable data), triggering the first **AI Winter**. | Proved the limit of **single-layer** perceptrons, *not* multi-layer neural networks. |
-| **1978** | **Leslie Lamport** | **Logical Clocks (`Happened-Before`):** Ordered events across distributed computers using logical counters instead of unreliable physical wall clocks. | Essential for distributed systems & cluster training; does not synchronize physical quartz clocks. |
+| **1936** | **Alan Turing** | Modeled mechanical computation as an abstract tape + rules (**Turing Machine**) and proved one **Universal Machine** can simulate any algorithm—while proving some problems (Halting / Entscheidungsproblem) are unsolvable. | [Study Paper 1 →](/papers/turing-1936-computable-numbers) |
+| **1937 / 1948** | **Claude Shannon** | Mapped Boolean True/False to electrical switches (1937) and defined the **bit** & **entropy** (1948), proving compression and error-free communication limits for *all* digital data. | [Study Paper 2 →](/papers/shannon-1948-communication-theory) |
+| **1958** | **Frank Rosenblatt** | Built the **Perceptron**—a single-layer neuron (`weighted sum + threshold`) that automatically adjusts its **weights** whenever it misclassifies a training example. | [Study Paper 3 →](/papers/rosenblatt-1958-perceptron) |
+| **1969** | **Minsky & Papert** | Proved geometrically that a **single-layer** perceptron draws one straight line, so it can **never** solve **XOR** (non-linearly separable data)—triggering the first **AI Winter**. | [Study Paper 5 →](/papers/minsky-papert-1969-perceptrons) |
+| **1978** | **Leslie Lamport** | Showed physical wall clocks drift across networked servers; introduced causal **Happened-Before** partial ordering (`->`) and **Logical Clocks** (`max(local, msg) + 1`). | [Study Paper 4 →](/papers/lamport-1978-logical-clocks) |
 
 ---
 
-## Worked Example: Why Single-Layer Perceptrons Fail XOR
+## 4. Worked Examples (Beginner -> Intermediate -> Advanced)
 
-Consider the **XOR** truth table (`output = 1` iff inputs differ):
+### Basic Example: Identifying `T`, `P`, `E`
+For a spam filter: **Task (`T`)** = classifying emails as spam vs. inbox; **Performance (`P`)** = % of emails classified accurately; **Experience (`E`)** = thousands of labeled historical emails.
 
-- `(0, 0) -> 0`
-- `(0, 1) -> 1`
-- `(1, 0) -> 1`
-- `(1, 1) -> 0`
+### Intermediate Example: Why Single-Layer Perceptrons Fail XOR
+Plot `(0,0)->0`, `(1,1)->0`, `(0,1)->1`, `(1,0)->1` on a 2D graph. The `1` points sit on opposite corners (`(0,1)` and `(1,0)`) and the `0` points sit on the other diagonal. **Try testing this in the Perceptron Lab below:** no slider combination of `w₁`, `w₂`, and `bias` can draw one straight line separating them!
 
-Plot these four points on a 2D plane: the `1` points sit on opposite diagonals (`(0,1)` and `(1,0)`), while the `0` points sit on the other diagonal (`(0,0)` and `(1,1)`). **No single straight line** can separate the `1`s from the `0`s. Adding **hidden layers** (multi-layer perceptrons) bends the boundary and solves XOR cleanly.
-
----
-
-## Common Misconceptions
-
-- **Misconception:** *"Minsky & Papert proved neural networks can never solve XOR."*  
-  **Reality:** Their proof applied strictly to **single-layer** perceptrons; multi-layer networks solve XOR easily once trained with backpropagation.
-- **Misconception:** *"ELIZA was an early machine learning model."*  
-  **Reality:** ELIZA used fixed, manually authored `if/else` substitution rules with zero learning from experience (`E`).
+### Advanced Example: Lamport Logical Clocks in Action
+Server A (clock `5`) sends a message to Server B (whose local logical clock is `2`). Upon receiving the message, Server B sets its clock to `max(2, 5) + 1 = 6`, guaranteeing the causal rule: `Send -> Receive` implies `C(Send) < C(Receive)`.
 
 ---
 
-## Exam Perspective
+## 5. Common Misconceptions & Quick Revision
 
-- Connect each paper's **year**, **author**, and **exact scope** (e.g., Shannon -> Boolean switches + bits; Lamport -> distributed event ordering; Minsky/Papert -> single-layer XOR limit).
-- Know the **T, P, E** definition of Machine Learning and how to identify `T`, `P`, and `E` in a real problem (e.g., chess: `T` = playing chess, `P` = win rate, `E` = games played).
-
----
-
-## Related Concepts
-
-- [Defining AI, Four Faces, GPUs & Coding 2.0](/notes/14-what-is-ai/four-faces-gpu-and-coding-2)
-- [The Next Five Papers (1986–2020)](/notes/16-next-five-papers/next-five-papers-1986-2020)
-
----
-
-## Quick Revision
-
-- **1936 Turing:** Universal computability.
-- **1937/48 Shannon:** Boolean switches + the **bit**.
-- **1958 Rosenblatt:** Trainable single-layer **Perceptron**.
-- **1969 Minsky & Papert:** Single-layer **XOR** limit -> AI Winter.
-- **1978 Lamport:** Logical clocks (`happened-before`) for distributed systems.
+- **Misconception:** *"Minsky & Papert proved multi-layer neural networks can never solve XOR."*  
+  **Reality:** Their proof applied strictly to **single-layer** perceptrons; adding hidden layers solves XOR cleanly.
+- **Quick Revision:** `1936 Turing` (computability) -> `1948 Shannon` (bits & entropy) -> `1958 Rosenblatt` (trainable perceptron) -> `1969 Minsky/Papert` (XOR limit) -> `1978 Lamport` (logical clocks).
+- **Source Reference:** `S&AI - Lecture 15.pptx_compressed.pdf` (80p), `S&AI Lecture 15 Notes.pdf` (13p), `Worksheet.pdf` (8p), and Papers 1–5.

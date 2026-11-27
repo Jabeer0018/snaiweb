@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-08-b",
+    "level": "Beginner",
+    "question": "What is the decimal value of the 6-bit binary number `101101\u2082`?",
+    "options": [
+      "43",
+      "45",
+      "53",
+      "37"
+    ],
+    "correctIndex": 1,
+    "explanation": "32 + 0 + 8 + 4 + 0 + 1 = 45."
+  },
+  {
+    "id": "kc-08-i",
+    "level": "Intermediate",
+    "question": "In an 8-bit unsigned register, what is the result of `250 + 10` after binary overflow?",
+    "options": [
+      "260",
+      "255",
+      "4",
+      "0"
+    ],
+    "correctIndex": 2,
+    "explanation": "250 + 10 = 260; 8 bits wrap modulo 256, so 260 - 256 = 4 (`0000 0100\u2082`)."
+  },
+  {
+    "id": "kc-08-a",
+    "level": "Advanced",
+    "question": "If ASCII `'A'` is `65`, what is the hex value of `'c'` and why?",
+    "options": [
+      "`0x43` (67)",
+      "`0x63` (99, because `'C'=67` and lowercase adds `32` -> `99 = 6*16 + 3`)",
+      "`0x61` (97)",
+      "`0xFF` (255)"
+    ],
+    "correctIndex": 1,
+    "explanation": "`'C'` is 67; adding 32 gives `'c'` = 99 = `6\u00d716 + 3` = `0x63`."
+  }
+]

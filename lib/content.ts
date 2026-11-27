@@ -33,6 +33,7 @@ const MCQS_FILE = path.join(CONTENT_DIR, "mcqs", "theory-mcqs.json");
 const QUIZZES_FILE = path.join(CONTENT_DIR, "mcqs", "theory-quizzes.json");
 const MOCK_EXAMS_DIR = path.join(CONTENT_DIR, "quizzes");
 const PAPERS_FILE = path.join(CONTENT_DIR, "papers", "papers.json");
+const KNOWLEDGE_CHECKS_DIR = path.join(CONTENT_DIR, "knowledge-checks");
 
 function safeReadDir(dirPath: string): fs.Dirent[] {
   if (!fs.existsSync(dirPath)) return [];
@@ -334,6 +335,22 @@ export function getAllPapers(): ResearchPaper[] {
 
 export function getPaper(slug: string): ResearchPaper | null {
   return getAllPapers().find((p) => p.slug === slug) || null;
+}
+
+export function getModuleKnowledgeChecks(moduleSlug: string) {
+  const filePath = path.join(KNOWLEDGE_CHECKS_DIR, `${moduleSlug}.json`);
+  const data = safeReadJson<
+    {
+      id: string;
+      level: "Beginner" | "Intermediate" | "Advanced";
+      question: string;
+      options: [string, string, string, string];
+      correctIndex: 0 | 1 | 2 | 3;
+      explanation: string;
+      optionFeedback?: [string, string, string, string];
+    }[]
+  >(filePath, []);
+  return Array.isArray(data) ? data : [];
 }
 
 export function getCourseStats(): CourseStats {

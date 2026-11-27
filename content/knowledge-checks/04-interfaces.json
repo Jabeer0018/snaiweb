@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-04-b",
+    "level": "Beginner",
+    "question": "Which interface lets two separate software programs exchange structured data such as JSON?",
+    "options": [
+      "GUI",
+      "API",
+      "Desktop Metaphor",
+      "Monitor cable"
+    ],
+    "correctIndex": 1,
+    "explanation": "An API (Application Programming Interface) is a structured contract for software-to-software communication."
+  },
+  {
+    "id": "kc-04-i",
+    "level": "Intermediate",
+    "question": "Typing `grpe error log.txt` returns `zsh: command not found: grpe`. Which layer reported this error?",
+    "options": [
+      "The remote API server",
+      "The Shell / CLI layer",
+      "The monitor driver",
+      "The PNG decoder"
+    ],
+    "correctIndex": 1,
+    "explanation": "The shell (`zsh`) searched `$PATH` directories and could not find an executable named `grpe`."
+  },
+  {
+    "id": "kc-04-a",
+    "level": "Advanced",
+    "question": "Why does running `curl https://api.github.com/users/torvalds` demonstrate CLI + API working together?",
+    "options": [
+      "Because curl opens a desktop GUI window",
+      "Because curl is a CLI program that sends an HTTP API request and prints the JSON response",
+      "Because curl compiles C code into binary",
+      "Because GitHub only works inside macOS Finder"
+    ],
+    "correctIndex": 1,
+    "explanation": "You invoke `curl` via the CLI to interact directly with a web API endpoint."
+  }
+]

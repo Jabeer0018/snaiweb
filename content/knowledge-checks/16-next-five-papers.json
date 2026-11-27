@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-16-b",
+    "level": "Beginner",
+    "question": "What did Rumelhart, Hinton & Williams (1986) popularize so multi-layer neural networks could learn?",
+    "options": [
+      "PageRank",
+      "Backpropagation",
+      "Turing Machines",
+      "DNS"
+    ],
+    "correctIndex": 1,
+    "explanation": "Backpropagation sends error gradients backward through hidden layers so internal weights adjust cleanly."
+  },
+  {
+    "id": "kc-16-i",
+    "level": "Intermediate",
+    "question": "Which three ingredients combined in AlexNet (2012) to slash ImageNet top-5 error from ~26% to ~15%?",
+    "options": [
+      "ELIZA rules + CPUs + floppy disks",
+      "Deep CNNs + ImageNet labeled data + parallel GPUs",
+      "PageRank + HTML + CSS",
+      "Single-layer perceptrons + XOR"
+    ],
+    "correctIndex": 1,
+    "explanation": "AlexNet launched the GPU deep learning era by pairing deep CNNs with ImageNet data and GPU training."
+  },
+  {
+    "id": "kc-16-a",
+    "level": "Advanced",
+    "question": "Why did 'Attention Is All You Need' (2017) replace RNNs with Self-Attention?",
+    "options": [
+      "Self-Attention processes all tokens in parallel on GPUs and links long-range context directly",
+      "Transformers update weights permanently during chat prompts",
+      "RNNs cannot process English text",
+      "Self-Attention uses zero parameters"
+    ],
+    "correctIndex": 0,
+    "explanation": "Eliminating sequential recurrence allowed full GPU parallelization and direct attention across long contexts."
+  }
+]

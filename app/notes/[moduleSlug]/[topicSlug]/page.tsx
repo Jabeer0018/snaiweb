@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import {
   getAdjacentTopics,
   getAllModules,
+  getModuleKnowledgeChecks,
   getTopic,
 } from "@/lib/content";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
@@ -11,6 +12,7 @@ import { TableOfContents } from "@/components/TableOfContents";
 import { BookmarkButton } from "@/components/BookmarkButton";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { LessonInteractiveLab } from "@/components/LessonInteractiveLab";
+import { LessonKnowledgeChecks } from "@/components/LessonKnowledgeChecks";
 import { formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -47,6 +49,7 @@ export default async function TopicPage({
   if (!topic) notFound();
 
   const { prev, next } = getAdjacentTopics(moduleSlug, topicSlug);
+  const knowledgeChecks = getModuleKnowledgeChecks(moduleSlug);
   const topicHref = `/notes/${moduleSlug}/${topicSlug}`;
 
   return (
@@ -125,6 +128,9 @@ export default async function TopicPage({
 
         {/* In-Lesson Interactive Experiment */}
         <LessonInteractiveLab moduleSlug={moduleSlug} />
+
+        {/* Progressive Knowledge Checks (Beginner / Intermediate / Advanced) */}
+        <LessonKnowledgeChecks questions={knowledgeChecks} />
 
         {/* Prev / Next Navigation */}
         <nav

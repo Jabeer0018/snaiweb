@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-09-b",
+    "level": "Beginner",
+    "question": "Which command moves modified files from your Working Directory into the Staging Area?",
+    "options": [
+      "git commit",
+      "git add",
+      "git init",
+      "git log"
+    ],
+    "correctIndex": 1,
+    "explanation": "`git add` stages snapshots into the Staging Area before `git commit` records them permanently."
+  },
+  {
+    "id": "kc-09-i",
+    "level": "Intermediate",
+    "question": "You edit `app.py` (v2), run `git add app.py`, then edit `app.py` again (v3) WITHOUT running `git add`, and run `git commit -m \"save\"`. Which version is committed?",
+    "options": [
+      "v1",
+      "v2",
+      "v3",
+      "Both v2 and v3"
+    ],
+    "correctIndex": 1,
+    "explanation": "`git commit` snapshots only the Staging Area (which holds v2); v3 remains unstaged in your Working Directory."
+  },
+  {
+    "id": "kc-09-a",
+    "level": "Advanced",
+    "question": "When does `git merge` produce a merge conflict instead of fast-forwarding or auto-merging?",
+    "options": [
+      "Whenever you create a branch",
+      "When two diverged branches modified the exact same lines of the same file differently",
+      "Whenever `.git` exists",
+      "When `git status` is clean"
+    ],
+    "correctIndex": 1,
+    "explanation": "Overlapping edits on the same lines require human resolution between `<<<<<<<`, `=======`, and `>>>>>>>` markers."
+  }
+]

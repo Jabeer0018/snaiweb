@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-07-b",
+    "level": "Beginner",
+    "question": "What language does a physical CPU directly understand and execute?",
+    "options": [
+      "Python",
+      "C",
+      "Machine code (binary instructions)",
+      "Markdown"
+    ],
+    "correctIndex": 2,
+    "explanation": "CPUs execute only binary machine code; compilers and interpreters translate human-readable languages into machine operations."
+  },
+  {
+    "id": "kc-07-i",
+    "level": "Intermediate",
+    "question": "A 10-line Python script has `print(\"Hi\")` on line 1 and a typo `prnt(\"Bye\")` on line 8. What happens when run with `python3`?",
+    "options": [
+      "Nothing prints because line 8 fails upfront",
+      "`Hi` prints first, then Python raises a NameError at line 8",
+      "Python auto-corrects `prnt` to `print`",
+      "It produces a standalone `./a.out` binary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Interpreted execution runs line-by-line at runtime, so line 1 executes before line 8 fails."
+  },
+  {
+    "id": "kc-07-a",
+    "level": "Advanced",
+    "question": "Which two requirements allow `./tool.py` to execute directly without typing `python3 tool.py`?",
+    "options": [
+      "`.py` extension and `chmod 644`",
+      "A `#!` shebang on Line 1 (e.g. `#!/usr/bin/env python3`) AND execute permission (`chmod +x`)",
+      "Compiling with `gcc`",
+      "Putting `#!` on Line 2"
+    ],
+    "correctIndex": 1,
+    "explanation": "The OS kernel inspects `#!` at byte 0 (Line 1) and requires the execute bit (`+x`)."
+  }
+]

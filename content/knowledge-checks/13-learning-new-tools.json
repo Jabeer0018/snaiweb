@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-13-b",
+    "level": "Beginner",
+    "question": "Which programmer created FFmpeg, QEMU, and the Tiny C Compiler?",
+    "options": [
+      "Clifford Stoll",
+      "Fabrice Bellard",
+      "Fredrik Lundh",
+      "Grace Hopper"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fabrice Bellard built FFmpeg, QEMU, and TCC\u2014central tools rarely taught explicitly in courses."
+  },
+  {
+    "id": "kc-13-i",
+    "level": "Intermediate",
+    "question": "In the 5-step tool discovery method, why do you 'break it on purpose' in Step 5?",
+    "options": [
+      "To learn how the tool reports errors calmly before anything is at stake",
+      "To uninstall the package",
+      "To avoid reading `man` pages",
+      "To bypass `sudo`"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deliberate breakage teaches you the tool's error messages so you can debug real failures calmly."
+  },
+  {
+    "id": "kc-13-a",
+    "level": "Advanced",
+    "question": "Which of the 3 Rules for AI Coding (Worksheet 13b) prevents automation bias when running AI-generated code?",
+    "options": [
+      "Always copy-paste without reading",
+      "Decide what 'correct' output looks like BEFORE running the code",
+      "Skip documentation",
+      "Never use `pip show`"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rule 3 requires defining expected output beforehand so silent logic bugs don't look 'about right'."
+  }
+]

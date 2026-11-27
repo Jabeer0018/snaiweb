@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-03-b",
+    "level": "Beginner",
+    "question": "In `ls -la Documents`, what is `-la`?",
+    "options": [
+      "The command",
+      "Combined options/flags",
+      "The target directory argument",
+      "A pipe operator"
+    ],
+    "correctIndex": 1,
+    "explanation": "`ls` is the command, `-la` combines the `-l` and `-a` option flags, and `Documents` is the argument."
+  },
+  {
+    "id": "kc-03-i",
+    "level": "Intermediate",
+    "question": "If `log.txt` contains `Line1`, what does `echo \"Line2\" > log.txt` leave inside `log.txt`?",
+    "options": [
+      "Line1 followed by Line2",
+      "Only Line2 (it overwrites)",
+      "Nothing",
+      "An error because log.txt exists"
+    ],
+    "correctIndex": 1,
+    "explanation": "Single `>` overwrites the target file; double `>>` appends to the end."
+  },
+  {
+    "id": "kc-03-a",
+    "level": "Advanced",
+    "question": "What does `cat app.log | grep \"ERROR\" | wc -l` compute?",
+    "options": [
+      "Deletes all ERROR lines from app.log",
+      "Counts the total number of lines in app.log containing ERROR",
+      "Creates a new folder named ERROR",
+      "Lists hidden files in the root directory"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pipes (`|`) pass stdout from `cat` -> `grep \"ERROR\"` (filter) -> `wc -l` (line count)."
+  }
+]

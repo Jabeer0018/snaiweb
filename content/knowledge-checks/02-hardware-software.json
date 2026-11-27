@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-02-b",
+    "level": "Beginner",
+    "question": "What happens to unsaved edits in RAM when a desktop loses electrical power?",
+    "options": [
+      "They stay permanently on RAM",
+      "They are erased because RAM is volatile",
+      "They convert automatically to a compiler binary",
+      "They move to the CPU"
+    ],
+    "correctIndex": 1,
+    "explanation": "RAM is volatile working memory and loses its contents when power is removed; persistent SSD/HDD storage keeps saved files."
+  },
+  {
+    "id": "kc-02-i",
+    "level": "Intermediate",
+    "question": "A workstation shows CPU at 20%, RAM at 99% (8/8 GB), and heavy Disk Swap activity. Which upgrade fixes the slowdown?",
+    "options": [
+      "Upgrade from 8 GB to 16 GB RAM",
+      "Replace the monitor",
+      "Upgrade the CPU clock speed only",
+      "Uninstall the printer driver"
+    ],
+    "correctIndex": 0,
+    "explanation": "Full RAM forces the OS to swap pages onto slow disk storage (thrashing). Adding RAM eliminates swap bottlenecks."
+  },
+  {
+    "id": "kc-02-a",
+    "level": "Advanced",
+    "question": "In the 3-layer Software Stack, how is a C compiler (`gcc`) classified?",
+    "options": [
+      "Hardware",
+      "Application Software",
+      "System Software",
+      "Firmware-only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Compilers, device drivers, and operating systems belong to System Software because they translate or manage system/hardware execution."
+  }
+]

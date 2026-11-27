@@ -1,97 +1,74 @@
 ---
-title: "Text (ASCII/UTF-8), Images (RGB), Magic Numbers & Encryption"
-description: "ASCII vs Unicode/UTF-8, RGB/RGBA image size, file signatures & hex dumps, and Encoding vs Encryption."
+title: "Encoding Text (ASCII/UTF-8), Images (RGB), Magic Numbers & Encryption"
+description: "Zero-to-advanced guide to how computers store letters, emojis, photos, how file signatures identify real file types, and why Encoding is NOT Encryption."
 order: 3
-source: "Number Systems & Data Encoding PDF (pp. 5-8)"
+source: "HYD- Lecture 8 - Number Systems - Session 2_compressed.pdf (pp. 40–56)"
 addedAt: "2026-11-26"
-updatedAt: "2026-11-27"
+updatedAt: "2026-11-28"
 keywords: ["ASCII", "Unicode", "UTF-8", "RGB", "RGBA", "magic number", "hex dump", "encryption"]
-estimatedMinutes: 8
+estimatedMinutes: 11
 ---
 
-## Intuition & Core Principle
+## 1. What You Will Learn & Prerequisites
 
-> [!IMPORTANT]
-> Inside RAM and on disk, **everything is just bytes**. Whether a sequence of bytes represents the letter `'A'`, a bright red pixel, or a PNG image depends entirely on the **encoding standard** interpreting those bytes.
+**Prerequisites:** [Bits, Bytes & Integer Overflow](/notes/08-number-systems-encoding/bits-bytes-and-overflow).
 
-For example, the byte `0x41` (`65₁₀`, `01000001₂`) is `'A'` in ASCII text, a dark intensity value in an image channel, or an assembly opcode inside an executable. File formats, character tables, and magic numbers exist so software knows how to decode raw binary accurately.
-
----
-
-## Text: ASCII, Unicode & UTF-8
-
-- **ASCII:** A 7-bit encoding defining `128` English characters (`0–127`, typically stored in 1 byte).
-  - `'A' = 65` (`0x41`), `'a' = 97` (`0x61`), `'0' = 48` (`0x30`).
-  - **Key Trick:** `Lowercase = Uppercase + 32` (flipping only bit 5: `01000001` -> `01100001`).
-- **Unicode:** Universal character set assigning every symbol in every human language + emoji a unique **code point** (e.g., `'A' = U+0041`, Devanagari `'न' = U+0928`, `'😀' = U+1F600`).
-- **UTF-8:** Variable-length encoding (**1 to 4 bytes** per code point) that is **100% backward-compatible with ASCII** (all ASCII characters remain 1 byte).
+Earlier we learned computers only store bytes (`0–255`). So how does a byte like `65` (`0x41`, `01000001₂`) become the letter `'A'` in a text file, a dark red tint in a photograph, or part of a PDF? In this lesson, you will learn how **encoding standards** give meaning to raw bytes, how **magic numbers** reveal a file's true identity, and why **encoding is never encryption**.
 
 ---
 
-## Images: Pixels, RGB & RGBA
+## 2. Stage 1 & 2: Text Encoding (`ASCII` -> `Unicode` -> `UTF-8`)
 
-A raster image is a 2D grid of **pixels**:
+Imagine two friends agreeing on a secret-free codebook: `65` means `'A'`, `66` means `'B'`, `97` means `'a'`, `48` means `'0'`.
+- **ASCII (American Standard Code for Information Interchange):** A 7-bit standard defining `128` English characters (`0–127`, stored in 1 byte). Notice a neat binary pattern: `'A' = 65` (`0100 0001₂`) and `'a' = 97` (`0110 0001₂`)—**Lowercase = Uppercase + 32** (only bit 5 flips!).
+- **The Problem ASCII Couldn't Solve:** `128` slots cannot hold Hindi (`न`), Arabic, Chinese, accented European letters, or emojis (`😀`).
+- **Unicode + UTF-8:** **Unicode** assigns every character in every human script a universal **code point** (`'A' = U+0041`, `'न' = U+0928`, `'😀' = U+1F600`). **UTF-8** is the variable-length byte encoding (**1 to 4 bytes** per character) that stores Unicode efficiently while remaining **100% backward-compatible with ASCII** (every ASCII character still takes just `1 byte`).
 
-- **RGB (24-bit color):** Each pixel uses **3 bytes** (Red `0–255`, Green `0–255`, Blue `0–255`).
+---
+
+## 3. Stage 3 & 4: Images (`RGB` / `RGBA`) & Magic Numbers
+
+### Uncompressed Images
+A digital photo is a grid of tiny colored squares called **pixels**:
+- **RGB (24-bit color):** Each pixel uses **3 bytes** — Red (`0–255`), Green (`0–255`), Blue (`0–255`).
   - `#FF0000` = pure Red; `#000000` = Black; `#FFFFFF` = White.
-- **RGBA (32-bit color):** Adds a 4th **Alpha (transparency)** channel -> **4 bytes per pixel**.
+- **RGBA (32-bit color):** Adds an **Alpha (transparency)** byte -> **4 bytes per pixel**.
 
-**Uncompressed Image Size Formula:**
-$$	ext{Size (bytes)} = 	ext{Width} 	imes 	ext{Height} 	imes 	ext{Bytes per Pixel}$$
+$$	ext{Uncompressed Size (bytes)} = 	ext{Width} 	imes 	ext{Height} 	imes 	ext{Bytes per Pixel}$$
 
-**Worked Example:** A `1920 × 1080` RGB image (3 bytes/pixel):
-$$1920 	imes 1080 	imes 3 = 6,220,800	ext{ bytes} pprox 6.22	ext{ MB (SI) or } 5.93	ext{ MiB (IEC)}$$
+### Magic Numbers (File Signatures) & Hex Dumps
+If you rename `photo.png` to `photo.txt`, the bytes inside do **not** change! Programs like `file` inspect the first header bytes (**magic numbers**) via a **hex dump**:
+- **PNG:** `89 50 4E 47 0D 0A 1A 0A` (`.PNG....`)
+- **PDF:** `25 50 44 46` (`%PDF`)
+- **ZIP / DOCX:** `50 4B 03 04` (`PK..`)
 
----
+### Encoding vs. Encryption (Zero Security vs. Confidentiality)
 
-## File Signatures (Magic Numbers) & Hex Dumps
-
-Renaming `photo.png` to `photo.txt` does **not** convert it to text. OS tools (`file`) inspect the first few header bytes—called **magic numbers**—via a **hex dump**:
-
-| Format | Magic Bytes (Hex) | ASCII Header Preview |
-| --- | --- | --- |
-| **PNG** | `89 50 4E 47 0D 0A 1A 0A` | `.PNG....` |
-| **PDF** | `25 50 44 46` | `%PDF` |
-| **ZIP / DOCX** | `50 4B 03 04` | `PK..` |
-
----
-
-## Encoding vs. Encryption
-
-| Concept | Purpose | Secret Key Required? | Reversible by Anyone? |
+| Concept | Purpose | Secret Key Required? | Who Can Decode? |
 | --- | --- | --- | --- |
-| **Encoding** (ASCII, UTF-8, Base64) | **Data representation & compatibility** across systems | **No** | **Yes**—uses a public specification |
-| **Encryption** (AES, TLS) | **Confidentiality & security** against unauthorized readers | **Yes** | **No**—computationally infeasible without the key |
+| **Encoding** (`ASCII`, `UTF-8`, `Base64`, `Hex`) | Public interoperability & format representation | **No** | Anyone following the public standard |
+| **Encryption** (`AES`, `TLS/HTTPS`) | Confidentiality & secrecy | **Yes** | Only holders of the secret key |
 
 ---
 
-## Common Misconceptions
+## 4. Worked Examples (Beginner -> Intermediate -> Advanced)
 
-- **Misconception:** *"Unicode and UTF-8 are two competing encodings."*  
-  **Reality:** Unicode is the **table of code points**; UTF-8 is the **byte-encoding scheme** used to store those code points.
-- **Misconception:** *"Base64 or Hex encoding protects sensitive data."*  
-  **Reality:** Encoding provides **zero security**—anyone can decode Base64 or ASCII immediately without a key.
+### Basic Example: Converting `'C'` to `'c'` and Binary
+Given `'A' = 65`: `'C'` is 2 letters later (`67`). Adding `32` gives `'c' = 99` (`64 + 32 + 2 + 1 = 0110 0011₂` = `0x63`).
 
----
+### Intermediate Example: Calculating Full HD Image Size
+Compute the uncompressed size of a `1920 × 1080` **RGBA** (4 bytes/pixel) screenshot:
+$$1920 	imes 1080 	imes 4 = 8,294,400	ext{ bytes}$$
+In SI megabytes: `8.29 MB`. In binary mebibytes ($8,294,400 \div 1,048,576$): **`7.91 MiB`**.
 
-## Exam Perspective
-
-- Memorize `'A'=65`, `'a'=97`, `'0'=48` (`+32` case shift).
-- Be ready to compute uncompressed RGB (`× 3`) vs. RGBA (`× 4`) image sizes in bytes, MB, or MiB.
-- Distinguish **Encoding** (no key, representation) from **Encryption** (key required, secrecy).
+### Advanced Example: Identifying a Disguised File
+A suspicious attachment named `notes.txt` starts with hex bytes `25 50 44 46 2D 31 2E 37` in a hex dump. Converting `25 50 44 46` via ASCII (`0x25='%'`, `0x50='P'`, `0x44='D'`, `0x46='F'`) reveals **`%PDF-1.7`**—it is actually a PDF document disguised with a `.txt` extension!
 
 ---
 
-## Related Concepts
+## 5. Common Misconceptions & Quick Revision
 
-- [Bases, Binary ↔ Decimal & Hexadecimal](/notes/08-number-systems-encoding/number-systems-and-conversions)
-- [Bits, Nibbles, Bytes, Storage Units & Overflow](/notes/08-number-systems-encoding/bits-bytes-and-overflow)
-
----
-
-## Quick Revision
-
-- **ASCII:** `'A'=65`, `'a'=97`, `'0'=48`; `UTF-8` = 1–4 bytes, ASCII-compatible.
-- **Images:** `RGB` = 3 B/px; `RGBA` = 4 B/px.
-- **Magic numbers:** Header bytes (`%PDF`, `89 50 4E 47` for PNG) identify true file type.
-- **Encoding ≠ Encryption:** Encoding = public format; Encryption = secret key required.
+- **Misconception:** *"Base64 or UTF-8 encrypts passwords safely."*  
+  **Reality:** Base64 and UTF-8 are **encodings**—anyone can reverse them in milliseconds with no key.
+- **Quick Revision:** `'A'=65`, `'a'=97` (`+32`), `'0'=48`; `UTF-8` = 1–4 bytes; `RGB` = 3 B/px, `RGBA` = 4 B/px; Magic numbers identify real formats; **Encoding ≠ Encryption**.
+- **Source Reference:** `HYD- Lecture 8 - Number Systems - Session 2_compressed.pdf` (pp. 40–56).

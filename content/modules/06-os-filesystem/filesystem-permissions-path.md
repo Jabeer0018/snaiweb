@@ -1,84 +1,102 @@
 ---
-title: "Filesystem, Permissions & PATH"
-description: "Deep dive into Unix root (/), 'Everything is a file', executability rules, rwx vs octal permissions, chmod/chown, PATH, and which."
+title: "The Filesystem, Paths, $PATH & Linux Permissions (chmod)"
+description: "Zero-to-advanced guide to the Unix directory tree, absolute vs relative paths, $PATH command lookup, rwx octal permissions, directory traversal (x), and chown."
 order: 1
-source: "System & AI Essentials (C06)"
+source: "HYD_Lecture-6-The OS and the Filesystem_compressed.pdf (C06, pp. 1–39)"
 addedAt: "2026-11-26"
 updatedAt: "2026-11-28"
-keywords: ["filesystem", "permissions", "chmod", "chown", "PATH", "which", "644", "755", "555"]
-estimatedMinutes: 10
+keywords: ["filesystem", "path", "PATH", "chmod", "permissions", "octal", "rwx", "chown"]
+estimatedMinutes: 13
 ---
 
-## A. What Is It?
+## 1. What You Will Learn & Prerequisites
 
-The **Filesystem** is the organised hierarchical tree (rooted at `/`) where the OS stores all files, folders, programs, and device interfaces. **Permissions** (`r`, `w`, `x`) define who—Owner, Group, or Others—can read, modify, or execute each item. **`PATH`** is the shell's environment variable listing directories searched to locate commands.
+**Prerequisites:** [CLI Fundamentals](/notes/03-terminal-cli/cli-fundamentals-and-piping) and [Processes & Virtual Memory](/notes/05-os-process-management/processes-timeslicing-memory).
 
-## B. Why Does It Exist?
+Why does typing `./hello.sh` fail with `Permission denied` even though you just created the file? Why does `ls` work from any folder without typing `/bin/ls`? And why does removing the `x` bit from a **directory** lock you out even if you have `r` and `w`? This lesson builds your complete mental model of the Unix **Filesystem** and **Permissions**.
 
-Without a structured filesystem and strict permissions, any user or buggy script could accidentally overwrite critical OS files or execute untrusted downloads. `PATH` exists so you can type `ls` from any folder without typing `/bin/ls` every time.
+---
 
-## C. How Does It Work?
+## 2. Stage 1 & 2: Intuition — The Inverted Tree & Building Security Badges
 
-1. **Unix Philosophy ("Everything Is a File"):** Regular files (`notes.txt`), executables (`/bin/ls`), and even hardware/terminal interfaces (`/dev/pts`, `/dev/input`) live under `/`.
-2. **Executability Check:** To execute `./file`, the OS checks two conditions: (a) does it contain valid executable instructions/shebang, and (b) does the user have **execute (`x`) permission**? File extensions (`.txt`, `.sh`, `.banana`) do **not** determine executability.
-3. **Directory vs. File Permissions:**
-   - On a **file**: `r` = read contents, `w` = edit contents, `x` = run as program.
-   - On a **directory**: `w` is required to create, rename, move, or delete entries inside that directory (`555` blocks `rm` or `mv` even if the file inside is `644`!).
-4. **`PATH` Lookup:** The shell splits `PATH` by colons (`:`), e.g. `/usr/local/bin:/usr/bin:/bin`, and searches **left to right** until it finds the command.
+### The Inverted Directory Tree
+Unlike Windows drive letters (`C:\`, `D:\`), macOS and Linux organize every file, folder, and even hardware device into **one single upside-down tree** starting at **root (`/`)**:
+- `/bin` and `/usr/bin` hold system commands (`ls`, `cat`, `python3`).
+- `/Users/<name>` (macOS) or `/home/<name>` (Linux) is your personal **Home (`~`)** folder.
+- `/var/log` holds system logs (covered in Module C12).
 
-## D. Practical Example
+### Navigating Addresses: Absolute vs. Relative Paths
+- **Absolute Path:** Full GPS coordinates starting at `/` (e.g., `/Users/student/lab06/notes.txt`). Works identically no matter where you currently stand.
+- **Relative Path:** Directions starting from your current folder (`pwd`):
+  - `.` = current directory
+  - `..` = parent directory (one level up)
+  - `data/report.txt` = go into `data/` inside current directory.
 
+### How Your Shell Finds Commands (`$PATH`)
+When you type `python3`, the shell does **not** search your entire hard drive (that would take minutes!). Instead, it reads an environment variable called **`$PATH`**—a colon-separated list of folders such as `/usr/local/bin:/usr/bin:/bin`—and searches **left to right** for the first executable matching `python3`. Run `which python3` to see which exact folder won!
+
+> [!IMPORTANT]
+> Your current folder (`.`) is **not** in `$PATH` by default for security. That is why running a script in your current folder requires `./script.sh` (explicitly telling the shell: *"look right here in `.`"*).
+
+---
+
+## 3. Stage 3 & 4: Permissions (`u/g/o`, `r/w/x` & Octal Math)
+
+On multi-user OSes like Linux and macOS, every file and folder records three **permission groups** (`ls -l` shows 10 characters, e.g., `-rwxr-xr--`):
+
+| Position | Meaning | Value |
+| --- | --- | --- |
+| Char `1` | File type (`-` = regular file, `d` = directory) | — |
+| Chars `2–4` | **User / Owner (`u`)** permissions | `r=4`, `w=2`, `x=1` |
+| Chars `5–7` | **Group (`g`)** permissions | `r=4`, `w=2`, `x=1` |
+| Chars `8–10` | **Others (`o`)** permissions | `r=4`, `w=2`, `x=1` |
+
+**Binary-to-Octal Rule:** Each 3-bit triplet adds up to a single digit from `0` to `7`:
+- `rwx` = `4 + 2 + 1` = **`7`** (`111₂`)
+- `r-x` = `4 + 0 + 1` = **`5`** (`101₂`)
+- `rw-` = `4 + 2 + 0` = **`6`** (`110₂`)
+- `r--` = `4 + 0 + 0` = **`4`** (`100₂`)
+
+### Files vs. Directories: What `r`, `w`, `x` Really Mean (Exam Favorite!)
+
+| Bit | Meaning on a **File** | Meaning on a **Directory** |
+| --- | --- | --- |
+| **`r` (4)** | Read file contents (`cat`, `head`) | List filenames inside (`ls`) |
+| **`w` (2)** | Modify/overwrite contents | **Create, rename, or delete files inside** (even if the file inside is read-only!) |
+| **`x` (1)** | Execute file as a program/script | **Enter/traverse** into the directory (`cd dir`, access `dir/file.txt`) |
+
+---
+
+## 4. Worked Examples (Beginner -> Intermediate -> Advanced)
+
+### Basic Example: Running a Script Regardless of Extension
 ```bash
-echo "echo Hello from a script" > hello.txt
+echo 'echo "Hello from a script"' > hello.txt
 ./hello.txt          # FAILS: Permission denied (default 644 lacks x)
-chmod +x hello.txt
+chmod +x hello.txt   # Adds execute bit -> 755
 mv hello.txt run_me.banana
-./run_me.banana      # WORKS: prints "Hello from a script"
+./run_me.banana      # WORKS! OS checks permission bits & content, NOT extension
 ```
 
-## E. Visual Explanation
+### Intermediate Example: Converting `chmod 750` to Symbolic Form
+Break `750` into three digits:
+- Owner = `7` = `4+2+1` = `rwx`
+- Group = `5` = `4+0+1` = `r-x`
+- Others = `0` = `0+0+0` = `---`
+Result: `-rwxr-x---`.
 
-| Permission | Symbol | Numeric Value |
-| --- | --- | --- |
-| Read | `r` | `4` |
-| Write | `w` | `2` |
-| Execute | `x` | `1` |
-| None | `-` | `0` |
+### Advanced Example: Locked Directory (`chmod 555` vs `444`)
+Suppose directory `evidence/` has mode `555` (`r-xr-xr-x` — no `w` bit) and contains `log.txt` (`644`):
+- Can you `cat evidence/log.txt`? **Yes** (you have `x` on `evidence/` and `r` on `log.txt`).
+- Can you `mv evidence/log.txt ./` or `rm evidence/log.txt`? **No (`Permission denied`)!** Creating, moving, or deleting entries inside a directory modifies the **directory's contents**, which requires **`w`** permission on `evidence/`! Temporarily run `chmod 755 evidence`, perform the move, and restore `chmod 555`.
 
-| Alphabetic (`ls -l`) | Owner | Group | Others | Octal Mode | Meaning |
-| --- | --- | --- | --- | --- | --- |
-| `-rw-r--r--` | `4+2=6` | `4` | `4` | **`644`** | Default new file (not executable) |
-| `-rw-------` | `4+2=6` | `0` | `0` | **`600`** | Private file (owner read/write only) |
-| `-rwxr-xr-x` | `4+2+1=7` | `4+1=5` | `4+1=5` | **`755`** | Standard executable / directory |
-| `dr-xr-xr-x` | `4+1=5` | `4+1=5` | `4+1=5` | **`555`** | Read-only directory (blocks `rm`/`mv`) |
-| `-rwxrwxrwx` | `7` | `7` | `7` | **`777`** | Full permissions for everyone |
+---
 
-## F. Technical Details
+## 5. Common Misconceptions & Quick Revision
 
-- **`chmod` vs. `chown`:** `chmod` changes permission bits (`chmod +x file`, `chmod 600 secret.txt`), whereas `chown newOwner file` transfers ownership to another user.
-- **Empty `PATH`:** If `PATH=""`, typing `ls` fails (`command not found`), **but `/bin/ls` still works** because its exact absolute path bypasses `PATH`.
-- **`which`:** `which ls` searches `PATH` and prints `/bin/ls`.
-
-## G. Common Misconceptions
-
-> [!WARNING]
-> **"Renaming `script.txt` to `script.sh` makes it executable."**
-> False. Extensions do not grant execution rights. Only `chmod` can set the execute (`x`) bit.
-
-- **"If I own a `644` file inside a `555` folder, I can delete it."** False. Deleting or moving a file modifies the parent directory—you must temporarily add write permission (`chmod 755 dir`) first.
-
-## H. Exam Perspective
-
-Expect multi-step permission troubleshooting scenarios (like locking/unlocking `444` files inside `555` folders), octal ↔ symbolic conversions, and `PATH=""` edge cases.
-
-## I. Related Concepts
-
-- Commands: [chmod](/commands/chmod), [chown](/commands/chown), [ls](/commands/ls), [which](/commands/which)
-- [C07 — Compilers vs Interpreters & Shebangs](/notes/07-how-software-works/compilers-vs-interpreters)
-
-## J. Quick Revision
-
-- Root = `/`; Everything is a file.
-- `r=4, w=2, x=1`; default new file = `644` (`rw-r--r--`).
-- Directory `w` bit controls adding/removing/moving entries inside it.
-- `PATH` = colon-separated list searched left-to-right; `which` reveals the match.
+- **Misconception:** *"Renaming `script.sh` to `script.txt` stops it from running."*  
+  **Reality:** Linux/macOS check the **`x` permission bit** and file header/shebang, not the filename extension.
+- **Misconception:** *"To delete a file, you need write (`w`) permission on the file itself."*  
+  **Reality:** Deleting or renaming a file modifies its **parent directory**, so it requires `w` + `x` on the parent directory!
+- **Quick Revision:** `r=4, w=2, x=1`; Owner/Group/Others; `755` = `rwxr-xr-x`, `644` = `rw-r--r--`, `600` = `rw-------`.
+- **Source Reference:** `HYD_Lecture-6-The OS and the Filesystem_compressed.pdf` (C06, pp. 1–39).

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-06-b",
+    "level": "Beginner",
+    "question": "What octal number corresponds to `rwxr-xr-x`?",
+    "options": [
+      "644",
+      "755",
+      "700",
+      "555"
+    ],
+    "correctIndex": 1,
+    "explanation": "`rwx` = 4+2+1 = 7; `r-x` = 4+0+1 = 5; `r-x` = 5 -> `755`."
+  },
+  {
+    "id": "kc-06-i",
+    "level": "Intermediate",
+    "question": "Why does typing `myscript.sh` fail with `command not found` in the current folder when `./myscript.sh` works?",
+    "options": [
+      "The current folder `.` is not in `$PATH` for security",
+      "Shell scripts cannot end in `.sh`",
+      "`chmod` only works in `/bin`",
+      "Linux forbids running scripts from home directories"
+    ],
+    "correctIndex": 0,
+    "explanation": "The shell searches `$PATH` directories only; `./` explicitly tells the shell to run the file in the current directory."
+  },
+  {
+    "id": "kc-06-a",
+    "level": "Advanced",
+    "question": "Folder `vault/` has mode `555` (`r-xr-xr-x`) and contains `data.txt` (`644`). Why does `mv vault/data.txt ./` fail with Permission denied?",
+    "options": [
+      "`data.txt` lacks `x` permission",
+      "Moving or deleting a file modifies the `vault/` directory entries, which requires write (`w`) permission on `vault/`",
+      "`mv` requires `sudo` for all `.txt` files",
+      "`555` disables reading files inside `vault/`"
+    ],
+    "correctIndex": 1,
+    "explanation": "Creating, moving, or deleting entries inside a directory requires `w` (+ `x`) on the parent directory itself."
+  }
+]

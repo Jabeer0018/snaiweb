@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-12 sm:px-6">
       <Link
-        href="/login"
+        href="/"
         className="inline-flex items-center gap-1.5 text-xs font-medium text-muted hover:text-foreground"
       >
         <ArrowLeft className="h-3.5 w-3.5" />

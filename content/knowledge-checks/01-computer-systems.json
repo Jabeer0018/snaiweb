@@ -1,0 +1,47 @@
+[
+  {
+    "id": "kc-01-b",
+    "level": "Beginner",
+    "question": "In the IPOS (Input-Process-Output-Store) cycle, which stage transforms raw data using step-by-step instructions?",
+    "options": [
+      "Input",
+      "Process",
+      "Output",
+      "Store"
+    ],
+    "correctIndex": 1,
+    "explanation": "Processing (performed by the CPU) executes instructions to transform incoming input into useful results.",
+    "optionFeedback": [
+      "Input only captures signals.",
+      "Correct!",
+      "Output only displays or sends results.",
+      "Store only saves data for later."
+    ]
+  },
+  {
+    "id": "kc-01-i",
+    "level": "Intermediate",
+    "question": "A mobile shopping app uses your phone camera to overlay virtual sneakers onto your real feet in real time. Which technology is this?",
+    "options": [
+      "Virtual Reality (VR)",
+      "Augmented Reality (AR)",
+      "Quantum Computing",
+      "3D Printing"
+    ],
+    "correctIndex": 1,
+    "explanation": "AR overlays digital graphics onto the real world captured by a camera, whereas VR replaces your view with a 100% virtual world."
+  },
+  {
+    "id": "kc-01-a",
+    "level": "Advanced",
+    "question": "Why does a university web server rack typically omit a dedicated graphics card and monitor compared to a student gaming PC?",
+    "options": [
+      "Servers cannot run an operating system",
+      "Servers optimize for 24/7 reliability, concurrent network requests, and ECC memory rather than single-user frame rates",
+      "Servers only execute quantum algorithms",
+      "Servers store all active variables directly on spinning HDDs without RAM"
+    ],
+    "correctIndex": 1,
+    "explanation": "Servers prioritize multi-user concurrency, uptime, and error tolerance over local visual rendering."
+  }
+]

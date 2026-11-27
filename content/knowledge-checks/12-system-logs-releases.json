@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kc-12-b",
+    "level": "Beginner",
+    "question": "In Clifford Stoll's 1986 investigation, what revealed the unauthorized intruder?",
+    "options": [
+      "A 75-cent accounting log discrepancy",
+      "A broken keyboard",
+      "A GPU overheating",
+      "A 404 web page"
+    ],
+    "correctIndex": 0,
+    "explanation": "Inspecting a tiny 75-cent discrepancy in system logs led Stoll to uncover Markus Hess."
+  },
+  {
+    "id": "kc-12-i",
+    "level": "Intermediate",
+    "question": "Why should you inspect and redact system logs before pushing them to a public GitHub repository?",
+    "options": [
+      "Logs contain PII such as usernames, hostnames, MAC/IP addresses, and Wi-Fi SSIDs",
+      "Git cannot store `.txt` files",
+      "`log show` breaks Git branches",
+      "Logs are always encrypted with AES"
+    ],
+    "correctIndex": 0,
+    "explanation": "Step 5 of Worksheet 12a teaches checking for and redacting identifying metadata before sharing logs."
+  },
+  {
+    "id": "kc-12-a",
+    "level": "Advanced",
+    "question": "In `python3 summary.py log.txt 4`, why does `fields[sys.argv[2]]` raise a `TypeError`?",
+    "options": [
+      "`sys.argv[2]` arrives as the string `\"4\"` rather than integer `4`",
+      "`sys.argv` starts at index 2",
+      "Python cannot read `.txt` files",
+      "`log.txt` requires `chmod 777`"
+    ],
+    "correctIndex": 0,
+    "explanation": "CLI arguments in `sys.argv` are always strings and must be converted with `int(sys.argv[2])`."
+  }
+]

@@ -4,13 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bookmark, Menu, Search } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import { AuthUserSummary, UserMenu } from "./UserMenu";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
   onOpenMobileNav: () => void;
   onOpenSearch: () => void;
-  user?: AuthUserSummary | null;
 }
 
 export const GLOBAL_NAV_ITEMS = [
@@ -24,7 +22,7 @@ export const GLOBAL_NAV_ITEMS = [
   { href: "/resources", label: "Resources" },
 ];
 
-export function Navbar({ onOpenMobileNav, onOpenSearch, user }: NavbarProps) {
+export function Navbar({ onOpenMobileNav, onOpenSearch }: NavbarProps) {
   const pathname = usePathname();
 
   return (
@@ -102,7 +100,6 @@ export function Navbar({ onOpenMobileNav, onOpenSearch, user }: NavbarProps) {
           </Link>
 
           <ThemeToggle />
-          {user && <UserMenu user={user} />}
         </div>
       </div>
     </header>
