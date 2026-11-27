@@ -1,0 +1,51 @@
+{
+  "slug": "wc",
+  "name": "wc",
+  "purpose": "Word Count — count lines, words, and bytes/characters in files or piped output.",
+  "syntax": "wc [options] <fileName>",
+  "explanation": "Reports line, word, and byte counts. Commonly used with `-l` to count how many lines a file or `grep` result has.",
+  "parameters": [
+    {
+      "flag": "-l",
+      "description": "Print only the line count."
+    },
+    {
+      "flag": "-w",
+      "description": "Print only the word count."
+    }
+  ],
+  "example": "wc -l server.log",
+  "expectedOutput": "124 server.log",
+  "outputVerified": false,
+  "explanationOfOutput": "Shows `server.log` contains 124 lines.",
+  "whenToUse": "To quickly measure file length or count matching results in a pipeline.",
+  "commonMistakes": [
+    "Assuming `wc` without flags only counts words (it prints lines, words, and bytes)."
+  ],
+  "commonErrors": [
+    "wc: server.log: No such file or directory"
+  ],
+  "relatedCommands": [
+    "grep",
+    "sort",
+    "cat"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "wc",
+    "count",
+    "lines"
+  ]
+}

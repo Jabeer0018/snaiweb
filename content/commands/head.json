@@ -1,0 +1,47 @@
+{
+  "slug": "head",
+  "name": "head",
+  "purpose": "Display the first lines (default 10) of a file or piped command output.",
+  "syntax": "head [options] <fileName>",
+  "explanation": "Referenced in C07 alongside `strings` to print just the opening lines of readable output from a file or pipeline.",
+  "parameters": [
+    {
+      "flag": "-n <count>",
+      "description": "Print the first `<count>` lines instead of the default 10."
+    }
+  ],
+  "example": "head -n 5 server.log",
+  "expectedOutput": "(Prints lines 1 through 5 of server.log)",
+  "outputVerified": false,
+  "explanationOfOutput": "Stops reading after printing the first 5 lines.",
+  "whenToUse": "To preview the start of a large file or trim long piped output.",
+  "commonMistakes": [
+    "Using `cat` on a massive log file when you only need the first few lines."
+  ],
+  "commonErrors": [
+    "head: server.log: No such file or directory"
+  ],
+  "relatedCommands": [
+    "tail",
+    "strings",
+    "cat"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C07 — Compilers vs Interpreters",
+      "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "07-how-software-works",
+  "moduleTitle": "C07 — How Software Works",
+  "category": "Text Search & Compression",
+  "source": "System & AI Essentials (C07)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "head",
+    "preview",
+    "lines"
+  ]
+}

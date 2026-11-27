@@ -1,0 +1,51 @@
+{
+  "slug": "git-branch",
+  "name": "git branch",
+  "purpose": "List local branches or create a new branch.",
+  "syntax": "git branch\ngit branch <branchName>",
+  "explanation": "Shows all local branches (marking the active branch with `*`) or creates a new branch pointer without switching to it yet.",
+  "parameters": [
+    {
+      "flag": "<branchName>",
+      "description": "Optional name of a new branch to create."
+    }
+  ],
+  "example": "git branch feature-login\ngit branch",
+  "expectedOutput": "  feature-login\n* main",
+  "outputVerified": false,
+  "explanationOfOutput": "Lists branches; `*` marks the currently checked-out branch (`main`).",
+  "beforeAfterState": {
+    "before": "Only `main` branch exists.",
+    "after": "New branch `feature-login` created pointing to current commit; `HEAD` remains on `main`."
+  },
+  "whenToUse": "To inspect existing branches or create a branch before switching.",
+  "commonMistakes": [
+    "Assuming `git branch <name>` automatically switches you onto the new branch (use `git checkout -b` or `git switch -c` to create AND switch)."
+  ],
+  "commonErrors": [
+    "fatal: not a git repository"
+  ],
+  "relatedCommands": [
+    "git-checkout",
+    "git-switch",
+    "git-merge"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows (Git)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "branch",
+    "feature"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "strings",
+  "name": "strings",
+  "purpose": "Extract and print human-readable character sequences from a compiled binary file.",
+  "syntax": "strings <binary_file>",
+  "explanation": "Referenced in C07 when inspecting compiled binaries: raw binary files contain non-printable machine code bytes, so `strings` displays readable ASCII text embedded in the binary without garbled terminal output.",
+  "parameters": [
+    {
+      "flag": "<binary_file>",
+      "description": "Path to the compiled binary or executable.",
+      "required": true
+    }
+  ],
+  "example": "strings a.out | head",
+  "expectedOutput": "/lib64/ld-linux-x86-64.so.2\nHello, World!",
+  "outputVerified": false,
+  "explanationOfOutput": "Outputs printable text sequences found inside `a.out`, piped to `head` to show the first 10 lines.",
+  "whenToUse": "When inspecting compiled executables or binary files safely in the terminal.",
+  "commonMistakes": [
+    "Running plain `cat` on a compiled binary, which prints garbled non-printable characters."
+  ],
+  "commonErrors": [
+    "strings: 'a.out': No such file"
+  ],
+  "relatedCommands": [
+    "head",
+    "cat",
+    "gcc"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C07 — Compilers vs Interpreters",
+      "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "07-how-software-works",
+  "moduleTitle": "C07 — How Software Works",
+  "category": "Compilation & Execution",
+  "source": "System & AI Essentials (C07)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "strings",
+    "binary",
+    "compiled",
+    "c07"
+  ]
+}

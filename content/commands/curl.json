@@ -16,7 +16,7 @@
     "brew"
   ],
   "moduleSlug": "04-interfaces",
-  "moduleTitle": "C04 \u2014 Interfaces (CLI, GUI, API)",
+  "moduleTitle": "C04 — Interfaces (CLI, GUI, API)",
   "category": "Package Management",
   "source": "System & AI Essentials (C04)",
   "addedAt": "2026-11-26",
@@ -25,5 +25,17 @@
     "API",
     "JSON",
     "request"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `curl` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C04 — CLI, GUI, API & Error Feedback",
+      "href": "/notes/04-interfaces/cli-gui-api"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: curl (if not installed or missing from PATH)"
   ]
 }

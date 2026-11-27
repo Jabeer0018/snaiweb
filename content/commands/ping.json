@@ -1,0 +1,49 @@
+{
+  "slug": "ping",
+  "name": "ping",
+  "purpose": "Tests network reachability and round-trip latency to a host using ICMP Echo packets.",
+  "syntax": "ping [-c <count>] <hostname_or_ip>",
+  "explanation": "Resolves a domain name via DNS (if given), sends ICMP Echo Request packets to the destination IP, and measures packet loss and round-trip time (RTT) in milliseconds.",
+  "parameters": [
+    {
+      "flag": "-c <n>",
+      "description": "Stops after sending `<n>` packets (crucial on macOS/Linux where `ping` runs forever until `Ctrl+C`)."
+    }
+  ],
+  "example": "ping -c 4 github.com",
+  "expectedOutput": "PING github.com (20.207.73.82): 56 data bytes\n64 bytes from 20.207.73.82: icmp_seq=0 ttl=115 time=18.4 ms\n--- github.com ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss",
+  "outputVerified": false,
+  "whenToUse": "When diagnosing whether a host is reachable over the network and checking DNS resolution + latency.",
+  "commonMistakes": [
+    "Running `ping github.com` on macOS/Linux without `-c 4` and waiting forever instead of pressing `Ctrl+C`."
+  ],
+  "relatedCommands": [
+    "curl",
+    "telnet"
+  ],
+  "moduleSlug": "11-the-network",
+  "moduleTitle": "C11 \u2014 The Network",
+  "category": "Networking",
+  "source": "C11 The Network (Supplementary Network Lab)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "ping",
+    "network",
+    "ip",
+    "dns",
+    "latency",
+    "icmp"
+  ],
+  "isSupplementary": true,
+  "platformCompatibility": "macOS, GNU/Linux (`-c 4`); Windows (`-n 4`, defaults to 4 packets)",
+  "explanationOfOutput": "Shows resolved IP address, per-packet round-trip time (`ms`), and packet loss summary.",
+  "relevantConcepts": [
+    {
+      "title": "C11 \u2014 Networks, Devices, URLs & IP",
+      "href": "/notes/11-the-network/networks-devices-and-ip"
+    }
+  ],
+  "commonErrors": [
+    "`ping: cannot resolve ...: Unknown host` (DNS failure or offline)"
+  ]
+}

@@ -28,6 +28,16 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug]}
         components={{
+          p({ node, children }) {
+            const hasImage = node?.children?.some(
+              (child) =>
+                child.type === "element" && child.tagName === "img"
+            );
+            if (hasImage) {
+              return <>{children}</>;
+            }
+            return <p>{children}</p>;
+          },
           pre({ children }) {
             return <>{children}</>;
           },

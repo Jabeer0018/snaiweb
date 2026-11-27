@@ -1,0 +1,47 @@
+{
+  "slug": "git-switch",
+  "name": "git switch",
+  "purpose": "Modern Git command dedicated to switching between branches (or creating one with `-c`).",
+  "syntax": "git switch <branchName>\ngit switch -c <newBranch>",
+  "explanation": "Introduced in newer Git versions as a clearer, safer alternative to `git checkout` specifically for branch switching.",
+  "parameters": [
+    {
+      "flag": "-c <newBranch>",
+      "description": "Create and switch to a new branch."
+    }
+  ],
+  "example": "git switch -c docs-update",
+  "expectedOutput": "Switched to a new branch 'docs-update'",
+  "outputVerified": false,
+  "explanationOfOutput": "Confirms branch creation and switch.",
+  "whenToUse": "When switching or creating branches in Git 2.23+.",
+  "commonMistakes": [
+    "Using `-b` instead of `-c` (unlike `checkout`, `switch` uses `-c`)."
+  ],
+  "commonErrors": [
+    "fatal: invalid reference: <branch>"
+  ],
+  "relatedCommands": [
+    "git-checkout",
+    "git-branch"
+  ],
+  "platformCompatibility": "Git 2.23+ (macOS, Linux, Windows)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "switch",
+    "-c",
+    "supplementary"
+  ]
+}

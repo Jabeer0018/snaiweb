@@ -1,0 +1,48 @@
+{
+  "slug": "chgrp",
+  "name": "chgrp",
+  "purpose": "Change Group — change the group ownership of a file or directory.",
+  "syntax": "chgrp <groupName> <fileName>",
+  "explanation": "Updates the group associated with a file (middle permission triad in `ls -l`), complementing `chown` (owner).",
+  "parameters": [
+    {
+      "flag": "<groupName>",
+      "description": "Target group name (e.g. Teachers).",
+      "required": true
+    }
+  ],
+  "example": "chgrp Teachers notes.txt",
+  "expectedOutput": "(Updates group of notes.txt to Teachers)",
+  "outputVerified": false,
+  "explanationOfOutput": "Group column in `ls -l` updates to `Teachers`.",
+  "whenToUse": "When a different group needs group-level permissions on a shared file.",
+  "commonMistakes": [
+    "Confusing `chgrp` (group) with `chmod` (permission bits)."
+  ],
+  "commonErrors": [
+    "chgrp: invalid group: <groupName>"
+  ],
+  "relatedCommands": [
+    "chown",
+    "chmod",
+    "ls"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
+  "category": "Permissions & Environment",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "chgrp",
+    "group",
+    "permissions"
+  ]
+}

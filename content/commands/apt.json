@@ -1,0 +1,57 @@
+{
+  "slug": "apt",
+  "name": "apt",
+  "purpose": "Advanced Package Tool \u2014 Debian/Ubuntu Linux package manager for installing and updating CLI software.",
+  "syntax": "sudo apt update && sudo apt install <package>",
+  "explanation": "Downloads, verifies, resolves dependencies for, and installs command-line software packages on Ubuntu and Debian-based Linux systems (including WSL).",
+  "parameters": [
+    {
+      "flag": "update",
+      "description": "Refreshes the local index of available package versions from repositories."
+    },
+    {
+      "flag": "install <pkg>",
+      "description": "Installs `<pkg>` and any required dependencies."
+    },
+    {
+      "flag": "-y",
+      "description": "Automatically answers yes to confirmation prompts."
+    }
+  ],
+  "example": "sudo apt update && sudo apt install ffmpeg qrencode",
+  "expectedOutput": "Reading package lists... Done\nBuilding dependency tree... Done\nThe following NEW packages will be installed:\n  ffmpeg qrencode",
+  "outputVerified": false,
+  "whenToUse": "When installing tools like `gcc`, `ffmpeg`, or `qrencode` on Ubuntu Linux or WSL.",
+  "commonMistakes": [
+    "Running `apt install` without `sudo`, or forgetting `apt update` on a fresh container/VM."
+  ],
+  "relatedCommands": [
+    "brew",
+    "sudo",
+    "which"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "Commanding the Machine (C03) & Worksheet 13a",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "apt",
+    "ubuntu",
+    "linux",
+    "package manager",
+    "install"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "Ubuntu / Debian GNU/Linux & WSL (use `brew` on macOS)",
+  "explanationOfOutput": "Refreshes package metadata and lists new packages and dependencies about to be installed.",
+  "relevantConcepts": [
+    {
+      "title": "C03 \u2014 CLI Fundamentals & Package Managers",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) \u2014 forgot `sudo`"
+  ]
+}

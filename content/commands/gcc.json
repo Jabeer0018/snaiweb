@@ -1,0 +1,53 @@
+{
+  "slug": "gcc",
+  "name": "gcc",
+  "purpose": "GNU C Compiler — compile C source code into an executable machine-code binary.",
+  "syntax": "gcc <source.c> -o <outputBinary>",
+  "explanation": "Translates an entire C source file into machine code before execution (Compilation path in C07), producing an executable binary (default `a.out`, or custom name via `-o`).",
+  "parameters": [
+    {
+      "flag": "-o <name>",
+      "description": "Specify output executable filename (instead of `a.out`)."
+    }
+  ],
+  "example": "gcc hello.c -o hello\n./hello",
+  "expectedOutput": "Hello, world!",
+  "outputVerified": false,
+  "explanationOfOutput": "`gcc` produces binary `hello`; `./hello` executes it directly on the CPU.",
+  "beforeAfterState": {
+    "before": "Only `hello.c` source file exists.",
+    "after": "Compiled executable `hello` is created with execute permission."
+  },
+  "whenToUse": "When compiling C programs into native machine-code executables.",
+  "commonMistakes": [
+    "Trying to run `hello.c` directly without compiling it first."
+  ],
+  "commonErrors": [
+    "error: expected ';' before '}' token (compile-time syntax error)"
+  ],
+  "relatedCommands": [
+    "python3",
+    "strings",
+    "chmod"
+  ],
+  "platformCompatibility": "macOS (Xcode CLT) and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C07 — Compilers vs Interpreters",
+      "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "07-how-software-works",
+  "moduleTitle": "C07 — How Software Works",
+  "category": "Compilation & Execution",
+  "source": "Supplementary CLI Reference (C07 context)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "gcc",
+    "compiler",
+    "c",
+    "a.out",
+    "binary"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "slug": "cd",
   "name": "cd",
-  "purpose": "Change Directory \u2014 move from your current folder into another folder.",
+  "purpose": "Change Directory — move from your current folder into another folder.",
   "syntax": "cd <directory>",
   "explanation": "Changes the shell's current working directory. Use 'cd folderName' to move deeper into a subfolder, 'cd ..' to move up to the parent folder, 'cd ../..' to move up two levels, 'cd' or 'cd ~' for your home directory, 'cd /' for root, and 'cd -' for the previous directory.",
   "parameters": [
@@ -36,7 +36,7 @@
     "mkdir"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "Terminal & Navigation",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -46,5 +46,18 @@
     "parent",
     "navigation",
     ".."
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `cd` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "cd: <target>: No such file or directory",
+    "cd: <target>: Permission denied"
   ]
 }

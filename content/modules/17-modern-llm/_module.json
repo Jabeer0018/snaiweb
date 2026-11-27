@@ -1,0 +1,8 @@
+{
+  "slug": "17-modern-llm",
+  "title": "C17 \u2014 Inside the Modern LLM (Part 1)",
+  "description": "What Large Language Models are, parameters vs training text, next-token prediction, tokenization, and turning human language into numbers.",
+  "order": 17,
+  "source": "Inside the Modern LLM Part 1- Presentation.pdf (C17, pp. 1\u201336)",
+  "addedAt": "2026-11-28"
+}

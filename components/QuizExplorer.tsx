@@ -342,7 +342,7 @@ export function QuizExplorer({ quizzes }: QuizExplorerProps) {
           <button
             type="button"
             onClick={() => setShowSummary(true)}
-            className="rounded-md bg-accent px-3 py-1 text-xs font-medium text-white hover:bg-accent-hover"
+            className="rounded-md bg-accent px-3 py-1 text-xs font-medium text-accent-fg hover:bg-accent-hover"
           >
             Finish Quiz
           </button>
@@ -363,7 +363,7 @@ export function QuizExplorer({ quizzes }: QuizExplorerProps) {
               className={cn(
                 "h-8 w-8 rounded-md border font-mono text-xs font-medium transition-colors",
                 idx === qIndex
-                  ? "border-accent bg-accent text-white"
+                  ? "border-accent bg-accent text-accent-fg"
                   : answered
                   ? right
                     ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
@@ -489,7 +489,7 @@ export function QuizExplorer({ quizzes }: QuizExplorerProps) {
                   Math.min(activeQuiz.questions.length - 1, i + 1)
                 )
               }
-              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-1.5 text-xs font-medium text-white hover:bg-accent-hover"
+              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-1.5 text-xs font-medium text-accent-fg hover:bg-accent-hover"
             >
               Next Question
               <ChevronRight className="h-3.5 w-3.5" />

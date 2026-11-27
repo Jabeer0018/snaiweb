@@ -1,0 +1,58 @@
+{
+  "slug": "log",
+  "name": "log",
+  "purpose": "Queries and streams the macOS unified system log database.",
+  "syntax": "log show --last <duration> [--predicate '<filter>']",
+  "explanation": "Reads historical OS kernel, power, sleep/wake, network, and application events stored in the macOS unified log database.",
+  "parameters": [
+    {
+      "flag": "show",
+      "description": "Queries past log entries stored on disk."
+    },
+    {
+      "flag": "--last <time>",
+      "description": "Limits results to a recent window such as `30m`, `1h`, or `1d`."
+    },
+    {
+      "flag": "--predicate '<expr>'",
+      "description": "Filters events by process or message text."
+    }
+  ],
+  "example": "log show --last 1h > mylog.txt",
+  "expectedOutput": "(Writes the last 1 hour of timestamped macOS system log entries into `mylog.txt`)",
+  "outputVerified": false,
+  "whenToUse": "When investigating overnight battery drain, sleep/wake events, or daemon errors on macOS (Worksheet 12a).",
+  "commonMistakes": [
+    "Running `log show` without `--last`\u2014dumping days of logs can produce gigabytes of output."
+  ],
+  "relatedCommands": [
+    "grep",
+    "less",
+    "head",
+    "wc"
+  ],
+  "moduleSlug": "12-system-logs-releases",
+  "moduleTitle": "C12 \u2014 System Logs & Iterative Releases",
+  "category": "System Monitoring",
+  "source": "worksheet-12a.pdf (Lecture 12)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "log",
+    "macos",
+    "syslog",
+    "troubleshooting",
+    "wake"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS only (on Ubuntu/Linux, inspect `/var/log/syslog` or `journalctl`)",
+  "explanationOfOutput": "Streams formatted timestamp, thread/process, subsystem, and message columns to stdout.",
+  "relevantConcepts": [
+    {
+      "title": "C12 \u2014 System Logs & Analysis",
+      "href": "/notes/12-system-logs-releases/system-logs-and-analysis"
+    }
+  ],
+  "commonErrors": [
+    "`zsh: command not found: log` on Linux (use `/var/log/` or `journalctl` instead)"
+  ]
+}

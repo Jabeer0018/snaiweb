@@ -3,15 +3,15 @@
   "name": "rm",
   "purpose": "Permanently remove (delete) files or directories from the filesystem.",
   "syntax": "rm <fileName>\nrm -r <folderName>",
-  "explanation": "Deletes files permanently \u2014 there is no Recycle Bin or Trash in the terminal. Plain 'rm' only deletes files and fails on directories with 'Is a directory'; use '-r' (recursive) to delete a folder and its contents.",
+  "explanation": "Deletes files permanently — there is no Recycle Bin or Trash in the terminal. Plain 'rm' only deletes files and fails on directories with 'Is a directory'; use '-r' (recursive) to delete a folder and its contents.",
   "parameters": [
     {
       "flag": "-r",
-      "description": "Recursive \u2014 deletes a directory and everything inside it."
+      "description": "Recursive — deletes a directory and everything inside it."
     },
     {
       "flag": "-f",
-      "description": "Force \u2014 skips confirmation prompts."
+      "description": "Force — skips confirmation prompts."
     },
     {
       "flag": "-rf",
@@ -32,7 +32,7 @@
     "mkdir"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "File & Directory Management",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -42,5 +42,22 @@
     "delete",
     "-r",
     "-rf"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `rm` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "rm: <target>: No such file or directory",
+    "rm: <target>: Permission denied"
+  ],
+  "beforeAfterState": {
+    "before": "Filesystem/permissions are in their initial state prior to command execution.",
+    "after": "Target file or directory state is updated by `rm` as specified."
+  }
 }

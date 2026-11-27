@@ -1,0 +1,58 @@
+{
+  "slug": "qrencode",
+  "name": "qrencode",
+  "purpose": "Generates QR code PNG/SVG/ASCII images directly from text or URLs in the terminal.",
+  "syntax": "qrencode -o <output.png> \"<text_or_url>\"",
+  "explanation": "Encodes any URL or string into a scannable QR code image file or terminal ASCII preview.",
+  "parameters": [
+    {
+      "flag": "-o <file>",
+      "description": "Writes the generated QR image to `<file>` (PNG by default)."
+    },
+    {
+      "flag": "-s <pixels>",
+      "description": "Sets module dot size in pixels (e.g., `-s 8`)."
+    },
+    {
+      "flag": "-t ANSIUTF8",
+      "description": "Renders the QR code directly inside the terminal using Unicode blocks."
+    }
+  ],
+  "example": "qrencode -o repo_qr.png \"https://github.com/student/project\"",
+  "expectedOutput": "(Creates `repo_qr.png` in the current directory)",
+  "outputVerified": false,
+  "whenToUse": "When generating scannable links to repositories or projects directly from CLI scripts (Worksheet 13a).",
+  "commonMistakes": [
+    "Forgetting `-o <output.png>` (without `-o`, output fails or writes binary data to stdout)."
+  ],
+  "relatedCommands": [
+    "ffmpeg",
+    "brew",
+    "apt",
+    "man"
+  ],
+  "moduleSlug": "13-learning-new-tools",
+  "moduleTitle": "C13 \u2014 Meeting New Tools, Libraries & AI Rules",
+  "category": "CLI Tools",
+  "source": "worksheet-13a.pdf (Lecture 13)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "qrencode",
+    "qr",
+    "url",
+    "png",
+    "cli"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (`brew install qrencode`) and Linux (`sudo apt install qrencode`)",
+  "explanationOfOutput": "Exits with code 0 after writing the PNG file to disk.",
+  "relevantConcepts": [
+    {
+      "title": "C13 \u2014 The 5-Step Tool Discovery Method",
+      "href": "/notes/13-learning-new-tools/five-step-tool-discovery"
+    }
+  ],
+  "commonErrors": [
+    "`Failed to write output file` if `-o` is omitted or parent directory does not exist"
+  ]
+}

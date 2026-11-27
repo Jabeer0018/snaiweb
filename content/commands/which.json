@@ -17,7 +17,7 @@
     "chmod"
   ],
   "moduleSlug": "06-os-filesystem",
-  "moduleTitle": "C06 \u2014 The OS & the Filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
   "category": "Permissions & Environment",
   "source": "System & AI Essentials (C06)",
   "addedAt": "2026-11-26",
@@ -26,5 +26,17 @@
     "PATH",
     "executable",
     "location"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `which` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: which (if not installed or missing from PATH)"
   ]
 }

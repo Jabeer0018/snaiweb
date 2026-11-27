@@ -1,0 +1,8 @@
+{
+  "slug": "12-system-logs-releases",
+  "title": "C12 \u2014 System Logs & Iterative Releases",
+  "description": "Investigating OS system logs, CLI filtering, PII redaction, Knight Capital deployment lessons, and iterative release engineering.",
+  "order": 12,
+  "source": "worksheet-12a.pdf (14p) & worksheet-12b.pdf (13p)",
+  "addedAt": "2026-11-28"
+}

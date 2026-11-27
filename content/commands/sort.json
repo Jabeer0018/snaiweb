@@ -1,0 +1,51 @@
+{
+  "slug": "sort",
+  "name": "sort",
+  "purpose": "Sort lines of text files or piped input alphabetically or numerically.",
+  "syntax": "sort [options] <fileName>",
+  "explanation": "Orders lines from a file or stdin. Often piped into `uniq` to count or remove duplicates.",
+  "parameters": [
+    {
+      "flag": "-r",
+      "description": "Reverse the sort order."
+    },
+    {
+      "flag": "-n",
+      "description": "Sort numerically rather than alphabetically."
+    }
+  ],
+  "example": "sort names.txt",
+  "expectedOutput": "Akash\nPriya\nShreyas",
+  "outputVerified": false,
+  "explanationOfOutput": "Prints lines in alphabetical order without modifying `names.txt`.",
+  "whenToUse": "To order text output or prepare input for `uniq`.",
+  "commonMistakes": [
+    "Sorting numbers without `-n` (which puts `10` before `2`)."
+  ],
+  "commonErrors": [
+    "sort: cannot read: names.txt: No such file or directory"
+  ],
+  "relatedCommands": [
+    "uniq",
+    "wc",
+    "grep"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "sort",
+    "pipe",
+    "text"
+  ]
+}

@@ -23,30 +23,30 @@ const variantConfig: Record<
   note: {
     label: "Note",
     icon: Info,
-    borderClass: "border-blue-500/30",
-    bgClass: "bg-blue-500/5",
-    titleClass: "text-blue-400",
+    borderClass: "border-border-strong",
+    bgClass: "bg-surface",
+    titleClass: "text-foreground",
   },
   tip: {
-    label: "Tip",
+    label: "Key Takeaway",
     icon: Lightbulb,
-    borderClass: "border-emerald-500/30",
-    bgClass: "bg-emerald-500/5",
-    titleClass: "text-emerald-400",
+    borderClass: "border-border-strong",
+    bgClass: "bg-surface",
+    titleClass: "text-foreground",
   },
   important: {
     label: "Important Concept",
     icon: ShieldAlert,
-    borderClass: "border-accent/40",
-    bgClass: "bg-accent-muted",
-    titleClass: "text-accent",
+    borderClass: "border-foreground/30",
+    bgClass: "bg-elevated",
+    titleClass: "text-foreground",
   },
   warning: {
-    label: "Common Pitfall",
+    label: "Common Misconception / Warning",
     icon: AlertTriangle,
-    borderClass: "border-amber-500/30",
+    borderClass: "border-amber-500/40",
     bgClass: "bg-amber-500/5",
-    titleClass: "text-amber-400",
+    titleClass: "text-amber-500",
   },
 };
 
@@ -62,7 +62,7 @@ export function Callout({
   return (
     <div
       className={cn(
-        "my-5 rounded-lg border px-4 py-3.5 text-sm leading-relaxed",
+        "my-6 rounded-md border-l-2 border px-4 py-3.5 text-sm leading-relaxed",
         cfg.borderClass,
         cfg.bgClass,
         className

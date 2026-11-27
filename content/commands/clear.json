@@ -1,0 +1,40 @@
+{
+  "slug": "clear",
+  "name": "clear",
+  "purpose": "Clears the visible terminal screen and moves the prompt back to the top.",
+  "syntax": "clear",
+  "explanation": "Clears terminal scrollback/viewport clutter without affecting your current directory, running background jobs, or shell history.",
+  "parameters": [],
+  "example": "clear",
+  "expectedOutput": "(Clears the visible terminal window and leaves a clean `$` prompt at the top)",
+  "outputVerified": false,
+  "whenToUse": "When terminal output has filled the screen and you want a clean workspace.",
+  "commonMistakes": [
+    "Assuming `clear` deletes files or erases command history (press Up arrow\u2014history is still intact)."
+  ],
+  "relatedCommands": [
+    "pwd",
+    "ls"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Basic Navigation",
+  "source": "Command_Line_Handbook.pdf (p. 2)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "clear",
+    "terminal",
+    "screen",
+    "prompt"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash), GNU/Linux, Git Bash (Windows uses `cls` in CMD)",
+  "explanationOfOutput": "Sends terminal control sequences to clear the visible viewport.",
+  "relevantConcepts": [
+    {
+      "title": "C03 \u2014 Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": []
+}

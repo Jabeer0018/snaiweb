@@ -1,0 +1,54 @@
+{
+  "slug": "less",
+  "name": "less",
+  "purpose": "Interactive terminal pager for scrolling forward and backward through large files.",
+  "syntax": "less <file>",
+  "explanation": "Opens a file or piped stream one screen at a time without loading the entire file into RAM or dumping thousands of lines onto your terminal.",
+  "parameters": [
+    {
+      "flag": "/pattern",
+      "description": "Searches forward for `pattern` inside the pager (`n` jumps to next match)."
+    },
+    {
+      "flag": "q",
+      "description": "Quits `less` and returns to the shell prompt."
+    }
+  ],
+  "example": "less /var/log/syslog",
+  "expectedOutput": "(Opens interactive full-screen pager showing the first lines of `/var/log/syslog`; press `q` to exit)",
+  "outputVerified": false,
+  "whenToUse": "When inspecting multi-megabyte log files or long outputs where `cat` would flood the terminal.",
+  "commonMistakes": [
+    "Forgetting to press `q` to exit `less` (the terminal appears 'stuck' until you quit)."
+  ],
+  "relatedCommands": [
+    "cat",
+    "head",
+    "tail",
+    "grep"
+  ],
+  "moduleSlug": "12-system-logs-releases",
+  "moduleTitle": "C12 \u2014 System Logs & Iterative Releases",
+  "category": "Text Viewing",
+  "source": "Worksheet 12a & Lecture 15/16 Notes",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "less",
+    "pager",
+    "logs",
+    "view",
+    "scroll"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Displays one viewport of text at a time with keyboard navigation (`Space`, `b`, `/`, `q`).",
+  "relevantConcepts": [
+    {
+      "title": "C12 \u2014 System Logs & Analysis",
+      "href": "/notes/12-system-logs-releases/system-logs-and-analysis"
+    }
+  ],
+  "commonErrors": [
+    "`file: No such file or directory`"
+  ]
+}

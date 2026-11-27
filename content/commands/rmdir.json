@@ -1,0 +1,47 @@
+{
+  "slug": "rmdir",
+  "name": "rmdir",
+  "purpose": "Remove an empty directory safely.",
+  "syntax": "rmdir <emptyFolder>",
+  "explanation": "Deletes a directory only if it is completely empty, preventing accidental deletion of files inside.",
+  "parameters": [
+    {
+      "flag": "<emptyFolder>",
+      "description": "Path to an empty directory.",
+      "required": true
+    }
+  ],
+  "example": "rmdir temp_empty_dir",
+  "expectedOutput": "(Deletes temp_empty_dir if empty)",
+  "outputVerified": false,
+  "explanationOfOutput": "Succeeds silently if empty; fails if any file or subfolder remains inside.",
+  "whenToUse": "When cleaning up empty folders safely without risking `rm -r`.",
+  "commonMistakes": [
+    "Trying to use `rmdir` on a non-empty folder."
+  ],
+  "commonErrors": [
+    "rmdir: temp_dir: Directory not empty"
+  ],
+  "relatedCommands": [
+    "mkdir",
+    "rm"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "File & Directory Management",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "rmdir",
+    "remove",
+    "empty directory"
+  ]
+}

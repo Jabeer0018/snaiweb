@@ -1,7 +1,7 @@
 {
   "slug": "pwd",
   "name": "pwd",
-  "purpose": "Print Working Directory \u2014 displays the current folder path you are working in inside the terminal.",
+  "purpose": "Print Working Directory — displays the current folder path you are working in inside the terminal.",
   "syntax": "pwd",
   "explanation": "Outputs the full absolute path from the root of the filesystem (/) to your current working directory. Use it whenever you are unsure where you are located.",
   "parameters": [],
@@ -17,7 +17,7 @@
     "cd"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "Terminal & Navigation",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -26,5 +26,17 @@
     "working directory",
     "absolute path",
     "navigation"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `pwd` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: pwd (if not installed or missing from PATH)"
   ]
 }

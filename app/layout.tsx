@@ -3,6 +3,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { getAllModules, getSearchIndex } from "@/lib/content";
 import { AppShell } from "@/components/AppShell";
+import { auth } from "@/auth";
+import type { AuthUserSummary } from "@/components/UserMenu";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,23 +30,40 @@ export const metadata: Metadata = {
 const themeInitScript = `
 (function() {
   try {
-    var theme = localStorage.getItem('snai-theme');
-    if (theme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
+    var theme = localStorage.getItem('snai-theme') || 'dark';
+    var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDark) {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   } catch (e) {}
 })();
 `;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const modules = getAllModules();
-  const searchDocuments = getSearchIndex();
+  const session = await auth();
+  const sessionUser = session?.user as
+    | { id?: string; name?: string | null; email?: string | null; image?: string | null; provider?: string }
+    | undefined;
+
+  const user: AuthUserSummary | null = sessionUser?.id
+    ? {
+        id: sessionUser.id,
+        name: sessionUser.name,
+        email: sessionUser.email,
+        image: sessionUser.image,
+        provider: sessionUser.provider,
+      }
+    : null;
+
+  // Never serialize course modules or search indexes to unauthenticated HTML/RSC payloads
+  const modules = user ? getAllModules() : [];
+  const searchDocuments = user ? getSearchIndex() : [];
 
   return (
     <html
@@ -56,7 +75,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased">
-        <AppShell modules={modules} searchDocuments={searchDocuments}>
+        <AppShell modules={modules} searchDocuments={searchDocuments} user={user}>
           {children}
         </AppShell>
       </body>

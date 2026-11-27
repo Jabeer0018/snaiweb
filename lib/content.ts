@@ -8,6 +8,7 @@ import {
   MockExam,
   ModuleMeta,
   PlaygroundChallenge,
+  ResearchPaper,
   ResourceEntry,
   RevisionEntry,
   SearchDocument,
@@ -31,6 +32,7 @@ const PLAYGROUND_100_FILE = path.join(CONTENT_DIR, "playground", "challenges-100
 const MCQS_FILE = path.join(CONTENT_DIR, "mcqs", "theory-mcqs.json");
 const QUIZZES_FILE = path.join(CONTENT_DIR, "mcqs", "theory-quizzes.json");
 const MOCK_EXAMS_DIR = path.join(CONTENT_DIR, "quizzes");
+const PAPERS_FILE = path.join(CONTENT_DIR, "papers", "papers.json");
 
 function safeReadDir(dirPath: string): fs.Dirent[] {
   if (!fs.existsSync(dirPath)) return [];
@@ -215,9 +217,15 @@ export function getAllCommands(): CommandEntry[] {
       example: data.example || "",
       expectedOutput: data.expectedOutput,
       outputVerified: Boolean(data.outputVerified),
+      explanationOfOutput: data.explanationOfOutput,
+      beforeAfterState: data.beforeAfterState,
       whenToUse: data.whenToUse || "",
       commonMistakes: Array.isArray(data.commonMistakes) ? data.commonMistakes : [],
+      commonErrors: Array.isArray(data.commonErrors) ? data.commonErrors : [],
       relatedCommands: Array.isArray(data.relatedCommands) ? data.relatedCommands : [],
+      platformCompatibility: data.platformCompatibility,
+      relevantConcepts: Array.isArray(data.relevantConcepts) ? data.relevantConcepts : [],
+      isSupplementary: Boolean(data.isSupplementary),
       moduleSlug: data.moduleSlug,
       moduleTitle: data.moduleTitle,
       category: data.category || "General",
@@ -317,12 +325,24 @@ export function getMockExamById(id: string): MockExam | null {
   return getAllMockExams().find((e) => e.id === id) || null;
 }
 
+export function getAllPapers(): ResearchPaper[] {
+  const data = safeReadJson<ResearchPaper[]>(PAPERS_FILE, []);
+  return Array.isArray(data)
+    ? [...data].sort((a, b) => a.order - b.order)
+    : [];
+}
+
+export function getPaper(slug: string): ResearchPaper | null {
+  return getAllPapers().find((p) => p.slug === slug) || null;
+}
+
 export function getCourseStats(): CourseStats {
   const modules = getAllModules();
   const totalTopics = modules.reduce((acc, m) => acc + m.topics.length, 0);
   const commands = getAllCommands();
   const revision = getAllRevisionEntries();
   const resources = getAllResources();
+  const mockTests = getAllMockExams();
 
   return {
     totalModules: modules.length,
@@ -330,6 +350,7 @@ export function getCourseStats(): CourseStats {
     totalCommands: commands.length,
     totalRevisionItems: revision.length,
     totalResources: resources.length,
+    totalMockTests: mockTests.length,
   };
 }
 
@@ -376,6 +397,9 @@ export function getSearchIndex(): SearchDocument[] {
         cmd.purpose,
         cmd.syntax,
         cmd.category,
+        cmd.example,
+        cmd.whenToUse,
+        ...cmd.parameters.map((p) => `${p.flag} ${p.description}`),
         ...(cmd.keywords || []),
       ],
     });
@@ -404,6 +428,26 @@ export function getSearchIndex(): SearchDocument[] {
       href: `/resources`,
       moduleTitle: res.moduleTitle,
       keywords: [res.title, res.description, res.type],
+    });
+  }
+
+  for (const paper of getAllPapers()) {
+    docs.push({
+      id: `paper:${paper.slug}`,
+      type: "paper",
+      title: `${paper.year} — ${paper.title}`,
+      subtitle: paper.authors,
+      excerpt: paper.oneLineTakeaway,
+      href: `/papers/${paper.slug}`,
+      moduleTitle: paper.act,
+      keywords: [
+        paper.title,
+        paper.authors,
+        String(paper.year),
+        paper.mainIdea,
+        ...paper.terminology.map((t) => t.term),
+        ...paper.examConcepts,
+      ],
     });
   }
 

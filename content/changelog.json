@@ -1,5 +1,14 @@
 [
   {
+    "id": "log-6",
+    "date": "2026-11-28",
+    "action": "updated",
+    "itemType": "module",
+    "title": "SNAI V3.0: Monochromatic UI, 55 Commands, 6 Interactive Visualizers & 10 Mock Exams",
+    "href": "/",
+    "source": "SNAI Course V3.0 Overhaul"
+  },
+  {
     "id": "log-5",
     "date": "2026-11-26",
     "action": "added",

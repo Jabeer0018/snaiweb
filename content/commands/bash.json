@@ -1,0 +1,48 @@
+{
+  "slug": "bash",
+  "name": "bash",
+  "purpose": "Invoke the Bourne-Again Shell interpreter to run shell commands or scripts.",
+  "syntax": "bash <script.sh>\nbash -c \"<command_string>\"",
+  "explanation": "Used in C03 (`bash -c \"$(curl -fsSL ...)\"`) to install Homebrew and in C07 (`#!/bin/bash`) as the script interpreter specified by the shebang.",
+  "parameters": [
+    {
+      "flag": "-c \"<cmd>\"",
+      "description": "Executes commands read from the provided string."
+    }
+  ],
+  "example": "bash hello.sh",
+  "expectedOutput": "Hello from a script",
+  "outputVerified": false,
+  "explanationOfOutput": "Executes each line of `hello.sh` sequentially using the `bash` interpreter.",
+  "whenToUse": "To run shell scripts explicitly or execute a command string in Bash.",
+  "commonMistakes": [
+    "Confusing `bash script.sh` (interpreter reads file) with `./script.sh` (requires `+x` permission and shebang)."
+  ],
+  "commonErrors": [
+    "bash: script.sh: No such file or directory"
+  ],
+  "relatedCommands": [
+    "chmod",
+    "python3",
+    "which"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C07 — Compilers vs Interpreters",
+      "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "07-how-software-works",
+  "moduleTitle": "C07 — How Software Works",
+  "category": "Compilation & Execution",
+  "source": "System & AI Essentials (C03, C07)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "bash",
+    "shell",
+    "shebang",
+    "script"
+  ]
+}

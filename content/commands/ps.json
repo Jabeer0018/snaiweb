@@ -1,7 +1,7 @@
 {
   "slug": "ps",
   "name": "ps",
-  "purpose": "Process Status \u2014 list currently running processes.",
+  "purpose": "Process Status — list currently running processes.",
   "syntax": "ps\nps aux",
   "explanation": "Plain 'ps' shows only processes associated with the current terminal session. 'ps aux' shows ALL processes running system-wide, including columns for USER (owner), PID (Process ID), %CPU, %MEM, and COMMAND.",
   "parameters": [
@@ -23,7 +23,7 @@
     "kill"
   ],
   "moduleSlug": "05-os-process-management",
-  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "moduleTitle": "C05 — The OS & Process Management",
   "category": "Process Management",
   "source": "System & AI Essentials (C05)",
   "addedAt": "2026-11-26",
@@ -32,5 +32,17 @@
     "ps aux",
     "process",
     "PID"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `ps` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C05 — OS Roles, Processes & Signals",
+      "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: ps (if not installed or missing from PATH)"
   ]
 }

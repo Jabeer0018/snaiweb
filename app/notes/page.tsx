@@ -1,11 +1,11 @@
 import { BookOpen } from "lucide-react";
 import { getAllModules } from "@/lib/content";
-import { ModuleCard } from "@/components/ModuleCard";
+import { CurriculumExplorer } from "@/components/CurriculumExplorer";
 import { EmptyState } from "@/components/EmptyState";
 
 export const metadata = {
-  title: "Course Notes",
-  description: "Module-based structured lecture notes and explanations.",
+  title: "Learn — Curriculum Explorer",
+  description: "Explore all SNAI Course modules, learning paths, and detailed lessons.",
 };
 
 export default function NotesIndexPage() {
@@ -14,12 +14,15 @@ export default function NotesIndexPage() {
   return (
     <div className="space-y-8">
       <header className="space-y-2 border-b border-border pb-6">
+        <p className="font-mono text-xs uppercase tracking-wider text-subtle">
+          Your Learning Workspace
+        </p>
         <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          Course Notes
+          Explore the course.
         </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted">
-          Structured documentation-style lecture notes organised by module and
-          topic. Select a module below to begin reading.
+        <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          Understand computing, one concept at a time. Select a module below to
+          view its overview and contextual lessons.
         </p>
       </header>
 
@@ -27,15 +30,10 @@ export default function NotesIndexPage() {
         <EmptyState
           icon={BookOpen}
           title="No course notes available yet"
-          description="Course modules and lecture topics will appear here as soon as your original course materials (PDFs, screenshots, or notes) are ingested."
-          hint="content/modules/<module-slug>/<topic-slug>.md"
+          description="Course modules and lecture topics will appear here."
         />
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.map((mod) => (
-            <ModuleCard key={mod.slug} module={mod} />
-          ))}
-        </div>
+        <CurriculumExplorer modules={modules} />
       )}
     </div>
   );

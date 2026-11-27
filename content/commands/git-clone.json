@@ -26,5 +26,21 @@
     "clone",
     "download",
     "github"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `git clone` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "commonErrors": [
+    "fatal: not a git repository (or any of the parent directories): .git"
+  ],
+  "beforeAfterState": {
+    "before": "Repository working tree / index / history prior to command.",
+    "after": "Git state updated after `git clone`."
+  }
 }

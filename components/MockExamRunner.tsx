@@ -398,7 +398,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
             <button
               type="button"
               onClick={() => startNewExam(mode)}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-accent-fg hover:bg-accent-hover"
             >
               <Play className="h-4 w-4" />
               Start {mode === "exam" ? "Real Exam" : "Practice Session"}
@@ -508,7 +508,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
               <button
                 type="button"
                 onClick={() => startNewExam("practice", incorrectNumbers)}
-                className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent-muted px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-md border border-accent/40 bg-accent-muted px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent hover:text-accent-fg transition-colors"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 Retry Incorrect ({incorrectNumbers.length})
@@ -520,7 +520,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
                 clearInProgressAttempt(exam.id);
                 setPhase("setup");
               }}
-              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white hover:bg-accent-hover"
+              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg hover:bg-accent-hover"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Retake Exam
@@ -865,7 +865,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
           <button
             type="button"
             onClick={() => setConfirmSubmitOpen(true)}
-            className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white hover:bg-accent-hover"
+            className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg hover:bg-accent-hover"
           >
             <Send className="h-3.5 w-3.5" />
             Submit Exam
@@ -1017,7 +1017,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
                             className={cn(
                               "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border font-mono text-[11px] font-semibold",
                               selected
-                                ? "border-accent bg-accent text-white"
+                                ? "border-accent bg-accent text-accent-fg"
                                 : "border-border-strong text-muted"
                             )}
                           >
@@ -1128,7 +1128,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
                           [currentQ.number]: true,
                         }))
                       }
-                      className="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white hover:bg-accent-hover"
+                      className="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-accent-fg hover:bg-accent-hover"
                     >
                       Check Answer
                     </button>
@@ -1239,7 +1239,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
                       currentIdx < visibleNumbers.length - 1 &&
                       goToQuestion(visibleNumbers[currentIdx + 1])
                     }
-                    className="inline-flex items-center gap-1 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white hover:bg-accent-hover disabled:opacity-40"
+                    className="inline-flex items-center gap-1 rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg hover:bg-accent-hover disabled:opacity-40"
                   >
                     Next
                     <ChevronRight className="h-3.5 w-3.5" />
@@ -1356,7 +1356,7 @@ export function MockExamRunner({ exam }: MockExamRunnerProps) {
               <button
                 type="button"
                 onClick={() => submitExam(attempt)}
-                className="rounded-md bg-accent px-4 py-2 text-xs font-medium text-white hover:bg-accent-hover"
+                className="rounded-md bg-accent px-4 py-2 text-xs font-medium text-accent-fg hover:bg-accent-hover"
               >
                 Confirm Submit
               </button>

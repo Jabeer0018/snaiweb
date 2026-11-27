@@ -1,0 +1,40 @@
+{
+  "slug": "whoami",
+  "name": "whoami",
+  "purpose": "Print the username of the currently logged-in shell user.",
+  "syntax": "whoami",
+  "explanation": "Outputs your current effective user name, useful for checking whether you match the Owner in `ls -l` permissions.",
+  "parameters": [],
+  "example": "whoami",
+  "expectedOutput": "student",
+  "outputVerified": false,
+  "explanationOfOutput": "Prints the active username (`student`).",
+  "whenToUse": "To verify which user account owns your terminal session when debugging permission errors.",
+  "commonMistakes": [
+    "Confusing `whoami` (current user) with `pwd` (current directory)."
+  ],
+  "commonErrors": [],
+  "relatedCommands": [
+    "pwd",
+    "chown",
+    "ls"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
+  "category": "Permissions & Environment",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "whoami",
+    "user",
+    "owner"
+  ]
+}

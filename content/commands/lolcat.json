@@ -1,0 +1,42 @@
+{
+  "slug": "lolcat",
+  "name": "lolcat",
+  "purpose": "Colorize standard input text with rainbow ANSI gradients.",
+  "syntax": "<command> | lolcat",
+  "explanation": "Reads text from standard input (or a file) and outputs it with rainbow colours in the terminal. Used as the final stage of `fortune | cowsay | lolcat`.",
+  "parameters": [],
+  "example": "fortune | cowsay | lolcat",
+  "expectedOutput": "(Rainbow-colored ASCII art in terminal)",
+  "outputVerified": false,
+  "explanationOfOutput": "Applies ANSI colour escape sequences to every character received via stdin.",
+  "whenToUse": "To practice multi-stage command pipelines.",
+  "commonMistakes": [
+    "Forgetting to install `lolcat` via `brew install lolcat` first."
+  ],
+  "commonErrors": [
+    "zsh: command not found: lolcat"
+  ],
+  "relatedCommands": [
+    "fortune",
+    "cowsay",
+    "brew"
+  ],
+  "platformCompatibility": "macOS (via Homebrew) and Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "lolcat",
+    "pipe",
+    "rainbow"
+  ]
+}

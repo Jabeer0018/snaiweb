@@ -18,7 +18,7 @@
     "kill"
   ],
   "moduleSlug": "05-os-process-management",
-  "moduleTitle": "C05 \u2014 The OS & Process Management",
+  "moduleTitle": "C05 — The OS & Process Management",
   "category": "Process Management",
   "source": "System & AI Essentials (C05)",
   "addedAt": "2026-11-26",
@@ -27,5 +27,17 @@
     "cpu",
     "memory",
     "live processes"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `top` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C05 — OS Roles, Processes & Signals",
+      "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: top (if not installed or missing from PATH)"
   ]
 }

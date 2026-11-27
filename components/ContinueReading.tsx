@@ -17,7 +17,7 @@ export function ContinueReading() {
 
   if (items.length === 0) {
     return (
-      <div className="rounded-lg border border-border bg-surface p-5">
+      <div className="min-w-0 rounded-lg border border-border bg-surface p-5">
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-subtle">
           <Clock className="h-3.5 w-3.5" />
           Continue Reading
@@ -31,7 +31,7 @@ export function ContinueReading() {
   }
 
   return (
-    <div className="rounded-lg border border-border bg-surface p-5">
+    <div className="min-w-0 rounded-lg border border-border bg-surface p-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-subtle">
           <Clock className="h-3.5 w-3.5 text-accent" />

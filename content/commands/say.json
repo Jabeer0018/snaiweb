@@ -1,0 +1,49 @@
+{
+  "slug": "say",
+  "name": "say",
+  "purpose": "Convert text to audible speech using macOS's built-in text-to-speech engine.",
+  "syntax": "say \"<text>\"",
+  "explanation": "Demonstrates in C03 that terminal commands are simply executable programs. Because `say` comes pre-installed on macOS, it works immediately without package installation.",
+  "parameters": [
+    {
+      "flag": "\"<text>\"",
+      "description": "The text string to speak aloud.",
+      "required": true
+    }
+  ],
+  "example": "say \"Hello from the terminal\"",
+  "expectedOutput": "(Audio output spoken aloud; no stdout text)",
+  "outputVerified": false,
+  "explanationOfOutput": "Audio is played through the system speakers; standard output remains empty.",
+  "whenToUse": "To test built-in macOS CLI programs or add audio alerts to local scripts.",
+  "commonMistakes": [
+    "Expecting `say` to exist out-of-the-box on Linux or Windows."
+  ],
+  "commonErrors": [
+    "bash: say: command not found (when run on Linux)"
+  ],
+  "relatedCommands": [
+    "cowsay",
+    "echo",
+    "brew"
+  ],
+  "platformCompatibility": "macOS only (built-in)",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "say",
+    "macos",
+    "built-in",
+    "c03"
+  ]
+}

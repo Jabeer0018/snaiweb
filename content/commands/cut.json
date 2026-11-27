@@ -1,0 +1,54 @@
+{
+  "slug": "cut",
+  "name": "cut",
+  "purpose": "Extracts specific columns or character ranges from each line of text or CSV data.",
+  "syntax": "cut -d '<delimiter>' -f <field_list> [file]",
+  "explanation": "Splits structured text lines (such as CSV files or space/colon-delimited logs) by a delimiter and prints only the requested columns.",
+  "parameters": [
+    {
+      "flag": "-d '<char>'",
+      "description": "Sets the column delimiter character (default is TAB; e.g. `-d ','` or `-d ':'`)."
+    },
+    {
+      "flag": "-f <list>",
+      "description": "Selects 1-based field numbers to print (e.g. `-f 1,3`)."
+    }
+  ],
+  "example": "cut -d ',' -f 1,2 students.csv",
+  "expectedOutput": "name,campus\nAreen,Hyderabad\nPriya,Bengaluru",
+  "outputVerified": false,
+  "whenToUse": "When extracting specific columns from CSVs, `/etc/passwd`, or delimited log files in a pipe.",
+  "commonMistakes": [
+    "Forgetting `-d ' '` when splitting space-separated text (default delimiter is TAB, not space)."
+  ],
+  "relatedCommands": [
+    "grep",
+    "sort",
+    "uniq",
+    "wc"
+  ],
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "category": "Text Processing",
+  "source": "Lecture 15 & 16 Worksheets",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "cut",
+    "columns",
+    "csv",
+    "delimiter",
+    "fields"
+  ],
+  "isSupplementary": true,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Outputs only fields 1 and 2 separated by the specified delimiter for every line.",
+  "relevantConcepts": [
+    {
+      "title": "C03 \u2014 CLI Fundamentals & Piping",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "`cut: the delimiter must be a single character`"
+  ]
+}

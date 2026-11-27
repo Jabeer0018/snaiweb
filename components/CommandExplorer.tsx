@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Search, Terminal } from "lucide-react";
+import { ArrowRight, LayoutGrid, List, Search, Terminal } from "lucide-react";
 import { CommandEntry } from "@/lib/types";
 import { CopyButton } from "./CopyButton";
 import { BookmarkButton } from "./BookmarkButton";
@@ -17,6 +17,7 @@ export function CommandExplorer({ commands }: CommandExplorerProps) {
   const [selectedModule, setSelectedModule] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedTopic, setSelectedTopic] = useState("all");
+  const [viewMode, setViewMode] = useState<"cards" | "cheatsheet">("cards");
 
   const modules = useMemo(() => {
     const set = new Set<string>();
@@ -60,6 +61,11 @@ export function CommandExplorer({ commands }: CommandExplorerProps) {
         cmd.purpose.toLowerCase().includes(q) ||
         cmd.syntax.toLowerCase().includes(q) ||
         cmd.explanation.toLowerCase().includes(q) ||
+        cmd.parameters.some(
+          (p) =>
+            p.flag.toLowerCase().includes(q) ||
+            p.description.toLowerCase().includes(q)
+        ) ||
         (cmd.keywords || []).some((k) => k.toLowerCase().includes(q))
       );
     });
@@ -135,10 +141,76 @@ export function CommandExplorer({ commands }: CommandExplorerProps) {
         </select>
       </div>
 
+      {/* View Switcher & Count */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="font-mono text-xs text-subtle">
+          Showing {filtered.length} of {commands.length} commands
+        </p>
+        <div className="inline-flex border border-border bg-surface p-0.5">
+          <button
+            type="button"
+            onClick={() => setViewMode("cards")}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${
+              viewMode === "cards"
+                ? "bg-foreground text-background"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            <LayoutGrid className="h-3.5 w-3.5" />
+            Detailed View
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("cheatsheet")}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${
+              viewMode === "cheatsheet"
+                ? "bg-foreground text-background"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            <List className="h-3.5 w-3.5" />
+            Cheat Sheet
+          </button>
+        </div>
+      </div>
+
       {/* Results */}
       {filtered.length === 0 ? (
         <div className="rounded-lg border border-border bg-surface p-8 text-center text-sm text-muted">
           No commands match the current filters.
+        </div>
+      ) : viewMode === "cheatsheet" ? (
+        <div className="overflow-x-auto border border-border bg-surface">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-border bg-elevated font-mono text-[11px] uppercase tracking-wider text-subtle">
+              <tr>
+                <th className="px-4 py-2.5">Command</th>
+                <th className="px-4 py-2.5">Syntax</th>
+                <th className="px-4 py-2.5">Purpose</th>
+                <th className="px-4 py-2.5 text-right">Copy</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border">
+              {filtered.map((cmd) => (
+                <tr key={cmd.slug} className="hover:bg-elevated/60">
+                  <td className="whitespace-nowrap px-4 py-2.5 font-mono text-xs font-semibold text-foreground">
+                    <Link href={`/commands/${cmd.slug}`} className="hover:underline">
+                      {cmd.name}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-2.5 font-mono text-xs text-foreground/90">
+                    {cmd.syntax}
+                  </td>
+                  <td className="px-4 py-2.5 text-xs text-muted">
+                    {cmd.purpose}
+                  </td>
+                  <td className="px-4 py-2.5 text-right">
+                    <CopyButton text={cmd.syntax} label="" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
@@ -150,13 +222,20 @@ export function CommandExplorer({ commands }: CommandExplorerProps) {
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <span className="rounded border border-border bg-elevated px-2 py-0.5 text-[11px] font-medium text-muted">
-                      {cmd.category}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="border border-border bg-elevated px-2 py-0.5 text-[11px] font-medium text-muted">
+                        {cmd.category}
+                      </span>
+                      {cmd.isSupplementary && (
+                        <span className="border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 font-mono text-[10px] text-amber-500">
+                          Supplementary
+                        </span>
+                      )}
+                    </div>
                     <h3 className="mt-2 font-mono text-base font-semibold text-foreground">
                       <Link
                         href={`/commands/${cmd.slug}`}
-                        className="hover:text-accent transition-colors"
+                        className="hover:underline"
                       >
                         {cmd.name}
                       </Link>

@@ -1,0 +1,48 @@
+{
+  "slug": "python3",
+  "name": "python3",
+  "purpose": "Run the Python 3 interpreter to execute a Python script line by line.",
+  "syntax": "python3 <script.py>",
+  "explanation": "As taught in C07, `python3` itself is an executable program (typically `/usr/bin/python3`). Running `python3 hello.py` involves two programs: the Python interpreter and your script, translating and executing one line at a time.",
+  "parameters": [
+    {
+      "flag": "<script.py>",
+      "description": "Path to the Python source file.",
+      "required": true
+    }
+  ],
+  "example": "python3 hello.py",
+  "expectedOutput": "Hello, world!",
+  "outputVerified": false,
+  "explanationOfOutput": "The Python interpreter reads, translates, and executes each statement in `hello.py`.",
+  "whenToUse": "To execute Python scripts or launch an interactive Python session.",
+  "commonMistakes": [
+    "Assuming the CPU executes Python directly without an interpreter."
+  ],
+  "commonErrors": [
+    "python3: can't open file 'hello.py': [Errno 2] No such file or directory"
+  ],
+  "relatedCommands": [
+    "bash",
+    "which",
+    "gcc"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C07 — Compilers vs Interpreters",
+      "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "07-how-software-works",
+  "moduleTitle": "C07 — How Software Works",
+  "category": "Compilation & Execution",
+  "source": "System & AI Essentials (C07)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "python3",
+    "interpreter",
+    "c07"
+  ]
+}

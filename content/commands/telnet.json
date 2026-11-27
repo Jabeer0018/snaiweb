@@ -1,0 +1,47 @@
+{
+  "slug": "telnet",
+  "name": "telnet",
+  "purpose": "Connect to a remote host over a text-based TCP connection.",
+  "syntax": "telnet <host> [port]",
+  "explanation": "Demonstrated in C03 (`brew install telnet`, then `telnet towel.blinkenlights.nl`) to watch Simon Jansen's 1997 ASCII-art Star Wars animation over the internet.",
+  "parameters": [
+    {
+      "flag": "<host>",
+      "description": "Hostname or IP address to connect to.",
+      "required": true
+    }
+  ],
+  "example": "telnet towel.blinkenlights.nl",
+  "expectedOutput": "(Streams ASCII-art frames over TCP)",
+  "outputVerified": false,
+  "explanationOfOutput": "Opens a raw text stream to the remote server.",
+  "whenToUse": "To connect to legacy text services or test TCP port connectivity.",
+  "commonMistakes": [
+    "Using unencrypted telnet for sensitive logins (use SSH instead)."
+  ],
+  "commonErrors": [
+    "zsh: command not found: telnet"
+  ],
+  "relatedCommands": [
+    "curl",
+    "brew"
+  ],
+  "platformCompatibility": "macOS (via Homebrew) and Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "telnet",
+    "star wars",
+    "network"
+  ]
+}

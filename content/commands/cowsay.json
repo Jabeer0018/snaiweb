@@ -1,0 +1,50 @@
+{
+  "slug": "cowsay",
+  "name": "cowsay",
+  "purpose": "Display a text message inside an ASCII-art speech bubble (cow, dragon, tux).",
+  "syntax": "cowsay [options] \"<text>\"",
+  "explanation": "Demonstrates two key C03 concepts: (1) why non-built-in commands fail with `command not found` until installed via Homebrew (`brew install cowsay`), and (2) Command + Option (`-f`) + Argument structure.",
+  "parameters": [
+    {
+      "flag": "-f <character>",
+      "description": "Selects the ASCII character (e.g. dragon, tux)."
+    }
+  ],
+  "example": "cowsay -f dragon \"I am a dragon\"",
+  "expectedOutput": " _______________\n< I am a dragon >\n ---------------",
+  "outputVerified": false,
+  "explanationOfOutput": "Prints the message wrapped in an ASCII bubble above the chosen character.",
+  "whenToUse": "To practise command flags (`-f`) and piping (`fortune | cowsay | lolcat`).",
+  "commonMistakes": [
+    "Running `cowsay` before installing it with `brew install cowsay`."
+  ],
+  "commonErrors": [
+    "zsh: command not found: cowsay"
+  ],
+  "relatedCommands": [
+    "brew",
+    "fortune",
+    "lolcat",
+    "say"
+  ],
+  "platformCompatibility": "macOS (via Homebrew) and Linux (via apt/yum)",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "cowsay",
+    "dragon",
+    "tux",
+    "pipe",
+    "brew"
+  ]
+}

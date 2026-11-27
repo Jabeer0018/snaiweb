@@ -36,7 +36,7 @@
     "which"
   ],
   "moduleSlug": "06-os-filesystem",
-  "moduleTitle": "C06 \u2014 The OS & the Filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
   "category": "Permissions & Environment",
   "source": "System & AI Essentials (C06)",
   "addedAt": "2026-11-26",
@@ -47,5 +47,22 @@
     "600",
     "644",
     "755"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `chmod` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "commonErrors": [
+    "chmod: <target>: No such file or directory",
+    "chmod: <target>: Permission denied"
+  ],
+  "beforeAfterState": {
+    "before": "Filesystem/permissions are in their initial state prior to command execution.",
+    "after": "Target file or directory state is updated by `chmod` as specified."
+  }
 }

@@ -1,7 +1,7 @@
 {
   "slug": "chown",
   "name": "chown",
-  "purpose": "Change Owner \u2014 transfer ownership of a file or directory to another user.",
+  "purpose": "Change Owner — transfer ownership of a file or directory to another user.",
   "syntax": "chown <newOwner> <fileName>",
   "explanation": "Changes the owner of a file so another user can own or manage it safely.",
   "parameters": [],
@@ -17,7 +17,7 @@
     "ls"
   ],
   "moduleSlug": "06-os-filesystem",
-  "moduleTitle": "C06 \u2014 The OS & the Filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
   "category": "Permissions & Environment",
   "source": "System & AI Essentials (C06)",
   "addedAt": "2026-11-26",
@@ -25,5 +25,21 @@
     "chown",
     "owner",
     "permissions"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `chown` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: chown (if not installed or missing from PATH)"
+  ],
+  "beforeAfterState": {
+    "before": "Filesystem/permissions are in their initial state prior to command execution.",
+    "after": "Target file or directory state is updated by `chown` as specified."
+  }
 }

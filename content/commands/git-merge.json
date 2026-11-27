@@ -1,0 +1,53 @@
+{
+  "slug": "git-merge",
+  "name": "git merge",
+  "purpose": "Combine changes from another branch into the currently checked-out branch.",
+  "syntax": "git merge <sourceBranch>",
+  "explanation": "Integrates commits from `<sourceBranch>` (such as `feature-login`) into your current branch (such as `main`).",
+  "parameters": [
+    {
+      "flag": "<sourceBranch>",
+      "description": "Name of the branch whose commits you want to merge into the current branch.",
+      "required": true
+    }
+  ],
+  "example": "git checkout main\ngit merge feature-login",
+  "expectedOutput": "Merge made by the 'ort' strategy.",
+  "outputVerified": false,
+  "explanationOfOutput": "Confirms commits from `feature-login` have been integrated into `main`.",
+  "beforeAfterState": {
+    "before": "Feature commits exist only on `feature-login`.",
+    "after": "`main` includes all commits from `feature-login`."
+  },
+  "whenToUse": "After finishing and reviewing feature branch work to bring it into `main`.",
+  "commonMistakes": [
+    "Running `git merge main` while still on `feature-login` instead of checking out `main` first."
+  ],
+  "commonErrors": [
+    "CONFLICT (content): Merge conflict in <file>"
+  ],
+  "relatedCommands": [
+    "git-checkout",
+    "git-branch",
+    "git-pull"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows (Git)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "merge",
+    "main",
+    "pr"
+  ]
+}

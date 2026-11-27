@@ -1,0 +1,512 @@
+[
+  {
+    "slug": "turing-1936-computable-numbers",
+    "order": 1,
+    "year": 1936,
+    "act": "Foundations (1936\u20131978)",
+    "moduleHref": "/notes/15-five-foundational-papers/five-papers-1936-1978",
+    "title": "On Computable Numbers, with an Application to the Entscheidungsproblem",
+    "authors": "Alan Mathison Turing",
+    "venue": "Proceedings of the London Mathematical Society, Series 2, Vol. 42 (1936\u20131937)",
+    "sourceFile": "Paper 1 Turing_Paper_1936.pdf & S&AI Lecture 15 Notes.pdf",
+    "oneLineTakeaway": "Defined the abstract Turing Machine and proved that one Universal Machine can simulate any algorithm\u2014while proving some mathematical problems cannot be decided by any algorithm.",
+    "historicalContext": "In 1928, mathematician David Hilbert posed the Entscheidungsproblem ('decision problem'): does a single mechanical procedure exist that can determine whether any mathematical statement is provably true or false? Before electronic computers existed, Turing needed a rigorous mathematical definition of what 'mechanical computation' even meant.",
+    "problemSolved": "Formalized the exact boundary between problems that can be solved step-by-step by an algorithm and problems that are fundamentally uncomputable.",
+    "whyPriorFailed": "Previous logic frameworks lacked an intuitive operational model of a human 'computer' following finite rules on paper, making it impossible to prove impossibility results across all possible algorithms.",
+    "mainIdea": "A conceptual machine with an infinite tape divided into squares, a read/write head, a finite set of internal states, and a finite transition table can compute any computable function. Better still, a Universal Turing Machine (UTM) can read another machine's description from the tape and simulate it.",
+    "methodology": "Turing modeled a human clerk with scratch paper: reading one symbol at a time, writing a symbol, shifting left/right, and switching internal state. He encoded machine tables as strings on the tape and used diagonalization to prove no machine can decide in general whether an arbitrary machine will ever halt (the Halting Problem).",
+    "terminology": [
+      {
+        "term": "Turing Machine",
+        "definition": "An abstract mathematical model of computation using an infinite tape, read/write head, and finite state transition rules."
+      },
+      {
+        "term": "Universal Turing Machine (UTM)",
+        "definition": "A stored-program Turing machine that simulates any other Turing machine given its description on the tape."
+      },
+      {
+        "term": "Entscheidungsproblem",
+        "definition": "Hilbert's decision problem asking for a universal algorithm to decide mathematical truth; Turing proved the answer is no."
+      }
+    ],
+    "keyResults": "Established Church-Turing computability and proved the unsolvability of the Halting Problem and the Entscheidungsproblem.",
+    "mathIntuition": "Just as one piece of hardware (your laptop) can run Chrome, Python, or a game simply by loading different software into RAM, a Universal Turing Machine runs any algorithm simply by reading its encoded rules from the tape.",
+    "limitations": "A Turing Machine describes what is computable in principle, not what is fast or practical in time/memory (which led later to complexity theory like P vs NP).",
+    "influence": "Direct theoretical blueprint for the stored-program computer (Von Neumann architecture) and every modern general-purpose CPU and compiler.",
+    "connections": [
+      "shannon-1948-communication-theory",
+      "lamport-1978-logical-clocks"
+    ],
+    "examConcepts": [
+      "Conceptual mathematical model vs physical 1936 hardware",
+      "Universal stored-program principle",
+      "Limits of computation (Halting / Entscheidungsproblem)"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Alan Turing built a physical metal Turing Machine in 1936.",
+        "reality": "It was strictly a paper-and-pencil mathematical model defining computability; physical stored-program computers came a decade later."
+      }
+    ],
+    "revisionSummary": "1936 Turing: Abstract tape + state machine; Universal machine simulates any program; proved some problems cannot be solved by any algorithm."
+  },
+  {
+    "slug": "shannon-1948-communication-theory",
+    "order": 2,
+    "year": 1948,
+    "act": "Foundations (1936\u20131978)",
+    "moduleHref": "/notes/15-five-foundational-papers/five-papers-1936-1978",
+    "title": "A Mathematical Theory of Communication",
+    "authors": "Claude Elwood Shannon",
+    "venue": "The Bell System Technical Journal, Vol. 27, pp. 379\u2013423, 623\u2013656 (July/October 1948)",
+    "sourceFile": "Paper 2 Theory of communication - Claude Shanon 1948.pdf & Lecture 15 Notes",
+    "oneLineTakeaway": "Separated information from meaning, defined the binary digit ('bit') as the universal unit of information, and proved error-free communication is possible over noisy channels up to channel capacity.",
+    "historicalContext": "In 1937, Shannon's MIT master's thesis showed Boolean algebra maps directly to electrical switches. By 1948 at Bell Labs, telegraph, telephone, and radio engineers treated voice, text, and pictures as completely separate engineering problems.",
+    "problemSolved": "Created a single mathematical framework to measure information, compress data without losing it, and transmit signals reliably across noisy wires or radio waves.",
+    "whyPriorFailed": "Engineers previously conflated the engineering problem (sending symbols reliably) with human semantic meaning, and lacked a universal unit to compare text, audio, and images.",
+    "mainIdea": "Information can be measured purely by uncertainty reduction (entropy) in bits\u2014completely independent of whether the bits represent English prose, music, or numbers. Every communication channel has a capacity C, and as long as transmission rate R < C, error-correcting codes can make errors arbitrarily small.",
+    "methodology": "Shannon decomposed communication into: Information Source -> Transmitter -> Noisy Channel -> Receiver -> Destination. He defined entropy H = -sum(p_i log2 p_i) and proved both the Source Coding Theorem (compression limit) and Channel Coding Theorem (reliability limit).",
+    "terminology": [
+      {
+        "term": "Bit (Binary Digit)",
+        "definition": "Fundamental unit of information representing a choice between two equally likely outcomes (0 or 1)."
+      },
+      {
+        "term": "Information Entropy (H)",
+        "definition": "Average unpredictability or minimum bits per symbol needed to encode a source."
+      },
+      {
+        "term": "Channel Capacity (C)",
+        "definition": "Maximum reliable information rate (bits/sec) a noisy channel can carry."
+      }
+    ],
+    "keyResults": "Established Information Theory, coined/popularized 'bit', and proved lossless compression and near-zero-error communication limits.",
+    "mathIntuition": "If a weather report only ever says 'Sunny', you learn 0 bits of information because there is no surprise. High uncertainty = more bits needed; predictable patterns can be compressed.",
+    "limitations": "Intentionally ignores semantic meaning ('the meaning of a message is irrelevant to the engineering problem')\u2014meaning came later with AI models.",
+    "influence": "Underpins ASCII/UTF-8, ZIP compression, Wi-Fi, 5G, error-correcting RAM, QR codes, and cross-entropy loss used to train modern LLMs.",
+    "connections": [
+      "turing-1936-computable-numbers",
+      "brown-2020-gpt3"
+    ],
+    "examConcepts": [
+      "1937 Boolean circuits + 1948 bit & entropy",
+      "Applies to ALL digital data (text, images, audio), not only text compression",
+      "Cross-entropy link to ML/LLMs"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Shannon's theory only applies to compressing English text.",
+        "reality": "It is universal across text, audio, images, video, and network packets because everything encodes into bits."
+      }
+    ],
+    "revisionSummary": "1948 Shannon: Defined the bit and entropy; proved compression limits and reliable transmission over noisy channels."
+  },
+  {
+    "slug": "rosenblatt-1958-perceptron",
+    "order": 3,
+    "year": 1958,
+    "act": "Foundations (1936\u20131978)",
+    "moduleHref": "/notes/15-five-foundational-papers/five-papers-1936-1978",
+    "title": "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain",
+    "authors": "Frank Rosenblatt",
+    "venue": "Psychological Review, Vol. 65, No. 6 (1958)",
+    "sourceFile": "Paper 3 Perceptron rosenblatt58.pdf & Lecture 15 Notes",
+    "oneLineTakeaway": "Introduced the first trainable neural unit that learns classification weights automatically from examples and mistakes rather than hand-coded rules.",
+    "historicalContext": "In 1958, computers only ran explicit human-written rules (Coding 1.0). Rosenblatt, a psychologist at Cornell Aeronautical Laboratory, wanted a machine modeled loosely on biological neurons that could learn visual patterns from experience.",
+    "problemSolved": "Replaced fixed, manually programmed decision thresholds with an automatic weight-update learning rule.",
+    "whyPriorFailed": "Symbolic programs required humans to anticipate every edge case; McCulloch-Pitts neuron models (1943) had fixed weights and could not learn from data.",
+    "mainIdea": "A Perceptron takes numeric inputs x_i, multiplies each by a learnable weight w_i, sums them with a bias, and fires (1) if the sum crosses a threshold (or 0 otherwise). Whenever it makes a mistake on a labeled example, it nudges the weights toward the correct answer.",
+    "methodology": "Trained iteratively on labeled input vectors: compute y_hat = step(sum(w_i * x_i) + b); update w_i <- w_i + eta * (y - y_hat) * x_i.",
+    "terminology": [
+      {
+        "term": "Weight (w_i)",
+        "definition": "Learnable multiplier controlling how strongly input feature i influences the decision."
+      },
+      {
+        "term": "Threshold / Bias",
+        "definition": "Offset determining how high the weighted sum must be before the neuron outputs 1."
+      },
+      {
+        "term": "Linear Decision Boundary",
+        "definition": "A straight line (2D) or hyperplane (nD) separating class 1 from class 0."
+      }
+    ],
+    "keyResults": "Demonstrated on the Mark I Perceptron hardware that a machine could learn to classify simple visual patterns (e.g., triangles vs squares) from examples.",
+    "mathIntuition": "Think of deciding whether to carry an umbrella based on cloud cover, humidity, and wind: each factor gets an importance weight, and if you get rained on, you increase the weight on the signals you ignored.",
+    "limitations": "A single-layer perceptron can ONLY separate classes that are linearly separable (separable by a single straight line/hyperplane).",
+    "influence": "Direct ancestor of every artificial neuron inside modern deep learning and Transformer networks.",
+    "connections": [
+      "minsky-papert-1969-perceptrons",
+      "rumelhart-1986-backpropagation"
+    ],
+    "examConcepts": [
+      "Weighted sum + threshold step",
+      "Learns weights from mistakes (Coding 2.0 origin)",
+      "Single-layer linear classifier limitation"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Perceptrons could learn any pattern if trained long enough.",
+        "reality": "Single-layer perceptrons can never converge on non-linearly separable data like XOR."
+      }
+    ],
+    "revisionSummary": "1958 Rosenblatt: First trainable single-layer neural classifier; adjusts weights from mistakes; draws a single straight-line boundary."
+  },
+  {
+    "slug": "minsky-papert-1969-perceptrons",
+    "order": 4,
+    "year": 1969,
+    "act": "Foundations (1936\u20131978)",
+    "moduleHref": "/notes/15-five-foundational-papers/five-papers-1936-1978",
+    "title": "Perceptrons: An Introduction to Computational Geometry",
+    "authors": "Marvin L. Minsky & Seymour A. Papert",
+    "venue": "MIT Press (1969; Expanded Edition 1988)",
+    "sourceFile": "Paper 5 Minsky-and-Papert-Perceptrons_compressed.pdf (308p) & Lecture 15 Notes",
+    "oneLineTakeaway": "Mathematically proved that single-layer perceptrons cannot compute non-linearly separable functions such as XOR\u2014triggering the first AI Winter.",
+    "historicalContext": "After enthusiastic press coverage of the 1958 Perceptron, MIT AI Lab co-founders Minsky and Papert published a rigorous geometric analysis examining what single-layer perceptrons could and could not compute.",
+    "problemSolved": "Established exact mathematical limits of single-layer linear threshold units (especially parity/XOR and geometric connectedness).",
+    "whyPriorFailed": "Early researchers relied on optimistic demos without proving whether single-layer perceptrons scaled to relational or non-linear tasks.",
+    "mainIdea": "Because a single-layer perceptron draws one straight line/hyperplane, it fails whenever positive and negative examples cannot be separated by a single straight cut\u2014most famously the XOR truth table: (0,1)->1, (1,0)->1 vs (0,0)->0, (1,1)->0.",
+    "methodology": "Used computational geometry and linear inequality proofs to show impossibility for order-restricted single-layer perceptrons on parity/XOR and topological connectedness.",
+    "terminology": [
+      {
+        "term": "Linearly Separable",
+        "definition": "A dataset where class 1 and class 0 can be divided cleanly by a single straight line or hyperplane."
+      },
+      {
+        "term": "XOR (Exclusive OR)",
+        "definition": "Outputs 1 only when inputs differ; classic minimal non-linearly separable problem."
+      },
+      {
+        "term": "AI Winter",
+        "definition": "Period of sharply reduced neural network funding and optimism following the 1969 critique."
+      }
+    ],
+    "keyResults": "Proved single-layer perceptrons cannot solve XOR; noted multi-layer perceptrons could, but no effective training algorithm was known in 1969.",
+    "mathIntuition": "Plot (0,0) and (1,1) as O's and (0,1) and (1,0) as X's on a square: they sit on opposite diagonals. Try drawing one straight line that puts both X's on one side and both O's on the other\u2014it is geometrically impossible.",
+    "limitations": "Their impossibility proof applied strictly to single-layer networks, though funding dried up for all neural networks until backpropagation in 1986.",
+    "influence": "Motivated hidden layers and backpropagation (1986) once researchers proved multi-layer networks easily solve XOR.",
+    "connections": [
+      "rosenblatt-1958-perceptron",
+      "rumelhart-1986-backpropagation"
+    ],
+    "examConcepts": [
+      "Single-layer perceptron XOR impossibility",
+      "Linear separability test",
+      "Distinction between single-layer limit vs multi-layer networks"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Minsky & Papert proved neural networks can never solve XOR.",
+        "reality": "They proved SINGLE-LAYER perceptrons cannot solve XOR; multi-layer networks with non-linear activations solve it easily."
+      }
+    ],
+    "revisionSummary": "1969 Minsky & Papert: Proved single-layer perceptrons fail non-linear problems like XOR, causing the first AI Winter."
+  },
+  {
+    "slug": "lamport-1978-logical-clocks",
+    "order": 5,
+    "year": 1978,
+    "act": "Foundations (1936\u20131978)",
+    "moduleHref": "/notes/15-five-foundational-papers/five-papers-1936-1978",
+    "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+    "authors": "Leslie Lamport",
+    "venue": "Communications of the ACM, Vol. 21, No. 7, pp. 558\u2013565 (July 1978)",
+    "sourceFile": "Paper 4 time-clocks Leslie Lampert.pdf & Lecture 15 Notes",
+    "oneLineTakeaway": "Showed that distributed computers cannot trust physical wall clocks to order events\u2014introducing causal 'happened-before' partial ordering and logical clocks.",
+    "historicalContext": "As computing moved from single mainframes to networks of independent machines (ARPANET, early distributed databases), engineers needed to know which event happened first across machines whose quartz clocks inevitably drifted apart.",
+    "problemSolved": "Ordering causal events reliably across multiple independent computers that share no global physical clock.",
+    "whyPriorFailed": "Physical clocks drift by milliseconds or seconds, so timestamps from two servers can claim a reply arrived before the request was sent.",
+    "mainIdea": "Define event ordering causally via 'happened-before' (->): if event A is on the same process before B, or A sends a message received at B, then A -> B. Each process keeps an integer logical clock counter C, incremented on local events and updated to max(C_local, C_msg) + 1 when receiving messages.",
+    "methodology": "Formalized partial causal ordering (->) from message passing and proved Lamport's Clock Condition: if A -> B then C(A) < C(B).",
+    "terminology": [
+      {
+        "term": "Happened-Before (->)",
+        "definition": "Causal partial order defined by local execution order and send->receive message pairs."
+      },
+      {
+        "term": "Logical Clock",
+        "definition": "Monotonically increasing integer counter tracking causal order rather than physical seconds."
+      },
+      {
+        "term": "Concurrent Events",
+        "definition": "Two events A and B where neither A -> B nor B -> A (no causal chain between them)."
+      }
+    ],
+    "keyResults": "Provided the foundational algorithm for distributed event ordering, distributed mutual exclusion, and consistent state snapshots.",
+    "mathIntuition": "If you receive a letter postmarked with your friend's counter '5', your own reply counter must be at least '6'\u2014even if your wristwatch is two hours behind theirs.",
+    "limitations": "Scalar Lamport clocks guarantee A -> B implies C(A) < C(B), but C(A) < C(B) alone does not prove A caused B (vector clocks later solved that).",
+    "influence": "Underpins distributed databases, Git/cloud synchronization, consensus protocols (Paxos/Raft), and multi-GPU distributed AI training clusters.",
+    "connections": [
+      "turing-1936-computable-numbers",
+      "brin-page-1998-pagerank"
+    ],
+    "examConcepts": [
+      "Why physical wall clocks fail in distributed systems",
+      "Happened-before causal relation",
+      "Logical clock counter update rule (does not sync physical time)"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Lamport clocks synchronize the physical time-of-day clocks on servers.",
+        "reality": "They assign causal integer sequence numbers so systems agree on causal order without needing identical physical clocks."
+      }
+    ],
+    "revisionSummary": "1978 Lamport: Distributed machines order events causally via happened-before logical counters instead of unreliable physical clocks."
+  },
+  {
+    "slug": "rumelhart-1986-backpropagation",
+    "order": 6,
+    "year": 1986,
+    "act": "Training to Scale (1986\u20132020)",
+    "moduleHref": "/notes/16-next-five-papers/next-five-papers-1986-2020",
+    "title": "Learning Representations by Back-Propagating Errors",
+    "authors": "David E. Rumelhart, Geoffrey E. Hinton & Ronald J. Williams",
+    "venue": "Nature, Vol. 323, pp. 533\u2013536 (9 October 1986)",
+    "sourceFile": "Lecture 16/1 Backpropogation.pdf (4p) & Lecture 16 Notes.pdf",
+    "oneLineTakeaway": "Showed how multi-layer neural networks can automatically learn internal hidden representations by propagating output errors backward using the chain rule.",
+    "historicalContext": "Since 1969, researchers knew multi-layer networks could solve non-linear problems like XOR, but nobody had popularized a reliable way to assign credit/blame to hidden neurons sitting between input and output.",
+    "problemSolved": "The credit-assignment problem: how much should each internal hidden weight change to reduce the final output error?",
+    "whyPriorFailed": "Single-layer perceptron rules only saw the final output error and had no mechanism to adjust hidden-layer weights whose desired targets were unknown.",
+    "mainIdea": "Run a forward pass to predict, measure error at the output, then apply calculus (chain rule) backward layer-by-layer to compute each weight's exact contribution to the error and nudge weights downhill (gradient descent).",
+    "methodology": "Multi-layer network with smooth non-linear sigmoid activations y_j = 1 / (1 + e^-x_j): PREDICT -> COMPARE -> WORK BACKWARD -> ADJUST -> REPEAT.",
+    "terminology": [
+      {
+        "term": "Hidden Layer",
+        "definition": "Internal neurons between input and output that learn intermediate feature representations."
+      },
+      {
+        "term": "Backpropagation",
+        "definition": "Recursive chain-rule computation sending error gradients from output backward to earlier weights."
+      },
+      {
+        "term": "Gradient Descent",
+        "definition": "Updating each weight slightly in the opposite direction of its error slope."
+      }
+    ],
+    "keyResults": "Demonstrated hidden units automatically discovering meaningful internal features (such as symmetry and family-tree relationships) and solving XOR cleanly.",
+    "mathIntuition": "If a relay team finishes 2 seconds late, backpropagation measures how much each runner's split contributed to that 2-second gap so each runner adjusts proportionally.",
+    "limitations": "In 1986, deep networks were slow on CPUs, lacked massive labeled datasets, and suffered from vanishing gradients with sigmoid activations.",
+    "influence": "Remains the core training algorithm behind virtually every modern deep learning model, from CNNs to GPT-class Transformers.",
+    "connections": [
+      "minsky-papert-1969-perceptrons",
+      "krizhevsky-2012-alexnet"
+    ],
+    "examConcepts": [
+      "5-step Backprop loop",
+      "Hidden representations solve XOR",
+      "Mathematical gradient calculation (not conscious reasoning)"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Backpropagation understands why an answer is wrong like a human student.",
+        "reality": "It is pure calculus (chain rule + gradient descent) nudging millions of numbers to lower a loss score."
+      }
+    ],
+    "revisionSummary": "1986 Backprop: Propagates output error backward via chain rule so hidden layers learn useful representations."
+  },
+  {
+    "slug": "brin-page-1998-pagerank",
+    "order": 7,
+    "year": 1998,
+    "act": "Training to Scale (1986\u20132020)",
+    "moduleHref": "/notes/16-next-five-papers/next-five-papers-1986-2020",
+    "title": "The Anatomy of a Large-Scale Hypertextual Web Search Engine",
+    "authors": "Sergey Brin & Lawrence Page",
+    "venue": "Computer Networks and ISDN Systems, Vol. 30 (1998), pp. 107\u2013117",
+    "sourceFile": "Lecture 16/2 The anatomy of a large-scale hypertextual Web search engine.pdf & Notes",
+    "oneLineTakeaway": "Introduced PageRank\u2014treating web hyperlinks as weighted votes of authority\u2014and engineered scalable web crawling and indexing that turned the web into structured, searchable data.",
+    "historicalContext": "By 1998, the World Wide Web was exploding in size, and early search engines ranked pages mostly by keyword frequency\u2014making them easy to game with keyword stuffing.",
+    "problemSolved": "How to rank billions of web pages by genuine authority and relevance rather than word repetition alone.",
+    "whyPriorFailed": "Keyword-counting engines returned spammy pages that hid repeated keywords in white text and lacked link-graph quality signals.",
+    "mainIdea": "Model the web as a directed graph where a link from Page A to Page B is a vote for B\u2014and votes from already-authoritative pages carry far more weight (PageRank).",
+    "methodology": "Combined iterative PageRank computation over the web link graph with anchor-text indexing and distributed crawling/storage.",
+    "terminology": [
+      {
+        "term": "PageRank",
+        "definition": "Graph centrality score measuring a web page's authority from the quantity and quality of incoming links."
+      },
+      {
+        "term": "Web Crawler",
+        "definition": "Automated system fetching web pages and following links to build a searchable index."
+      },
+      {
+        "term": "Anchor Text",
+        "definition": "The clickable words inside a hyperlink describing the target page."
+      }
+    ],
+    "keyResults": "Launched Google's core search architecture and catalyzed massive web-scale crawling and indexing infrastructure.",
+    "mathIntuition": "Imagine a random web surfer clicking links forever: the pages they land on most often\u2014especially pages linked by other popular hubs\u2014have the highest PageRank.",
+    "limitations": "PageRank ranks existing pages by link structure; it does not understand natural language semantics or generate new answers.",
+    "influence": "Created web-scale crawling and digitized text corpora (CommonCrawl/web datasets) that later made GPT-scale language models possible.",
+    "connections": [
+      "lamport-1978-logical-clocks",
+      "brown-2020-gpt3"
+    ],
+    "examConcepts": [
+      "Hyperlinks as weighted authority votes",
+      "Why web-scale indexing enabled later LLM datasets",
+      "PageRank ranks web pages (did NOT train LLMs directly)"
+    ],
+    "misconceptions": [
+      {
+        "myth": "PageRank was a neural network or trained LLMs directly.",
+        "reality": "PageRank is a link-graph ranking algorithm for web search; its indirect legacy for AI was driving massive web-scale text digitization."
+      }
+    ],
+    "revisionSummary": "1998 Brin & Page: PageRank treated web links as weighted authority votes, driving web-scale text indexing."
+  },
+  {
+    "slug": "krizhevsky-2012-alexnet",
+    "order": 8,
+    "year": 2012,
+    "act": "Training to Scale (1986\u20132020)",
+    "moduleHref": "/notes/16-next-five-papers/next-five-papers-1986-2020",
+    "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+    "authors": "Alex Krizhevsky, Ilya Sutskever & Geoffrey E. Hinton",
+    "venue": "Advances in Neural Information Processing Systems (NeurIPS 2012)",
+    "sourceFile": "Lecture 16/3 ImageNet Classification with Deep Convolutional Neural Networks.pdf & Notes",
+    "oneLineTakeaway": "Ignited the modern Deep Learning boom by combining deep CNNs, 1.2M labeled ImageNet photos, ReLU/Dropout, and parallel GPU training to slash ImageNet top-5 error from ~26% to ~15%.",
+    "historicalContext": "Before 2012, computer vision relied heavily on hand-engineered edge/texture features (SIFT, HOG) and shallow classifiers, plateauing around ~26% top-5 error on ImageNet.",
+    "problemSolved": "Training a deep multi-layer convolutional neural network end-to-end on over a million high-resolution images without overfitting or taking months.",
+    "whyPriorFailed": "CPUs were too slow for deep convolutions, datasets were too small, and saturating activations + overfitting stalled deep architectures.",
+    "mainIdea": "Pair a deep 8-layer Convolutional Neural Network (AlexNet) with massive labeled data (ImageNet), ReLU activations, Dropout regularization, and parallel GPU matrix acceleration.",
+    "methodology": "Trained 5 convolutional + 3 fully connected layers (~60M parameters) across two NVIDIA GPUs using backpropagation and stochastic gradient descent.",
+    "terminology": [
+      {
+        "term": "CNN (Convolutional Neural Network)",
+        "definition": "Neural architecture using sliding spatial filters to detect edges, textures, and object parts."
+      },
+      {
+        "term": "ImageNet",
+        "definition": "Large-scale benchmark of >1 million labeled images across 1,000 object categories."
+      },
+      {
+        "term": "Top-5 Error",
+        "definition": "Percentage of test images where the true label is NOT among the model's top 5 guesses."
+      }
+    ],
+    "keyResults": "Achieved 15.3% (approx 15%) top-5 error on ILSVRC-2012 compared to ~26.2% for the second-best traditional method.",
+    "mathIntuition": "Instead of humans coding 'look for whiskers and pointy ears', GPUs let AlexNet learn a hierarchy of visual filters automatically\u2014edges in layer 1, shapes in layer 3, full objects at the top.",
+    "limitations": "Focused on static labeled image classification; sequential language modeling still suffered from RNN bottlenecks until 2017.",
+    "influence": "Proved the 'Deep Learning Trifecta' (Big Data + Deep Nets + GPUs) that powers all modern vision and AI hardware today.",
+    "connections": [
+      "rumelhart-1986-backpropagation",
+      "vaswani-2017-transformer"
+    ],
+    "examConcepts": [
+      "Deep Learning Trifecta: Data + Deep Architecture + GPUs",
+      "15% vs 26% are 2012 ImageNet top-5 error rates specifically",
+      "Why GPUs beat CPUs on parallel matrix math"
+    ],
+    "misconceptions": [
+      {
+        "myth": "15% vs 26% means modern AI has 85% general accuracy.",
+        "reality": "Those numbers are strictly the 2012 ImageNet top-5 classification error rates."
+      }
+    ],
+    "revisionSummary": "2012 AlexNet: Deep CNN + ImageNet + GPUs slashed ImageNet top-5 error (~26% -> ~15%), launching the GPU deep learning era."
+  },
+  {
+    "slug": "vaswani-2017-transformer",
+    "order": 9,
+    "year": 2017,
+    "act": "Training to Scale (1986\u20132020)",
+    "moduleHref": "/notes/16-next-five-papers/next-five-papers-1986-2020",
+    "title": "Attention Is All You Need",
+    "authors": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser & Illia Polosukhin",
+    "venue": "Advances in Neural Information Processing Systems (NeurIPS 2017)",
+    "sourceFile": "Lecture 16/4 Attention Is All You Need.pdf & Research paper 9 and 10 - Presentation.pdf",
+    "oneLineTakeaway": "Replaced sequential RNNs with the Transformer architecture powered by Self-Attention\u2014allowing all tokens in a sequence to interact directly and train in parallel on GPUs.",
+    "historicalContext": "By 2017, vision was booming on GPUs, but language models (RNNs/LSTMs) still read text one word at a time left-to-right\u2014making long-range context brittle and preventing full GPU parallelization.",
+    "problemSolved": "Modeling long-range dependencies across text while enabling massive parallel training across GPUs.",
+    "whyPriorFailed": "Recurrent networks process step t only after step t-1 finishes, creating a sequential bottleneck and fading memory over long paragraphs.",
+    "mainIdea": "Drop recurrence completely and use Multi-Head Self-Attention: every token compares itself directly against every other token in the context window simultaneously, weighted by relevance, with positional encodings preserving word order.",
+    "methodology": "Encoder-Decoder Transformer stacks using Scaled Dot-Product Attention (Query, Key, Value), Multi-Head Attention, residual connections, layer norm, and feed-forward layers.",
+    "terminology": [
+      {
+        "term": "Self-Attention",
+        "definition": "Mechanism computing pairwise relevance weights between every token and all other tokens in a sequence."
+      },
+      {
+        "term": "Positional Encoding",
+        "definition": "Numeric signal added to token embeddings so the parallel Transformer still knows word order."
+      },
+      {
+        "term": "Parallel Training",
+        "definition": "Processing all tokens of a training sequence simultaneously on GPUs instead of one word at a time."
+      }
+    ],
+    "keyResults": "Set new translation benchmarks (WMT 2014 EN-DE & EN-FR) at a fraction of previous training cost and became the backbone of all modern LLMs.",
+    "mathIntuition": "In 'The trophy didn't fit in the suitcase because it was too big', Self-Attention lets 'it' look straight at 'trophy' and 'fit' in one parallel step rather than marching word-by-word.",
+    "limitations": "Standard self-attention scales quadratically O(n^2) in sequence length, and attention weights are statistical relevance\u2014not conscious human comprehension.",
+    "influence": "Direct architecture behind GPT, BERT, Claude, Gemini, and modern multimodal AI.",
+    "connections": [
+      "krizhevsky-2012-alexnet",
+      "brown-2020-gpt3"
+    ],
+    "examConcepts": [
+      "Parallel processing vs RNN sequential bottleneck",
+      "Self-Attention resolves long-range pronoun/context links",
+      "Statistical relevance vs human understanding"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Self-Attention means the model consciously 'pays attention' like a human reader.",
+        "reality": "It is matrix multiplication producing relevance weights between token vectors."
+      }
+    ],
+    "revisionSummary": "2017 Transformer: Replaced sequential RNNs with parallel Self-Attention, unlocking massive GPU scaling for language."
+  },
+  {
+    "slug": "brown-2020-gpt3",
+    "order": 10,
+    "year": 2020,
+    "act": "Training to Scale (1986\u20132020)",
+    "moduleHref": "/notes/16-next-five-papers/next-five-papers-1986-2020",
+    "title": "Language Models are Few-Shot Learners (GPT-3)",
+    "authors": "Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah et al. (OpenAI)",
+    "venue": "Advances in Neural Information Processing Systems (NeurIPS 2020)",
+    "sourceFile": "Lecture 16/5 Language Models are Few-Shot Learners (2020).pdf & Research paper 9 and 10 - Presentation.pdf",
+    "oneLineTakeaway": "Scaled an autoregressive Transformer to 175 billion parameters and showed that scale unlocks zero-shot and few-shot task performance purely through prompting\u2014without updating model weights.",
+    "historicalContext": "In 2018\u20132019, pretrained models like BERT and GPT-2 still required task-specific fine-tuning on thousands of labeled examples for each new downstream task.",
+    "problemSolved": "Can scaling a single next-token-prediction Transformer eliminate task-specific retraining so one general model adapts from a plain-text prompt?",
+    "whyPriorFailed": "Smaller models lacked enough capacity and diverse training text to generalize across unseen tasks from just a few prompt examples.",
+    "mainIdea": "Scale decoder-only Transformer parameters (up to 175B) and web-scale training text; at inference time, supply instructions or a handful of input-output examples right inside the prompt (in-context learning) with zero gradient updates.",
+    "methodology": "Evaluated 8 model sizes up to 175B parameters across zero-shot (instruction only), one-shot (1 example), and few-shot (a few examples) prompts.",
+    "terminology": [
+      {
+        "term": "Parameters (175B)",
+        "definition": "Adjustable numerical weights learned during pretraining and kept frozen during chat/inference."
+      },
+      {
+        "term": "Zero-Shot / Few-Shot Prompting",
+        "definition": "Guiding a frozen model to perform a task using only instructions or a few examples in the prompt."
+      },
+      {
+        "term": "In-Context Learning",
+        "definition": "Adaptation occurring purely inside the prompt context window without modifying weights."
+      }
+    ],
+    "keyResults": "Demonstrated dramatic accuracy gains from scale and competitive performance on translation, QA, and reasoning tasks via few-shot prompting alone.",
+    "mathIntuition": "After seeing billions of patterns across internet text, showing 3 examples in a prompt shifts the next-token probability distribution toward completing the 4th example in the exact same style.",
+    "limitations": "Prone to hallucinations, struggles with multi-step arithmetic/logic without tools, and inherits biases from internet training data.",
+    "influence": "Sparked the modern prompt-engineering and generative AI era leading directly to instruction-tuned chat LLMs (C17).",
+    "connections": [
+      "vaswani-2017-transformer",
+      "shannon-1948-communication-theory"
+    ],
+    "examConcepts": [
+      "175B parameters & scale hypothesis",
+      "Zero/Few-shot prompting does NOT update weights",
+      "Link to C17 Inside the Modern LLM"
+    ],
+    "misconceptions": [
+      {
+        "myth": "Few-shot prompting retrains GPT-3's weights during your conversation.",
+        "reality": "Weights stay completely frozen; examples only condition the next-token probabilities inside the context window."
+      }
+    ],
+    "revisionSummary": "2020 GPT-3: 175B-parameter Transformer unlocked zero/few-shot prompting in-context without updating weights."
+  }
+]

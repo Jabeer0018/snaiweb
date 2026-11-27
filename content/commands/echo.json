@@ -26,7 +26,7 @@
     "touch"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "File & Directory Management",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -37,5 +37,21 @@
     "append",
     ">",
     ">>"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `echo` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: echo (if not installed or missing from PATH)"
+  ],
+  "beforeAfterState": {
+    "before": "Filesystem/permissions are in their initial state prior to command execution.",
+    "after": "Target file or directory state is updated by `echo` as specified."
+  }
 }

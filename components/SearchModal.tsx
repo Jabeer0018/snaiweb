@@ -29,7 +29,7 @@ function highlightMatch(text: string, query: string) {
     regex.test(part) ? (
       <mark
         key={idx}
-        className="rounded bg-accent-muted px-0.5 text-accent font-medium"
+        className="rounded bg-elevated px-0.5 font-semibold text-foreground underline decoration-border-strong"
       >
         {part}
       </mark>
@@ -45,6 +45,7 @@ const typeIcon: Record<SearchDocument["type"], typeof BookOpen> = {
   command: Terminal,
   revision: Sparkles,
   resource: FileText,
+  paper: BookOpen,
 };
 
 export function SearchModal({ open, onClose, documents }: SearchModalProps) {
@@ -177,7 +178,7 @@ export function SearchModal({ open, onClose, documents }: SearchModalProps) {
                         active ? "bg-elevated" : "hover:bg-elevated/60"
                       )}
                     >
-                      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-2">
                           <span className="truncate text-sm font-medium text-foreground">

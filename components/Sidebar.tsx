@@ -10,8 +10,7 @@ import {
   ClipboardCheck,
   FileText,
   FolderOpen,
-  HelpCircle,
-  LayoutDashboard,
+  LayoutGrid,
   Play,
   Sparkles,
   Terminal,
@@ -27,15 +26,14 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/notes", label: "Course Notes", icon: BookOpen },
-  { href: "/commands", label: "Command Library", icon: Terminal },
+  { href: "/", label: "Overview", icon: LayoutGrid },
+  { href: "/notes", label: "Learn", icon: BookOpen },
+  { href: "/commands", label: "Commands", icon: Terminal },
   { href: "/playground", label: "Playground", icon: Play },
-  { href: "/mcqs", label: "Theory MCQs", icon: HelpCircle },
   { href: "/mock-tests", label: "Mock Tests", icon: ClipboardCheck },
-  { href: "/revision", label: "Quick Revision", icon: Sparkles },
-  { href: "/saved", label: "Saved Content", icon: Bookmark },
+  { href: "/revision", label: "Revision", icon: Sparkles },
   { href: "/resources", label: "Resources", icon: FolderOpen },
+  { href: "/saved", label: "Saved", icon: Bookmark },
 ];
 
 export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
@@ -71,7 +69,7 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
           onClick={onNavigate}
           className="flex items-center gap-2.5 overflow-hidden"
         >
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-accent/40 bg-accent-muted font-mono text-xs font-bold text-accent">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-border-strong bg-background font-mono text-xs font-bold text-foreground">
             SN
           </div>
           {!collapsed && (
@@ -80,7 +78,7 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
                 SNAI Course
               </p>
               <p className="truncate text-[11px] text-subtle">
-                Learn. Practise. Understand.
+                Learn. Understand. Master.
               </p>
             </div>
           )}
@@ -88,8 +86,8 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
       </div>
 
       {/* Main Nav */}
-      <div className="flex-1 overflow-y-auto px-2.5 py-4 space-y-6">
-        <nav className="space-y-1">
+      <div className="flex-1 space-y-6 overflow-y-auto px-2.5 py-4">
+        <nav className="space-y-0.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active =
@@ -106,15 +104,15 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
                 className={cn(
                   "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors",
                   active
-                    ? "bg-elevated font-medium text-foreground"
-                    : "text-muted hover:bg-elevated/60 hover:text-foreground",
+                    ? "bg-background font-medium text-foreground shadow-sm border border-border"
+                    : "text-muted hover:bg-elevated hover:text-foreground border border-transparent",
                   collapsed && "justify-center px-2"
                 )}
               >
                 <Icon
                   className={cn(
                     "h-4 w-4 shrink-0",
-                    active ? "text-accent" : "text-subtle"
+                    active ? "text-foreground" : "text-subtle"
                   )}
                 />
                 {!collapsed && <span className="truncate">{item.label}</span>}
@@ -125,7 +123,7 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
 
         {/* Module Tree */}
         {!collapsed && (
-          <div className="space-y-2">
+          <div className="space-y-2 border-t border-border pt-4">
             <p className="px-2.5 text-[11px] font-semibold uppercase tracking-wider text-subtle">
               Modules
             </p>
@@ -134,7 +132,7 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
                 Awaiting course material
               </p>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-0.5">
                 {modules.map((mod) => {
                   const isOpen = Boolean(expandedModules[mod.slug]);
                   const isModuleActive = pathname.startsWith(
@@ -183,7 +181,7 @@ export function Sidebar({ modules, collapsed, onNavigate }: SidebarProps) {
                                 className={cn(
                                   "flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-colors",
                                   active
-                                    ? "bg-accent-muted font-medium text-accent"
+                                    ? "bg-background font-medium text-foreground"
                                     : "text-muted hover:text-foreground"
                                 )}
                               >

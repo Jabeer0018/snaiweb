@@ -1,0 +1,47 @@
+{
+  "slug": "man",
+  "name": "man",
+  "purpose": "Manual — display the built-in reference manual page for a terminal command.",
+  "syntax": "man <command>",
+  "explanation": "Opens scrollable documentation detailing a command's syntax, flags, and exit codes. Press `q` to quit.",
+  "parameters": [
+    {
+      "flag": "<command>",
+      "description": "Command name to look up.",
+      "required": true
+    }
+  ],
+  "example": "man ls",
+  "expectedOutput": "(Opens interactive manual page for ls; press q to exit)",
+  "outputVerified": false,
+  "explanationOfOutput": "Displays offline system documentation for `ls`.",
+  "whenToUse": "When you need to verify exact flags for a command offline.",
+  "commonMistakes": [
+    "Forgetting to press `q` to exit the pager."
+  ],
+  "commonErrors": [
+    "No manual entry for <command>"
+  ],
+  "relatedCommands": [
+    "which",
+    "ls"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Terminal & Navigation",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "man",
+    "manual",
+    "help"
+  ]
+}

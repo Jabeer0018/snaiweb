@@ -10,6 +10,7 @@ import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { TableOfContents } from "@/components/TableOfContents";
 import { BookmarkButton } from "@/components/BookmarkButton";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { LessonInteractiveLab } from "@/components/LessonInteractiveLab";
 import { formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -121,6 +122,9 @@ export default async function TopicPage({
 
         {/* Content */}
         <MarkdownRenderer content={topic.content} />
+
+        {/* In-Lesson Interactive Experiment */}
+        <LessonInteractiveLab moduleSlug={moduleSlug} />
 
         {/* Prev / Next Navigation */}
         <nav

@@ -169,7 +169,7 @@ export function MockTestsHub({ exams }: MockTestsHubProps) {
                 {inProg ? (
                   <Link
                     href={`/mock-tests/${exam.id}`}
-                    className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-2 text-xs font-medium text-white hover:bg-accent-hover"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-2 text-xs font-medium text-accent-fg hover:bg-accent-hover"
                   >
                     <Play className="h-3.5 w-3.5" />
                     Resume Examination
@@ -177,7 +177,7 @@ export function MockTestsHub({ exams }: MockTestsHubProps) {
                 ) : (
                   <Link
                     href={`/mock-tests/${exam.id}`}
-                    className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-2 text-xs font-medium text-white hover:bg-accent-hover"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3.5 py-2 text-xs font-medium text-accent-fg hover:bg-accent-hover"
                   >
                     {attempts.length > 0 ? (
                       <>

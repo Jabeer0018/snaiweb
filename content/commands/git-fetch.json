@@ -1,0 +1,46 @@
+{
+  "slug": "git-fetch",
+  "name": "git fetch",
+  "purpose": "Download new commits and branch info from a remote without merging them into your working files.",
+  "syntax": "git fetch [remote]",
+  "explanation": "Unlike `git pull` (which fetches AND merges), `git fetch` safely downloads remote updates so you can inspect them before merging.",
+  "parameters": [
+    {
+      "flag": "[remote]",
+      "description": "Remote name (defaults to `origin`)."
+    }
+  ],
+  "example": "git fetch origin",
+  "expectedOutput": "From https://github.com/NST/test\n   1a2b3c4..5d6e7f8  main -> origin/main",
+  "outputVerified": false,
+  "explanationOfOutput": "Updates remote-tracking branch `origin/main` without touching your local `main` working tree.",
+  "whenToUse": "When you want to check for remote updates without immediately altering local files.",
+  "commonMistakes": [
+    "Expecting `git fetch` to update files in your working directory (use `git pull` or `git merge` after)."
+  ],
+  "commonErrors": [
+    "fatal: 'origin' does not appear to be a git repository"
+  ],
+  "relatedCommands": [
+    "git-pull",
+    "git-merge"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows (Git)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "fetch",
+    "remote"
+  ]
+}

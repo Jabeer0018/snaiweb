@@ -1,0 +1,47 @@
+{
+  "slug": "git-diff",
+  "name": "git diff",
+  "purpose": "Show line-by-line differences between working directory files, staging area, or commits.",
+  "syntax": "git diff\ngit diff --staged",
+  "explanation": "Displays exact added (`+`) and removed (`-`) lines before you stage or commit.",
+  "parameters": [
+    {
+      "flag": "--staged",
+      "description": "Show changes already staged with `git add` compared to last commit."
+    }
+  ],
+  "example": "git diff",
+  "expectedOutput": "-old line\n+new line",
+  "outputVerified": false,
+  "explanationOfOutput": "Lines starting with `-` were removed; lines starting with `+` were added.",
+  "whenToUse": "Before `git commit` to review your exact code edits.",
+  "commonMistakes": [
+    "Running `git diff` after `git add` and seeing nothing because staged changes require `--staged`."
+  ],
+  "commonErrors": [
+    "fatal: not a git repository"
+  ],
+  "relatedCommands": [
+    "git-status",
+    "git-add",
+    "git-commit"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows (Git)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "diff",
+    "changes"
+  ]
+}

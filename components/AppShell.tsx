@@ -1,26 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ModuleMeta, SearchDocument } from "@/lib/types";
-import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
 import { MobileNav } from "./MobileNav";
 import { SearchModal } from "./SearchModal";
+import { ContextualModuleSidebar } from "./ContextualModuleSidebar";
+import { AuthUserSummary } from "./UserMenu";
+import { setActiveUserId } from "@/lib/storage";
 
 interface AppShellProps {
   modules: ModuleMeta[];
   searchDocuments: SearchDocument[];
+  user?: AuthUserSummary | null;
   children: React.ReactNode;
 }
 
 export function AppShell({
   modules,
   searchDocuments,
+  user,
   children,
 }: AppShellProps) {
-  const [collapsed, setCollapsed] = useState(false);
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+
+  setActiveUserId(user?.id ?? null);
+
+  const isPublicAuthPage =
+    pathname === "/login" || pathname === "/privacy" || pathname === "/terms";
+
+  const isInsideModule = modules.some((m) =>
+    pathname.startsWith(`/notes/${m.slug}`)
+  );
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -33,40 +47,36 @@ export function AppShell({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      {/* Desktop Sidebar */}
-      <div className="hidden lg:block lg:sticky lg:top-0 lg:h-screen lg:shrink-0">
-        <Sidebar modules={modules} collapsed={collapsed} />
-      </div>
+  if (isPublicAuthPage && !user) {
+    return <>{children}</>;
+  }
 
-      {/* Mobile Drawer */}
+  return (
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <Navbar
+        onOpenMobileNav={() => setMobileOpen(true)}
+        onOpenSearch={() => setSearchOpen(true)}
+        user={user}
+      />
+
       <MobileNav
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         modules={modules}
       />
 
-      {/* Main Column */}
-      <div className="flex min-w-0 flex-1 flex-col">
-        <Navbar
-          collapsed={collapsed}
-          onToggleCollapse={() => setCollapsed((c) => !c)}
-          onOpenMobileNav={() => setMobileOpen(true)}
-          onOpenSearch={() => setSearchOpen(true)}
-        />
+      <div className="mx-auto flex w-full max-w-7xl flex-1 gap-8 px-4 py-8 sm:px-6 lg:px-8">
+        {isInsideModule && <ContextualModuleSidebar modules={modules} />}
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-8">
-          {children}
-        </main>
-
-        <footer className="border-t border-border px-4 py-5 text-xs text-subtle sm:px-8">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2">
-            <span>SNAI Course — Student Knowledge Hub</span>
-            <span>Learn. Practise. Understand.</span>
-          </div>
-        </footer>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
+
+      <footer className="border-t border-border px-4 py-6 text-xs text-subtle sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2">
+          <span>SNAI Course — Digital Textbook · Practical Lab · Mock Exam Centre</span>
+          <span className="font-mono">Learn. Understand. Master.</span>
+        </div>
+      </footer>
 
       <SearchModal
         open={searchOpen}

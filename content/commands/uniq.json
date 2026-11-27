@@ -1,0 +1,47 @@
+{
+  "slug": "uniq",
+  "name": "uniq",
+  "purpose": "Filter out or count adjacent duplicate lines in sorted text.",
+  "syntax": "sort <file> | uniq [options]",
+  "explanation": "Removes repeated adjacent lines. Because `uniq` only checks neighbouring lines, input is almost always sorted first with `sort`.",
+  "parameters": [
+    {
+      "flag": "-c",
+      "description": "Prefix each unique line with its occurrence count."
+    }
+  ],
+  "example": "sort errors.log | uniq -c",
+  "expectedOutput": "  4 Timeout\n  1 DiskFull",
+  "outputVerified": false,
+  "explanationOfOutput": "Groups identical sorted lines and shows how many times each occurred.",
+  "whenToUse": "To deduplicate or count repeated lines in logs or lists.",
+  "commonMistakes": [
+    "Running `uniq` on unsorted input and wondering why non-adjacent duplicates remain."
+  ],
+  "commonErrors": [
+    "uniq: file: No such file or directory"
+  ],
+  "relatedCommands": [
+    "sort",
+    "wc",
+    "grep"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "uniq",
+    "duplicates",
+    "pipe"
+  ]
+}

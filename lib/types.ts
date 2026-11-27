@@ -49,9 +49,18 @@ export interface CommandEntry {
   example: string;
   expectedOutput?: string;
   outputVerified?: boolean;
+  explanationOfOutput?: string;
+  beforeAfterState?: {
+    before: string;
+    after: string;
+  };
   whenToUse: string;
   commonMistakes: string[];
+  commonErrors?: string[];
   relatedCommands: string[];
+  platformCompatibility?: string;
+  relevantConcepts?: { title: string; href: string }[];
+  isSupplementary?: boolean;
   moduleSlug?: string;
   moduleTitle?: string;
   category: string;
@@ -110,7 +119,7 @@ export interface ChangelogEntry {
 
 export interface SearchDocument {
   id: string;
-  type: "module" | "topic" | "command" | "revision" | "resource";
+  type: "module" | "topic" | "command" | "revision" | "resource" | "paper";
   title: string;
   subtitle?: string;
   excerpt: string;
@@ -119,12 +128,40 @@ export interface SearchDocument {
   keywords: string[];
 }
 
+export interface ResearchPaper {
+  slug: string;
+  order: number;
+  year: number;
+  act: "Foundations (1936–1978)" | "Training to Scale (1986–2020)";
+  moduleHref: string;
+  title: string;
+  authors: string;
+  venue: string;
+  sourceFile: string;
+  oneLineTakeaway: string;
+  historicalContext: string;
+  problemSolved: string;
+  whyPriorFailed: string;
+  mainIdea: string;
+  methodology: string;
+  terminology: { term: string; definition: string }[];
+  keyResults: string;
+  mathIntuition: string;
+  limitations: string;
+  influence: string;
+  connections: string[];
+  examConcepts: string[];
+  misconceptions: { myth: string; reality: string }[];
+  revisionSummary: string;
+}
+
 export interface CourseStats {
   totalModules: number;
   totalTopics: number;
   totalCommands: number;
   totalRevisionItems: number;
   totalResources: number;
+  totalMockTests?: number;
 }
 
 export interface PlaygroundChallenge {

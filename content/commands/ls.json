@@ -32,7 +32,7 @@
     "chmod"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "Terminal & Navigation",
   "source": "System & AI Essentials (C03, C06)",
   "addedAt": "2026-11-26",
@@ -42,5 +42,17 @@
     "permissions",
     "hidden files",
     "-la"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `ls` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: ls (if not installed or missing from PATH)"
   ]
 }

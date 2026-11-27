@@ -1,0 +1,49 @@
+{
+  "slug": "zsh",
+  "name": "zsh",
+  "purpose": "Z Shell \u2014 the default interactive command-line shell on modern macOS.",
+  "syntax": "zsh [script.sh]",
+  "explanation": "Reads commands typed in the Terminal, expands wildcards/variables (`$PATH`), and launches programs\u2014or executes a shell script file.",
+  "parameters": [
+    {
+      "flag": "-c '<cmd>'",
+      "description": "Executes the quoted command string directly and exits."
+    }
+  ],
+  "example": "echo $SHELL && zsh --version",
+  "expectedOutput": "/bin/zsh\nzsh 5.9 (arm64-apple-darwin)",
+  "outputVerified": false,
+  "whenToUse": "Understanding which shell interprets your commands on macOS (`zsh`) vs Ubuntu (`bash`).",
+  "commonMistakes": [
+    "Confusing the Terminal window app with the `zsh` shell program running inside it."
+  ],
+  "relatedCommands": [
+    "bash",
+    "which",
+    "echo"
+  ],
+  "moduleSlug": "04-interfaces",
+  "moduleTitle": "C04 \u2014 Interfaces (CLI, GUI, API)",
+  "category": "Shell Commands",
+  "source": "da3899dc5811461a9d8d068d4afcf4f5.pdf (C04, p. 15)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "zsh",
+    "shell",
+    "macos",
+    "terminal",
+    "cli"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "Default on macOS; installable on GNU/Linux",
+  "explanationOfOutput": "Prints the active login shell path and installed Z Shell version.",
+  "relevantConcepts": [
+    {
+      "title": "C04 \u2014 CLI, GUI, API & Error Feedback",
+      "href": "/notes/04-interfaces/cli-gui-api"
+    }
+  ],
+  "commonErrors": [
+    "`zsh: command not found: <cmd>` (shell error when `<cmd>` is missing from `$PATH`)"
+  ]
+}

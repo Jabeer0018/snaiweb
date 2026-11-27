@@ -93,132 +93,138 @@
       "testId": "mock-10",
       "number": 1,
       "type": "mcq",
-      "primaryConcept": "Linux Permissions",
+      "primaryConcept": "System Logs & Privacy (C12)",
       "secondaryConcepts": [
-        "Directory Traversal",
-        "Terminal Commands"
+        "PII Redaction",
+        "macOS log show"
       ],
       "difficulty": "Intermediate",
       "points": 4,
-      "question": "In project `labsvc_10/`, the folder `secure/` has octal mode `555` and contains `report.txt` with mode `644`. User `dev10` (the owner) runs `rm labsvc_10/secure/report.txt` from the parent directory. What happens and why?",
-      "codeBlock": "ls -ld labsvc_10/secure\ndr-xr-xr-x  dev10  staff  secure\nls -l labsvc_10/secure/report.txt\n-rw-r--r--  dev10  staff  report.txt",
+      "question": "A student runs log show --last 2h > debug.txt on macOS to investigate why their laptop woke up at 3:00 a.m. Before pushing debug.txt to a public GitHub repository for peer review, what is the critical Step 5 check taught in Lecture 12?",
+      "codeBlock": null,
       "options": [
-        "It succeeds because the owner always has implicit write permission on every file they own.",
-        "It succeeds because `report.txt` has read/write bits enabled for the owner.",
-        "It fails with `Is a directory` unless `rm -r` is passed.",
-        "It fails with Permission denied because deleting a file requires write (`w`) permission on the parent directory `secure/`, not just on `report.txt`."
+        "Compress debug.txt with gzip so GitHub accepts the commit",
+        "Inspect and redact Personally Identifiable Information (usernames, hostnames, MAC/IP addresses, Wi-Fi SSIDs) from the log lines",
+        "Convert the file to .md so git diff renders timestamps cleanly",
+        "Run chmod 444 debug.txt so GitHub marks the file read-only on remote"
       ],
-      "correctAnswer": 3,
-      "explanation": "Removing a file modifies the directory entry list inside `secure/`. Because `secure/` has mode `555` (no write bit `2` for owner), `rm` fails with Permission denied regardless of `report.txt`'s permissions.",
+      "correctAnswer": 1,
+      "explanation": "System logs routinely record machine hostnames, local usernames, Wi-Fi SSIDs, and IP/MAC addresses. Worksheet 12a emphasizes inspecting and redacting identifying information before sharing or committing logs.",
       "incorrectOptionExplanations": [
-        "Owner cannot bypass missing directory write permission without changing directory permissions via `chmod`.",
-        "File permissions control reading/writing file contents, not unlinking entries from a read-only directory.",
-        "`report.txt` is a regular file, so `Is a directory` does not apply.",
-        "Correct explanation."
+        "Compressing with `gzip` does not remove sensitive PII; anyone cloning the repo can decompress it.",
+        "Correct \u2014 redacting PII prevents leaking private machine, network, and user identifiers.",
+        "File extension changes do not sanitize sensitive values inside log lines.",
+        "`chmod 444` only sets local read-only permissions; GitHub commits remain publicly readable."
       ],
       "noteRef": {
-        "title": "C06 \u2014 Filesystem, Permissions & PATH",
-        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+        "title": "C12 \u2014 System Logs & Privacy",
+        "href": "/notes/12-system-logs-releases/system-logs-and-analysis"
       },
-      "sourceRef": "C06 \u2014 OS & the Filesystem"
+      "sourceRef": "worksheet-12a.pdf (Lecture 12, Step 5)"
     },
     {
       "id": "mock-10-q02",
       "testId": "mock-10",
       "number": 2,
       "type": "mcq",
-      "primaryConcept": "Git & GitHub",
+      "primaryConcept": "Iterative Releases & CLI Arguments (C12)",
       "secondaryConcepts": [
-        "Output Redirection",
-        "CLI"
+        "Knight Capital Case",
+        "sys.argv"
       ],
       "difficulty": "Intermediate",
       "points": 4,
-      "question": "Inside an initialized Git repo for `labsvc_10`, a student runs the sequence below. How many commits exist and what is inside `notes.txt` after the final command?",
-      "codeBlock": "echo \"v1\" > notes.txt\ngit add notes.txt\ngit commit -m \"Init labsvc_10\"\necho \"v2\" > notes.txt\ngit status --short",
+      "question": "A log analyzer script runs position = sys.argv[2] and is invoked via python3 summary.py mylog.txt 4. Using position directly to index fields[position] raises a TypeError. Why, and what real-world failure lesson does Worksheet 12b pair with cross-machine release discipline?",
+      "codeBlock": null,
       "options": [
-        "2 commits exist; `notes.txt` contains `v1` followed by `v2`.",
-        "1 commit exists; `notes.txt` contains only `v2`, and `notes.txt` is shown as Modified (unstaged) in `git status`.",
-        "1 commit exists; `notes.txt` contains `v1`, because `>` cannot overwrite committed files.",
-        "0 commits exist because `git add .` was not used."
+        "sys.argv[2] is None until chmod +x is set; paired with Turing's Halting Problem",
+        "sys.argv[2] arrives as the string \"4\" requiring int(sys.argv[2]); paired with Knight Capital Group's 2012 $460M loss from an un-updated 8th server",
+        "sys.argv is 0-indexed so 4 is at sys.argv[1]; paired with PageRank link drift",
+        "Python dictionaries cannot store integer keys; paired with ELIZA's pattern rules"
       ],
       "correctAnswer": 1,
-      "explanation": "Only one `git commit` ran. The second `echo \"v2\" > notes.txt` uses single `>` (overwrite) in the working directory without `git add` or `git commit`, leaving `notes.txt` modified and unstaged.",
+      "explanation": "All CLI arguments in `sys.argv` arrive as strings (`\"4\"`), so `int(sys.argv[2])` is required before indexing a list. Worksheet 12b uses Knight Capital Group (August 2012, 1 of 8 servers missed -> dormant Power Peg woke -> $460M loss) to prove why version-controlled, verified releases matter.",
       "incorrectOptionExplanations": [
-        "Single `>` overwrites rather than appends, and no second commit was executed.",
-        "Correct explanation.",
-        "Shell redirection `>` modifies the working tree file freely regardless of Git commits.",
-        "`git add notes.txt` staged the file properly for the first commit."
+        "`chmod +x` does not change `sys.argv` types.",
+        "Correct \u2014 CLI arguments arrive as strings, and Knight Capital demonstrated the catastrophic cost of inconsistent server deployments.",
+        "`sys.argv[0]` is `summary.py`, `sys.argv[1]` is `mylog.txt`, and `sys.argv[2]` is `\"4\"`.",
+        "Python dictionaries can store integer keys; the `TypeError` comes from list indexing with a string."
       ],
       "noteRef": {
-        "title": "C09 \u2014 Git & GitHub Workflow",
-        "href": "/notes/09-git-github/git-workflow-and-github"
+        "title": "C12 \u2014 Iterative Releases & sys.argv",
+        "href": "/notes/12-system-logs-releases/iterative-releases-and-shipping"
       },
-      "sourceRef": "C09 \u2014 Git & GitHub Collaboration"
+      "sourceRef": "worksheet-12b.pdf (Lecture 12, pp. 1\u20133)"
     },
     {
       "id": "mock-10-q03",
       "testId": "mock-10",
       "number": 3,
       "type": "mcq",
-      "primaryConcept": "Hardware & Memory",
+      "primaryConcept": "Tool Discovery & Python Libraries (C13)",
       "secondaryConcepts": [
-        "AI Parallelism"
+        "5-Step Method",
+        "pip show",
+        "3 AI Rules"
       ],
       "difficulty": "Foundational",
       "points": 2,
-      "question": "A research team trains an image classifier for `labsvc_10` on a system with a 4-core CPU and an SSD, but training takes hours. Switching to a GPU cuts training time dramatically. Which architectural property explains this speedup?",
+      "question": "In Worksheet 13a/13b, students learn unfamiliar CLI tools (ffmpeg, qrencode) and Python libraries (qrcode, Pillow) without tutorials. Why does Step 5 instruct students to 'break it on purpose' while calm, and what does pip show qrcode reveal?",
       "options": [
-        "GPUs have 4 ultra-fast sequential cores optimised for branching `if/else` logic.",
-        "GPUs have higher-capacity non-volatile flash storage than SSDs.",
-        "GPUs contain thousands of smaller cores designed to execute massive matrix/pixel operations in parallel.",
-        "GPUs bypass the operating system and compile Python directly to SSD sectors."
+        "To corrupt site-packages so pip reinstalls faster; pip show prints the PyPI password",
+        "To learn how the tool reports invalid inputs/flags before an emergency, and pip show reveals version, dependencies (like Pillow), and disk Location:",
+        "To bypass sudo prompts during apt install; pip show compiles C extensions",
+        "To let AI auto-rewrite the library source; pip show opens a browser GUI"
       ],
-      "correctAnswer": 2,
-      "explanation": "Deep neural network training relies on massive parallel numerical calculations\u2014matching GPU architecture (thousands of parallel cores) rather than CPU architecture (few fast sequential cores).",
+      "correctAnswer": 1,
+      "explanation": "Deliberately passing a bad filename or missing flag teaches you how a tool reports errors while nothing is at stake. `pip show <pkg>` prints metadata including dependencies (`Requires: pillow`) and the exact `Location:` on disk.",
       "incorrectOptionExplanations": [
-        "Having few fast sequential cores describes a CPU, not a GPU.",
-        "GPUs do not serve as non-volatile secondary storage.",
-        "Correct explanation.",
-        "GPUs do not compile Python to SSD sectors or bypass OS device drivers."
+        "Step 5 is about reading error output, not corrupting packages.",
+        "Correct \u2014 deliberate failure builds error-reading fluency, and `pip show` reveals disk location and dependencies.",
+        "Neither `pip show` nor Step 5 bypasses `sudo` or compiles C code.",
+        "`pip show` outputs plain-text metadata in the terminal."
       ],
       "noteRef": {
-        "title": "C02 \u2014 Hardware & Memory",
-        "href": "/notes/02-hardware-software/hardware-and-memory"
+        "title": "C13 \u2014 Python Libraries & 3 AI Rules",
+        "href": "/notes/13-learning-new-tools/python-libraries-and-ai-rules"
       },
-      "sourceRef": "C02 \u2014 Hardware & Software / C14"
+      "sourceRef": "worksheet-13a.pdf & worksheet-13b.pdf (Lecture 13)",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q04",
       "testId": "mock-10",
       "number": 4,
       "type": "mcq",
-      "primaryConcept": "Terminal & CLI",
+      "primaryConcept": "Inside the Modern LLM (C17)",
       "secondaryConcepts": [
-        "File Management"
+        "Tokenization",
+        "Next-Token Prediction",
+        "Parameters"
       ],
       "difficulty": "Foundational",
       "points": 2,
-      "question": "In `labsvc_10/`, `log.txt` initially holds `START`. A script runs `echo \"MID\" >> log.txt`, then `echo \"END\" > log.txt`, and finally `cat log.txt`. What is printed?",
+      "question": "According to Lecture 17 (Inside the Modern LLM), which statement accurately describes what a Large Language Model is trained to do and why 'Large' has no fixed parameter cutoff?",
       "options": [
-        "`END`",
-        "`START\\nEND`",
-        "`START\\nMID\\nEND`",
-        "`MID\\nEND`"
+        "An LLM is officially defined as any model with >= 10 billion parameters that searches an internal database of memorized web pages",
+        "An LLM is a Transformer neural network trained to predict the next token using numerical Token IDs and billions of learned parameters; 'Large' is a moving label as compute scales",
+        "An LLM converts English directly into ASCII bytes and runs if/else grammar rules without numerical embeddings",
+        "An LLM updates its parameters permanently every time a user writes a few-shot prompt"
       ],
-      "correctAnswer": 0,
-      "explanation": "`>>` appends `MID` (`START\\nMID`), but the final `echo \"END\" > log.txt` uses single `>`, which overwrites the entire file with `END`.",
+      "correctAnswer": 1,
+      "explanation": "C17 defines an LLM as a very large Transformer trained on massive text corpora to predict the next token, converting text to numeric tokens/IDs/embeddings. 'Large' is a moving label rather than a fixed scientific boundary.",
       "incorrectOptionExplanations": [
-        "Correct explanation.",
-        "`>` replaces the entire file rather than keeping `START`.",
-        "Single `>` on the second echo erases prior content.",
-        "Single `>` overwrites `START` and `MID`."
+        "There is no fixed parameter threshold, and LLMs generate token-by-token rather than querying a text database.",
+        "Correct \u2014 next-token prediction over numerical tokens/embeddings with moving scale.",
+        "LLMs use learned embeddings and billions of parameters (Coding 2.0), not `if/else` grammar rules.",
+        "Prompting conditions in-context predictions without updating trained weights."
       ],
       "noteRef": {
-        "title": "C03 \u2014 Terminal & CLI",
-        "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+        "title": "C17 \u2014 Inside the Modern LLM",
+        "href": "/notes/17-modern-llm/inside-the-modern-llm"
       },
-      "sourceRef": "C03 \u2014 Terminal & CLI Commands"
+      "sourceRef": "Inside the Modern LLM Part 1- Presentation.pdf (pp. 7\u201315)",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q05",
@@ -258,130 +264,138 @@
       "testId": "mock-10",
       "number": 6,
       "type": "mcq",
-      "primaryConcept": "OS & Process Management",
+      "primaryConcept": "Foundational Papers: Turing & Shannon (C15)",
       "secondaryConcepts": [
-        "Signals",
-        "Resource Contention"
+        "Universal Turing Machine",
+        "Bit & Entropy"
       ],
       "difficulty": "Intermediate",
       "points": 4,
-      "question": "Process `3270` (`python3 worker_10.py`) is consuming 99% CPU on a single-core VM. An admin runs `kill 3270` and waits, but the process catches `SIGTERM` and keeps running. What happens to other apps on the VM, and which command forces immediate termination?",
+      "question": "How do Alan Turing's 1936 paper and Claude Shannon's 1937/1948 work together to form the theoretical foundation of modern digital computers?",
       "options": [
-        "The VM freezes permanently; run `rm -f {pid}`.",
-        "Other apps continue running slowly via OS timeslicing; run `kill -9 {pid}` to send `SIGKILL (9)`.",
-        "Other apps crash due to shared RAM; run `ps aux` to terminate it.",
-        "The OS automatically reboots after 30 ms; run `htop`."
+        "Turing built the first electronic GPU in 1936, while Shannon invented Python compilers in 1948",
+        "Turing proved one Universal Machine can simulate any computable algorithm from stored instructions, while Shannon mapped Boolean logic to switches and defined the 'bit' for all digital data",
+        "Turing solved the Halting Problem for all programs, while Shannon proved text compression cannot work on images",
+        "Turing created PageRank for libraries, while Shannon designed 3-layer neural networks"
       ],
       "correctAnswer": 1,
-      "explanation": "OS timeslicing keeps other processes scheduled (slower, no crash), and isolated RAM protects them. When `SIGTERM (15)` is ignored, `kill -9 <PID>` sends `SIGKILL (9)` to force immediate exit.",
+      "explanation": "Turing (1936) formalized computation and the Universal Turing Machine (and proved the Entscheidungsproblem/Halting Problem unsolvable), while Shannon (1937/1948) bridged Boolean algebra to physical switches and defined the bit as the universal unit of information.",
       "incorrectOptionExplanations": [
-        "`rm` deletes files, not processes, and timeslicing prevents a total OS crash.",
-        "Correct explanation.",
-        "Processes have isolated RAM spaces; `ps aux` only lists processes.",
-        "Timeslicing does not reboot the OS."
+        "Turing's 1936 machine was a mathematical model, not a physical GPU; Python appeared in 1991.",
+        "Correct \u2014 stored-program universal computation (Turing) + Boolean switches & universal bit (Shannon).",
+        "Turing proved the Halting Problem is UNSOLVABLE, and Shannon's bit applies universally to all data.",
+        "PageRank was 1998 (Brin & Page), and multi-layer neural nets came decades later."
       ],
       "noteRef": {
-        "title": "C05 \u2014 OS & Process Management",
-        "href": "/notes/05-os-process-management/processes-timeslicing-memory"
+        "title": "Paper 1 \u2014 Turing (1936)",
+        "href": "/papers/turing-1936-computable-numbers"
       },
-      "sourceRef": "C05 \u2014 The OS & Process Management"
+      "sourceRef": "Paper 1 Turing (1936) & Paper 2 Shannon (1948)",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q07",
       "testId": "mock-10",
       "number": 7,
       "type": "mcq",
-      "primaryConcept": "Compilation & Execution",
+      "primaryConcept": "Perceptrons & XOR Limit (C15)",
       "secondaryConcepts": [
-        "Permissions",
-        "Paths"
+        "Rosenblatt 1958",
+        "Minsky & Papert 1969",
+        "Backpropagation 1986"
       ],
       "difficulty": "Intermediate",
       "points": 4,
-      "question": "A student writes a Bash script `deploy_10.sh` starting with `#!/bin/bash`, sets `chmod 644 deploy_10.sh`, and runs `./deploy_10.sh`. What is the outcome?",
+      "question": "A student trains a single-layer Perceptron (Rosenblatt, 1958) on the 2-input XOR truth table: (0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0. After 10,000 iterations, accuracy remains stuck below 100%. Why?",
       "options": [
-        "It fails because relative path `./` cannot be used with a shebang.",
-        "It executes successfully because the shebang line overrides file permissions.",
-        "It fails with `Permission denied` because `644` (`rw-r--r--`) lacks the execute (`x`) bit.",
-        "It compiles `deploy_{t}.sh` into `a.out` first."
+        "The learning rate was too small; 1,000,000 iterations will always solve XOR in a single layer",
+        "As Minsky & Papert (1969) proved, a single-layer perceptron draws one linear boundary and XOR is not linearly separable\u2014requiring hidden layers trained via Backpropagation (1986)",
+        "Perceptrons only accept ASCII characters, not binary 0 and 1 inputs",
+        "The Halting Problem forbids neural networks from evaluating Boolean gates like AND and OR"
       ],
-      "correctAnswer": 2,
-      "explanation": "A script needs BOTH a valid interpreter/shebang AND execute permission (`x`). Mode `644` has no `x` bit, so `./deploy` fails with Permission denied until `chmod +x` (or `755`) is applied.",
+      "correctAnswer": 1,
+      "explanation": "A single-layer perceptron computes a linear threshold boundary. Because XOR places 1s and 0s on opposite diagonals, no straight line can separate them (Minsky & Papert, 1969). Hidden layers + non-linear activations trained with Backpropagation (Rumelhart, Hinton & Williams, 1986) solve XOR cleanly.",
       "incorrectOptionExplanations": [
-        "Relative paths like `./script.sh` work normally once execute permission is set.",
-        "A shebang never bypasses OS execute permissions.",
-        "Correct explanation.",
-        "Bash is interpreted, not compiled into `a.out`."
+        "No number of iterations can make a single straight line separate XOR's opposite diagonals.",
+        "Correct \u2014 single-layer linear separability limit proved by Minsky & Papert (1969).",
+        "Perceptrons operate on numeric vectors including 0 and 1.",
+        "Single-layer perceptrons solve AND and OR easily; only non-linear functions like XOR fail."
       ],
       "noteRef": {
-        "title": "C07 \u2014 Compilers vs Interpreters",
-        "href": "/notes/07-how-software-works/compilers-vs-interpreters"
+        "title": "Paper 5 \u2014 Minsky & Papert (1969)",
+        "href": "/papers/minsky-papert-1969-perceptrons"
       },
-      "sourceRef": "C07 \u2014 How Software Works / C06"
+      "sourceRef": "Paper 3 (1958), Paper 5 (1969), Paper 6 (1986)",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q08",
       "testId": "mock-10",
       "number": 8,
       "type": "mcq",
-      "primaryConcept": "Interfaces",
+      "primaryConcept": "Distributed Ordering: Lamport Clocks (C15)",
       "secondaryConcepts": [
-        "Networking"
+        "Happened-Before",
+        "Logical Clocks"
       ],
       "difficulty": "Foundational",
       "points": 2,
-      "question": "An automated script for `labsvc_10` runs `curl http://localhost:8100/status` and receives `{\"ok\": true}`. Which interface is being used between the script and the service?",
+      "question": "Two servers in a distributed cluster log events using their local quartz wall clocks. Server B's timestamp for receiving a message is 2 milliseconds EARLIER than Server A's timestamp for sending it. How did Leslie Lamport (1978) solve this?",
       "options": [
-        "Desktop Metaphor",
-        "Hardware Interrupt Bus",
-        "GUI (Graphical User Interface)",
-        "API (Application Programming Interface)"
+        "By shutting down Server B whenever its physical clock differs from Server A",
+        "By defining causal 'happened-before' ordering via message passing and maintaining integer logical clock counters updated as max(local, msg) + 1",
+        "By converting all timestamps to hexadecimal UTF-8 strings",
+        "By running git push --force across both servers every millisecond"
       ],
-      "correctAnswer": 3,
-      "explanation": "Program-to-program request/response communication returning structured JSON without screens or buttons uses an API.",
+      "correctAnswer": 1,
+      "explanation": "Physical clocks drift across machines. Lamport (1978) defined causal 'happened-before' (->) ordering and logical integer counters so receiving a message forces the receiver's logical clock strictly past the sender's counter.",
       "incorrectOptionExplanations": [
-        "Desktop Metaphor describes GUI design (files as paper, folders, trash can).",
-        "HTTP requests over `curl` operate at the software API layer.",
-        "No visual windows, icons, or buttons are involved.",
-        "Correct explanation."
+        "Shutting down drifting servers would halt the cluster; logical clocks work despite physical drift.",
+        "Correct \u2014 Lamport's happened-before partial order and logical counters track causality without needing synced physical clocks.",
+        "Formatting timestamps in hex does not fix clock skew.",
+        "Git does not synchronize distributed runtime events."
       ],
       "noteRef": {
-        "title": "C04 \u2014 Interfaces (CLI, GUI, API)",
-        "href": "/notes/04-interfaces/cli-gui-api"
+        "title": "Paper 4 \u2014 Lamport (1978)",
+        "href": "/papers/lamport-1978-logical-clocks"
       },
-      "sourceRef": "C04 \u2014 Interfaces (CLI, GUI, API)"
+      "sourceRef": "Paper 4 time-clocks Leslie Lampert.pdf (1978)",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q09",
       "testId": "mock-10",
       "number": 9,
       "type": "mcq",
-      "primaryConcept": "Linux Permissions & PATH",
+      "primaryConcept": "Modern AI: AlexNet, Transformers & GPT-3 (C16)",
       "secondaryConcepts": [
-        "Terminal & CLI"
+        "Self-Attention",
+        "Parallel GPUs",
+        "Few-Shot Prompting"
       ],
       "difficulty": "Intermediate",
       "points": 4,
-      "question": "On `labsvc_10`, `PATH` is set to `/usr/local/bin:/usr/bin:/bin`. A custom tool `scan` exists in BOTH `/usr/local/bin/scan` and `/bin/scan`. When the user types `scan`, which binary runs and what does `which scan` print?",
+      "question": "Which progression accurately connects AlexNet (2012), Transformers (2017), and GPT-3 (2020) in Lectures 16\u201317?",
       "options": [
-        "`/usr/local/bin/scan`, because the shell searches `PATH` from left to right and stops at the first match.",
-        "Both run simultaneously via timeslicing.",
-        "`which scan` fails because duplicate names are forbidden in `PATH`.",
-        "`/bin/scan`, because `/bin` is the system root."
+        "AlexNet proved GPUs + deep CNNs + ImageNet (~15% vs ~26% top-5 error); Transformers replaced sequential RNNs with parallel Self-Attention; GPT-3 scaled to 175B parameters unlocking few-shot prompting without weight updates",
+        "AlexNet introduced PageRank; Transformers removed GPUs in favor of single-core CPUs; GPT-3 retrained its 175B weights after every user chat prompt",
+        "AlexNet solved language translation via RNNs; Transformers introduced the 1969 XOR proof; GPT-3 used hand-written ELIZA rules",
+        "AlexNet, Transformers, and GPT-3 all achieved ~15% error on ImageNet by memorizing 3-word rules"
       ],
       "correctAnswer": 0,
-      "explanation": "The shell searches colon-separated `PATH` directories from left to right and executes the first matching executable (`/usr/local/bin/scan`).",
+      "explanation": "AlexNet (2012) launched GPU deep learning on ImageNet (~26% -> ~15% top-5 error). Vaswani et al. (2017) introduced Self-Attention to process tokens in parallel without RNN sequential bottlenecks. Brown et al. (2020) scaled GPT-3 to 175B parameters, enabling zero/few-shot in-context learning with frozen weights.",
       "incorrectOptionExplanations": [
-        "Correct explanation.",
-        "Only one executable is invoked.",
-        "Duplicate names in different `PATH` folders are valid; the leftmost wins.",
-        "`PATH` is searched left-to-right, not right-to-left."
+        "Correct \u2014 accurately summarizes Papers 8, 9, and 10.",
+        "PageRank was 1998; Transformers depend heavily on GPUs; GPT-3 weights stay frozen during prompting.",
+        "Those dates and contributions are mismatched.",
+        "ImageNet ~15% top-5 error was AlexNet (2012) specifically."
       ],
       "noteRef": {
-        "title": "C06 \u2014 Filesystem, Permissions & PATH",
-        "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+        "title": "Paper 9 \u2014 Attention Is All You Need (2017)",
+        "href": "/papers/vaswani-2017-transformer"
       },
-      "sourceRef": "C06 \u2014 The OS & the Filesystem"
+      "sourceRef": "Papers 8\u201310 & Lecture 16 Notes",
+      "codeBlock": null
     },
     {
       "id": "mock-10-q10",

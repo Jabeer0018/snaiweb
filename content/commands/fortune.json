@@ -1,0 +1,42 @@
+{
+  "slug": "fortune",
+  "name": "fortune",
+  "purpose": "Print a random quote or adage to standard output.",
+  "syntax": "fortune",
+  "explanation": "Used in C03's piping pipeline `fortune | cowsay | lolcat` to generate text output that is fed into `cowsay`.",
+  "parameters": [],
+  "example": "fortune | cowsay",
+  "expectedOutput": "(Random quote rendered inside cowsay ASCII art)",
+  "outputVerified": false,
+  "explanationOfOutput": "`fortune` writes a quote to stdout, which `|` sends as stdin to `cowsay`.",
+  "whenToUse": "To generate sample text or demonstrate Unix piping.",
+  "commonMistakes": [
+    "Running `fortune` before installing it via a package manager."
+  ],
+  "commonErrors": [
+    "zsh: command not found: fortune"
+  ],
+  "relatedCommands": [
+    "cowsay",
+    "lolcat",
+    "brew"
+  ],
+  "platformCompatibility": "macOS (via Homebrew) and Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Package Management",
+  "source": "System & AI Essentials (C03)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "fortune",
+    "pipe",
+    "stdout"
+  ]
+}

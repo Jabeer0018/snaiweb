@@ -1,0 +1,51 @@
+{
+  "slug": "find",
+  "name": "find",
+  "purpose": "Search a directory tree recursively for files matching names, types, or permissions.",
+  "syntax": "find <startPath> -name \"<pattern>\"",
+  "explanation": "Traverses directories starting at `<startPath>` and prints paths matching criteria like `-name` or `-type`.",
+  "parameters": [
+    {
+      "flag": "-name \"<pattern>\"",
+      "description": "Match filenames (supports wildcards like `*.log`)."
+    },
+    {
+      "flag": "-type f|d",
+      "description": "Filter by regular files (`f`) or directories (`d`)."
+    }
+  ],
+  "example": "find . -name \"*.txt\"",
+  "expectedOutput": "./readme.txt\n./practice/notes.txt",
+  "outputVerified": false,
+  "explanationOfOutput": "Lists every `.txt` file under the current directory and its subfolders.",
+  "whenToUse": "When locating files by name across nested folders (whereas `grep` searches *contents* inside files).",
+  "commonMistakes": [
+    "Confusing `find` (searches filenames) with `grep` (searches file contents)."
+  ],
+  "commonErrors": [
+    "find: ./restricted: Permission denied"
+  ],
+  "relatedCommands": [
+    "grep",
+    "ls",
+    "which"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C06 — Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 — The OS & the Filesystem",
+  "category": "Text Search & Compression",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "find",
+    "search",
+    "files"
+  ]
+}

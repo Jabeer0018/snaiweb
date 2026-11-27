@@ -1,0 +1,51 @@
+{
+  "slug": "tail",
+  "name": "tail",
+  "purpose": "Display the last lines (default 10) of a file or follow live log updates.",
+  "syntax": "tail [options] <fileName>",
+  "explanation": "Prints the end of a file—especially useful for viewing the most recent entries in server logs.",
+  "parameters": [
+    {
+      "flag": "-n <count>",
+      "description": "Show the last `<count>` lines."
+    },
+    {
+      "flag": "-f",
+      "description": "Follow — continuously stream new lines appended to the file."
+    }
+  ],
+  "example": "tail -n 20 server.log",
+  "expectedOutput": "(Prints the final 20 lines of server.log)",
+  "outputVerified": false,
+  "explanationOfOutput": "Displays the most recent 20 lines at the bottom of `server.log`.",
+  "whenToUse": "To inspect recent log entries or monitor live logs.",
+  "commonMistakes": [
+    "Forgetting `Ctrl+C` to exit `tail -f`."
+  ],
+  "commonErrors": [
+    "tail: server.log: No such file or directory"
+  ],
+  "relatedCommands": [
+    "head",
+    "grep",
+    "cat"
+  ],
+  "platformCompatibility": "macOS and GNU/Linux",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "isSupplementary": true,
+  "moduleSlug": "03-terminal-cli",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
+  "category": "Text Search & Compression",
+  "source": "Supplementary CLI Reference",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "tail",
+    "logs",
+    "lines"
+  ]
+}

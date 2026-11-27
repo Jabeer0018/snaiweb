@@ -1,7 +1,7 @@
 {
   "slug": "brew",
   "name": "brew",
-  "purpose": "Homebrew \u2014 macOS terminal package manager to find, download, and install CLI programs.",
+  "purpose": "Homebrew — macOS terminal package manager to find, download, and install CLI programs.",
   "syntax": "brew install <package1> [package2 ...]",
   "explanation": "Automates installing, updating, and managing command-line software packages on macOS so they become available in your terminal.",
   "parameters": [
@@ -22,7 +22,7 @@
     "which"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "Package Management",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -31,5 +31,17 @@
     "homebrew",
     "package manager",
     "macos"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS via Homebrew (brew)",
+  "explanationOfOutput": "Shows the simulated terminal response when running `brew` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "zsh: command not found: brew (if not installed or missing from PATH)"
   ]
 }

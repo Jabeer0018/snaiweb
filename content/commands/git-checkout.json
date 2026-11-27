@@ -1,0 +1,52 @@
+{
+  "slug": "git-checkout",
+  "name": "git checkout",
+  "purpose": "Switch to an existing branch, or create and switch to a new branch with `-b`.",
+  "syntax": "git checkout <branchName>\ngit checkout -b <newBranch>",
+  "explanation": "Moves `HEAD` to the specified branch so new commits are recorded there. Passing `-b` creates the branch and switches to it in one command.",
+  "parameters": [
+    {
+      "flag": "-b <newBranch>",
+      "description": "Creates `<newBranch>` and immediately switches `HEAD` to it."
+    }
+  ],
+  "example": "git checkout -b feature-login",
+  "expectedOutput": "Switched to a new branch 'feature-login'",
+  "outputVerified": false,
+  "explanationOfOutput": "Confirms `HEAD` now points to `feature-login`.",
+  "beforeAfterState": {
+    "before": "`HEAD` points to `main`.",
+    "after": "`HEAD` points to newly created `feature-login`."
+  },
+  "whenToUse": "Before starting new feature work so `main` stays clean.",
+  "commonMistakes": [
+    "Forgetting `-b` when the branch does not exist yet."
+  ],
+  "commonErrors": [
+    "error: pathspec 'feature-login' did not match any file(s) known to git"
+  ],
+  "relatedCommands": [
+    "git-branch",
+    "git-switch",
+    "git-merge"
+  ],
+  "platformCompatibility": "macOS, Linux, Windows (Git)",
+  "relevantConcepts": [
+    {
+      "title": "C09 — Git Workflow & GitHub",
+      "href": "/notes/09-git-github/git-workflow-and-github"
+    }
+  ],
+  "isSupplementary": false,
+  "moduleSlug": "09-git-github",
+  "moduleTitle": "C09 — Git & GitHub Collaboration",
+  "category": "Git & GitHub",
+  "source": "Ultimate System & AI Essentials Notes (Module 2)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "git",
+    "checkout",
+    "-b",
+    "branch"
+  ]
+}

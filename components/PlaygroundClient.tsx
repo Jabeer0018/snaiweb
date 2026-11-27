@@ -23,6 +23,7 @@ import {
 import { TheoryQuiz } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { QuizExplorer } from "./QuizExplorer";
+import { VisualizersHub } from "./visualizers/VisualizersHub";
 
 interface PlaygroundClientProps {
   problems: PlaygroundProblem[];
@@ -38,7 +39,7 @@ const difficultyBadge: Record<PlaygroundProblem["difficulty"], string> = {
 };
 
 export function PlaygroundClient({ problems, quizzes = [] }: PlaygroundClientProps) {
-  const [section, setSection] = useState<"coding" | "quizzes">("coding");
+  const [section, setSection] = useState<"coding" | "quizzes" | "visualizers">("coding");
   const [solvedIds, setSolvedIds] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -153,23 +154,64 @@ export function PlaygroundClient({ problems, quizzes = [] }: PlaygroundClientPro
   // ============================================================
   // LIST VIEW (100 Questions — Easy / Medium / Hard)
   // ============================================================
-  if (section === "quizzes") {
+  if (section === "visualizers") {
     return (
       <div className="space-y-6">
-        <div className="inline-flex rounded-lg border border-border bg-surface p-1">
+        <div className="inline-flex flex-wrap border border-border bg-surface p-1">
           <button
             type="button"
             onClick={() => setSection("coding")}
-            className="rounded-md px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
           >
             CLI &amp; Git Coding ({problems.length})
           </button>
           <button
             type="button"
             onClick={() => setSection("quizzes")}
-            className="rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white sm:text-sm"
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
           >
             Theory Quizzes ({quizzes.length} Quizzes · 160 MCQs)
+          </button>
+          <button
+            type="button"
+            onClick={() => setSection("visualizers")}
+            className="bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg sm:text-sm"
+          >
+            Interactive Visualizers (8)
+          </button>
+        </div>
+
+        <div className="min-w-0 overflow-x-hidden">
+          <VisualizersHub />
+        </div>
+      </div>
+    );
+  }
+
+  if (section === "quizzes") {
+    return (
+      <div className="space-y-6">
+        <div className="inline-flex flex-wrap border border-border bg-surface p-1">
+          <button
+            type="button"
+            onClick={() => setSection("coding")}
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+          >
+            CLI &amp; Git Coding ({problems.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSection("quizzes")}
+            className="bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg sm:text-sm"
+          >
+            Theory Quizzes ({quizzes.length} Quizzes · 160 MCQs)
+          </button>
+          <button
+            type="button"
+            onClick={() => setSection("visualizers")}
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+          >
+            Interactive Visualizers (8)
           </button>
         </div>
 
@@ -181,22 +223,32 @@ export function PlaygroundClient({ problems, quizzes = [] }: PlaygroundClientPro
   if (!activeProblem) {
     return (
       <div className="space-y-6">
-        <div className="inline-flex rounded-lg border border-border bg-surface p-1">
+        <div className="inline-flex flex-wrap border border-border bg-surface p-1">
           <button
             type="button"
             onClick={() => setSection("coding")}
-            className="rounded-md bg-accent px-3.5 py-1.5 text-xs font-medium text-white sm:text-sm"
+            className="bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-fg sm:text-sm"
           >
             CLI &amp; Git Coding ({problems.length})
           </button>
           <button
             type="button"
             onClick={() => setSection("quizzes")}
-            className="rounded-md px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
           >
             Theory Quizzes ({quizzes.length} Quizzes · 160 MCQs)
           </button>
+          <button
+            type="button"
+            onClick={() => setSection("visualizers")}
+            className="px-3.5 py-1.5 text-xs font-medium text-muted hover:text-foreground sm:text-sm"
+          >
+            Interactive Visualizers (8)
+          </button>
         </div>
+        <p className="text-xs text-subtle">
+          Educational simulation: commands run in an isolated browser sandbox—never against a real server.
+        </p>
         {/* Progress Summary */}
         <div className="grid gap-3 sm:grid-cols-4">
           <div className="rounded-lg border border-border bg-surface p-4">
@@ -522,7 +574,7 @@ export function PlaygroundClient({ problems, quizzes = [] }: PlaygroundClientPro
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="inline-flex items-center gap-1.5 rounded bg-accent px-3.5 py-1 text-xs font-medium text-white hover:bg-accent-hover"
+                  className="inline-flex items-center gap-1.5 rounded bg-accent px-3.5 py-1 text-xs font-medium text-accent-fg hover:bg-accent-hover"
                 >
                   <Send className="h-3 w-3" />
                   Submit

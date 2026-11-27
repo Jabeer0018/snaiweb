@@ -19,7 +19,7 @@
     "cp"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "File & Directory Management",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -28,5 +28,18 @@
     "read",
     "concatenate",
     "display file"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `cat` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "cat: <target>: No such file or directory",
+    "cat: <target>: Permission denied"
   ]
 }

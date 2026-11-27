@@ -1,0 +1,58 @@
+{
+  "slug": "pip",
+  "name": "pip",
+  "purpose": "Python package installer for downloading, inspecting, and managing third-party Python libraries.",
+  "syntax": "pip install <package> | pip show <package>",
+  "explanation": "Installs Python libraries from PyPI into your environment's `site-packages` directory and resolves their dependencies automatically.",
+  "parameters": [
+    {
+      "flag": "install <pkg>",
+      "description": "Downloads and installs `<pkg>` and its dependencies."
+    },
+    {
+      "flag": "show <pkg>",
+      "description": "Prints version, dependencies, and the exact `Location:` path on disk."
+    },
+    {
+      "flag": "list",
+      "description": "Lists all installed Python packages in the active environment."
+    }
+  ],
+  "example": "pip install qrcode && pip show qrcode",
+  "expectedOutput": "Name: qrcode\nVersion: 8.0\nLocation: /Library/Frameworks/Python.framework/.../site-packages\nRequires: colorama, pillow",
+  "outputVerified": false,
+  "whenToUse": "When adding third-party Python libraries such as `Pillow`, `qrcode`, or `pyfiglet` (Worksheet 13b).",
+  "commonMistakes": [
+    "Installing into system Python instead of an active virtual environment, or confusing CLI tools (`brew`/`apt`) with Python libraries (`pip`)."
+  ],
+  "relatedCommands": [
+    "python3",
+    "which",
+    "brew"
+  ],
+  "moduleSlug": "13-learning-new-tools",
+  "moduleTitle": "C13 \u2014 Meeting New Tools, Libraries & AI Rules",
+  "category": "Program Execution",
+  "source": "worksheet-13b.pdf (Lecture 13)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "pip",
+    "python",
+    "library",
+    "install",
+    "show",
+    "pillow"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS, GNU/Linux, Windows (often `pip3` when multiple Python versions exist)",
+  "explanationOfOutput": "Displays installed metadata including dependencies and exact filesystem location.",
+  "relevantConcepts": [
+    {
+      "title": "C13 \u2014 Python Libraries & 3 Rules for AI",
+      "href": "/notes/13-learning-new-tools/python-libraries-and-ai-rules"
+    }
+  ],
+  "commonErrors": [
+    "`ERROR: Could not find a version that satisfies the requirement ...` (typo in package name)"
+  ]
+}

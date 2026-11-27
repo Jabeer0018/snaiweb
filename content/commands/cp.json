@@ -7,7 +7,7 @@
   "parameters": [
     {
       "flag": "-r",
-      "description": "Recursive copy \u2014 required to copy a directory and all files/subfolders inside it."
+      "description": "Recursive copy — required to copy a directory and all files/subfolders inside it."
     }
   ],
   "example": "cp kitkat.txt perk.txt\ncp -r sourceFolder destinationFolder",
@@ -24,7 +24,7 @@
     "cat"
   ],
   "moduleSlug": "03-terminal-cli",
-  "moduleTitle": "C03 \u2014 Terminal & CLI Commands",
+  "moduleTitle": "C03 — Terminal & CLI Commands",
   "category": "File & Directory Management",
   "source": "System & AI Essentials (C03)",
   "addedAt": "2026-11-26",
@@ -34,5 +34,22 @@
     "recursive",
     "-r",
     "overwrite"
-  ]
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (zsh/bash) and GNU/Linux",
+  "explanationOfOutput": "Shows the simulated terminal response when running `cp` in a standard Unix-like shell.",
+  "relevantConcepts": [
+    {
+      "title": "C03 — Terminal & CLI Fundamentals",
+      "href": "/notes/03-terminal-cli/cli-fundamentals-and-piping"
+    }
+  ],
+  "commonErrors": [
+    "cp: <target>: No such file or directory",
+    "cp: <target>: Permission denied"
+  ],
+  "beforeAfterState": {
+    "before": "Filesystem/permissions are in their initial state prior to command execution.",
+    "after": "Target file or directory state is updated by `cp` as specified."
+  }
 }

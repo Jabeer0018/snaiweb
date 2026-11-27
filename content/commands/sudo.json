@@ -1,0 +1,46 @@
+{
+  "slug": "sudo",
+  "name": "sudo",
+  "purpose": "Executes a single command with elevated superuser (`root`) administrative privileges.",
+  "syntax": "sudo <command> [arguments]",
+  "explanation": "Temporarily grants `root` privileges for one command after verifying your password, required for system-wide package installation (`apt`) or protected OS files.",
+  "parameters": [],
+  "example": "sudo apt install qrencode",
+  "expectedOutput": "[sudo] password for student:\nReading package lists... Done",
+  "outputVerified": false,
+  "whenToUse": "Only when an administrative operation (like `apt install` or reading `/var/log/auth.log`) requires `root` permission.",
+  "commonMistakes": [
+    "Using `sudo` reflexively on user-owned files or `pip`/`git` commands, which can leave root-owned files in your home folder."
+  ],
+  "relatedCommands": [
+    "apt",
+    "chmod",
+    "chown",
+    "whoami"
+  ],
+  "moduleSlug": "06-os-filesystem",
+  "moduleTitle": "C06 \u2014 OS & Filesystem",
+  "category": "Linux Permissions",
+  "source": "Worksheet 13a & C06 Filesystem",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "sudo",
+    "root",
+    "superuser",
+    "permissions",
+    "admin"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS and GNU/Linux",
+  "explanationOfOutput": "Prompts for password (characters are hidden as you type!) then runs the command as UID 0 (`root`).",
+  "relevantConcepts": [
+    {
+      "title": "C06 \u2014 Filesystem, Permissions & PATH",
+      "href": "/notes/06-os-filesystem/filesystem-permissions-path"
+    }
+  ],
+  "commonErrors": [
+    "`student is not in the sudoers file`",
+    "`Sorry, try again.` (wrong password)"
+  ]
+}

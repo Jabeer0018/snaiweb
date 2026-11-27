@@ -1,0 +1,58 @@
+{
+  "slug": "ffmpeg",
+  "name": "ffmpeg",
+  "purpose": "Universal CLI multimedia engine for converting, trimming, and processing video and audio.",
+  "syntax": "ffmpeg -i <input_file> [options] <output_file>",
+  "explanation": "Created by Fabrice Bellard, `ffmpeg` decodes, filters, and re-encodes nearly any audio or video format directly from the command line (and powers VLC and browsers under the hood).",
+  "parameters": [
+    {
+      "flag": "-i <file>",
+      "description": "Specifies the input media file."
+    },
+    {
+      "flag": "-t <seconds>",
+      "description": "Limits output duration to `<seconds>`."
+    },
+    {
+      "flag": "-vf <filter>",
+      "description": "Applies video filters such as scaling (`scale=480:-1`) or frame rate (`fps=10`)."
+    }
+  ],
+  "example": "ffmpeg -i clip.mov -vf 'fps=10,scale=480:-1' output.gif",
+  "expectedOutput": "Input #0, mov,mp4 -> Output #0, gif, to 'output.gif'\nframe=   30 fps= 60 q=-0.0 Lsize=   412kB time=00:00:03.00",
+  "outputVerified": false,
+  "whenToUse": "When converting screen recordings into GIFs or transcoding/trimming video/audio from the terminal (Worksheet 13a).",
+  "commonMistakes": [
+    "Putting output flags before `-i <input>`\u2014in `ffmpeg`, flag order determines whether an option applies to input or output."
+  ],
+  "relatedCommands": [
+    "man",
+    "brew",
+    "apt"
+  ],
+  "moduleSlug": "13-learning-new-tools",
+  "moduleTitle": "C13 \u2014 Meeting New Tools, Libraries & AI Rules",
+  "category": "CLI Tools",
+  "source": "worksheet-13a.pdf (Lecture 13)",
+  "addedAt": "2026-11-28",
+  "keywords": [
+    "ffmpeg",
+    "video",
+    "gif",
+    "fabrice bellard",
+    "media"
+  ],
+  "isSupplementary": false,
+  "platformCompatibility": "macOS (`brew install ffmpeg`), Linux (`sudo apt install ffmpeg`), Windows",
+  "explanationOfOutput": "Reports detected input streams, applied filter graph, encoded frames, and final output file size.",
+  "relevantConcepts": [
+    {
+      "title": "C13 \u2014 The 5-Step Tool Discovery Method",
+      "href": "/notes/13-learning-new-tools/five-step-tool-discovery"
+    }
+  ],
+  "commonErrors": [
+    "`clip.mov: No such file or directory`",
+    "`Output file #0 does not contain any stream`"
+  ]
+}
